@@ -1,10 +1,3 @@
-export const propsColumn = [
-  { label: 'Property', key: 'property' },
-  { label: 'Type', key: 'type' },
-  { label: 'Default', key: 'default' },
-  { label: 'Description', key: 'description' },
-];
-
 export const designSystemMenus = [
   {
     id: 'foundation',
@@ -21,10 +14,181 @@ export const designSystemMenus = [
         label: 'Typography',
         href: '/design-system/foundation/typography',
       },
-      // { id: 'grid', label: 'Grid', href: '/design-system/foundation/grid' },
-      // { id: 'shadow', label: 'Shadow', href: '/design-system/foundation/shadow' },
-      // { id: 'motion', label: 'Motion', href: '/design-system/foundation/motion' },
-      // { id: 'breakpoints', label: 'Breakpoints', href: '/design-system/foundation/breakpoints' },
+      {
+        id: 'shadow',
+        label: 'Shadow',
+        href: '/design-system/foundation/shadow',
+      },
+      {
+        id: 'motion',
+        label: 'Motion',
+        href: '/design-system/foundation/motion',
+      },
+      {
+        id: 'breakpoints',
+        label: 'Breakpoints',
+        href: '/design-system/foundation/breakpoints',
+      },
+    ],
+  },
+  {
+    id: 'components',
+    label: 'Components',
+    href: null,
+    sections: [
+      {
+        group: 'Action',
+        items: [
+          {
+            id: 'button',
+            label: 'Button',
+            href: '/design-system/components/button',
+          },
+          {
+            id: 'buttongroup',
+            label: 'ButtonGroup',
+            href: '/design-system/components/buttonGroup',
+          },
+        ],
+      },
+      {
+        group: 'Input',
+        items: [
+          {
+            id: 'textinput',
+            label: 'TextInput',
+            href: '/design-system/components/textInput',
+          },
+          {
+            id: 'checkbox',
+            label: 'Checkbox',
+            href: '/design-system/components/checkbox',
+          },
+          {
+            id: 'radio',
+            label: 'Radio',
+            href: '/design-system/components/radio',
+          },
+          {
+            id: 'switch',
+            label: 'Switch',
+            href: '/design-system/components/switch',
+          },
+          {
+            id: 'datepicker',
+            label: 'DatePicker',
+            href: '/design-system/components/datepicker',
+          },
+          {
+            id: 'uploadDropzone',
+            label: 'UploadDropzone',
+            href: '/design-system/components/uploadDropzone',
+          },
+        ],
+      },
+      {
+        group: 'Navigation',
+        items: [
+          {
+            id: 'dropdown',
+            label: 'Dropdown',
+            href: '/design-system/components/dropdown',
+          },
+          {
+            id: 'pagination',
+            label: 'Pagination',
+            href: '/design-system/components/pagination',
+          },
+          { id: 'tabs', label: 'Tabs', href: '/design-system/components/tabs' },
+          {
+            id: 'breadcrumb',
+            label: 'Breadcrumb',
+            href: '/design-system/components/breadcrumb',
+          },
+          {
+            id: 'gnb',
+            label: 'Global Navigation',
+            href: '/design-system/components/gnb',
+          },
+          {
+            id: 'snb',
+            label: 'Side Navigation',
+            href: '/design-system/components/snb',
+          },
+        ],
+      },
+      {
+        group: 'Data Display',
+        items: [
+          {
+            id: 'avatar',
+            label: 'Avatar',
+            href: '/design-system/components/avatar',
+          },
+          {
+            id: 'badge',
+            label: 'Badge',
+            href: '/design-system/components/badge',
+          },
+          {
+            id: 'table',
+            label: 'Table',
+            href: '/design-system/components/table',
+          },
+          { id: 'tag', label: 'Tag', href: '/design-system/components/tag' },
+          {
+            id: 'tooltip',
+            label: 'Tooltip',
+            href: '/design-system/components/tooltip',
+          },
+        ],
+      },
+      {
+        group: 'Feedback',
+        items: [
+          {
+            id: 'alert',
+            label: 'Alert',
+            href: '/design-system/components/alert',
+          },
+          {
+            id: 'dialog',
+            label: 'Dialog',
+            href: '/design-system/components/dialog',
+          },
+          {
+            id: 'drawer',
+            label: 'Drawer',
+            href: '/design-system/components/drawer',
+          },
+          {
+            id: 'progress',
+            label: 'Progress',
+            href: '/design-system/components/progress',
+          },
+          {
+            id: 'skeleton',
+            label: 'Skeleton',
+            href: '/design-system/components/skeleton',
+          },
+          {
+            id: 'toast',
+            label: 'Toast',
+            href: '/design-system/components/toast',
+          },
+        ],
+      },
+      {
+        group: 'Layout',
+        items: [
+          { id: 'grid', label: 'Grid', href: '/design-system/components/grid' },
+          {
+            id: 'divider',
+            label: 'Divider',
+            href: '/design-system/components/divider',
+          },
+        ],
+      },
     ],
   },
   {
@@ -48,167 +212,5 @@ export const designSystemMenus = [
         href: '/design-system/interaction/countUp',
       },
     ],
-  },
-  {
-    id: 'components',
-    label: 'Components',
-    href: null,
-    items: [
-      { id: 'alert', label: 'Alert', href: '/design-system/components/alert' },
-      {
-        id: 'avatar',
-        label: 'Avatar',
-        href: '/design-system/components/avatar',
-      },
-      { id: 'badge', label: 'Badge', href: '/design-system/components/badge' },
-      {
-        id: 'button',
-        label: 'Button',
-        href: '/design-system/components/button',
-      },
-      {
-        id: 'buttongroup',
-        label: 'ButtonGroup',
-        href: '/design-system/components/buttonGroup',
-      },
-      {
-        id: 'checkbox',
-        label: 'Checkbox',
-        href: '/design-system/components/checkbox',
-      },
-      {
-        id: 'datepicker',
-        label: 'DatePicker',
-        href: '/design-system/components/datepicker',
-      },
-      {
-        id: 'dialog',
-        label: 'Dialog',
-        href: '/design-system/components/dialog',
-      },
-      {
-        id: 'drawer',
-        label: 'Drawer',
-        href: '/design-system/components/drawer',
-      },
-      {
-        id: 'dropdown',
-        label: 'Dropdown',
-        href: '/design-system/components/dropdown',
-      },
-      // { id: 'icon', label: 'Icon', href: '/design-system/components/icon' },
-      // { id: 'image', label: 'Image', href: '/design-system/components/image' },
-      // { id: 'input', label: 'Input', href: '/design-system/components/input' },
-      // { id: 'link', label: 'Link', href: '/design-system/components/link' },
-      // { id: 'loading', label: 'Loading', href: '/design-system/components/loading' },
-      // { id: 'pagination', label: 'Pagination', href: '/design-system/components/pagination' },
-      // { id: 'select', label: 'Select', href: '/design-system/components/select' },
-      // { id: 'skeleton', label: 'Skeleton', href: '/design-system/components/skeleton' },
-      // { id: 'slider', label: 'Slider', href: '/design-system/components/slider' },
-      // { id: 'switch', label: 'Switch', href: '/design-system/components/switch' },
-      // { id: 'table', label: 'Table', href: '/design-system/components/table' },
-      // { id: 'tabs', label: 'Tabs', href: '/design-system/components/tabs' },
-      // { id: 'tag', label: 'Tag', href: '/design-system/components/tag' },
-      // { id: 'toast', label: 'Toast', href: '/design-system/components/toast' },
-      // { id: 'tooltip', label: 'Tooltip', href: '/design-system/components/tooltip' },
-      // { id: 'tree', label: 'Tree', href: '/design-system/components/tree' },
-      {
-        id: 'uploadDropzone',
-        label: 'UploadDropzone',
-        href: '/design-system/components/uploadDropzone',
-      },
-      // { id: 'video', label: 'Video', href: '/design-system/components/video' },
-      // { id: 'carousel', label: 'Carousel', href: '/design-system/components/carousel' },
-      // { id: 'colorPicker', label: 'ColorPicker', href: '/design-system/components/colorPicker' },
-      // { id: 'fileInput', label: 'FileInput', href: '/design-system/components/fileInput' },
-      // { id: 'linkButton', label: 'LinkButton', href: '/design-system/components/linkButton' },
-      {
-        id: 'progress',
-        label: 'Progress',
-        href: '/design-system/components/progress',
-      },
-      { id: 'radio', label: 'Radio', href: '/design-system/components/radio' },
-      {
-        id: 'textinput',
-        label: 'TextInput',
-        href: '/design-system/components/textInput',
-      },
-    ],
-  },
-  // {
-  //   id: 'layout',
-  //   label: 'Layout',
-  //   href: null,
-  //   items: [
-  //     {
-  //       id: 'snb',
-  //       label: 'Side Navigation Bar',
-  //       href: '/design-system/layout/snb',
-  //     },
-  //     {
-  //       id: 'gnb',
-  //       label: 'Global Navigation Bar',
-  //       href: '/design-system/layout/gnb',
-  //     },
-  //   ],
-  // },
-];
-
-export const componentsImages = [
-  {
-    id: 'alert',
-    label: 'Alert',
-    src: '/image/alert_thumbnail.png',
-    href: '/design-system/components/alert',
-    alt: 'Alert Thumbnail',
-  },
-  {
-    id: 'avatar',
-    label: 'Avatar',
-    src: '/image/avatar_thumbnail.png',
-    href: '/design-system/components/avatar',
-    alt: 'Avatar Thumbnail',
-  },
-  {
-    id: 'badge',
-    label: 'Badge',
-    src: '/image/badge_thumbnail.png',
-    href: '/design-system/components/badge',
-    alt: 'Badge Thumbnail',
-  },
-  {
-    id: 'buttonGroup',
-    label: 'ButtonGroup',
-    src: '/image/buttongroup_thumbnail.png',
-    href: '/design-system/components/buttonGroup',
-    alt: 'Button Group Thumbnail',
-  },
-  {
-    id: 'datePicker',
-    label: 'DatePicker',
-    src: '/image/datepicker_thumbnail.png',
-    href: '/design-system/components/datepicker',
-    alt: 'Date Picker Thumbnail',
-  },
-  {
-    id: 'dialog',
-    label: 'Dialog',
-    src: '/image/dialog_thumbnail.png',
-    href: '/design-system/components/dialog',
-    alt: 'Dialog Thumbnail',
-  },
-  {
-    id: 'drawer',
-    label: 'Drawer',
-    src: '/image/drawer_thumbnail.png',
-    href: '/design-system/components/drawer',
-    alt: 'Drawer Thumbnail',
-  },
-  {
-    id: 'dropdown',
-    label: 'Dropdown',
-    src: '/image/dropdown_thumbnail.png',
-    href: '/design-system/components/dropdown',
-    alt: 'Dropdown Thumbnail',
   },
 ];

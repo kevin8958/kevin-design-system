@@ -101,11 +101,15 @@
 @layer base {
   html,
   body {
-    @apply bg-neutral-990 text-neutral-100 antialiased;
+    @apply bg-neutral-990 text-neutral-100 antialiased w-full;
     /* 폰트가 설치되어 있다면 여기서 적용 */
     font-family: var(--font-pretendard);
   }
+  #root {
+    @apply flex justify-center w-full;
+  }
 }
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
