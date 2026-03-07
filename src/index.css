@@ -1,7 +1,111 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@theme {
+  /* --- Screens (Breakpoints) --- */
+  --breakpoint-xs: 480px;
+
+  /* --- Font Sizes --- */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 4rem;
+
+  /* --- Font Families --- */
+  --font-pretendard: 'Pretendard', sans-serif;
+  --font-tossface: 'Tossface', sans-serif;
+
+  /* --- Colors: Primary --- */
+  --color-primary-50: #fff8ed;
+  --color-primary-100: #fff3e0;
+  --color-primary-200: #ffe0b2;
+  --color-primary-300: #ffcc80;
+  --color-primary-400: #ffb74d;
+  --color-primary-500: #ffa726;
+  --color-primary-600: #fb8c00;
+  --color-primary-700: #ef6c00;
+  --color-primary-800: #e65100;
+  --color-primary-900: #a63a00;
+
+  /* --- Colors: Secondary --- */
+  --color-secondary-50: #f0f7ff;
+  --color-secondary-100: #e0efff;
+  --color-secondary-200: #b8d9ff;
+  --color-secondary-300: #7ab7ff;
+  --color-secondary-400: #3d95ff;
+  --color-secondary-500: #0073ff;
+  --color-secondary-600: #005ecc;
+  --color-secondary-700: #004a99;
+  --color-secondary-800: #003566;
+  --color-secondary-900: #002133;
+
+  /* --- Colors: Neutral --- */
+  --color-neutral-50: #f5f7f9;
+  --color-neutral-100: #e3e7ec;
+  --color-neutral-200: #c6ceda;
+  --color-neutral-300: #a7b3c5;
+  --color-neutral-400: #8897b0;
+  --color-neutral-500: #6a7c9b;
+  --color-neutral-600: #566481;
+  --color-neutral-700: #434c66;
+  --color-neutral-800: #2f344c;
+  --color-neutral-900: #121627;
+  --color-neutral-990: #0a0e19;
+
+  /* --- Colors: Semantic & Functional --- */
+  --color-text-primary: #1a1a1a;
+  --color-danger: #d32f2f;
+  --color-warning: #f57c00;
+  --color-info: #0288d1;
+  --color-success: #388e3c;
+  --color-danger-light: #f9d6d5;
+  --color-warning-light: #ffe0b2;
+  --color-info-light: #b3e5fc;
+  --color-success-light: #c8e6c9;
+  --color-emphasis: #e3d026;
+
+  /* --- Box Shadows --- */
+  --shadow-custom-light:
+    2px 4px 12px rgba(0, 0, 0, 0.2), -2px -2px 12px rgba(255, 255, 255, 0.3);
+  --shadow-custom-dark:
+    2px 4px 16px rgba(0, 0, 0, 0.3), -2px -2px 16px rgba(255, 255, 255, 0.05);
+
+  /* --- Animations & Keyframes --- */
+  @keyframes flash {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  @keyframes shine {
+    0% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: -100%;
+    }
+  }
+
+  --animate-flash-fast: flash 1s ease-in-out infinite;
+  --animate-shine: shine 5s linear infinite;
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-neutral-990 text-neutral-100 antialiased;
+    /* 폰트가 설치되어 있다면 여기서 적용 */
+    font-family: var(--font-pretendard);
+  }
+}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
