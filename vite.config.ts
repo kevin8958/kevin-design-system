@@ -1,6 +1,8 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/postcss';
+import autoprefixer from 'autoprefixer';
 
 // https://vite.dev/config/
 import path from 'node:path';
@@ -16,6 +18,11 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src")
     }
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss(), autoprefixer()],
+    },
   },
   test: {
     projects: [{
