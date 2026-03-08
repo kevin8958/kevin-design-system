@@ -17,11 +17,11 @@ const LinkButton = ({ href, label, className }: LinkButtonProps) => {
       className={cn(
         'px-4 py-2 text-sm font-medium transition-all rounded-md no-underline',
         // Default text color (Light/Dark mode)
-        'text-neutral-900 dark:text-neutral-50',
+        'text-neutral-900! dark:text-neutral-200!',
         // Hover state (Light: secondary, Dark: primary)
-        'hover:text-secondary-500 dark:hover:text-primary-500',
+        'hover:text-secondary-400! dark:hover:text-primary-400!',
         // Active state
-        isActive && 'text-primary-400 dark:text-primary-400',
+        isActive && 'text-secondary-400! dark:text-primary-400!',
         className,
       )}
     >

@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-
+@custom-variant dark (&:where(.dark, .dark *));
 @theme {
   /* --- Screens (Breakpoints) --- */
   --breakpoint-xs: 480px;
@@ -94,6 +94,16 @@
     }
   }
 
+  @keyframes bounce-up {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    } /* Adjust the height here */
+  }
+
   --animate-flash-fast: flash 1s ease-in-out infinite;
   --animate-shine: shine 5s linear infinite;
 }
@@ -101,7 +111,7 @@
 @layer base {
   html,
   body {
-    @apply bg-neutral-990 text-neutral-100 antialiased w-full;
+    @apply bg-neutral-50 dark:bg-neutral-990 antialiased w-full text-neutral-800 dark:text-neutral-100;
     /* 폰트가 설치되어 있다면 여기서 적용 */
     font-family: var(--font-pretendard);
   }
