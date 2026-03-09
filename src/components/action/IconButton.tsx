@@ -10,16 +10,16 @@ const IconButton = ({ icon, className, ...props }: IconButtonProps) => {
       {...props}
       className={cn(
         // Base layout
-        'flex items-center justify-center h-9 w-9 rounded-md border transition-all duration-200 cursor-pointer',
+        'flex items-center justify-center h-8 w-8 p-0! rounded-md transition-all duration-200 cursor-pointer bg-transparent!',
 
         // Remove Default Ring/Outline
         'outline-none! focus:outline-none! ring-0! focus:ring-0!',
 
         // Light Mode
-        'bg-white! border-neutral-990/10! text-secondary-400 hover:border-neutral-300',
+        'text-secondary-400',
 
         // Dark Mode
-        'dark:bg-neutral-900! dark:border-neutral-100/10! dark:text-primary-400 dark:hover:border-neutral-700',
+        'dark:text-primary-400 ',
 
         // Interaction Logic
         'group active:scale-95',
