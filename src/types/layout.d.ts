@@ -1,4 +1,14 @@
 namespace Layout {
+  /** Box */
+  interface BoxProps {
+    id?: string;
+    classes?: string;
+    type?: 'default' | 'card' | 'code';
+    title?: string;
+    maxWidth?: number;
+    children?: React.ReactNode;
+  }
+
   /** FlexWrapper */
   interface FlexWrapperProps {
     direction?: 'row' | 'col' | 'row-reverse' | 'col-reverse';

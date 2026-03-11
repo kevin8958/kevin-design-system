@@ -5,8 +5,9 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import Gnb from '@/components/layout/Gnb';
 import Snb from '@/components/layout/Snb';
 import { ThemeProvider } from '@/providers/ThemeProvider';
-import GettingStarted from '@/pages/GettingStarted';
-import Components from '@/pages/Components';
+import GettingStarted from './pages/GettingStarted';
+import Components from './pages/Components';
+import Button from '@/pages/components/action/Button';
 
 function AppLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,7 @@ function AppLayout() {
         classes="relative! w-full max-w-7xl mx-auto min-h-[calc(100dvh-64px)]"
       >
         <Snb isOpen={isOpen} />
-        <main className="flex flex-col flex-1 px-4 overflow-scroll pt-19">
+        <main className="flex flex-col flex-1 px-4 overflow-scroll pt-4">
           <Outlet />
         </main>
       </FlexWrapper>
@@ -44,6 +45,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/getting-started" element={<GettingStarted />} />
           <Route path="/components" element={<Components />} />
+          <Route path="/components/action/button" element={<Button />} />
         </Route>
       </Routes>
     </AppProvider>

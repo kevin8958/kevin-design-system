@@ -1,0 +1,73 @@
+import classNames from 'classnames';
+import { cva } from 'class-variance-authority';
+import { FaChevronRight } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
+
+const breadcrumbVariants = cva(
+  'flex items-center gap-1.5 text-sm transition-all duration-200 ease-in-out',
+  {
+    variants: {
+      status: {
+        active: 'text-secondary-400 font-bold dark:text-primary-400',
+        inactive: 'text-neutral-600! font-semibold dark:text-neutral-500!',
+      },
+    },
+    defaultVariants: {
+      status: 'inactive',
+    },
+  },
+);
+
+/** Layout.BreadCrumbProps 인터페이스 준수 */
+interface BreadCrumbProps {
+  items: Array<{ label: string; href?: string }>;
+  className?: string;
+}
+
+const BreadCrumb = ({ items, className }: BreadCrumbProps) => {
+  const { pathname } = useLocation();
+  return (
+    <nav aria-label="Breadcrumb" className={classNames('py-2', className)}>
+      <ol className="flex items-center gap-1.5">
+        {items.map((item, index) => {
+          const isActive = pathname === item.href;
+          return (
+            <li
+              key={`${item.label}-${index}`}
+              className="flex items-center gap-1.5"
+            >
+              {item.href && !isActive ? (
+                /* Link 컴포넌트는 프로젝트 환경(react-router-dom 등)에 맞춰 
+                   사용하시거나 일반 <a> 태그로 대체 가능합니다. 
+                */
+                <a
+                  href={item.href}
+                  className={breadcrumbVariants({ status: 'inactive' })}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <span
+                  className={breadcrumbVariants({
+                    status: isActive ? 'active' : 'inactive',
+                  })}
+                >
+                  {item.label}
+                </span>
+              )}
+
+              {!isActive && (
+                <FaChevronRight
+                  className="text-[10px] text-neutral-600 dark:text-neutral-600"
+                  aria-hidden="true"
+                />
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+};
+
+export default BreadCrumb;

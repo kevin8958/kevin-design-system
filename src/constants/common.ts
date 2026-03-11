@@ -1,3 +1,10 @@
+export const propsColumn = [
+  { label: 'Property', key: 'property' },
+  { label: 'Type', key: 'type' },
+  { label: 'Default', key: 'default' },
+  { label: 'Description', key: 'description' },
+];
+
 export const designSystemMenus = [
   {
     id: 'foundation',
@@ -7,27 +14,27 @@ export const designSystemMenus = [
       {
         id: 'colors',
         label: 'Colors',
-        href: '/design-system/foundation/colors',
+        href: '/foundation/colors',
       },
       {
         id: 'typography',
         label: 'Typography',
-        href: '/design-system/foundation/typography',
+        href: '/foundation/typography',
       },
       {
         id: 'shadow',
         label: 'Shadow',
-        href: '/design-system/foundation/shadow',
+        href: '/foundation/shadow',
       },
       {
         id: 'motion',
         label: 'Motion',
-        href: '/design-system/foundation/motion',
+        href: '/foundation/motion',
       },
       {
         id: 'breakpoints',
         label: 'Breakpoints',
-        href: '/design-system/foundation/breakpoints',
+        href: '/foundation/breakpoints',
       },
     ],
   },
@@ -42,12 +49,12 @@ export const designSystemMenus = [
           {
             id: 'button',
             label: 'Button',
-            href: '/design-system/components/button',
+            href: '/components/action/button',
           },
           {
             id: 'buttongroup',
             label: 'ButtonGroup',
-            href: '/design-system/components/buttonGroup',
+            href: '/components/action/buttonGroup',
           },
         ],
       },
@@ -57,32 +64,32 @@ export const designSystemMenus = [
           {
             id: 'textinput',
             label: 'TextInput',
-            href: '/design-system/components/textInput',
+            href: '/components/input/textInput',
           },
           {
             id: 'checkbox',
             label: 'Checkbox',
-            href: '/design-system/components/checkbox',
+            href: '/components/input/checkbox',
           },
           {
             id: 'radio',
             label: 'Radio',
-            href: '/design-system/components/radio',
+            href: '/components/input/radio',
           },
           {
             id: 'switch',
             label: 'Switch',
-            href: '/design-system/components/switch',
+            href: '/components/input/switch',
           },
           {
             id: 'datepicker',
             label: 'DatePicker',
-            href: '/design-system/components/datepicker',
+            href: '/components/input/datepicker',
           },
           {
             id: 'uploadDropzone',
             label: 'UploadDropzone',
-            href: '/design-system/components/uploadDropzone',
+            href: '/components/input/uploadDropzone',
           },
         ],
       },
@@ -92,28 +99,28 @@ export const designSystemMenus = [
           {
             id: 'dropdown',
             label: 'Dropdown',
-            href: '/design-system/components/dropdown',
+            href: '/components/navigation/dropdown',
           },
           {
             id: 'pagination',
             label: 'Pagination',
-            href: '/design-system/components/pagination',
+            href: '/components/navigation/pagination',
           },
-          { id: 'tabs', label: 'Tabs', href: '/design-system/components/tabs' },
+          { id: 'tabs', label: 'Tabs', href: '/components/navigation/tabs' },
           {
             id: 'breadcrumb',
             label: 'Breadcrumb',
-            href: '/design-system/components/breadcrumb',
+            href: '/components/navigation/breadcrumb',
           },
           {
             id: 'gnb',
             label: 'Global Navigation',
-            href: '/design-system/components/gnb',
+            href: '/components/navigation/gnb',
           },
           {
             id: 'snb',
             label: 'Side Navigation',
-            href: '/design-system/components/snb',
+            href: '/components/navigation/snb',
           },
         ],
       },
@@ -123,23 +130,23 @@ export const designSystemMenus = [
           {
             id: 'avatar',
             label: 'Avatar',
-            href: '/design-system/components/avatar',
+            href: '/components/dataDisplay/avatar',
           },
           {
             id: 'badge',
             label: 'Badge',
-            href: '/design-system/components/badge',
+            href: '/components/dataDisplay/badge',
           },
           {
             id: 'table',
             label: 'Table',
-            href: '/design-system/components/table',
+            href: '/components/dataDisplay/table',
           },
-          { id: 'tag', label: 'Tag', href: '/design-system/components/tag' },
+          { id: 'tag', label: 'Tag', href: '/components/dataDisplay/tag' },
           {
             id: 'tooltip',
             label: 'Tooltip',
-            href: '/design-system/components/tooltip',
+            href: '/components/dataDisplay/tooltip',
           },
         ],
       },
@@ -149,43 +156,43 @@ export const designSystemMenus = [
           {
             id: 'alert',
             label: 'Alert',
-            href: '/design-system/components/alert',
+            href: '/components/feedback/alert',
           },
           {
             id: 'dialog',
             label: 'Dialog',
-            href: '/design-system/components/dialog',
+            href: '/components/feedback/dialog',
           },
           {
             id: 'drawer',
             label: 'Drawer',
-            href: '/design-system/components/drawer',
+            href: '/components/feedback/drawer',
           },
           {
             id: 'progress',
             label: 'Progress',
-            href: '/design-system/components/progress',
+            href: '/components/feedback/progress',
           },
           {
             id: 'skeleton',
             label: 'Skeleton',
-            href: '/design-system/components/skeleton',
+            href: '/components/feedback/skeleton',
           },
           {
             id: 'toast',
             label: 'Toast',
-            href: '/design-system/components/toast',
+            href: '/components/feedback/toast',
           },
         ],
       },
       {
         group: 'Layout',
         items: [
-          { id: 'grid', label: 'Grid', href: '/design-system/components/grid' },
+          { id: 'grid', label: 'Grid', href: '/components/layout/grid' },
           {
             id: 'divider',
             label: 'Divider',
-            href: '/design-system/components/divider',
+            href: '/components/layout/divider',
           },
         ],
       },
@@ -199,17 +206,17 @@ export const designSystemMenus = [
       {
         id: 'splitText',
         label: 'Split Text',
-        href: '/design-system/interaction/splitText',
+        href: '/components/interaction/splitText',
       },
       {
         id: 'sticker',
         label: 'Sticker',
-        href: '/design-system/interaction/sticker',
+        href: '/components/interaction/sticker',
       },
       {
         id: 'countUp',
         label: 'Count Up',
-        href: '/design-system/interaction/countUp',
+        href: '/components/interaction/countUp',
       },
     ],
   },
