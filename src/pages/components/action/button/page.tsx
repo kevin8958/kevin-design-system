@@ -1,5 +1,6 @@
 'use client';
 
+import Button from '@/components/action/Button';
 import ButtonSizeGuide from '@/pages/components/action/button/ButtonSizeGuide';
 import ButtonVariantGuide from '@/pages/components/action/button/ButtonVariantGuide';
 import ButtonStateGuide from '@/pages/components/action/button/ButtonStateGuide';
@@ -10,6 +11,7 @@ import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import SimpleTable from '@/components/data/SimpleTable';
 import { propsColumn } from '@/constants/common';
+import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentButtonPage() {
   const breadcrumbItems = [
@@ -18,17 +20,44 @@ export default function ComponentButtonPage() {
     { label: 'Button', href: '/components/action/button' },
   ];
 
+  const STORYBOOK_URL =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:6006'
+      : '/storybook';
+
+  const handleOpenStorybook = () => {
+    window.open(
+      `${STORYBOOK_URL}?path=/docs/components-action-button--docs`,
+      '_blank',
+    );
+  };
+
   return (
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" justify="start">
       <BreadCrumb items={breadcrumbItems} />
       <FlexWrapper justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
-          <Typography variant="H1">Button</Typography>
+          <FlexWrapper justify="start" items="end" classes="w-full">
+            <Typography variant="H1">Button</Typography>
+            <Button
+              classes="mb-2"
+              variant="outline"
+              color="neutral"
+              size="sm"
+              icon={<LuExternalLink size={14} />}
+              iconPosition="right"
+              onClick={handleOpenStorybook}
+            >
+              Storybook
+            </Button>
+          </FlexWrapper>
+
           <ButtonSizeGuide />
           <ButtonVariantGuide />
           <ButtonStateGuide />
           <ButtonIconGuide />
           <ButtonShapeGuide />
+
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
             <SimpleTable columns={propsColumn} data={propsData} />
@@ -50,7 +79,7 @@ const propsData = [
   {
     id: '2',
     property: 'type',
-    type: ['button', 'submit'],
+    type: ['button', 'submit', 'reset'],
     default: 'button',
     description: 'The type of the button.',
   },
@@ -71,7 +100,7 @@ const propsData = [
   {
     id: '5',
     property: 'color',
-    type: ['primary', 'info', 'success', 'warning', 'danger'],
+    type: ['primary', 'neutral', 'info', 'success', 'warning', 'danger'],
     default: 'primary',
     description: 'The color of the button.',
   },
@@ -94,7 +123,7 @@ const propsData = [
     property: 'prompted',
     type: 'boolean',
     default: 'false',
-    description: 'If true, the button will show a prompt state.',
+    description: 'If true, the button will show a pulse animation.',
   },
   {
     id: '9',
@@ -108,8 +137,7 @@ const propsData = [
     property: 'iconPosition',
     type: ['left', 'right'],
     default: 'left',
-    description:
-      'The position of the icon in the button. Can be "left" or "right".',
+    description: 'The position of the icon.',
   },
   {
     id: '11',
@@ -121,8 +149,8 @@ const propsData = [
   {
     id: '12',
     property: 'onClick',
-    type: '(e) => void',
+    type: '(e: React.MouseEvent) => void',
     default: '',
-    description: 'Function to be called when the button is clicked.',
+    description: 'Click event handler.',
   },
 ];

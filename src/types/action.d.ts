@@ -1,26 +1,33 @@
 namespace Action {
-  /** Button */
-  type ButtonType = 'button' | 'submit';
-  type ButtonSize = 'lg' | 'md' | 'sm';
-  type ButtonVariant = 'contain' | 'outline' | 'clear';
-  type ButtonColor = 'primary' | 'info' | 'success' | 'warning' | 'danger';
-  type ButtonIconPosition = 'left' | 'right';
-  type ButtonShape = 'rect' | 'circle';
-  interface ButtonProps {
+  export type ButtonType = 'button' | 'submit' | 'reset';
+  export type ButtonSize = 'lg' | 'md' | 'sm';
+  export type ButtonVariant = 'contain' | 'outline' | 'clear';
+  export type ButtonColor =
+    | 'primary'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger';
+  export type ButtonIconPosition = 'left' | 'right';
+  export type ButtonShape = 'rect' | 'circle';
+
+  export interface ButtonProps {
     classes?: string;
     type?: ButtonType;
     children?: React.ReactNode;
     size?: ButtonSize;
     variant?: ButtonVariant;
     color?: ButtonColor;
-    /** state start */
+    shape?: ButtonShape;
     disabled?: boolean;
     loading?: boolean;
     prompted?: boolean;
-    /** state end */
-    shape?: ButtonShape;
     icon?: React.ReactNode;
     iconPosition?: ButtonIconPosition;
-    onClick?: (e) => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    className?: string;
+    id?: string;
+    style?: React.CSSProperties;
   }
 }

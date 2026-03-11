@@ -21,21 +21,21 @@ export const designSystemMenus = [
         label: 'Typography',
         href: '/components/foundation/typography',
       },
-      {
-        id: 'shadow',
-        label: 'Shadow',
-        href: '/components/foundation/shadow',
-      },
-      {
-        id: 'motion',
-        label: 'Motion',
-        href: '/components/foundation/motion',
-      },
-      {
-        id: 'breakpoints',
-        label: 'Breakpoints',
-        href: '/components/foundation/breakpoints',
-      },
+      // {
+      //   id: 'shadow',
+      //   label: 'Shadow',
+      //   href: '/components/foundation/shadow',
+      // },
+      // {
+      //   id: 'motion',
+      //   label: 'Motion',
+      //   href: '/components/foundation/motion',
+      // },
+      // {
+      //   id: 'breakpoints',
+      //   label: 'Breakpoints',
+      //   href: '/components/foundation/breakpoints',
+      // },
     ],
   },
   {
