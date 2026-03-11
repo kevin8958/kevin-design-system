@@ -1,7 +1,7 @@
-import React from 'react';
 import classNames from 'classnames';
 import { AnimatePresence, motion, type HTMLMotionProps } from 'framer-motion';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { forwardRef } from 'react';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center rounded-lg text-center font-normal transition-all duration-200 ease-in-out disabled:cursor-not-allowed disabled:opacity-60 disabled:text-neutral-500 active:scale-[0.97] active:duration-75 select-none',
@@ -118,77 +118,75 @@ interface ButtonProps
   iconPosition?: 'left' | 'right';
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      className,
-      classes,
-      type = 'button',
-      children,
-      size,
-      variant,
-      color,
-      shape,
-      disabled,
-      loading,
-      prompted,
-      icon,
-      iconPosition = 'left',
-      ...rest
-    } = props;
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const {
+    className,
+    classes,
+    type = 'button',
+    children,
+    size,
+    variant,
+    color,
+    shape,
+    disabled,
+    loading,
+    prompted,
+    icon,
+    iconPosition = 'left',
+    ...rest
+  } = props;
 
-    return (
-      <motion.button
-        {...rest}
-        ref={ref}
-        type={type}
-        disabled={disabled || loading}
-        whileTap={{ scale: 0.96 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-        className={classNames(
-          buttonVariants({ variant, size, color, shape }),
-          prompted && 'animate-flash-fast',
-          classes || className,
-        )}
-      >
-        {loading ? (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key="loader"
-              initial={{ rotate: 0 }}
-              animate={{ rotate: 360 }}
-              exit={{ opacity: 0 }}
-              transition={{ repeat: Infinity, ease: 'linear', duration: 1 }}
-              className="size-4 rounded-full border-[3px] border-current border-t-transparent"
-            />
-          </AnimatePresence>
-        ) : (
-          <>
-            {icon && iconPosition === 'left' && (
-              <span
-                className={classNames('flex', {
-                  'mr-1.5': children,
-                })}
-              >
-                {icon}
-              </span>
-            )}
-            {children}
-            {icon && iconPosition === 'right' && (
-              <span
-                className={classNames('flex', {
-                  'ml-1.5': children,
-                })}
-              >
-                {icon}
-              </span>
-            )}
-          </>
-        )}
-      </motion.button>
-    );
-  },
-);
+  return (
+    <motion.button
+      {...rest}
+      ref={ref}
+      type={type}
+      disabled={disabled || loading}
+      whileTap={{ scale: 0.96 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+      className={classNames(
+        buttonVariants({ variant, size, color, shape }),
+        prompted && 'animate-flash-fast',
+        classes || className,
+      )}
+    >
+      {loading ? (
+        <AnimatePresence mode="wait">
+          <motion.div
+            key="loader"
+            initial={{ rotate: 0 }}
+            animate={{ rotate: 360 }}
+            exit={{ opacity: 0 }}
+            transition={{ repeat: Infinity, ease: 'linear', duration: 1 }}
+            className="size-4 rounded-full border-[3px] border-current border-t-transparent"
+          />
+        </AnimatePresence>
+      ) : (
+        <>
+          {icon && iconPosition === 'left' && (
+            <span
+              className={classNames('flex', {
+                'mr-1.5': children,
+              })}
+            >
+              {icon}
+            </span>
+          )}
+          {children}
+          {icon && iconPosition === 'right' && (
+            <span
+              className={classNames('flex', {
+                'ml-1.5': children,
+              })}
+            >
+              {icon}
+            </span>
+          )}
+        </>
+      )}
+    </motion.button>
+  );
+});
 
 Button.displayName = 'Button';
 

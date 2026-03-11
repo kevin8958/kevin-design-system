@@ -1,8 +1,6 @@
-import React from 'react';
+import FlexWrapper from '@/components/layout/FlexWrapper';
 
-import FlexWrapper from '@/design-system/layout/FlexWrapper';
-
-import Typography from '@/design-system/foundation/Typography';
+import Typography from '@/components/foundation/Typography';
 
 const PrimaryGuide = () => {
   const primaryColors = {
@@ -23,13 +21,16 @@ const PrimaryGuide = () => {
       <FlexWrapper classes="w-full" items="start" direction="col">
         <Typography variant="H3">Primary</Typography>
         <Typography variant="B1">
-          The primary color represents the brand's core identity. It's used for key interactive
-          elements such as buttons, active states, links, and highlights.
+          The primary color represents the brand's core identity. It's used for
+          key interactive elements such as buttons, active states, links, and
+          highlights.
         </Typography>
         <FlexWrapper classes="w-full" items="start" direction="col" gap={2}>
           <Typography variant="B1">- Main brand color</Typography>
           <Typography variant="B1">- Primary buttons and links</Typography>
-          <Typography variant="B1">- Active states and focus indicators</Typography>
+          <Typography variant="B1">
+            - Active states and focus indicators
+          </Typography>
           <Typography variant="B1">- Backgrounds for key sections</Typography>
         </FlexWrapper>
       </FlexWrapper>
@@ -42,8 +43,14 @@ const PrimaryGuide = () => {
         {Object.entries(primaryColors).map(([key, value]) => (
           <div key={key} className="flex-1">
             <FlexWrapper classes="!gap-3" items="center" direction="col">
-              <span className={`size-6 rounded-sm md:size-10 md:rounded-none ${value}`} />
-              <Typography variant="C1" color="primary" classes="hidden md:block">
+              <span
+                className={`size-6 rounded-sm md:size-10 md:rounded-none ${value}`}
+              />
+              <Typography
+                variant="C1"
+                color="primary"
+                classes="hidden md:block"
+              >
                 {key}
               </Typography>
             </FlexWrapper>

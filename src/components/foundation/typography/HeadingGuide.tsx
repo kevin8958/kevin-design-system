@@ -1,8 +1,6 @@
-import React from 'react';
+import FlexWrapper from '@/components/layout/FlexWrapper';
 
-import FlexWrapper from '@/design-system/layout/FlexWrapper';
-
-import Typography from '@/design-system/foundation/Typography';
+import Typography from '@/components/foundation/Typography';
 
 const HeadingGuide = () => {
   const variantOptions: {
@@ -19,8 +17,9 @@ const HeadingGuide = () => {
       <FlexWrapper classes="w-full" items="start" direction="col">
         <Typography variant="H3">Heading</Typography>
         <Typography variant="B1">
-          Headings provide visual hierarchy and guide users through the page structure. They draw
-          the most attention and help users quickly understand content organization.
+          Headings provide visual hierarchy and guide users through the page
+          structure. They draw the most attention and help users quickly
+          understand content organization.
         </Typography>
       </FlexWrapper>
       <FlexWrapper

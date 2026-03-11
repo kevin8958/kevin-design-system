@@ -1,8 +1,6 @@
-import React from 'react';
+import FlexWrapper from '@/components/layout/FlexWrapper';
 
-import FlexWrapper from '@/design-system/layout/FlexWrapper';
-
-import Typography from '@/design-system/foundation/Typography';
+import Typography from '@/components/foundation/Typography';
 
 const BodyGuide = () => {
   const variantOptions: {
@@ -17,8 +15,9 @@ const BodyGuide = () => {
       <FlexWrapper classes="w-full" items="start" direction="col">
         <Typography variant="H3">Body</Typography>
         <Typography variant="B1">
-          Body text is the most common typography used throughout the interface. It focuses on
-          readability and is used for paragraphs, descriptions, and general content.
+          Body text is the most common typography used throughout the interface.
+          It focuses on readability and is used for paragraphs, descriptions,
+          and general content.
         </Typography>
       </FlexWrapper>
       <FlexWrapper

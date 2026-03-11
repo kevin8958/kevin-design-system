@@ -1,8 +1,6 @@
-import React from 'react';
+import FlexWrapper from '@/components/layout/FlexWrapper';
 
-import FlexWrapper from '@/design-system/layout/FlexWrapper';
-
-import Typography from '@/design-system/foundation/Typography';
+import Typography from '@/components/foundation/Typography';
 
 const NeutralGuide = () => {
   const neutralColors = {
@@ -24,8 +22,9 @@ const NeutralGuide = () => {
       <FlexWrapper classes="w-full" items="start" direction="col">
         <Typography variant="H3">Neutral</Typography>
         <Typography variant="B1">
-          The neutral palette provides the foundation for layout, typography, and UI structure. It's
-          used for backgrounds, borders, and text colors, ensuring balance and readability.
+          The neutral palette provides the foundation for layout, typography,
+          and UI structure. It's used for backgrounds, borders, and text colors,
+          ensuring balance and readability.
         </Typography>
         <FlexWrapper classes="w-full" items="start" direction="col" gap={2}>
           <Typography variant="B1">- Background layers and surfaces</Typography>
@@ -43,8 +42,14 @@ const NeutralGuide = () => {
         {Object.entries(neutralColors).map(([key, value]) => (
           <div key={key} className="flex-1">
             <FlexWrapper classes="!gap-3" items="center" direction="col">
-              <span className={`size-6 rounded-sm md:size-10 md:rounded-none ${value}`} />
-              <Typography variant="C1" color="primary" classes="hidden md:block">
+              <span
+                className={`size-6 rounded-sm md:size-10 md:rounded-none ${value}`}
+              />
+              <Typography
+                variant="C1"
+                color="primary"
+                classes="hidden md:block"
+              >
                 {key}
               </Typography>
             </FlexWrapper>

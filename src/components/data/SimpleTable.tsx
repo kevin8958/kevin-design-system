@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import React from 'react';
+import { Fragment } from 'react/jsx-runtime';
 
 const SimpleTable = (props: Data.SimpleTableProps) => {
   const { columns = [], data = [] } = props;
@@ -43,7 +43,7 @@ const SimpleTable = (props: Data.SimpleTableProps) => {
                       <div className="flex flex-wrap items-center gap-1.5 font-mono">
                         {Array.isArray(item[col.key]) ? (
                           item[col.key].map((t: string, i: number) => (
-                            <React.Fragment key={i}>
+                            <Fragment key={i}>
                               <code className="rounded-md border border-neutral-700 bg-neutral-700 dark:border-primary-100 px-1.5 py-0.5 text-[12px] text-secondary-300 dark:border-neutral-700 dark:bg-neutral-700 dark:text-primary-300">
                                 {t}
                               </code>
@@ -52,7 +52,7 @@ const SimpleTable = (props: Data.SimpleTableProps) => {
                                   |
                                 </span>
                               )}
-                            </React.Fragment>
+                            </Fragment>
                           ))
                         ) : (
                           <code className="rounded-md border border-neutral-600 dark:border-primary-100 bg-neutral-50 px-1.5 py-0.5 text-[12px] text-secondary-600 dark:border-neutral-700 dark:bg-neutral-800/50 dark:text-primary-300">

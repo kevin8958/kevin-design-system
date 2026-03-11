@@ -1,6 +1,5 @@
-import React from 'react';
-import FlexWrapper from '@/design-system/layout/FlexWrapper';
-import Typography from '@/design-system/foundation/Typography';
+import FlexWrapper from '@/components/layout/FlexWrapper';
+import Typography from '@/components/foundation/Typography';
 
 const STATUS_DATA = [
   {
@@ -8,7 +7,8 @@ const STATUS_DATA = [
     label: 'Danger',
     bgClass: 'bg-danger',
     textClass: 'text-danger',
-    description: 'Errors, failures, or destructive actions (e.g., deleting data).',
+    description:
+      'Errors, failures, or destructive actions (e.g., deleting data).',
   },
   {
     id: 'warning',
@@ -29,7 +29,8 @@ const STATUS_DATA = [
     label: 'Success',
     bgClass: 'bg-success',
     textClass: 'text-success',
-    description: 'Positive outcomes or successful operations (e.g., completed).',
+    description:
+      'Positive outcomes or successful operations (e.g., completed).',
   },
 ];
 
@@ -40,8 +41,9 @@ const StatusGuide = () => {
       <section className="space-y-2">
         <Typography variant="H3">Status Colors</Typography>
         <Typography variant="B1" classes="max-w-2xl">
-          These colors communicate system state and feedback. Each status has a specific semantic
-          meaning to help users navigate the interface intuitively.
+          These colors communicate system state and feedback. Each status has a
+          specific semantic meaning to help users navigate the interface
+          intuitively.
         </Typography>
       </section>
 
@@ -56,7 +58,9 @@ const StatusGuide = () => {
               {/* Visual Preview Area */}
               <div className="flex h-24 w-full items-center justify-center rounded-lg bg-neutral-800">
                 {/* 컬러칩과 실제 텍스트 적용 사례를 동시에 보여줌 */}
-                <div className={`${status.bgClass} flex items-center gap-2 rounded-full px-4 py-2`}>
+                <div
+                  className={`${status.bgClass} flex items-center gap-2 rounded-full px-4 py-2`}
+                >
                   <div className="size-2 animate-pulse rounded-full bg-white" />
                   <span className="text-xs font-bold tracking-wider text-white uppercase">
                     {status.id}

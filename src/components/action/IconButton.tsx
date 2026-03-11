@@ -1,6 +1,6 @@
-import React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/libs/utils';
+import { forwardRef } from 'react';
 
 const iconButtonVariants = cva(
   'flex items-center justify-center rounded-md transition-all duration-200 ease-in-out disabled:cursor-not-allowed disabled:opacity-30 active:scale-95 outline-none! focus:outline-none! ring-0! focus:ring-0!',
@@ -127,7 +127,7 @@ interface IconButtonProps
   icon: React.ReactNode;
 }
 
-const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ icon, variant, size, color, className, ...props }, ref) => {
     return (
       <button

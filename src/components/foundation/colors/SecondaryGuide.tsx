@@ -1,8 +1,6 @@
-import React from 'react';
+import FlexWrapper from '@/components/layout/FlexWrapper';
 
-import FlexWrapper from '@/design-system/layout/FlexWrapper';
-
-import Typography from '@/design-system/foundation/Typography';
+import Typography from '@/components/foundation/Typography';
 
 const SecondaryGuide = () => {
   const secondaryColors = {
@@ -22,14 +20,20 @@ const SecondaryGuide = () => {
       <FlexWrapper classes="w-full" items="start" direction="col">
         <Typography variant="H3">Secondary</Typography>
         <Typography variant="B1">
-          The secondary palette adds warmth and energy, supporting the primary tone. It's often used
-          for accent elements or secondary actions that require emphasis without overpowering the
-          primary color.
+          The secondary palette adds warmth and energy, supporting the primary
+          tone. It's often used for accent elements or secondary actions that
+          require emphasis without overpowering the primary color.
         </Typography>
         <FlexWrapper classes="w-full" items="start" direction="col" gap={2}>
-          <Typography variant="B1">- Secondary buttons or highlights</Typography>
-          <Typography variant="B1">- Backgrounds for featured content</Typography>
-          <Typography variant="B1">- Accents in charts, icons, or badges</Typography>
+          <Typography variant="B1">
+            - Secondary buttons or highlights
+          </Typography>
+          <Typography variant="B1">
+            - Backgrounds for featured content
+          </Typography>
+          <Typography variant="B1">
+            - Accents in charts, icons, or badges
+          </Typography>
         </FlexWrapper>
       </FlexWrapper>
       <FlexWrapper
@@ -41,8 +45,14 @@ const SecondaryGuide = () => {
         {Object.entries(secondaryColors).map(([key, value]) => (
           <div key={key} className="flex-1">
             <FlexWrapper classes="!gap-3" items="center" direction="col">
-              <span className={`size-6 rounded-sm md:size-10 md:rounded-none ${value}`} />
-              <Typography variant="C1" color="primary" classes="hidden md:block">
+              <span
+                className={`size-6 rounded-sm md:size-10 md:rounded-none ${value}`}
+              />
+              <Typography
+                variant="C1"
+                color="primary"
+                classes="hidden md:block"
+              >
                 {key}
               </Typography>
             </FlexWrapper>

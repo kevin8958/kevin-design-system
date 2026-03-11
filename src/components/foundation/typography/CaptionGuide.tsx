@@ -1,8 +1,6 @@
-import React from 'react';
+import FlexWrapper from '@/components/layout/FlexWrapper';
 
-import FlexWrapper from '@/design-system/layout/FlexWrapper';
-
-import Typography from '@/design-system/foundation/Typography';
+import Typography from '@/components/foundation/Typography';
 
 const CaptionGuide = () => {
   const variantOptions: {
@@ -14,8 +12,9 @@ const CaptionGuide = () => {
       <FlexWrapper classes="w-full" items="start" direction="col">
         <Typography variant="H3">Caption</Typography>
         <Typography variant="B1">
-          Captions are small, subtle text used for labels, timestamps, or secondary descriptions.
-          They help provide context without distracting from main content.
+          Captions are small, subtle text used for labels, timestamps, or
+          secondary descriptions. They help provide context without distracting
+          from main content.
         </Typography>
       </FlexWrapper>
       <FlexWrapper
