@@ -52,7 +52,7 @@ const ButtonStateGuide = () => {
         items="start"
         direction="col"
         justify="start"
-        classes="border-2 border-neutral-500/30 dark:border-neutral-100/30 w-full rounded-2xl flex-1"
+        classes="border  shadow-sm border-neutral-500/30 dark:border-neutral-100/30 w-full rounded-2xl flex-1"
         gap={6}
       >
         <StateExample />

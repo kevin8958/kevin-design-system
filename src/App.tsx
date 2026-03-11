@@ -7,9 +7,26 @@ import Snb from '@/components/layout/Snb';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import GettingStarted from './pages/GettingStarted';
 import Components from './pages/Components';
-import Button from '@/pages/components/action/Button';
+import Colors from '@/pages/components/foundation/colors/page';
+import Typography from '@/pages/components/foundation/typography/page';
+import Button from '@/pages/components/action/button/page';
 
-function AppLayout() {
+function BaseLayout() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="relative w-full min-h-screen">
+      <Gnb isOpen={isOpen} onToggle={() => setIsOpen(!isOpen)} />
+      {/* desktopHidden을 넘겨서 모바일에서만 작동하게 함 */}
+      <Snb isOpen={isOpen} onClose={() => setIsOpen(false)} desktopHidden />
+      <main className="w-full max-w-7xl mx-auto px-4 pt-4">
+        <Outlet />
+      </main>
+    </div>
+  );
+}
+
+function DocsLayout() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -36,20 +53,25 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     </ThemeProvider>
   );
 };
-
 function App() {
   return (
     <AppProvider>
       <Routes>
-        <Route element={<AppLayout />}>
+        <Route element={<BaseLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/getting-started" element={<GettingStarted />} />
-          <Route path="/components" element={<Components />} />
-          <Route path="/components/action/button" element={<Button />} />
+        </Route>
+
+        <Route path="/components" element={<DocsLayout />}>
+          <Route index element={<Components />} />
+          {/* foundation */}
+          <Route path="foundation/colors" element={<Colors />} />
+          <Route path="foundation/typography" element={<Typography />} />
+          {/* action */}
+          <Route path="action/button" element={<Button />} />
         </Route>
       </Routes>
     </AppProvider>
   );
 }
-
 export default App;

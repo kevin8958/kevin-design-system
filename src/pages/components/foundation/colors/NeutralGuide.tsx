@@ -18,8 +18,17 @@ const NeutralGuide = () => {
   };
 
   return (
-    <FlexWrapper classes="size-full" direction="col" items="start">
-      <FlexWrapper classes="w-full" items="start" direction="col">
+    <FlexWrapper
+      classes="size-full lg:flex-row flex-wrap"
+      direction="col"
+      items="start"
+    >
+      {/* Description Section */}
+      <FlexWrapper
+        classes="w-full lg:w-[calc(50%-16px)]"
+        items="start"
+        direction="col"
+      >
         <Typography variant="H3">Neutral</Typography>
         <Typography variant="B1">
           The neutral palette provides the foundation for layout, typography,
@@ -33,28 +42,29 @@ const NeutralGuide = () => {
           <Typography variant="B1">- Disabled states</Typography>
         </FlexWrapper>
       </FlexWrapper>
+
       <FlexWrapper
-        items="start"
-        justify="start"
-        classes="bg-neutral-900 p-4 md:p-10 w-full md:w-max rounded-xl"
-        gap={0}
+        items="center"
+        direction="col"
+        classes="border  shadow-sm border-neutral-500/30 dark:border-neutral-100/30 w-full rounded-2xl lg:w-[calc(50%-16px)] bg-neutral-50/50 dark:bg-white/5"
       >
-        {Object.entries(neutralColors).map(([key, value]) => (
-          <div key={key} className="flex-1">
-            <FlexWrapper classes="!gap-3" items="center" direction="col">
-              <span
-                className={`size-6 rounded-sm md:size-10 md:rounded-none ${value}`}
-              />
-              <Typography
-                variant="C1"
-                color="primary"
-                classes="hidden md:block"
-              >
-                {key}
-              </Typography>
-            </FlexWrapper>
-          </div>
-        ))}
+        <FlexWrapper
+          items="start"
+          justify="start"
+          classes="p-4 md:p-10 w-max rounded-xl"
+          gap={0}
+        >
+          {Object.entries(neutralColors).map(([key, value]) => (
+            <div key={key} className="flex-1">
+              <FlexWrapper classes="!gap-3" items="center" direction="col">
+                <span className={`size-6 sm:size-8 rounded-none ${value}`} />
+                <Typography variant="C1" color="primary">
+                  {key}
+                </Typography>
+              </FlexWrapper>
+            </div>
+          ))}
+        </FlexWrapper>
       </FlexWrapper>
     </FlexWrapper>
   );

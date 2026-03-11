@@ -14,27 +14,27 @@ export const designSystemMenus = [
       {
         id: 'colors',
         label: 'Colors',
-        href: '/foundation/colors',
+        href: '/components/foundation/colors',
       },
       {
         id: 'typography',
         label: 'Typography',
-        href: '/foundation/typography',
+        href: '/components/foundation/typography',
       },
       {
         id: 'shadow',
         label: 'Shadow',
-        href: '/foundation/shadow',
+        href: '/components/foundation/shadow',
       },
       {
         id: 'motion',
         label: 'Motion',
-        href: '/foundation/motion',
+        href: '/components/foundation/motion',
       },
       {
         id: 'breakpoints',
         label: 'Breakpoints',
-        href: '/foundation/breakpoints',
+        href: '/components/foundation/breakpoints',
       },
     ],
   },

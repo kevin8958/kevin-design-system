@@ -15,8 +15,8 @@ const NAV_ITEMS = [
   { label: 'COMPONENTS', href: '/components' },
 ];
 interface GnbProps {
-  isOpen: boolean;
-  onToggle: () => void;
+  isOpen?: boolean;
+  onToggle?: () => void;
 }
 
 const Gnb = ({ isOpen, onToggle }: GnbProps) => {

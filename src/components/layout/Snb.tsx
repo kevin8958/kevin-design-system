@@ -10,6 +10,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { LuChevronRight } from 'react-icons/lu';
 import { designSystemMenus } from '@/constants/common';
 import { cn } from '@/libs/utils';
+import Divider from './Divider';
 
 const NAV_ITEMS = [
   { label: 'GETTING STARTED', href: '/getting-started' },
@@ -19,9 +20,10 @@ const NAV_ITEMS = [
 interface SNBProps {
   isOpen: boolean;
   onClose?: () => void;
+  desktopHidden?: boolean;
 }
 
-const SNB = ({ isOpen, onClose }: SNBProps) => {
+const SNB = ({ isOpen, onClose, desktopHidden = false }: SNBProps) => {
   const { pathname } = useLocation();
   const [isResizing, setIsResizing] = useState(false);
 
@@ -53,7 +55,6 @@ const SNB = ({ isOpen, onClose }: SNBProps) => {
     }
     return menu;
   });
-
   return (
     <>
       {isOpen && (
@@ -70,15 +71,15 @@ const SNB = ({ isOpen, onClose }: SNBProps) => {
             'max-md:transition-transform max-md:duration-500 max-md:ease-in-out',
           isOpen ? 'translate-y-0' : 'translate-y-full',
           isResizing && 'max-md:opacity-0',
-          'md:sticky md:top-16 md:z-40 md:h-[calc(100dvh-64px)] md:w-64 md:p-0 md:bg-transparent! md:shadow-none md:rounded-none md:overflow-y-auto',
-          'md:translate-y-0! md:opacity-100! md:transition-none!',
-          'scrollbar-none md:scrollbar-thin',
+          desktopHidden
+            ? 'md:hidden'
+            : 'md:sticky md:top-16 md:z-40 md:h-[calc(100dvh-64px)] md:w-64 md:p-0 md:bg-transparent! md:shadow-none md:rounded-none md:overflow-y-auto md:translate-y-0! md:opacity-100! md:transition-none!',
         )}
       >
         <div className="mx-auto mb-2 mt-1 h-1.5 w-12 shrink-0 rounded-full bg-neutral-300 dark:bg-neutral-700 md:hidden" />
 
         <nav className="w-full p-4 overflow-y-auto">
-          <ul className="flex flex-col w-full gap-1 pb-2 border-b border-neutral-200 dark:border-neutral-800 md:hidden">
+          <ul className="flex flex-col w-full gap-1 pb-2 md:hidden">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname.startsWith(item.href);
               return (
@@ -99,68 +100,70 @@ const SNB = ({ isOpen, onClose }: SNBProps) => {
               );
             })}
           </ul>
+          <Divider orientation="horizontal" classes="md:hidden" />
+          {!desktopHidden && (
+            <ul className="flex flex-col gap-1 pt-2 pb-10">
+              {flattenedMenus.map((menu: any) => {
+                const isActiveMenu = menu.items?.some((item: any) =>
+                  pathname.startsWith(item.href),
+                );
 
-          <ul className="flex flex-col gap-1 pt-2 pb-10">
-            {flattenedMenus.map((menu: any) => {
-              const isActiveMenu = menu.items?.some((item: any) =>
-                pathname.startsWith(item.href),
-              );
-
-              return (
-                <li key={menu.id} className="mb-1">
-                  <Disclosure defaultOpen={true}>
-                    {({ open }) => (
-                      <>
-                        <DisclosureButton
-                          className={cn(
-                            'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors cursor-pointer group font-bold!',
-                            'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
-                            'outline-none! ring-none! border-none!',
-                            isActiveMenu
-                              ? 'text-secondary-500! dark:text-primary-400!'
-                              : 'text-neutral-500! dark:text-neutral-100!',
-                          )}
-                        >
-                          <span className="text-sm tracking-wider uppercase">
-                            {menu.label}
-                          </span>
-                          <div className="group-hover:animate-[bounce-up_0.4s_ease-in-out]">
-                            <LuChevronRight
-                              className={cn(
-                                'size-3.5 transition-transform duration-200',
-                                open && 'rotate-90',
-                              )}
-                            />
-                          </div>
-                        </DisclosureButton>
-
-                        <DisclosurePanel className="flex flex-col mt-0.5">
-                          {menu.items?.map((item: any) => {
-                            const isActiveItem = pathname === item.href;
-                            return (
-                              <Link
-                                key={item.id}
-                                to={item.href}
-                                onClick={onClose}
+                return (
+                  <li key={menu.id} className="mb-1">
+                    <Disclosure defaultOpen={true}>
+                      {({ open }) => (
+                        <>
+                          <DisclosureButton
+                            className={cn(
+                              'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors cursor-pointer group font-bold!',
+                              'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
+                              'outline-none! ring-none! border-none!',
+                              isActiveMenu
+                                ? 'text-secondary-500! dark:text-primary-400!'
+                                : 'text-neutral-500! dark:text-neutral-100!',
+                            )}
+                          >
+                            <span className="text-sm tracking-wider uppercase">
+                              {menu.label}
+                            </span>
+                            <div className="group-hover:animate-[bounce-up_0.4s_ease-in-out]">
+                              <LuChevronRight
                                 className={cn(
-                                  'rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
-                                  isActiveItem
-                                    ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
-                                    : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
+                                  'size-3.5 transition-transform duration-200',
+                                  open && 'rotate-90',
                                 )}
-                              >
-                                {item.label}
-                              </Link>
-                            );
-                          })}
-                        </DisclosurePanel>
-                      </>
-                    )}
-                  </Disclosure>
-                </li>
-              );
-            })}
-          </ul>
+                              />
+                            </div>
+                          </DisclosureButton>
+
+                          <DisclosurePanel className="flex flex-col mt-0.5">
+                            {menu.items?.map((item: any) => {
+                              const isActiveItem = pathname === item.href;
+                              return (
+                                <Link
+                                  key={item.id}
+                                  to={item.href}
+                                  onClick={onClose}
+                                  className={cn(
+                                    'rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
+                                    isActiveItem
+                                      ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
+                                      : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
+                                  )}
+                                >
+                                  {item.label}
+                                </Link>
+                              );
+                            })}
+                          </DisclosurePanel>
+                        </>
+                      )}
+                    </Disclosure>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </nav>
       </aside>
     </>

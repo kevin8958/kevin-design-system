@@ -37,43 +37,44 @@ const STATUS_DATA = [
 const StatusGuide = () => {
   return (
     <FlexWrapper classes="w-full" direction="col" items="start" gap={8}>
-      {/* Header Section */}
       <section className="space-y-2">
         <Typography variant="H3">Status Colors</Typography>
-        <Typography variant="B1" classes="max-w-2xl">
+        <Typography
+          variant="B1"
+          classes="max-w-2xl text-neutral-600 dark:text-neutral-400"
+        >
           These colors communicate system state and feedback. Each status has a
           specific semantic meaning to help users navigate the interface
           intuitively.
         </Typography>
       </section>
 
-      {/* Grid Layout for Status Cards */}
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {STATUS_DATA.map((status) => (
           <div
             key={status.id}
-            className={`rounded-2xl bg-neutral-900 p-5 shadow-sm transition-all hover:shadow-md`}
+            className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition-all hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900"
           >
             <FlexWrapper direction="col" gap={4} items="start">
-              {/* Visual Preview Area */}
-              <div className="flex h-24 w-full items-center justify-center rounded-lg bg-neutral-800">
-                {/* 컬러칩과 실제 텍스트 적용 사례를 동시에 보여줌 */}
+              <div className="flex h-24 w-full items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-950">
                 <div
-                  className={`${status.bgClass} flex items-center gap-2 rounded-full px-4 py-2`}
+                  className={`${status.bgClass} flex items-center gap-2 rounded-full px-4 py-2 shadow-lg shadow-black/5`}
                 >
                   <div className="size-2 animate-pulse rounded-full bg-white" />
-                  <span className="text-xs font-bold tracking-wider text-white uppercase">
+                  <span className="text-[10px] font-bold tracking-widest text-white uppercase">
                     {status.id}
                   </span>
                 </div>
               </div>
 
-              {/* Info Area */}
               <div className="space-y-1">
                 <Typography variant="H4" classes={status.textClass}>
                   {status.label}
                 </Typography>
-                <Typography variant="C1" classes="line-clamp-2 min-h-[32px]">
+                <Typography
+                  variant="C1"
+                  classes="line-clamp-2 min-h-[32px] text-neutral-500 dark:text-neutral-400"
+                >
                   {status.description}
                 </Typography>
               </div>
