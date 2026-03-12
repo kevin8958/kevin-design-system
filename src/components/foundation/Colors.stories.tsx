@@ -1,8 +1,21 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { BrowserRouter } from 'react-router-dom';
 import ComponenColorsPage from '@/pages/components/foundation/colors/page';
 
-export default {
+const meta: Meta<typeof ComponenColorsPage> = {
   title: 'Foundation/Colors',
   component: ComponenColorsPage,
+  // 핵심: 컴포넌트를 Router로 감싸줍니다.
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    ),
+  ],
 };
 
-export const Palette = () => <ComponenColorsPage />;
+export default meta;
+type Story = StoryObj<typeof ComponenColorsPage>;
+
+export const Default: Story = {};
