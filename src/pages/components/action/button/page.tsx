@@ -23,7 +23,7 @@ export default function ComponentButtonPage() {
   const STORYBOOK_URL =
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:6006'
-      : '/storybook';
+      : '/storybook/index.html';
 
   const handleOpenStorybook = () => {
     window.open(

@@ -1,27 +1,40 @@
-import storybook from "eslint-plugin-storybook";
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import tseslint from 'typescript-eslint'
-import { defineConfig, globalIgnores } from 'eslint/config'
-import eslintConfigPrettier from 'eslint-config-prettier' // 1. 추가
+import storybook from 'eslint-plugin-storybook';
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import tseslint from 'typescript-eslint';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default defineConfig([
-  globalIgnores(['dist']), 
+  globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
-    // extends 내부의 규칙들을 펼쳐서 넣고, 마지막에 Prettier 설정을 넣습니다.
-    rules: {
-      ...js.configs.recommended.rules,
-      ...tseslint.configs.recommended[0].rules, // Flat config 구조에 따라 참조 방식이 다를 수 있음
-      ...reactHooks.configs.recommended.rules,
-      // ... 필요한 다른 규칙들
-      ...eslintConfigPrettier.rules, // 2. 핵심: Prettier와 충돌하는 규칙들을 끕니다.
-    },
+    // tseslint.configs.recommended를 직접 펼치는 대신 languageOptions를 보강합니다.
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parser: tseslint.parser, // TS 파서 명시
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true, // JSX 파싱 허용
+        },
+      },
     },
-  }, 
-  ...storybook.configs["flat/recommended"]
-])
+    plugins: {
+      'react-hooks': reactHooks,
+      '@typescript-eslint': tseslint.plugin, // TS 플러그인 명시
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...tseslint.configs.recommended
+        .map((c) => c.rules)
+        .reduce((acc, curr) => ({ ...acc, ...curr }), {}),
+      ...reactHooks.configs.recommended.rules,
+      ...eslintConfigPrettier.rules,
+      // React 17+ 환경이라면 이 규칙을 꺼주어야 'React is not defined' 에러가 안 납니다.
+      'react/react-in-jsx-scope': 'off',
+    },
+  },
+  ...storybook.configs['flat/recommended'],
+]);
