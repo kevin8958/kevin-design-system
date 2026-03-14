@@ -4,14 +4,14 @@ import { HiCode, HiEye, HiCheck } from 'react-icons/hi';
 import { LuCopy } from 'react-icons/lu';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
-import IconButton from '../action/IconButton';
 
 interface CodeExampleProps {
   children: React.ReactNode;
   code: string;
+  className?: string; // 외부 레이아웃 제어용 (ex: flex-1)
 }
 
-const CodeExample = ({ children, code }: CodeExampleProps) => {
+const CodeExample = ({ children, code, className }: CodeExampleProps) => {
   const [isCodeView, setIsCodeView] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
@@ -45,8 +45,13 @@ const CodeExample = ({ children, code }: CodeExampleProps) => {
   };
 
   return (
-    <div className="relative w-full">
-      {/* 1. View Toggle (Top-Right) */}
+    <div
+      className={classNames(
+        'relative w-full rounded-2xl border border-neutral-500/30 shadow-sm bg-neutral-50/50 dark:border-neutral-100/30 dark:bg-neutral-900/50 transition-all duration-300',
+        className,
+      )}
+    >
+      {/* 1. View Toggle */}
       <div className="absolute right-3 top-3 z-30">
         <Button
           variant="outline"
@@ -60,7 +65,7 @@ const CodeExample = ({ children, code }: CodeExampleProps) => {
         </Button>
       </div>
 
-      {/* 2. Copy Button (Bottom-Right, Code Mode Only) */}
+      {/* 2. Copy Button */}
       <div className="absolute right-4 bottom-4 z-30">
         <AnimatePresence>
           {isCodeView && (
@@ -70,12 +75,12 @@ const CodeExample = ({ children, code }: CodeExampleProps) => {
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.15 }}
             >
-              <IconButton
-                variant="outline"
+              <Button
+                variant={'outline'}
                 color={isCopied ? 'success' : 'primary'}
                 onClick={handleCopy}
                 aria-label="Copy code"
-                className="backdrop-blur-md"
+                classes="backdrop-blur-md px-2!"
                 icon={isCopied ? <HiCheck size={16} /> : <LuCopy size={16} />}
               />
             </motion.div>
@@ -83,30 +88,26 @@ const CodeExample = ({ children, code }: CodeExampleProps) => {
         </AnimatePresence>
       </div>
 
-      {/* 3. Container */}
+      {/* 3. Content Area */}
       <div
-        className="relative w-full overflow-hidden rounded-xl bg-neutral-50/50 transition-[height] duration-300 ease-in-out dark:bg-white/5"
+        className="relative w-full transition-[height] duration-300 ease-in-out"
         style={{ height: containerHeight }}
       >
+        {/* Ghost Layer for Height Calculation */}
         <div className="pointer-events-none absolute inset-0 w-full opacity-0">
-          {/* Ghost Preview */}
           <div
             ref={previewRef}
             className="absolute w-full flex flex-col items-center justify-center p-12"
           >
-            <div className="w-full flex justify-center">{children}</div>
+            {children}
           </div>
-
-          {/* Ghost Code */}
           <div
             ref={codeRef}
             className="absolute w-full flex flex-col p-8 pt-14"
           >
-            <div className="w-full pb-10">
-              <pre className="text-xs font-mono leading-relaxed">
-                <code>{code}</code>
-              </pre>
-            </div>
+            <pre className="text-xs font-mono leading-relaxed">
+              <code>{code}</code>
+            </pre>
           </div>
         </div>
 

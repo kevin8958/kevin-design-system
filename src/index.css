@@ -128,6 +128,13 @@
   html.dark {
     scrollbar-color: #2f344c transparent;
   }
+
+  .dark * {
+    /* 다크모드 전환 순간의 미세한 색상 잔상을 방지 */
+    transition-property:
+      color, background-color, border-color, text-decoration-color, fill, stroke;
+  }
+
   /* 2. Webkit (Chrome, Safari, Edge) - The "Global" way */
   /* Remove any leading selectors to make these truly global */
   ::-webkit-scrollbar {

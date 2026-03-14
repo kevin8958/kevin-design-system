@@ -18,4 +18,11 @@ namespace Layout {
     classes?: string;
     children?: React.ReactNode;
   }
+
+  /** GuideSection */
+  interface GuideSectionProps {
+    title: string;
+    description: string | React.ReactNode;
+    example: React.ReactNode;
+  }
 }

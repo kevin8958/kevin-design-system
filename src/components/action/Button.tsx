@@ -97,8 +97,7 @@ const buttonVariants = cva(
       {
         variant: 'outline',
         color: 'danger',
-        className:
-          'border-danger/50 text-danger hover:bg-danger/5 dark:text-danger-light',
+        className: 'border-danger/50 text-danger hover:bg-danger/5',
       },
 
       {
@@ -111,7 +110,7 @@ const buttonVariants = cva(
         variant: 'clear',
         color: 'neutral',
         className:
-          'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800',
+          'text-neutral-800 hover:bg-neutral-100/60 dark:text-neutral-300 dark:hover:bg-neutral-800/60',
       },
       {
         variant: 'clear',
@@ -131,7 +130,7 @@ const buttonVariants = cva(
       {
         variant: 'clear',
         color: 'danger',
-        className: 'text-danger hover:bg-danger/5 dark:text-danger-light',
+        className: 'text-danger hover:bg-danger/20',
       },
     ],
     defaultVariants: {
@@ -175,6 +174,7 @@ const Button = forwardRef<HTMLButtonElement, Action.ButtonProps>(
         className={classNames(
           buttonVariants({ variant, size, color, shape }),
           prompted && 'animate-flash-fast',
+          icon && !children ? 'px-0!' : '',
           classes || className,
         )}
       >
@@ -213,12 +213,14 @@ const Button = forwardRef<HTMLButtonElement, Action.ButtonProps>(
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex items-center justify-center gap-[inherit]"
+              className={
+                'w-full flex items-center justify-center gap-[inherit]'
+              }
             >
               {icon && iconPosition === 'left' && (
                 <span className="flex shrink-0">{icon}</span>
               )}
-              {children && <span>{children}</span>}
+              {children}
               {icon && iconPosition === 'right' && (
                 <span className="flex shrink-0">{icon}</span>
               )}

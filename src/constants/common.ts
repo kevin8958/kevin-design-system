@@ -52,9 +52,9 @@ export const designSystemMenus = [
             href: '/components/action/button',
           },
           {
-            id: 'buttongroup',
-            label: 'ButtonGroup',
-            href: '/components/action/buttonGroup',
+            id: 'dropdown',
+            label: 'Dropdown',
+            href: '/components/action/dropdown',
           },
         ],
       },
@@ -96,11 +96,6 @@ export const designSystemMenus = [
       {
         group: 'Navigation',
         items: [
-          {
-            id: 'dropdown',
-            label: 'Dropdown',
-            href: '/components/navigation/dropdown',
-          },
           {
             id: 'pagination',
             label: 'Pagination',

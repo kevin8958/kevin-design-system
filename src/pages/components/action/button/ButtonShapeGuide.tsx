@@ -3,6 +3,7 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import Button from '@/components/action/Button';
 import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
+import GuideSection from '@/components/layout/GuideSection';
 
 const ShapeExample = () => {
   const shapeOptions: {
@@ -17,7 +18,7 @@ const ShapeExample = () => {
 <Button shape="circle" icon={<HiOutlineHeart />} />`;
 
   return (
-    <CodeExample code={exampleCode}>
+    <CodeExample code={exampleCode} className="flex-1 min-w-[320px]">
       <FlexWrapper
         items="center"
         justify="center"
@@ -48,26 +49,11 @@ const ShapeExample = () => {
 
 const ButtonShapeGuide = () => {
   return (
-    <FlexWrapper classes="size-full lg:flex-row" direction="col" items="start">
-      {/* Description Section */}
-      <FlexWrapper classes="flex-1" items="start" direction="col" gap={4}>
-        <Typography variant="H3">Shape</Typography>
-
-        <Typography variant="B1" classes="font-semibold text-primary-500">
-          Define button geometry for different visual hierarchies.
-        </Typography>
-      </FlexWrapper>
-
-      {/* Interactive Preview Section */}
-      <FlexWrapper
-        items="start"
-        direction="col"
-        justify="start"
-        classes="border  shadow-sm border-neutral-500/30 dark:border-neutral-100/30 w-full rounded-2xl flex-1"
-      >
-        <ShapeExample />
-      </FlexWrapper>
-    </FlexWrapper>
+    <GuideSection
+      title="Shape"
+      description="Define button geometry for different visual hierarchies."
+      example={<ShapeExample />}
+    />
   );
 };
 

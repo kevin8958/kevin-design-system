@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   HiOutlineSun,
   HiOutlineMoon,
   HiOutlineMenu,
   HiOutlineX,
 } from 'react-icons/hi';
-import LinkButton from '@/components/action/LinkButton';
 import { useTheme } from '@/providers/ThemeProvider';
-import IconButton from '@/components/action/IconButton';
+import Button from '@/components/action/Button';
 import Divider from '@/components/layout/Divider';
+import { cn } from '@/libs/utils';
 
 const NAV_ITEMS = [
   { label: 'GETTING STARTED', href: '/getting-started' },
@@ -21,6 +21,7 @@ interface GnbProps {
 
 const Gnb = ({ isOpen, onToggle }: GnbProps) => {
   const { theme, toggleTheme } = useTheme();
+  const { pathname } = useLocation();
 
   return (
     <nav className="sticky top-0 z-50 w-full h-16 border-b border-neutral-990/10 dark:border-neutral-800 backdrop-blur-md bg-white/70 dark:bg-neutral-990/70">
@@ -40,7 +41,21 @@ const Gnb = ({ isOpen, onToggle }: GnbProps) => {
           <ul className="items-center hidden gap-1 md:flex">
             {NAV_ITEMS.map((item) => (
               <li key={item.label}>
-                <LinkButton href={item.href} label={item.label} />
+                <Link
+                  to={item.href}
+                  className={cn(
+                    'px-4 py-2 text-sm font-medium transition-all rounded-md no-underline',
+                    // Default text color (Light/Dark mode)
+                    'text-neutral-900! dark:text-neutral-200!',
+                    // Hover state (Light: secondary, Dark: primary)
+                    'hover:text-secondary-400! dark:hover:text-primary-400!',
+                    // Active state
+                    pathname.startsWith(item.href) &&
+                      'text-secondary-400! dark:text-primary-400!',
+                  )}
+                >
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -48,9 +63,11 @@ const Gnb = ({ isOpen, onToggle }: GnbProps) => {
           <Divider classes="hidden md:block" />
 
           <div className="flex items-center gap-2">
-            <IconButton
+            <Button
               onClick={toggleTheme}
               aria-label="Toggle Theme"
+              variant="clear"
+              className="px-2!"
               icon={
                 theme === 'dark' ? (
                   <HiOutlineSun size={24} />
@@ -61,9 +78,11 @@ const Gnb = ({ isOpen, onToggle }: GnbProps) => {
             />
             {/* Burger Menu Button - Visible on Mobile Only */}
             <div className="md:hidden">
-              <IconButton
+              <Button
                 onClick={onToggle}
                 aria-label="Toggle Menu"
+                variant="clear"
+                className="px-2!"
                 icon={
                   isOpen ? (
                     <HiOutlineX size={24} />

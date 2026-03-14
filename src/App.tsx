@@ -9,7 +9,8 @@ import GettingStarted from './pages/GettingStarted';
 import Components from './pages/Components';
 import Colors from '@/pages/components/foundation/colors/page';
 import Typography from '@/pages/components/foundation/typography/page';
-import Button from '@/pages/components/action/button/page';
+import ButtonPage from '@/pages/components/action/button/page';
+import DropdownPage from '@/pages/components/action/dropdown/page';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,7 @@ function DocsLayout() {
         gap={0}
         classes="relative! w-full max-w-7xl mx-auto min-h-[calc(100dvh-64px)]"
       >
-        <Snb isOpen={isOpen} />
+        <Snb isOpen={isOpen} onClose={() => setIsOpen(false)} />
         <main className="flex flex-col flex-1 px-4 overflow-scroll pt-4">
           <Outlet />
         </main>
@@ -68,7 +69,8 @@ function App() {
           <Route path="foundation/colors" element={<Colors />} />
           <Route path="foundation/typography" element={<Typography />} />
           {/* action */}
-          <Route path="action/button" element={<Button />} />
+          <Route path="action/button" element={<ButtonPage />} />
+          <Route path="action/dropdown" element={<DropdownPage />} />
         </Route>
       </Routes>
     </AppProvider>

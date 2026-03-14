@@ -12,16 +12,40 @@ import { designSystemMenus } from '@/constants/common';
 import { cn } from '@/libs/utils';
 import Divider from './Divider';
 
-const NAV_ITEMS = [
-  { label: 'GETTING STARTED', href: '/getting-started' },
-  { label: 'COMPONENTS', href: '/components' },
-];
+interface NavItem {
+  id: string;
+  label: string;
+  href: string;
+}
+
+interface MenuSection {
+  group: string;
+  items: NavItem[];
+}
+
+interface DesignSystemMenu {
+  id: string;
+  label: string;
+  items?: NavItem[];
+  sections?: MenuSection[];
+}
+
+interface FlattenedMenu {
+  id: string;
+  label: string;
+  items: NavItem[];
+}
 
 interface SNBProps {
   isOpen: boolean;
   onClose?: () => void;
   desktopHidden?: boolean;
 }
+
+const NAV_ITEMS = [
+  { label: 'GETTING STARTED', href: '/getting-started' },
+  { label: 'COMPONENTS', href: '/components' },
+];
 
 const SNB = ({ isOpen, onClose, desktopHidden = false }: SNBProps) => {
   const { pathname } = useLocation();
@@ -45,16 +69,23 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: SNBProps) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isOpen, onClose]);
 
-  const flattenedMenus = designSystemMenus.flatMap((menu: any) => {
+  const flattenedMenus: FlattenedMenu[] = (
+    designSystemMenus as DesignSystemMenu[]
+  ).flatMap((menu) => {
     if (menu.id === 'components' && menu.sections) {
-      return menu.sections.map((section: any) => ({
+      return menu.sections.map((section) => ({
         id: section.group.toLowerCase().replace(/\s+/g, '-'),
         label: section.group,
         items: section.items,
       }));
     }
-    return menu;
+    return {
+      id: menu.id,
+      label: menu.label,
+      items: menu.items || [],
+    };
   });
+
   return (
     <>
       {isOpen && (
@@ -100,69 +131,72 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: SNBProps) => {
               );
             })}
           </ul>
-          <Divider orientation="horizontal" classes="md:hidden" />
+
           {!desktopHidden && (
-            <ul className="flex flex-col gap-1 pt-2 pb-10">
-              {flattenedMenus.map((menu: any) => {
-                const isActiveMenu = menu.items?.some((item: any) =>
-                  pathname.startsWith(item.href),
-                );
+            <>
+              <Divider orientation="horizontal" classes="md:hidden" />
+              <ul className="flex flex-col gap-1 pt-2 pb-10">
+                {flattenedMenus.map((menu) => {
+                  const isActiveMenu = menu.items.some((item) =>
+                    pathname.startsWith(item.href),
+                  );
 
-                return (
-                  <li key={menu.id} className="mb-1">
-                    <Disclosure defaultOpen={true}>
-                      {({ open }) => (
-                        <>
-                          <DisclosureButton
-                            className={cn(
-                              'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors cursor-pointer group font-bold!',
-                              'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
-                              'outline-none! ring-none! border-none!',
-                              isActiveMenu
-                                ? 'text-secondary-500! dark:text-primary-400!'
-                                : 'text-neutral-500! dark:text-neutral-100!',
-                            )}
-                          >
-                            <span className="text-sm tracking-wider uppercase">
-                              {menu.label}
-                            </span>
-                            <div className="group-hover:animate-[bounce-up_0.4s_ease-in-out]">
-                              <LuChevronRight
-                                className={cn(
-                                  'size-3.5 transition-transform duration-200',
-                                  open && 'rotate-90',
-                                )}
-                              />
-                            </div>
-                          </DisclosureButton>
-
-                          <DisclosurePanel className="flex flex-col mt-0.5">
-                            {menu.items?.map((item: any) => {
-                              const isActiveItem = pathname === item.href;
-                              return (
-                                <Link
-                                  key={item.id}
-                                  to={item.href}
-                                  onClick={onClose}
+                  return (
+                    <li key={menu.id} className="mb-1">
+                      <Disclosure defaultOpen={true}>
+                        {({ open }) => (
+                          <>
+                            <DisclosureButton
+                              className={cn(
+                                'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors cursor-pointer group font-bold!',
+                                'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
+                                'outline-none! ring-none! border-none!',
+                                isActiveMenu
+                                  ? 'text-secondary-500! dark:text-primary-400!'
+                                  : 'text-neutral-500! dark:text-neutral-100!',
+                              )}
+                            >
+                              <span className="text-sm tracking-wider uppercase">
+                                {menu.label}
+                              </span>
+                              <div className="group-hover:animate-[bounce-up_0.4s_ease-in-out]">
+                                <LuChevronRight
                                   className={cn(
-                                    'rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
-                                    isActiveItem
-                                      ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
-                                      : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
+                                    'size-3.5 transition-transform duration-200',
+                                    open && 'rotate-90',
                                   )}
-                                >
-                                  {item.label}
-                                </Link>
-                              );
-                            })}
-                          </DisclosurePanel>
-                        </>
-                      )}
-                    </Disclosure>
-                  </li>
-                );
-              })}
-            </ul>
+                                />
+                              </div>
+                            </DisclosureButton>
+
+                            <DisclosurePanel className="flex flex-col mt-0.5">
+                              {menu.items.map((item) => {
+                                const isActiveItem = pathname === item.href;
+                                return (
+                                  <Link
+                                    key={item.id}
+                                    to={item.href}
+                                    onClick={onClose}
+                                    className={cn(
+                                      'rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
+                                      isActiveItem
+                                        ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
+                                        : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
+                                    )}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                );
+                              })}
+                            </DisclosurePanel>
+                          </>
+                        )}
+                      </Disclosure>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
           )}
         </nav>
       </aside>
