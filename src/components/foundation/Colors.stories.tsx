@@ -5,7 +5,6 @@ import ComponenColorsPage from '@/pages/components/foundation/colors/page';
 const meta: Meta<typeof ComponenColorsPage> = {
   title: 'Foundation/Colors',
   component: ComponenColorsPage,
-  // 핵심: 컴포넌트를 Router로 감싸줍니다.
   decorators: [
     (Story) => (
       <BrowserRouter>
