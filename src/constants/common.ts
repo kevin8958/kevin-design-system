@@ -5,6 +5,11 @@ export const propsColumn = [
   { label: 'Description', key: 'description' },
 ];
 
+export const STORYBOOK_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:6006'
+    : '/storybook/index.html';
+
 export const designSystemMenus = [
   {
     id: 'foundation',
@@ -55,6 +60,11 @@ export const designSystemMenus = [
             id: 'dropdown',
             label: 'Dropdown',
             href: '/components/action/dropdown',
+          },
+          {
+            id: 'modal',
+            label: 'Modal',
+            href: '/components/action/modal',
           },
         ],
       },

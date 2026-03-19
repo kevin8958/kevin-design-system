@@ -65,7 +65,11 @@ const GroupExample = () => {
 />`;
 
   return (
-    <CodeExample code={exampleCode} className="flex-1 min-w-[320px]">
+    <CodeExample
+      code={exampleCode}
+      className="flex-1 min-w-[320px]"
+      maxHeight={200}
+    >
       <FlexWrapper
         items="center"
         justify="center"

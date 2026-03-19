@@ -23,7 +23,11 @@ const WidthExample = () => {
   ];
 
   return (
-    <CodeExample code={exampleCode} className="flex-1 min-w-[320px]">
+    <CodeExample
+      code={exampleCode}
+      className="flex-1 min-w-[320px]"
+      maxHeight={200}
+    >
       <FlexWrapper items="center" justify="center" gap={6} classes="w-full">
         {/* Fit Content Case */}
         <FlexWrapper direction="col" items="center" gap={3} classes="shrink-0">

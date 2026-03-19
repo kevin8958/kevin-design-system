@@ -108,8 +108,7 @@ const buttonVariants = cva(
       {
         variant: 'clear',
         color: 'neutral',
-        className:
-          'text-neutral-800 hover:bg-neutral-100/60 dark:text-neutral-300 dark:hover:bg-neutral-800/60',
+        className: 'text-neutral-800 hover:opacity-60 dark:text-neutral-300',
       },
       {
         variant: 'clear',

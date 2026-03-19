@@ -65,4 +65,23 @@ namespace Action {
     label?: string | React.ReactNode;
     buttonClasses?: string;
   }
+  type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+  type ModalState = 'default' | 'info' | 'success' | 'warning' | 'danger';
+  type ModalPosition = 'top' | 'center' | 'bottom';
+
+  interface ModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onConfirm?: () => void;
+    title?: string;
+    children: React.ReactNode;
+    maxWidth?: ModalSize;
+    state?: ModalState;
+    position?: ModalPosition;
+    confirmText?: string;
+    cancelText?: string;
+    hideCancel?: boolean;
+    hideBottom?: boolean;
+    loading?: boolean;
+  }
 }

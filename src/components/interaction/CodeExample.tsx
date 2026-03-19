@@ -8,10 +8,16 @@ import classNames from 'classnames';
 interface CodeExampleProps {
   children: React.ReactNode;
   code: string;
-  className?: string; // 외부 레이아웃 제어용 (ex: flex-1)
+  className?: string;
+  maxHeight?: number;
 }
 
-const CodeExample = ({ children, code, className }: CodeExampleProps) => {
+const CodeExample = ({
+  children,
+  code,
+  maxHeight,
+  className,
+}: CodeExampleProps) => {
   const [isCodeView, setIsCodeView] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
@@ -23,7 +29,9 @@ const CodeExample = ({ children, code, className }: CodeExampleProps) => {
     const updateHeight = () => {
       const pHeight = previewRef.current?.scrollHeight || 0;
       const cHeight = codeRef.current?.scrollHeight || 0;
-      setContainerHeight(Math.max(pHeight, cHeight, 150));
+      setContainerHeight(
+        Math.min(Math.max(pHeight, cHeight, 150), maxHeight || 1000),
+      );
     };
 
     updateHeight();
@@ -36,7 +44,7 @@ const CodeExample = ({ children, code, className }: CodeExampleProps) => {
     if (codeRef.current) observer.observe(codeRef.current);
 
     return () => observer.disconnect();
-  }, [children, code]);
+  }, [children, code, maxHeight]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
@@ -101,10 +109,7 @@ const CodeExample = ({ children, code, className }: CodeExampleProps) => {
           >
             {children}
           </div>
-          <div
-            ref={codeRef}
-            className="absolute w-full flex flex-col p-8 pt-14"
-          >
+          <div ref={codeRef} className="absolute w-full flex flex-col p-8">
             <pre className="text-xs font-mono leading-relaxed">
               <code>{code}</code>
             </pre>
@@ -122,14 +127,14 @@ const CodeExample = ({ children, code, className }: CodeExampleProps) => {
             className={classNames(
               'relative z-20 w-full flex flex-col h-full select-text',
               isCodeView
-                ? 'bg-neutral-100 p-8 pt-14 text-neutral-800 dark:text-neutral-100 dark:bg-black/60'
+                ? 'rounded-2xl bg-neutral-100 p-8 text-neutral-800 dark:text-neutral-100 dark:bg-black/60'
                 : 'items-center justify-center p-12',
             )}
           >
             {!isCodeView ? (
               <div className="w-full flex justify-center">{children}</div>
             ) : (
-              <div className="w-full h-full pb-10">
+              <div className="w-full h-full">
                 <pre className="custom-scrollbar overflow-x-auto text-xs font-mono leading-relaxed select-text h-full">
                   <code className="select-text">{code}</code>
                 </pre>

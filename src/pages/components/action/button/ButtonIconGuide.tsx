@@ -23,7 +23,11 @@ const IconPositionExample = () => {
 </Button>`;
 
   return (
-    <CodeExample code={exampleCode} className="flex-1 min-w-[320px]">
+    <CodeExample
+      code={exampleCode}
+      className="flex-1 min-w-[320px]"
+      maxHeight={200}
+    >
       <FlexWrapper items="center" justify="center" classes="w-full" gap={6}>
         {iconOptions.map((option) => (
           <div key={option.id}>

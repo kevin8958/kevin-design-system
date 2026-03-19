@@ -10,7 +10,7 @@ import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import SimpleTable from '@/components/data/SimpleTable';
-import { propsColumn } from '@/constants/common';
+import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentButtonPage() {
@@ -19,11 +19,6 @@ export default function ComponentButtonPage() {
     { label: 'Components', href: '/components' },
     { label: 'Button', href: '/components/action/button' },
   ];
-
-  const STORYBOOK_URL =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:6006'
-      : '/storybook/index.html';
 
   const handleOpenStorybook = () => {
     window.open(
