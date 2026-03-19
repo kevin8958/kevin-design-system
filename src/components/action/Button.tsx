@@ -35,7 +35,7 @@ const buttonVariants = cva(
         variant: 'contain',
         color: 'primary',
         className:
-          'bg-secondary-500 text-neutral-100 hover:bg-secondary-600 dark:bg-primary-400 dark:text-neutral-800 dark:hover:bg-primary-300',
+          'bg-secondary-500 text-neutral-100 hover:opacity-70 dark:bg-primary-400 dark:text-neutral-800',
       },
       {
         variant: 'contain',
@@ -68,7 +68,7 @@ const buttonVariants = cva(
         variant: 'outline',
         color: 'primary',
         className:
-          'border-secondary-500/50 text-secondary-600 hover:bg-secondary-50 dark:border-primary-400/50 dark:text-primary-400 dark:hover:bg-primary-400/10',
+          'border-secondary-500/50 text-secondary-600 dark:border-primary-400/50 dark:text-primary-400 hover:opacity-60',
       },
       {
         variant: 'outline',
@@ -103,8 +103,7 @@ const buttonVariants = cva(
       {
         variant: 'clear',
         color: 'primary',
-        className:
-          'text-secondary-600 hover:bg-secondary-50 dark:text-primary-400 dark:hover:bg-primary-400/10',
+        className: 'text-secondary-600 hover:opacity-60 dark:text-primary-400 ',
       },
       {
         variant: 'clear',
