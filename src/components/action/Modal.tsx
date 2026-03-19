@@ -124,7 +124,7 @@ export default function Modal({
                       </Button>
                     )}
                     <Button
-                      color={state === 'default' ? 'neutral' : state}
+                      color={state === 'default' ? 'primary' : state}
                       onClick={onConfirm || onClose}
                       loading={loading}
                     >
