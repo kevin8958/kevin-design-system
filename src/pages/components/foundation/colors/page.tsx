@@ -9,11 +9,11 @@ import StatusGuide from '@/pages/components/foundation/colors/StatusGuide';
 const ComponenColorsPage = () => {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Design System', href: '/design-system' },
+    { label: 'Foundation', href: '/components/foundation' },
     { label: 'Colors', href: '/components/foundation/colors' },
   ];
   return (
-    <div className="flex size-full flex-col items-start gap-4 px-4 pb-[100px]">
+    <div className="flex size-full flex-col items-start gap-4 sm:px-4 pb-[100px]">
       <BreadCrumb items={breadcrumbItems} />
       <FlexWrapper classes="w-full" justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">

@@ -25,12 +25,12 @@ const Gnb = ({ isOpen, onToggle }: GnbProps) => {
 
   return (
     <nav className="sticky top-0 z-50 w-full h-16 border-b border-neutral-990/10 dark:border-neutral-800 backdrop-blur-md bg-white/70 dark:bg-neutral-990/70">
-      <div className="flex items-center justify-between h-full px-6 mx-auto max-w-7xl">
+      <div className="flex items-center justify-between h-full px-4 sm:px-6 mx-auto max-w-7xl">
         {/* Left Section: Burger + Logo */}
         <Link to="/" className="flex items-center gap-2 text-xl font-bold">
-          <div className="w-8 h-8 overflow-hidden border rounded-lg border-neutral-300/30 bg-neutral-900">
+          {/* <div className="w-8 h-8 overflow-hidden border rounded-lg border-neutral-300/30 bg-neutral-900">
             <img src="/kds_logo.svg" alt="" className="size-full" />
-          </div>
+          </div> */}
           <span className="text-base font-bold tracking-tight text-neutral-800 dark:text-primary-400">
             Kevin Design System
           </span>

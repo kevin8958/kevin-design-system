@@ -35,18 +35,23 @@ const HeadingGuide = () => {
       <FlexWrapper
         items="center"
         direction="col"
-        classes="border border-neutral-500/30 shadow-sm dark:border-neutral-100/30 w-full rounded-2xl lg:w-[calc(50%-16px)] bg-neutral-50/50 dark:bg-white/5"
+        classes="border border-neutral-500/30 shadow-sm dark:border-neutral-800 w-full rounded-2xl lg:w-[calc(50%-16px)] bg-white dark:bg-neutral-900"
       >
         <FlexWrapper
           items="center"
           direction="col"
           justify="start"
-          classes="p-4 md:p-10 w-max rounded-xl"
+          classes="p-10 w-max rounded-xl"
           gap={6}
         >
           {variantOptions.map((option) => (
             <div key={option.id}>
-              <FlexWrapper classes="!gap-3" items="end">
+              <FlexWrapper
+                direction="col"
+                gap={3}
+                classes="sm:flex-row sm:items-end"
+                items="center"
+              >
                 <Typography variant={option.id} classes="mb-0">
                   Heading
                 </Typography>

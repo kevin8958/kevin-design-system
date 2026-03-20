@@ -50,6 +50,7 @@ const Typography = ({
   return (
     <Component
       {...rest}
+      lang="en"
       className={classNames(
         typographyVariants({
           variant,
