@@ -25,4 +25,35 @@ namespace Layout {
     description: string | React.ReactNode;
     example: React.ReactNode;
   }
+
+  /** Snb */
+  interface NavItem {
+    id: string;
+    label: string;
+    href: string;
+  }
+
+  interface MenuSection {
+    group: string;
+    items: NavItem[];
+  }
+
+  interface DesignSystemMenu {
+    id: string;
+    label: string;
+    items?: NavItem[];
+    sections?: MenuSection[];
+  }
+
+  interface FlattenedMenu {
+    id: string;
+    label: string;
+    items: NavItem[];
+  }
+
+  interface SNBProps {
+    isOpen: boolean;
+    onClose?: () => void;
+    desktopHidden?: boolean;
+  }
 }

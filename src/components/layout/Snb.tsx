@@ -12,42 +12,12 @@ import { designSystemMenus } from '@/constants/common';
 import { cn } from '@/libs/utils';
 import Divider from './Divider';
 
-interface NavItem {
-  id: string;
-  label: string;
-  href: string;
-}
-
-interface MenuSection {
-  group: string;
-  items: NavItem[];
-}
-
-interface DesignSystemMenu {
-  id: string;
-  label: string;
-  items?: NavItem[];
-  sections?: MenuSection[];
-}
-
-interface FlattenedMenu {
-  id: string;
-  label: string;
-  items: NavItem[];
-}
-
-interface SNBProps {
-  isOpen: boolean;
-  onClose?: () => void;
-  desktopHidden?: boolean;
-}
-
 const NAV_ITEMS = [
   { label: 'GETTING STARTED', href: '/getting-started' },
   { label: 'COMPONENTS', href: '/components' },
 ];
 
-const SNB = ({ isOpen, onClose, desktopHidden = false }: SNBProps) => {
+const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const { pathname } = useLocation();
   const [isResizing, setIsResizing] = useState(false);
 
@@ -69,8 +39,8 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: SNBProps) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isOpen, onClose]);
 
-  const flattenedMenus: FlattenedMenu[] = (
-    designSystemMenus as DesignSystemMenu[]
+  const flattenedMenus: Layout.FlattenedMenu[] = (
+    designSystemMenus as Layout.DesignSystemMenu[]
   ).flatMap((menu) => {
     if (menu.id === 'components' && menu.sections) {
       return menu.sections.map((section) => ({
