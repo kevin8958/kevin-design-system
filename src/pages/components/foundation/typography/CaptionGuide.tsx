@@ -1,6 +1,7 @@
 import FlexWrapper from '@/components/layout/FlexWrapper';
 
 import Typography from '@/components/foundation/Typography';
+import Box from '@/components/layout/Box';
 
 const CaptionGuide = () => {
   const variantOptions: {
@@ -28,16 +29,16 @@ const CaptionGuide = () => {
         </Typography>
       </FlexWrapper>
 
-      <FlexWrapper
-        items="center"
-        direction="col"
-        classes="border border-neutral-500/30 shadow-sm dark:border-neutral-800 w-full rounded-2xl lg:w-[calc(50%-16px)] bg-white dark:bg-neutral-900"
+      <Box
+        type="guide"
+        className="lg:w-[calc(50%-16px)] p-10"
+        classes="flex justify-center"
       >
         <FlexWrapper
           items="center"
           direction="col"
           justify="start"
-          classes="p-10 w-max rounded-xl"
+          classes="w-max rounded-xl"
           gap={6}
         >
           {variantOptions.map((option) => (
@@ -53,7 +54,7 @@ const CaptionGuide = () => {
             </div>
           ))}
         </FlexWrapper>
-      </FlexWrapper>
+      </Box>
     </FlexWrapper>
   );
 };

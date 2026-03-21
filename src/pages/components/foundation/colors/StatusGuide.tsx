@@ -1,5 +1,6 @@
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Typography from '@/components/foundation/Typography';
+import Box from '@/components/layout/Box';
 
 const STATUS_DATA = [
   {
@@ -51,10 +52,7 @@ const StatusGuide = () => {
 
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {STATUS_DATA.map((status) => (
-          <div
-            key={status.id}
-            className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition-all hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900"
-          >
+          <Box key={status.id} type="guide" classes="flex justify-center">
             <FlexWrapper direction="col" gap={4} items="start">
               <div className="flex h-24 w-full items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-950">
                 <div
@@ -79,7 +77,7 @@ const StatusGuide = () => {
                 </Typography>
               </div>
             </FlexWrapper>
-          </div>
+          </Box>
         ))}
       </div>
     </FlexWrapper>
