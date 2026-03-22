@@ -12,6 +12,7 @@ import Typography from '@/pages/components/foundation/typography/page';
 import ButtonPage from '@/pages/components/action/button/page';
 import DropdownPage from '@/pages/components/action/dropdown/page';
 import ComponentModalPage from './pages/components/action/modal/page';
+import ComponentDrawerPage from './pages/components/action/drawer/page';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +74,7 @@ function App() {
           <Route path="action/button" element={<ButtonPage />} />
           <Route path="action/dropdown" element={<DropdownPage />} />
           <Route path="action/modal" element={<ComponentModalPage />} />
+          <Route path="action/drawer" element={<ComponentDrawerPage />} />
         </Route>
       </Routes>
     </AppProvider>

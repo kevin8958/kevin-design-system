@@ -84,4 +84,20 @@ namespace Action {
     hideBottom?: boolean;
     loading?: boolean;
   }
+
+  type DrawerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+
+  interface DrawerProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onConfirm?: () => void;
+    title?: string;
+    children: React.ReactNode;
+    size?: DrawerSize;
+    confirmText?: string;
+    cancelText?: string;
+    hideBottom?: boolean;
+    loading?: boolean;
+    classes?: string;
+  }
 }

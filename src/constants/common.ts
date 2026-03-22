@@ -66,6 +66,11 @@ export const designSystemMenus = [
             label: 'Modal',
             href: '/components/action/modal',
           },
+          {
+            id: 'drawer',
+            label: 'Drawer',
+            href: '/components/action/drawer',
+          },
         ],
       },
       {
@@ -162,16 +167,6 @@ export const designSystemMenus = [
             id: 'alert',
             label: 'Alert',
             href: '/components/feedback/alert',
-          },
-          {
-            id: 'dialog',
-            label: 'Dialog',
-            href: '/components/feedback/dialog',
-          },
-          {
-            id: 'drawer',
-            label: 'Drawer',
-            href: '/components/feedback/drawer',
           },
           {
             id: 'progress',

@@ -1,0 +1,65 @@
+import Button from '@/components/action/Button';
+import Typography from '@/components/foundation/Typography';
+import CodeExample from '@/components/interaction/CodeExample';
+import GuideSection from '@/components/layout/GuideSection';
+import FlexWrapper from '@/components/layout/FlexWrapper';
+import Drawer from '@/components/action/Drawer';
+import { useDrawer } from '@/hooks/useDrawer';
+
+const ActionExample = () => {
+  const { isOpen, open, close } = useDrawer();
+
+  const exampleCode = `const { isOpen, open, close } = useDrawer();
+
+return (
+  <Drawer 
+    isOpen={isOpen} 
+    onClose={close}
+    title="Action Drawer"
+    confirmText="Save Changes"
+    cancelText="Close"
+    onConfirm={() => {
+      alert('Saved!');
+      close();
+    }}
+  >
+    <Content />
+  </Drawer>
+);`;
+
+  return (
+    <CodeExample code={exampleCode} className="flex-1" maxHeight={250}>
+      <FlexWrapper justify="center" gap={4}>
+        <Button onClick={open}>Open with Actions</Button>
+      </FlexWrapper>
+
+      <Drawer
+        isOpen={isOpen}
+        onClose={close}
+        title="Action Configuration"
+        confirmText="Save Changes"
+        cancelText="Discard"
+        onConfirm={() => {
+          alert('Action Confirmed');
+          close();
+        }}
+      >
+        <div className="py-4">
+          <Typography variant="B2">
+            You can customize the <strong>confirm</strong> and{' '}
+            <strong>cancel</strong> button labels and their respective click
+            handlers.
+          </Typography>
+        </div>
+      </Drawer>
+    </CodeExample>
+  );
+};
+
+export const DrawerActionGuide = () => (
+  <GuideSection
+    title="Actions & Footer"
+    description="Control the visibility and labeling of footer buttons. You can provide custom handlers for both confirmation and cancellation."
+    example={<ActionExample />}
+  />
+);

@@ -60,7 +60,7 @@ return (
 
 const ModalPositionGuide = () => (
   <GuideSection
-    title="Position Guide"
+    title="Position"
     description="Define the vertical alignment of the modal on the screen."
     example={<PositionExample />}
   />

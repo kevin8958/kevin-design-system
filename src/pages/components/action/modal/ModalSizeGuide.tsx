@@ -67,7 +67,7 @@ return (
 
 const ModalSizeGuide = () => (
   <GuideSection
-    title="Size Guide"
+    title="Size"
     description="Adjust the maximum width of the modal panel to match the content density."
     example={<SizeExample />}
   />
