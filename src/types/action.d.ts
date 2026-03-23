@@ -92,7 +92,7 @@ namespace Action {
     onClose: () => void;
     onConfirm?: () => void;
     title?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     size?: DrawerSize;
     confirmText?: string;
     cancelText?: string;

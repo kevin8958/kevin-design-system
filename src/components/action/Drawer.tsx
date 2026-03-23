@@ -42,7 +42,7 @@ export default function Drawer({
   };
 
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <Transition appear show={!!isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[999]" onClose={handleClose}>
         <Transition.Child
           as={Fragment}
@@ -99,7 +99,13 @@ export default function Drawer({
                       <Button variant="clear" color="neutral" onClick={onClose}>
                         {cancelText}
                       </Button>
-                      <Button onClick={onConfirm || onClose} loading={loading}>
+                      <Button
+                        onClick={onConfirm || onClose}
+                        loading={loading}
+                        aria-label={
+                          loading ? `Loading ${confirmText}` : confirmText
+                        }
+                      >
                         {confirmText}
                       </Button>
                     </FlexWrapper>
