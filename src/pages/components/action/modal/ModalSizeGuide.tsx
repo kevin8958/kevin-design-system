@@ -4,7 +4,6 @@ import Button from '@/components/action/Button';
 import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
-import FlexWrapper from '@/components/layout/FlexWrapper';
 import { useModal } from '@/hooks/useModal';
 
 const SizeExample = () => {
@@ -25,33 +24,19 @@ return (
 
   return (
     <CodeExample code={exampleCode} className="flex-1" maxHeight={200}>
-      <FlexWrapper items="center" justify="center" gap={6}>
+      <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
         {sizes.map((size) => (
-          <FlexWrapper
+          <Button
             key={size}
-            direction="col"
-            items="center"
-            gap={3}
-            classes="shrink-0"
+            onClick={() => {
+              setCurrentSize(size);
+              open();
+            }}
           >
-            <Button
-              key={size}
-              onClick={() => {
-                setCurrentSize(size);
-                open();
-              }}
-            >
-              Modal
-            </Button>
-            <Typography
-              variant="C1"
-              classes="text-primary-500 font-medium uppercase"
-            >
-              {size}
-            </Typography>
-          </FlexWrapper>
+            {size.toUpperCase()}
+          </Button>
         ))}
-      </FlexWrapper>
+      </div>
 
       <ModalWrapper
         maxWidth={currentSize}

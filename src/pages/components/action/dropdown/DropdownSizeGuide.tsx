@@ -20,7 +20,13 @@ const SizeExample = () => {
 
   return (
     <CodeExample code={exampleCode} className="flex-1 min-w-[320px]">
-      <FlexWrapper items="end" justify="center" gap={6} classes="w-full">
+      <FlexWrapper
+        items="center"
+        justify="center"
+        direction="col"
+        gap={6}
+        classes="w-full sm:flex-row sm:items-end"
+      >
         {sizes.map((size) => (
           <FlexWrapper
             key={size}

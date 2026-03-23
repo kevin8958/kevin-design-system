@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Button from '@/components/action/Button';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
-import FlexWrapper from '@/components/layout/FlexWrapper';
 import Typography from '@/components/foundation/Typography';
 import { useModal } from '@/hooks/useModal';
 
@@ -17,10 +16,12 @@ const StateExample = () => {
       code="<ModalWrapper state={state}>...</ModalWrapper>"
       className="flex-1"
     >
-      <FlexWrapper items="center" justify="center" gap={6}>
+      <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
         {states.map((s) => (
           <Button
             key={s}
+            variant="outline"
+            color={s}
             onClick={() => {
               setState(s);
               open();
@@ -29,7 +30,7 @@ const StateExample = () => {
             {s}
           </Button>
         ))}
-      </FlexWrapper>
+      </div>
 
       <ModalWrapper title={state.toUpperCase()} state={state}>
         <div className="space-y-6">
