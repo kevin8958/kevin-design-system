@@ -9,10 +9,11 @@ import GettingStarted from './pages/GettingStarted';
 import Components from './pages/Components';
 import Colors from '@/pages/components/foundation/colors/page';
 import Typography from '@/pages/components/foundation/typography/page';
-import ButtonPage from '@/pages/components/action/button/page';
-import DropdownPage from '@/pages/components/action/dropdown/page';
-import ComponentModalPage from './pages/components/action/modal/page';
-import ComponentDrawerPage from './pages/components/action/drawer/page';
+import ComponentButtonPage from '@/pages/components/action/button/ComponentButtonPage';
+import ComponentDropdownPage from '@/pages/components/action/dropdown/ComponentDropdownPage';
+import ComponentModalPage from './pages/components/action/modal/ComponentModalPage';
+import ComponentDrawerPage from './pages/components/action/drawer/ComponentDrawerPage';
+import ComponentTextInputPage from '@/pages/components/input/textinput/ComponentTextInputPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,10 +72,12 @@ function App() {
           <Route path="foundation/colors" element={<Colors />} />
           <Route path="foundation/typography" element={<Typography />} />
           {/* action */}
-          <Route path="action/button" element={<ButtonPage />} />
-          <Route path="action/dropdown" element={<DropdownPage />} />
+          <Route path="action/button" element={<ComponentButtonPage />} />
+          <Route path="action/dropdown" element={<ComponentDropdownPage />} />
           <Route path="action/modal" element={<ComponentModalPage />} />
           <Route path="action/drawer" element={<ComponentDrawerPage />} />
+          {/* input */}
+          <Route path="input/textinput" element={<ComponentTextInputPage />} />
         </Route>
       </Routes>
     </AppProvider>
