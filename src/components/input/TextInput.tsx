@@ -1,10 +1,10 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
 
 const inputVariants = cva(
   [
-    'form-control rounded-md box-border w-full overflow-hidden border border-neutral-300 text-neutral-700 dark:border-neutral-300 dark:text-neutral-300 dark:bg-neutral-900 p-2 !text-base text-ellipsis outline-0 transition-all duration-200 ease-in-out placeholder:text-neutral-800/30 dark:placeholder:text-neutral-100/30',
+    'form-control rounded-md box-border w-full overflow-hidden border border-neutral-300 text-neutral-700 dark:border-neutral-300 dark:text-neutral-300 bg-white dark:bg-neutral-900 p-2 !text-base text-ellipsis outline-0 transition-all duration-200 ease-in-out placeholder:text-neutral-800/30 dark:placeholder:text-neutral-100/30',
     'autofill:shadow-[0_0_0_1000px_white_inset] dark:autofill:shadow-[0_0_0_1000px_#121627_inset]',
     'autofill:text-neutral-700 dark:autofill:text-neutral-300',
     '[&:-webkit-autofill]:shadow-[0_0_0_1000px_white_inset] dark:[&:-webkit-autofill]:shadow-[0_0_0_1000px_#121627_inset]',
@@ -41,7 +41,7 @@ const TextInput = forwardRef<HTMLInputElement, Input.TextInputProps>(
     const {
       label,
       placeholder,
-      id,
+      id: externalId,
       classes,
       type = 'text',
       value,
@@ -61,6 +61,8 @@ const TextInput = forwardRef<HTMLInputElement, Input.TextInputProps>(
       onKeyUp,
     } = props;
 
+    const internalId = useId();
+    const id = externalId || internalId;
     const errorId = `${id}-error`;
 
     return (
@@ -72,7 +74,7 @@ const TextInput = forwardRef<HTMLInputElement, Input.TextInputProps>(
             <label
               htmlFor={id}
               className={classNames(
-                'relative mb-2 !text-sm font-semibold text-neutral-100',
+                'relative mb-2 !text-sm font-semibold text-neutral-700 dark:text-neutral-100',
                 required &&
                   "after:ml-1 after:text-[#FF3535] after:content-['*'] after:text-lg",
               )}
