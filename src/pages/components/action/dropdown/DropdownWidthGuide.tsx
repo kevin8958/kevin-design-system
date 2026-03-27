@@ -31,11 +31,7 @@ const WidthExample = () => {
       <FlexWrapper items="center" justify="center" gap={6} classes="w-full">
         {/* Fit Content Case */}
         <FlexWrapper direction="col" items="center" gap={3} classes="shrink-0">
-          <Dropdown
-            items={menuItems}
-            label="Fit Content"
-            buttonVariant="outline"
-          />
+          <Dropdown items={menuItems} label="Fit Content" />
           <Typography variant="C1" classes="text-primary-500 font-medium">
             Fit Content
           </Typography>
@@ -48,7 +44,6 @@ const WidthExample = () => {
             label="Fixed"
             buttonClasses="w-[100px]"
             dialogWidth={100}
-            buttonVariant="outline"
           />
           <Typography variant="C1" classes="text-primary-500 font-medium">
             Fixed Width (100px)

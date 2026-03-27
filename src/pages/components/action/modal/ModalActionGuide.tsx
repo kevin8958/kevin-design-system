@@ -32,7 +32,6 @@ const ActionExample = () => {
     >
       <FlexWrapper items="center" justify="center" gap={6}>
         <Button
-          variant="outline"
           onClick={() =>
             handleOpen({
               hideCancel: false,
@@ -44,7 +43,6 @@ const ActionExample = () => {
           Standard
         </Button>
         <Button
-          variant="outline"
           onClick={() =>
             handleOpen({
               hideCancel: true,
@@ -56,7 +54,6 @@ const ActionExample = () => {
           Hide Cancel
         </Button>
         <Button
-          variant="outline"
           onClick={() =>
             handleOpen({
               hideCancel: false,

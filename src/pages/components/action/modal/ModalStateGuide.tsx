@@ -20,14 +20,13 @@ const StateExample = () => {
         {states.map((s) => (
           <Button
             key={s}
-            variant="outline"
             color={s}
             onClick={() => {
               setState(s);
               open();
             }}
           >
-            {s}
+            {s.charAt(0).toUpperCase() + s.slice(1)}
           </Button>
         ))}
       </div>

@@ -32,7 +32,7 @@ return (
       <FlexWrapper items="center" justify="center" gap={6}>
         {positions.map((pos) => (
           <FlexWrapper key={pos} direction="col" items="center" gap={3}>
-            <Button variant="outline" onClick={() => handleOpen(pos)}>
+            <Button onClick={() => handleOpen(pos)}>
               {pos.charAt(0).toUpperCase() + pos.slice(1)}
             </Button>
             <Typography
