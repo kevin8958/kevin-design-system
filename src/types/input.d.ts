@@ -24,4 +24,18 @@ namespace Input {
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   }
+
+  /** Checkbox */
+  type CheckboxSize = 'sm' | 'md' | 'lg';
+
+  interface CheckboxProps {
+    classes?: string;
+    id?: string; // useId 대응을 위해 선택사항으로 변경 권장
+    label?: string;
+    checked?: boolean;
+    disabled?: boolean;
+    invalid?: boolean;
+    size?: CheckboxSize;
+    onChange?: (data: { id: string; checked: boolean }) => void;
+  }
 }
