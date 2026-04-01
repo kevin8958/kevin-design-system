@@ -15,6 +15,7 @@ import ComponentModalPage from './pages/components/action/modal/ComponentModalPa
 import ComponentDrawerPage from './pages/components/action/drawer/ComponentDrawerPage';
 import ComponentTextInputPage from '@/pages/components/input/textinput/ComponentTextInputPage';
 import ComponentCheckboxPage from '@/pages/components/input/checkbox/ComponentCheckboxPage';
+import ComponentRadioPage from '@/pages/components/input/radio/ComponentRadioPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,6 +81,7 @@ function App() {
           {/* input */}
           <Route path="input/textinput" element={<ComponentTextInputPage />} />
           <Route path="input/checkbox/*" element={<ComponentCheckboxPage />} />
+          <Route path="input/radio/*" element={<ComponentRadioPage />} />
         </Route>
       </Routes>
     </AppProvider>

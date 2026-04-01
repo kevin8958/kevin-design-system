@@ -30,12 +30,35 @@ namespace Input {
 
   interface CheckboxProps {
     classes?: string;
-    id?: string; // useId 대응을 위해 선택사항으로 변경 권장
+    id?: string;
     label?: string;
     checked?: boolean;
     disabled?: boolean;
     invalid?: boolean;
     size?: CheckboxSize;
     onChange?: (data: { id: string; checked: boolean }) => void;
+  }
+
+  /** Radio */
+  type RadioOption = {
+    id: string;
+    label: string;
+    desc?: string;
+    disabled?: boolean;
+  };
+
+  type RadioSize = 'sm' | 'md' | 'lg';
+
+  interface RadioProps {
+    title?: string;
+    options: RadioOption[];
+    value: string;
+    size?: RadioSize;
+    onChange: (value: string) => void;
+    classes?: string;
+    disabled?: boolean;
+    invalid?: boolean;
+    errorMsg?: string;
+    name?: string;
   }
 }
