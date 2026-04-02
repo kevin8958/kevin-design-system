@@ -16,6 +16,7 @@ import ComponentDrawerPage from './pages/components/action/drawer/ComponentDrawe
 import ComponentTextInputPage from '@/pages/components/input/textinput/ComponentTextInputPage';
 import ComponentCheckboxPage from '@/pages/components/input/checkbox/ComponentCheckboxPage';
 import ComponentRadioPage from '@/pages/components/input/radio/ComponentRadioPage';
+import ComponentSwitchPage from '@/pages/components/input/switch/ComponentSwitchPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,6 +83,7 @@ function App() {
           <Route path="input/textinput" element={<ComponentTextInputPage />} />
           <Route path="input/checkbox/*" element={<ComponentCheckboxPage />} />
           <Route path="input/radio/*" element={<ComponentRadioPage />} />
+          <Route path="input/switch/*" element={<ComponentSwitchPage />} />
         </Route>
       </Routes>
     </AppProvider>

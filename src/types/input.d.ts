@@ -61,4 +61,20 @@ namespace Input {
     errorMsg?: string;
     name?: string;
   }
+
+  /** Switch */
+  type SwitchSize = 'sm' | 'md' | 'lg';
+
+  interface SwitchProps extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    'size' | 'onChange'
+  > {
+    label?: string;
+    description?: string;
+    checked?: boolean;
+    onChange?: (checked: boolean) => void;
+    invalid?: boolean;
+    errorMsg?: string;
+    size?: SwitchSize;
+  }
 }
