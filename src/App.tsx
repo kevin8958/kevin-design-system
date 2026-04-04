@@ -17,6 +17,7 @@ import ComponentTextInputPage from '@/pages/components/input/textinput/Component
 import ComponentCheckboxPage from '@/pages/components/input/checkbox/ComponentCheckboxPage';
 import ComponentRadioPage from '@/pages/components/input/radio/ComponentRadioPage';
 import ComponentSwitchPage from '@/pages/components/input/switch/ComponentSwitchPage';
+import ComponentDatePickerPage from '@/pages/components/input/datepicker/ComponentDatePickerPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,6 +85,10 @@ function App() {
           <Route path="input/checkbox/*" element={<ComponentCheckboxPage />} />
           <Route path="input/radio/*" element={<ComponentRadioPage />} />
           <Route path="input/switch/*" element={<ComponentSwitchPage />} />
+          <Route
+            path="input/datepicker/*"
+            element={<ComponentDatePickerPage />}
+          />
         </Route>
       </Routes>
     </AppProvider>

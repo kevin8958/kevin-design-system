@@ -77,4 +77,31 @@ namespace Input {
     errorMsg?: string;
     size?: SwitchSize;
   }
+
+  /** Datepicker */
+  type DatepickerType = 'single' | 'range';
+  type DatepickerSize = 'sm' | 'md' | 'lg';
+  type DatepickerVariant = 'outline' | 'contain' | 'clear';
+  interface DatepickerProps {
+    classes?: string;
+    type?: DatepickerType;
+    variant?: DatepickerVariant;
+    value: Date | null;
+    minDate?: Date;
+    maxDate?: Date;
+    isError?: boolean;
+    isNullable?: boolean;
+    isFilter?: boolean;
+    placeholder?: string;
+    isRange?: boolean;
+    isMultiple?: boolean;
+    startDate?: Date;
+    endDate?: Date;
+    size?: DatepickerSize;
+    disabled?: boolean;
+    hideHeaderButtons?: boolean;
+    onChange?: (
+      update: Date | null | [Date | null, Date | null] | Date[],
+    ) => void;
+  }
 }
