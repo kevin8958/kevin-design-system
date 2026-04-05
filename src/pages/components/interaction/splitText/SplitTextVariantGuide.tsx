@@ -15,7 +15,7 @@ const SplitTextVariantGuide = () => {
       example={
         <CodeExample code={exampleCode} className="flex-1">
           <FlexWrapper
-            classes="w-full rounded-2xl bg-neutral-900 p-8"
+            classes="w-full rounded-2xl bg-neutral-900 p-8 text-neutral-100"
             direction="col"
             items="start"
             gap={6}

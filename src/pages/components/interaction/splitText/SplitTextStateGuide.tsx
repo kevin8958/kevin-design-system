@@ -15,7 +15,7 @@ const SplitTextStateGuide = () => {
       example={
         <CodeExample code={exampleCode} className="flex-1">
           <FlexWrapper
-            classes="w-full rounded-2xl bg-neutral-900 p-8"
+            classes="w-full rounded-2xl bg-neutral-900 p-8 text-neutral-100"
             direction="col"
             items="start"
             gap={6}
@@ -23,7 +23,7 @@ const SplitTextStateGuide = () => {
             <FlexWrapper direction="col" items="start" gap={3}>
               <SplitText text="Scroll-triggered once" variant="B1" />
               <Typography variant="C1" classes="!text-neutral-300">
-                On Enter
+                Scroll Into View
               </Typography>
             </FlexWrapper>
             <FlexWrapper direction="col" items="start" gap={3}>

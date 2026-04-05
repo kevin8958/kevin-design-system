@@ -86,7 +86,7 @@ const SplitText = ({
       aria-label={text}
       className={classNames(
         baseStyles[variant],
-        'inline-block break-words whitespace-pre-wrap text-neutral-900 dark:text-neutral-100',
+        'inline-block break-words whitespace-pre-wrap',
         classes,
       )}
     >
