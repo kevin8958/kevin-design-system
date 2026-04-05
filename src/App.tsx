@@ -25,6 +25,7 @@ import ComponentBreadcrumbPage from '@/pages/components/navigation/breadcrumb/Co
 import ComponentAvatarPage from '@/pages/components/dataDisplay/avatar/ComponentAvatarPage';
 import ComponentBadgePage from '@/pages/components/dataDisplay/badge/ComponentBadgePage';
 import ComponentTablePage from '@/pages/components/dataDisplay/table/ComponentTablePage';
+import ComponentTagPage from '@/pages/components/dataDisplay/tag/ComponentTagPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -112,6 +113,7 @@ function App() {
           <Route path="dataDisplay/avatar" element={<ComponentAvatarPage />} />
           <Route path="dataDisplay/badge" element={<ComponentBadgePage />} />
           <Route path="dataDisplay/table" element={<ComponentTablePage />} />
+          <Route path="dataDisplay/tag" element={<ComponentTagPage />} />
         </Route>
       </Routes>
     </AppProvider>
