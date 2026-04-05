@@ -1,6 +1,7 @@
 namespace Feedback {
   type AlertVariant = 'info' | 'success' | 'warning' | 'danger';
   type ProgressSize = 'sm' | 'md' | 'lg';
+  type SkeletonVariant = 'line' | 'rect' | 'circle';
 
   interface AlertProps {
     title?: string;
@@ -16,6 +17,13 @@ namespace Feedback {
     max?: number;
     size?: ProgressSize;
     showValue?: boolean;
+    classes?: string;
+  }
+
+  interface SkeletonProps {
+    width?: number | string;
+    height?: number | string;
+    variant?: SkeletonVariant;
     classes?: string;
   }
 }
