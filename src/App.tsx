@@ -28,6 +28,7 @@ import ComponentTablePage from '@/pages/components/dataDisplay/table/ComponentTa
 import ComponentTagPage from '@/pages/components/dataDisplay/tag/ComponentTagPage';
 import ComponentTooltipPage from '@/pages/components/dataDisplay/tooltip/ComponentTooltipPage';
 import ComponentAlertPage from '@/pages/components/feedback/alert/ComponentAlertPage';
+import ComponentProgressPage from '@/pages/components/feedback/progress/ComponentProgressPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -121,6 +122,7 @@ function App() {
             element={<ComponentTooltipPage />}
           />
           <Route path="feedback/alert" element={<ComponentAlertPage />} />
+          <Route path="feedback/progress" element={<ComponentProgressPage />} />
         </Route>
       </Routes>
     </AppProvider>
