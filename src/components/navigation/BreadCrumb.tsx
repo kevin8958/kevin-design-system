@@ -18,13 +18,7 @@ const breadcrumbVariants = cva(
   },
 );
 
-/** Layout.BreadCrumbProps 인터페이스 준수 */
-interface BreadCrumbProps {
-  items: Array<{ label: string; href?: string }>;
-  className?: string;
-}
-
-const BreadCrumb = ({ items, className }: BreadCrumbProps) => {
+const BreadCrumb = ({ items, className }: Navigation.BreadCrumbProps) => {
   const { pathname } = useLocation();
   return (
     <nav aria-label="Breadcrumb" className={classNames('py-2', className)}>
@@ -37,9 +31,6 @@ const BreadCrumb = ({ items, className }: BreadCrumbProps) => {
               className="flex items-center gap-1.5"
             >
               {item.href && !isActive ? (
-                /* Link 컴포넌트는 프로젝트 환경(react-router-dom 등)에 맞춰 
-                   사용하시거나 일반 <a> 태그로 대체 가능합니다. 
-                */
                 <a
                   href={item.href}
                   className={breadcrumbVariants({ status: 'inactive' })}

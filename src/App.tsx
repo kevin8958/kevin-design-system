@@ -21,6 +21,7 @@ import ComponentDatePickerPage from '@/pages/components/input/datepicker/Compone
 import ComponentUploadDropzonePage from '@/pages/components/input/uploadDropzone/ComponentUploadDropzonePage';
 import ComponentPaginationPage from '@/pages/components/navigation/pagination/ComponentPaginationPage';
 import ComponentTabsPage from '@/pages/components/navigation/tabs/ComponentTabsPage';
+import ComponentBreadcrumbPage from '@/pages/components/navigation/breadcrumb/ComponentBreadcrumbPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -101,6 +102,10 @@ function App() {
             element={<ComponentPaginationPage />}
           />
           <Route path="navigation/tabs" element={<ComponentTabsPage />} />
+          <Route
+            path="navigation/breadcrumb"
+            element={<ComponentBreadcrumbPage />}
+          />
         </Route>
       </Routes>
     </AppProvider>
