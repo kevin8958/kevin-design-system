@@ -69,10 +69,10 @@ export default function Components() {
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={10}>
       <section
         id="top"
-        className="relative overflow-hidden rounded-[32px] border border-neutral-200 bg-gradient-to-br from-white via-neutral-50 to-primary-50/70 px-6 py-10 shadow-sm dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-900 md:px-10 md:py-14"
+        className="relative overflow-hidden rounded-[32px] border border-neutral-200 bg-gradient-to-br from-white via-secondary-50/60 to-secondary-100/70 px-6 py-10 shadow-sm dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-900 md:px-10 md:py-14"
       >
-        <div className="pointer-events-none absolute -right-16 top-0 size-56 rounded-full bg-primary-300/20 blur-3xl dark:bg-primary-400/10" />
-        <div className="pointer-events-none absolute left-0 top-1/2 size-40 -translate-y-1/2 rounded-full bg-secondary-300/20 blur-3xl dark:bg-secondary-400/10" />
+        <div className="pointer-events-none absolute -right-16 top-0 size-56 rounded-full bg-secondary-300/25 blur-3xl dark:bg-primary-400/10" />
+        <div className="pointer-events-none absolute left-0 top-1/2 size-40 -translate-y-1/2 rounded-full bg-secondary-400/20 blur-3xl dark:bg-secondary-400/10" />
 
         <FlexWrapper
           direction="col"

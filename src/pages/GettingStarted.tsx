@@ -48,9 +48,9 @@ const steps = [
 export default function GettingStarted() {
   return (
     <FlexWrapper classes="w-full px-4 pb-20" direction="col" gap={8}>
-      <section className="relative overflow-hidden rounded-[36px] border border-neutral-200 bg-gradient-to-br from-white via-neutral-50 to-primary-50/70 px-6 py-12 shadow-sm dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-900 md:px-10 md:py-16">
-        <div className="pointer-events-none absolute -right-20 top-0 size-64 rounded-full bg-primary-300/20 blur-3xl dark:bg-primary-400/10" />
-        <div className="pointer-events-none absolute left-0 top-1/2 size-52 -translate-y-1/2 rounded-full bg-secondary-300/20 blur-3xl dark:bg-secondary-400/10" />
+      <section className="relative overflow-hidden rounded-[36px] border border-neutral-200 bg-gradient-to-br from-white via-secondary-50/60 to-secondary-100/70 px-6 py-12 shadow-sm dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-900 md:px-10 md:py-16">
+        <div className="pointer-events-none absolute -right-20 top-0 size-64 rounded-full bg-secondary-300/25 blur-3xl dark:bg-primary-400/10" />
+        <div className="pointer-events-none absolute left-0 top-1/2 size-52 -translate-y-1/2 rounded-full bg-secondary-400/20 blur-3xl dark:bg-secondary-400/10" />
 
         <FlexWrapper direction="col" items="start" gap={6} classes="relative z-10 max-w-4xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-neutral-300/70 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/80 dark:text-neutral-200">
@@ -70,14 +70,14 @@ export default function GettingStarted() {
             </Typography>
           </FlexWrapper>
 
-          <div className="w-full max-w-2xl rounded-2xl border border-neutral-200 bg-neutral-950 px-5 py-4 shadow-lg dark:border-neutral-700">
+          <div className="w-full max-w-2xl rounded-2xl border border-neutral-200 bg-white/90 px-5 py-4 shadow-lg dark:border-neutral-700 dark:bg-neutral-950">
             <Typography
               variant="C1"
-              classes="mb-2 !text-neutral-400"
+              classes="mb-2 !text-neutral-500 dark:!text-neutral-400"
             >
               Install Command
             </Typography>
-            <code className="block overflow-x-auto whitespace-pre-wrap text-sm font-medium text-primary-300">
+            <code className="block overflow-x-auto whitespace-pre-wrap text-sm font-medium text-secondary-700 dark:text-primary-300">
               {installCommand}
             </code>
           </div>
@@ -136,8 +136,8 @@ export default function GettingStarted() {
                       </div>
                     </div>
 
-                    <div className="w-full rounded-xl bg-neutral-950 px-4 py-3">
-                      <code className="block whitespace-pre-wrap break-all text-sm text-primary-300">
+                    <div className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 dark:border-neutral-800 dark:bg-neutral-950">
+                      <code className="block whitespace-pre-wrap break-all text-sm text-secondary-700 dark:text-primary-300">
                         {step.code}
                       </code>
                     </div>
@@ -160,7 +160,7 @@ export default function GettingStarted() {
               </Typography>
             </div>
 
-            <div className="w-full rounded-2xl border border-warning/20 bg-warning/10 p-4">
+            <div className="w-full rounded-2xl border border-warning/20 bg-warning/10 p-4 dark:border-warning/30 dark:bg-warning/10">
               <Typography variant="H4" classes="!text-warning">
                 Placeholder Setup
               </Typography>
