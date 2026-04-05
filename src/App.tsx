@@ -19,6 +19,7 @@ import ComponentRadioPage from '@/pages/components/input/radio/ComponentRadioPag
 import ComponentSwitchPage from '@/pages/components/input/switch/ComponentSwitchPage';
 import ComponentDatePickerPage from '@/pages/components/input/datepicker/ComponentDatePickerPage';
 import ComponentUploadDropzonePage from '@/pages/components/input/uploadDropzone/ComponentUploadDropzonePage';
+import ComponentPaginationPage from '@/pages/components/navigation/pagination/ComponentPaginationPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,6 +94,10 @@ function App() {
           <Route
             path="input/uploadDropzone"
             element={<ComponentUploadDropzonePage />}
+          />
+          <Route
+            path="navigation/pagination"
+            element={<ComponentPaginationPage />}
           />
         </Route>
       </Routes>

@@ -128,7 +128,7 @@ const CodeExample = ({
               'relative z-20 w-full flex flex-col h-full select-text',
               isCodeView
                 ? 'rounded-2xl bg-neutral-100 p-8 text-neutral-800 dark:text-neutral-100 dark:bg-black/60'
-                : 'items-center justify-center p-12',
+                : 'items-center justify-center p-8',
             )}
           >
             {!isCodeView ? (
