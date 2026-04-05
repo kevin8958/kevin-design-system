@@ -15,6 +15,7 @@ import Progress from '@/components/feedback/Progress';
 import Skeleton from '@/components/feedback/Skeleton';
 import Toast from '@/components/feedback/Toast';
 import Typography from '@/components/foundation/Typography';
+import ColorScalePreview from '@/pages/components/foundation/colors/ColorScalePreview';
 import CountUp from '@/components/interaction/CountUp';
 import SplitText from '@/components/interaction/SplitText';
 import Sticker from '@/components/interaction/Sticker';
@@ -121,24 +122,17 @@ const tableData = [
 ];
 
 const FoundationColorsPreview = () => (
-  <Grid cols={4} gap={3} classes="w-full md:grid-cols-4">
+  <Grid cols={1} gap={3} classes="w-full lg:grid-cols-3">
     {[
-      { name: 'Primary', color: 'bg-primary-400' },
-      { name: 'Secondary', color: 'bg-secondary-500' },
-      { name: 'Success', color: 'bg-success' },
-      { name: 'Neutral', color: 'bg-neutral-800' },
-    ].map((swatch) => (
+      { name: 'Primary', prefix: 'primary' },
+      { name: 'Secondary', prefix: 'secondary' },
+      { name: 'Neutral', prefix: 'neutral' },
+    ].map((palette) => (
       <div
-        key={swatch.name}
+        key={palette.name}
         className="rounded-2xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900"
       >
-        <div className={`h-20 w-full rounded-xl ${swatch.color}`} />
-        <Typography
-          variant="C1"
-          classes="mt-3 !text-neutral-500 dark:!text-neutral-400"
-        >
-          {swatch.name}
-        </Typography>
+        <ColorScalePreview title={palette.name} prefix={palette.prefix as 'primary' | 'secondary' | 'neutral'} />
       </div>
     ))}
   </Grid>
@@ -662,8 +656,8 @@ const PreviewBlock = ({
   return (
     <section className="w-full rounded-[28px] border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
       <FlexWrapper direction="col" items="start" gap={5} classes="w-full">
-        <div className="flex w-full flex-col gap-3 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-2xl">
+        <div className="relative w-full">
+          <div className="max-w-2xl pr-14">
             <Typography variant="H3">{item.label}</Typography>
             <Typography
               variant="B2"
@@ -676,14 +670,14 @@ const PreviewBlock = ({
 
           <Link
             to={item.href}
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
+            aria-label={`View ${item.label}`}
+            className="absolute right-0 top-0 inline-flex size-10 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 transition hover:bg-neutral-50 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
           >
-            View component
             <LuArrowUpRight size={16} />
           </Link>
         </div>
 
-        <div className="w-full rounded-3xl border border-dashed border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-950/60">
+        <div className="w-full rounded-3xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-950/60">
           {preview ? (
             <div className="w-full">{preview.preview}</div>
           ) : (

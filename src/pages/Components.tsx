@@ -4,24 +4,6 @@ import { designSystemMenus } from '@/constants/common';
 import { Link } from 'react-router-dom';
 import { LuArrowUpRight } from 'react-icons/lu';
 
-const categoryDescriptions: Record<string, string> = {
-  foundation:
-    'Design tokens and visual principles that define the baseline language of the system.',
-  action:
-    'Buttons, dropdowns, modals, and drawers for initiating user actions.',
-  input:
-    'Form controls for collecting text, selection, dates, files, and binary state.',
-  navigation:
-    'Patterns that help people move between pages, sections, and UI states.',
-  dataDisplay:
-    'Components for presenting identity, status, structured data, and contextual details.',
-  feedback:
-    'Visual responses that communicate progress, alerts, loading, and system status.',
-  layout: 'Primitives for spacing, separation, and responsive composition.',
-  interaction:
-    'Motion-driven and playful UI elements that add behavior and expression.',
-};
-
 const categoryHighlights: Record<string, string> = {
   foundation: 'Build visual consistency from the base.',
   action: 'Start the flows users interact with most.',
@@ -77,28 +59,24 @@ export default function Components() {
         <FlexWrapper
           direction="col"
           items="start"
-          gap={6}
+          gap={10}
           classes="relative z-10"
         >
-          <div className="inline-flex rounded-full border border-neutral-300/70 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/80 dark:text-neutral-200">
-            Component Index
-          </div>
-
           <FlexWrapper
             direction="col"
             items="start"
-            gap={3}
+            gap={6}
             classes="max-w-3xl"
           >
             <Typography
               variant="H1"
               classes="text-balance !text-neutral-900 dark:!text-neutral-50"
             >
-              Explore the design system by category
+              Components
             </Typography>
             <Typography
               variant="B1"
-              classes="max-w-2xl !font-normal !text-neutral-600 dark:!text-neutral-300"
+              classes="!font-normal !text-neutral-600 dark:!text-neutral-300"
             >
               Start from the area you need, then dive into the components
               already available in that category.
@@ -110,35 +88,33 @@ export default function Components() {
               <Link
                 key={category.id}
                 to={category.id}
-                className="group rounded-3xl border border-neutral-200/80 bg-white/90 p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-primary-300 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900/80 dark:hover:border-primary-400/50"
+                className="group relative rounded-3xl border border-neutral-200/80 bg-white/90 p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-primary-300 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900/80 dark:hover:border-primary-400/50"
               >
+                <span className="absolute right-5 top-5 flex size-10 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-700 transition duration-200 group-hover:translate-x-1 group-hover:bg-primary-50 group-hover:text-primary-700 dark:bg-neutral-800 dark:text-neutral-200 dark:group-hover:bg-primary-400/10 dark:group-hover:text-primary-300">
+                  <LuArrowUpRight size={18} />
+                </span>
                 <FlexWrapper
                   direction="col"
                   items="start"
                   gap={4}
                   classes="h-full"
                 >
-                  <div className="flex w-full items-start justify-between gap-4">
-                    <div>
-                      <Typography
-                        variant="H4"
-                        classes="!text-neutral-900 dark:!text-neutral-50"
-                      >
-                        {category.label}
-                      </Typography>
-                      <Typography
-                        variant="C1"
-                        classes="mt-2 !text-neutral-500 dark:!text-neutral-400"
-                      >
-                        {categoryHighlights[category.id]}
-                      </Typography>
-                    </div>
-                    <div className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200">
-                      {category.items.length}
-                    </div>
+                  <div className="w-full pr-14">
+                    <Typography
+                      variant="H4"
+                      classes="!text-neutral-900 dark:!text-neutral-50"
+                    >
+                      {category.label}
+                    </Typography>
+                    <Typography
+                      variant="C1"
+                      classes="mt-2 !text-neutral-500 dark:!text-neutral-400"
+                    >
+                      {categoryHighlights[category.id]}
+                    </Typography>
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex max-h-[56px] flex-wrap gap-2 overflow-hidden">
                     {category.items.slice(0, 4).map((item) => (
                       <span
                         key={item.id}
@@ -148,22 +124,10 @@ export default function Components() {
                       </span>
                     ))}
                     {category.items.length > 4 && (
-                      <span className="rounded-full bg-primary-50 px-2.5 py-1 text-xs font-medium text-primary-700 dark:bg-primary-400/10 dark:text-primary-300">
+                      <span className="px-1 py-1 text-xs font-medium text-neutral-500 dark:text-neutral-400">
                         +{category.items.length - 4} more
                       </span>
                     )}
-                  </div>
-
-                  <div className="mt-auto flex w-full items-center justify-between pt-2">
-                    <Typography
-                      variant="C1"
-                      classes="!text-neutral-500 dark:!text-neutral-400"
-                    >
-                      {categoryDescriptions[category.id]}
-                    </Typography>
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-700 transition duration-200 group-hover:translate-x-1 group-hover:bg-primary-50 group-hover:text-primary-700 dark:bg-neutral-800 dark:text-neutral-200 dark:group-hover:bg-primary-400/10 dark:group-hover:text-primary-300">
-                      <LuArrowUpRight size={18} />
-                    </span>
                   </div>
                 </FlexWrapper>
               </Link>
