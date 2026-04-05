@@ -1,6 +1,8 @@
 namespace Data {
   type AvatarSize = 'sm' | 'md' | 'lg';
   type AvatarStatus = 'online' | 'offline' | 'busy';
+  type BadgeSize = 'sm' | 'md' | 'lg';
+  type BadgeVariant = 'neutral' | 'primary' | 'success' | 'warning' | 'danger';
 
   interface AvatarProps {
     src?: string;
@@ -8,6 +10,13 @@ namespace Data {
     alt?: string;
     size?: AvatarSize;
     status?: AvatarStatus;
+    classes?: string;
+  }
+
+  interface BadgeProps {
+    label: string;
+    size?: BadgeSize;
+    variant?: BadgeVariant;
     classes?: string;
   }
 

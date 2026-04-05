@@ -23,6 +23,7 @@ import ComponentPaginationPage from '@/pages/components/navigation/pagination/Co
 import ComponentTabsPage from '@/pages/components/navigation/tabs/ComponentTabsPage';
 import ComponentBreadcrumbPage from '@/pages/components/navigation/breadcrumb/ComponentBreadcrumbPage';
 import ComponentAvatarPage from '@/pages/components/dataDisplay/avatar/ComponentAvatarPage';
+import ComponentBadgePage from '@/pages/components/dataDisplay/badge/ComponentBadgePage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -108,6 +109,7 @@ function App() {
             element={<ComponentBreadcrumbPage />}
           />
           <Route path="dataDisplay/avatar" element={<ComponentAvatarPage />} />
+          <Route path="dataDisplay/badge" element={<ComponentBadgePage />} />
         </Route>
       </Routes>
     </AppProvider>
