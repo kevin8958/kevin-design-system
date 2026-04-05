@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
+import { useInView } from 'motion/react';
 
 const baseStyles: Record<Interaction.SplitTextVariant, string> = {
   H1: 'text-[64px] leading-[1.2] font-bold',
@@ -10,6 +11,42 @@ const baseStyles: Record<Interaction.SplitTextVariant, string> = {
   C1: 'text-[12px] leading-[1.6]',
 };
 
+const SplitTextCharacters = ({
+  text,
+  delay,
+}: {
+  text: string;
+  delay: number;
+}) => {
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const frameId = requestAnimationFrame(() => {
+      setActive(true);
+    });
+
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
+  return text.split('').map((char, index) => (
+    <span
+      key={`${char}-${index}`}
+      aria-hidden="true"
+      className="inline-block"
+      style={{
+        opacity: active ? 1 : 0,
+        transform: active ? 'translateY(0)' : 'translateY(1rem)',
+        transitionProperty: 'opacity, transform',
+        transitionDuration: '500ms',
+        transitionTimingFunction: 'ease-out',
+        transitionDelay: `${index * delay}ms`,
+      }}
+    >
+      {char === ' ' ? '\u00A0' : char}
+    </span>
+  ));
+};
+
 const SplitText = ({
   text,
   classes = '',
@@ -18,7 +55,8 @@ const SplitText = ({
   repeat = false,
 }: Interaction.SplitTextProps) => {
   const ref = useRef<HTMLParagraphElement>(null);
-  const [cycle, setCycle] = useState(0);
+  const [cycle, setCycle] = useState(repeat ? 1 : 0);
+  const isInView = useInView(ref, { once: !repeat, margin: '0px' });
 
   useEffect(() => {
     if (!repeat) return;
@@ -31,57 +69,40 @@ const SplitText = ({
   }, [delay, repeat, text]);
 
   useEffect(() => {
-    if (repeat) return;
-
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      const timeout = globalThis.setTimeout(() => {
-        setCycle((prev) => prev + 1);
-      }, 0);
-
-      return () => globalThis.clearTimeout(timeout);
-    }
-
-    if (!ref.current) {
+    if (repeat || !isInView || cycle > 0) {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setCycle((prev) => prev + 1);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 },
-    );
+    const timeout = globalThis.setTimeout(() => {
+      setCycle(1);
+    }, 0);
 
-    observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, [repeat]);
+    return () => globalThis.clearTimeout(timeout);
+  }, [cycle, isInView, repeat]);
 
   return (
     <p
-      key={cycle}
       ref={ref}
+      aria-label={text}
       className={classNames(
         baseStyles[variant],
         'inline-block break-words whitespace-pre-wrap text-neutral-900 dark:text-neutral-100',
         classes,
       )}
     >
-      {text.split('').map((char, index) => (
-        <span
-          key={`${char}-${index}`}
-          className="inline-block translate-y-0 opacity-0"
-          style={{
-            animation: 'split-text-fade-up 0.5s ease-out forwards',
-            animationDelay: `${index * delay}ms`,
-          }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </span>
-      ))}
+      {cycle > 0 ? (
+        <SplitTextCharacters key={cycle} text={text} delay={delay} />
+      ) : (
+        text.split('').map((char, index) => (
+          <span
+            key={`${char}-${index}`}
+            aria-hidden="true"
+            className="inline-block opacity-0"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </span>
+        ))
+      )}
     </p>
   );
 };
