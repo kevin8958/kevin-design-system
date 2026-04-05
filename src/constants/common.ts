@@ -122,16 +122,16 @@ export const designSystemMenus = [
             label: 'Breadcrumb',
             href: '/components/navigation/breadcrumb',
           },
-          {
-            id: 'gnb',
-            label: 'Global Navigation',
-            href: '/components/navigation/gnb',
-          },
-          {
-            id: 'snb',
-            label: 'Side Navigation',
-            href: '/components/navigation/snb',
-          },
+          // {
+          //   id: 'gnb',
+          //   label: 'Global Navigation',
+          //   href: '/components/navigation/gnb',
+          // },
+          // {
+          //   id: 'snb',
+          //   label: 'Side Navigation',
+          //   href: '/components/navigation/snb',
+          // },
         ],
       },
       {
