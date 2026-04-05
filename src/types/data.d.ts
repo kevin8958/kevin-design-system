@@ -20,6 +20,11 @@ namespace Data {
     classes?: string;
   }
 
+  interface TableProps {
+    columns: Column[];
+    data: Row[];
+  }
+
   interface SimpleTableProps {
     columns: Column[];
     data: Row[];
