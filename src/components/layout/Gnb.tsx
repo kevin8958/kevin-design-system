@@ -23,6 +23,14 @@ const Gnb = ({ isOpen, onToggle }: GnbProps) => {
   const { theme, toggleTheme } = useTheme();
   const { pathname } = useLocation();
 
+  const isNavItemActive = (href: string) => {
+    if (href === '/getting-started') {
+      return pathname === '/' || pathname.startsWith('/getting-started');
+    }
+
+    return pathname.startsWith(href);
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full h-16 border-b border-neutral-990/10 dark:border-neutral-800 backdrop-blur-md bg-white/70 dark:bg-neutral-990/70">
       <div className="flex items-center justify-between h-full px-4 sm:px-6 mx-auto max-w-7xl">
@@ -50,7 +58,7 @@ const Gnb = ({ isOpen, onToggle }: GnbProps) => {
                     // Hover state (Light: secondary, Dark: primary)
                     'hover:text-secondary-400! dark:hover:text-primary-400!',
                     // Active state
-                    pathname.startsWith(item.href) &&
+                    isNavItemActive(item.href) &&
                       'text-secondary-400! dark:text-primary-400!',
                   )}
                 >

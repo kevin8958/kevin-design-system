@@ -127,23 +127,23 @@ const Sticker = ({
   return (
     <div
       className={classNames(
-        'flex w-full flex-col gap-4 rounded-3xl bg-neutral-900 p-4 lg:flex-row',
+        'flex w-full flex-col gap-4 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 dark:border-neutral-800 dark:bg-neutral-900 lg:flex-row',
         classes,
       )}
     >
-      <div className="w-full overflow-x-auto rounded-2xl bg-neutral-800">
+      <div className="w-full overflow-x-auto rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-800">
         <div
           ref={boardRef}
           role="region"
           aria-label="Sticker board"
           className={classNames(
-            'relative overflow-hidden rounded-2xl bg-neutral-800 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_40%)]',
+            'relative overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_top,_rgba(61,149,255,0.16),_transparent_42%)] bg-white dark:bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_40%)] dark:bg-neutral-800',
             draggingId !== null ? 'cursor-grabbing' : 'cursor-default',
           )}
           style={{ width: boardWidth, height: boardHeight }}
         >
           {stickers.length === 0 && (
-            <p className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-950/60 px-4 py-2 text-sm font-semibold text-neutral-100">
+            <p className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-neutral-700 shadow-sm dark:bg-neutral-950/60 dark:text-neutral-100">
               {emptyMessage}
             </p>
           )}
@@ -188,7 +188,7 @@ const Sticker = ({
                 type="button"
                 aria-label={`Remove ${sticker.label || sticker.alt || 'sticker'}`}
                 onClick={() => removeSticker(sticker.instanceId)}
-                className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full bg-neutral-950/85 text-neutral-100 opacity-0 shadow-md transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full bg-white/95 text-neutral-700 opacity-0 shadow-md transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-neutral-950/85 dark:text-neutral-100"
               >
                 <LuX size={14} />
               </button>
@@ -204,7 +204,7 @@ const Sticker = ({
               key={option.id}
               type="button"
               onClick={() => addSticker(option)}
-              className="flex aspect-square items-center justify-center rounded-2xl border border-neutral-100/15 bg-neutral-900/60 p-3 transition hover:bg-neutral-100/10 active:scale-[0.98]"
+              className="flex aspect-square items-center justify-center rounded-2xl border border-neutral-200 bg-white p-3 transition hover:bg-neutral-50 active:scale-[0.98] dark:border-neutral-100/15 dark:bg-neutral-900/60 dark:hover:bg-neutral-100/10"
             >
               <img
                 src={option.src}

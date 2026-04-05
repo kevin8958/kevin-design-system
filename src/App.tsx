@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import Home from '@/pages/Home';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Gnb from '@/components/layout/Gnb';
 import Snb from '@/components/layout/Snb';
@@ -36,6 +35,7 @@ import ComponentDividerPage from '@/pages/components/layout/divider/ComponentDiv
 import ComponentCountUpPage from '@/pages/components/interaction/countUp/ComponentCountUpPage';
 import ComponentSplitTextPage from '@/pages/components/interaction/splitText/ComponentSplitTextPage';
 import ComponentStickerPage from '@/pages/components/interaction/sticker/ComponentStickerPage';
+import ComponentCategoryPage from '@/pages/components/category/ComponentCategoryPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,12 +84,13 @@ function App() {
     <AppProvider>
       <Routes>
         <Route element={<BaseLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<GettingStarted />} />
           <Route path="/getting-started" element={<GettingStarted />} />
         </Route>
 
         <Route path="/components" element={<DocsLayout />}>
           <Route index element={<Components />} />
+          <Route path=":categoryId" element={<ComponentCategoryPage />} />
           {/* foundation */}
           <Route path="foundation/colors" element={<Colors />} />
           <Route path="foundation/typography" element={<Typography />} />

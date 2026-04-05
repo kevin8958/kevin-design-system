@@ -15,7 +15,7 @@ const SplitTextVariantGuide = () => {
       example={
         <CodeExample code={exampleCode} className="flex-1">
           <FlexWrapper
-            classes="w-full rounded-2xl bg-neutral-900 p-8 text-neutral-100"
+            classes="w-full rounded-2xl border border-neutral-200 bg-neutral-50 p-8 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100"
             direction="col"
             items="start"
             gap={6}
@@ -25,7 +25,10 @@ const SplitTextVariantGuide = () => {
                 text="Animate each character with a subtle reveal."
                 variant="B1"
               />
-              <Typography variant="C1" classes="!text-neutral-300">
+              <Typography
+                variant="C1"
+                classes="!text-neutral-500 dark:!text-neutral-300"
+              >
                 Body Copy
               </Typography>
             </FlexWrapper>
@@ -35,7 +38,10 @@ const SplitTextVariantGuide = () => {
                 variant="H2"
                 delay={35}
               />
-              <Typography variant="C1" classes="!text-neutral-300">
+              <Typography
+                variant="C1"
+                classes="!text-neutral-500 dark:!text-neutral-300"
+              >
                 Headline
               </Typography>
             </FlexWrapper>
