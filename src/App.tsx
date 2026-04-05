@@ -30,6 +30,7 @@ import ComponentTooltipPage from '@/pages/components/dataDisplay/tooltip/Compone
 import ComponentAlertPage from '@/pages/components/feedback/alert/ComponentAlertPage';
 import ComponentProgressPage from '@/pages/components/feedback/progress/ComponentProgressPage';
 import ComponentSkeletonPage from '@/pages/components/feedback/skeleton/ComponentSkeletonPage';
+import ComponentToastPage from '@/pages/components/feedback/toast/ComponentToastPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -125,6 +126,7 @@ function App() {
           <Route path="feedback/alert" element={<ComponentAlertPage />} />
           <Route path="feedback/progress" element={<ComponentProgressPage />} />
           <Route path="feedback/skeleton" element={<ComponentSkeletonPage />} />
+          <Route path="feedback/toast" element={<ComponentToastPage />} />
         </Route>
       </Routes>
     </AppProvider>
