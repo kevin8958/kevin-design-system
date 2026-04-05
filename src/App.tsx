@@ -32,6 +32,7 @@ import ComponentProgressPage from '@/pages/components/feedback/progress/Componen
 import ComponentSkeletonPage from '@/pages/components/feedback/skeleton/ComponentSkeletonPage';
 import ComponentToastPage from '@/pages/components/feedback/toast/ComponentToastPage';
 import ComponentGridPage from '@/pages/components/layout/grid/ComponentGridPage';
+import ComponentDividerPage from '@/pages/components/layout/divider/ComponentDividerPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -129,6 +130,7 @@ function App() {
           <Route path="feedback/skeleton" element={<ComponentSkeletonPage />} />
           <Route path="feedback/toast" element={<ComponentToastPage />} />
           <Route path="layout/grid" element={<ComponentGridPage />} />
+          <Route path="layout/divider" element={<ComponentDividerPage />} />
         </Route>
       </Routes>
     </AppProvider>
