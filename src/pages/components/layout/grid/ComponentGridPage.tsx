@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentGridPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Layout', href: '/components/layout' },
     { label: 'Grid', href: '/components/layout/grid' },
   ];

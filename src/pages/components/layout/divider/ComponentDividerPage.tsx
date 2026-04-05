@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentDividerPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Layout', href: '/components/layout' },
     { label: 'Divider', href: '/components/layout/divider' },
   ];

@@ -494,9 +494,9 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       preview: (
         <BreadCrumb
           items={[
-            { label: 'Home' },
-            { label: 'Components' },
+            { label: 'Components', href: '/components' },
             { label: 'Navigation', href: '/components/navigation' },
+            { label: 'Breadcrumb', href: '/components/navigation/breadcrumb' },
           ]}
         />
       ),

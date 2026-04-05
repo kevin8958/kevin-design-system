@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentBadgePage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Data Display', href: '/components/dataDisplay' },
     { label: 'Badge', href: '/components/dataDisplay/badge' },
   ];

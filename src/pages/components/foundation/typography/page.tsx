@@ -7,7 +7,7 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 
 const ComponenTypographyPage = () => {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Foundation', href: '/components/foundation' },
     { label: 'Typography', href: '/components/foundation/typography' },
   ];

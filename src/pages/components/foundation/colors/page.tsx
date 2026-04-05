@@ -8,7 +8,7 @@ import StatusGuide from '@/pages/components/foundation/colors/StatusGuide';
 
 const ComponenColorsPage = () => {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Foundation', href: '/components/foundation' },
     { label: 'Colors', href: '/components/foundation/colors' },
   ];

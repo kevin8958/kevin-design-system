@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentCountUpPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Interaction', href: '/components/interaction' },
     { label: 'Count Up', href: '/components/interaction/countUp' },
   ];

@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentAlertPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Feedback', href: '/components/feedback' },
     { label: 'Alert', href: '/components/feedback/alert' },
   ];

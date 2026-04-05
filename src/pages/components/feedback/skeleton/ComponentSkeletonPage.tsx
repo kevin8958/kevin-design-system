@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentSkeletonPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Feedback', href: '/components/feedback' },
     { label: 'Skeleton', href: '/components/feedback/skeleton' },
   ];

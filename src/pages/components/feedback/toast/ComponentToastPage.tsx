@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentToastPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Feedback', href: '/components/feedback' },
     { label: 'Toast', href: '/components/feedback/toast' },
   ];

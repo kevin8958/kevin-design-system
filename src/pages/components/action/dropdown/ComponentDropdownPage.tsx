@@ -16,8 +16,8 @@ import DropdownSubMenuGuide from '@/pages/components/action/dropdown/DropdownSub
 
 export default function ComponentDropdownPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
     { label: 'Components', href: '/components' },
+    { label: 'Action', href: '/components/action' },
     { label: 'Dropdown', href: '/components/action/dropdown' },
   ];
 

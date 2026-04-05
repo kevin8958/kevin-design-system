@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentTagPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Data Display', href: '/components/dataDisplay' },
     { label: 'Tag', href: '/components/dataDisplay/tag' },
   ];

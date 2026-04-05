@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentAvatarPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Data Display', href: '/components/dataDisplay' },
     { label: 'Avatar', href: '/components/dataDisplay/avatar' },
   ];

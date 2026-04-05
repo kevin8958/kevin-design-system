@@ -5,7 +5,7 @@ import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
 const items = [
-  { label: 'Home', href: '/' },
+  { label: 'Components', href: '/components' },
   { label: 'Navigation', href: '/components/navigation' },
   { label: 'Breadcrumb', href: '/components/navigation/breadcrumb' },
 ];
@@ -13,7 +13,7 @@ const items = [
 const TypeExample = () => {
   const exampleCode = `<BreadCrumb
   items={[
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Navigation', href: '/components/navigation' },
     { label: 'Breadcrumb', href: '/components/navigation/breadcrumb' },
   ]}

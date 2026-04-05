@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentPaginationPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Navigation', href: '/components/navigation' },
     { label: 'Pagination', href: '/components/navigation/pagination' },
   ];

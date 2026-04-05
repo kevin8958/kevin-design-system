@@ -15,8 +15,8 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentButtonPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
     { label: 'Components', href: '/components' },
+    { label: 'Action', href: '/components/action' },
     { label: 'Button', href: '/components/action/button' },
   ];
 

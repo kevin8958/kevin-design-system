@@ -12,8 +12,8 @@ import { DrawerLoadingGuide } from './DrawerLoadingGuide';
 
 export default function ComponentDrawerPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
     { label: 'Components', href: '/components' },
+    { label: 'Action', href: '/components/action' },
     { label: 'Drawer', href: '/components/action/drawer' },
   ];
 

@@ -13,8 +13,8 @@ import ModalPositionGuide from '@/pages/components/action/modal/ModalPositionGui
 
 export default function ComponentModalPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
     { label: 'Components', href: '/components' },
+    { label: 'Action', href: '/components/action' },
     { label: 'Modal', href: '/components/action/modal' },
   ];
 

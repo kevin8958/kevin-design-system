@@ -23,7 +23,7 @@ const StateExample = () => {
           <Typography variant="C1">Current Page</Typography>
           <BreadCrumb
             items={[
-              { label: 'Home', href: '/' },
+              { label: 'Components', href: '/components' },
               { label: 'Navigation', href: '/components/navigation' },
               { label: 'Breadcrumb', href: '/components/navigation/breadcrumb' },
             ]}

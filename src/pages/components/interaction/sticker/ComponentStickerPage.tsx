@@ -12,7 +12,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentStickerPage() {
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
     { label: 'Interaction', href: '/components/interaction' },
     { label: 'Sticker', href: '/components/interaction/sticker' },
   ];
