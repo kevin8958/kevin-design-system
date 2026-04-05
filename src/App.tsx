@@ -34,6 +34,7 @@ import ComponentToastPage from '@/pages/components/feedback/toast/ComponentToast
 import ComponentGridPage from '@/pages/components/layout/grid/ComponentGridPage';
 import ComponentDividerPage from '@/pages/components/layout/divider/ComponentDividerPage';
 import ComponentCountUpPage from '@/pages/components/interaction/countUp/ComponentCountUpPage';
+import ComponentSplitTextPage from '@/pages/components/interaction/splitText/ComponentSplitTextPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -135,6 +136,10 @@ function App() {
           <Route
             path="interaction/countUp"
             element={<ComponentCountUpPage />}
+          />
+          <Route
+            path="interaction/splitText"
+            element={<ComponentSplitTextPage />}
           />
         </Route>
       </Routes>
