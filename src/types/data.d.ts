@@ -5,6 +5,7 @@ namespace Data {
   type BadgeVariant = 'neutral' | 'primary' | 'success' | 'warning' | 'danger';
   type TagSize = 'sm' | 'md' | 'lg';
   type TagVariant = 'neutral' | 'primary';
+  type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
 
   interface AvatarProps {
     src?: string;
@@ -26,6 +27,13 @@ namespace Data {
     label: string;
     size?: TagSize;
     variant?: TagVariant;
+    classes?: string;
+  }
+
+  interface TooltipProps {
+    content: React.ReactNode;
+    children: React.ReactNode;
+    position?: TooltipPosition;
     classes?: string;
   }
 

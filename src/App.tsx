@@ -26,6 +26,7 @@ import ComponentAvatarPage from '@/pages/components/dataDisplay/avatar/Component
 import ComponentBadgePage from '@/pages/components/dataDisplay/badge/ComponentBadgePage';
 import ComponentTablePage from '@/pages/components/dataDisplay/table/ComponentTablePage';
 import ComponentTagPage from '@/pages/components/dataDisplay/tag/ComponentTagPage';
+import ComponentTooltipPage from '@/pages/components/dataDisplay/tooltip/ComponentTooltipPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -114,6 +115,10 @@ function App() {
           <Route path="dataDisplay/badge" element={<ComponentBadgePage />} />
           <Route path="dataDisplay/table" element={<ComponentTablePage />} />
           <Route path="dataDisplay/tag" element={<ComponentTagPage />} />
+          <Route
+            path="dataDisplay/tooltip"
+            element={<ComponentTooltipPage />}
+          />
         </Route>
       </Routes>
     </AppProvider>
