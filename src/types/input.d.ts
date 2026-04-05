@@ -104,4 +104,20 @@ namespace Input {
       update: Date | null | [Date | null, Date | null] | Date[],
     ) => void;
   }
+
+  /** UploadDropzone */
+  interface UploadDropzoneProps {
+    label?: string;
+    description?: string;
+    helperText?: string;
+    classes?: string;
+    accept?: string;
+    multiple?: boolean;
+    disabled?: boolean;
+    invalid?: boolean;
+    errorMsg?: string;
+    files?: File[];
+    maxFiles?: number;
+    onChange?: (files: File[]) => void;
+  }
 }

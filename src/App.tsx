@@ -18,6 +18,7 @@ import ComponentCheckboxPage from '@/pages/components/input/checkbox/ComponentCh
 import ComponentRadioPage from '@/pages/components/input/radio/ComponentRadioPage';
 import ComponentSwitchPage from '@/pages/components/input/switch/ComponentSwitchPage';
 import ComponentDatePickerPage from '@/pages/components/input/datepicker/ComponentDatePickerPage';
+import ComponentUploadDropzonePage from '@/pages/components/input/uploadDropzone/ComponentUploadDropzonePage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,6 +89,10 @@ function App() {
           <Route
             path="input/datepicker/*"
             element={<ComponentDatePickerPage />}
+          />
+          <Route
+            path="input/uploadDropzone"
+            element={<ComponentUploadDropzonePage />}
           />
         </Route>
       </Routes>
