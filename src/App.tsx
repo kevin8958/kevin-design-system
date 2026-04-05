@@ -33,6 +33,7 @@ import ComponentSkeletonPage from '@/pages/components/feedback/skeleton/Componen
 import ComponentToastPage from '@/pages/components/feedback/toast/ComponentToastPage';
 import ComponentGridPage from '@/pages/components/layout/grid/ComponentGridPage';
 import ComponentDividerPage from '@/pages/components/layout/divider/ComponentDividerPage';
+import ComponentCountUpPage from '@/pages/components/interaction/countUp/ComponentCountUpPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -131,6 +132,10 @@ function App() {
           <Route path="feedback/toast" element={<ComponentToastPage />} />
           <Route path="layout/grid" element={<ComponentGridPage />} />
           <Route path="layout/divider" element={<ComponentDividerPage />} />
+          <Route
+            path="interaction/countUp"
+            element={<ComponentCountUpPage />}
+          />
         </Route>
       </Routes>
     </AppProvider>
