@@ -35,6 +35,7 @@ import ComponentGridPage from '@/pages/components/layout/grid/ComponentGridPage'
 import ComponentDividerPage from '@/pages/components/layout/divider/ComponentDividerPage';
 import ComponentCountUpPage from '@/pages/components/interaction/countUp/ComponentCountUpPage';
 import ComponentSplitTextPage from '@/pages/components/interaction/splitText/ComponentSplitTextPage';
+import ComponentStickerPage from '@/pages/components/interaction/sticker/ComponentStickerPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -134,12 +135,13 @@ function App() {
           <Route path="layout/grid" element={<ComponentGridPage />} />
           <Route path="layout/divider" element={<ComponentDividerPage />} />
           <Route
-            path="interaction/countUp"
-            element={<ComponentCountUpPage />}
-          />
-          <Route
             path="interaction/splitText"
             element={<ComponentSplitTextPage />}
+          />
+          <Route path="interaction/sticker" element={<ComponentStickerPage />} />
+          <Route
+            path="interaction/countUp"
+            element={<ComponentCountUpPage />}
           />
         </Route>
       </Routes>

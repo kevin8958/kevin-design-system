@@ -22,4 +22,19 @@ namespace Interaction {
     delay?: number;
     repeat?: boolean;
   }
+
+  interface StickerOption {
+    id: string | number;
+    src: string;
+    alt?: string;
+    label?: string;
+  }
+
+  interface StickerProps {
+    options?: StickerOption[];
+    boardWidth?: number;
+    boardHeight?: number;
+    emptyMessage?: string;
+    classes?: string;
+  }
 }
