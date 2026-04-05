@@ -27,6 +27,7 @@ import ComponentBadgePage from '@/pages/components/dataDisplay/badge/ComponentBa
 import ComponentTablePage from '@/pages/components/dataDisplay/table/ComponentTablePage';
 import ComponentTagPage from '@/pages/components/dataDisplay/tag/ComponentTagPage';
 import ComponentTooltipPage from '@/pages/components/dataDisplay/tooltip/ComponentTooltipPage';
+import ComponentAlertPage from '@/pages/components/feedback/alert/ComponentAlertPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -119,6 +120,7 @@ function App() {
             path="dataDisplay/tooltip"
             element={<ComponentTooltipPage />}
           />
+          <Route path="feedback/alert" element={<ComponentAlertPage />} />
         </Route>
       </Routes>
     </AppProvider>
