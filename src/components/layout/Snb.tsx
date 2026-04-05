@@ -1,13 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-} from '@headlessui/react';
 import { Link, useLocation } from 'react-router-dom';
-import { LuChevronRight } from 'react-icons/lu';
 import { designSystemMenus } from '@/constants/common';
 import { cn } from '@/libs/utils';
 import Divider from './Divider';
@@ -44,16 +38,26 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   ).flatMap((menu) => {
     if (menu.id === 'components' && menu.sections) {
       return menu.sections.map((section) => ({
-        id: section.group.toLowerCase().replace(/\s+/g, '-'),
+        id:
+          section.group === 'Data Display'
+            ? 'dataDisplay'
+            : section.group.toLowerCase(),
         label: section.group,
         items: section.items,
+        href:
+          section.group === 'Data Display'
+            ? '/components/dataDisplay'
+            : `/components/${section.group.toLowerCase()}`,
       }));
     }
-    return {
-      id: menu.id,
-      label: menu.label,
-      items: menu.items || [],
-    };
+    return [
+      {
+        id: menu.id,
+        label: menu.label,
+        items: menu.items || [],
+        href: `/components/${menu.id}`,
+      },
+    ];
   });
 
   return (
@@ -107,61 +111,49 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
               <Divider orientation="horizontal" classes="md:hidden" />
               <ul className="flex flex-col gap-1 pt-2 pb-10">
                 {flattenedMenus.map((menu) => {
-                  const isActiveMenu = menu.items.some((item) =>
-                    pathname.startsWith(item.href),
-                  );
+                  const isActiveMenu =
+                    pathname === menu.href ||
+                    pathname.startsWith(`${menu.href}/`) ||
+                    menu.items.some((item) => pathname.startsWith(item.href));
 
                   return (
                     <li key={menu.id} className="mb-1">
-                      <Disclosure defaultOpen={true}>
-                        {({ open }) => (
-                          <>
-                            <DisclosureButton
+                      <div className="flex flex-col mt-0.5">
+                        <Link
+                          to={menu.href}
+                          onClick={onClose}
+                          className={cn(
+                            'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors group font-bold!',
+                            'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
+                            isActiveMenu
+                              ? 'text-secondary-500! dark:text-primary-400!'
+                              : 'text-neutral-500! dark:text-neutral-100!',
+                          )}
+                        >
+                          <span className="text-sm tracking-wider uppercase">
+                            {menu.label}
+                          </span>
+                        </Link>
+
+                        {menu.items.map((item) => {
+                          const isActiveItem = pathname === item.href;
+                          return (
+                            <Link
+                              key={item.id}
+                              to={item.href}
+                              onClick={onClose}
                               className={cn(
-                                'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors cursor-pointer group font-bold!',
-                                'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
-                                'outline-none! ring-none! border-none!',
-                                isActiveMenu
-                                  ? 'text-secondary-500! dark:text-primary-400!'
-                                  : 'text-neutral-500! dark:text-neutral-100!',
+                                'rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
+                                isActiveItem
+                                  ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
+                                  : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
                               )}
                             >
-                              <span className="text-sm tracking-wider uppercase">
-                                {menu.label}
-                              </span>
-                              <div className="group-hover:animate-[bounce-up_0.4s_ease-in-out]">
-                                <LuChevronRight
-                                  className={cn(
-                                    'size-3.5 transition-transform duration-200',
-                                    open && 'rotate-90',
-                                  )}
-                                />
-                              </div>
-                            </DisclosureButton>
-
-                            <DisclosurePanel className="flex flex-col mt-0.5">
-                              {menu.items.map((item) => {
-                                const isActiveItem = pathname === item.href;
-                                return (
-                                  <Link
-                                    key={item.id}
-                                    to={item.href}
-                                    onClick={onClose}
-                                    className={cn(
-                                      'rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
-                                      isActiveItem
-                                        ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
-                                        : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
-                                    )}
-                                  >
-                                    {item.label}
-                                  </Link>
-                                );
-                              })}
-                            </DisclosurePanel>
-                          </>
-                        )}
-                      </Disclosure>
+                              {item.label}
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </li>
                   );
                 })}

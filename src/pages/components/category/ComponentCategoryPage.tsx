@@ -133,7 +133,10 @@ const FoundationColorsPreview = () => (
         className="rounded-2xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900"
       >
         <div className={`h-20 w-full rounded-xl ${swatch.color}`} />
-        <Typography variant="C1" classes="mt-3 !text-neutral-500 dark:!text-neutral-400">
+        <Typography
+          variant="C1"
+          classes="mt-3 !text-neutral-500 dark:!text-neutral-400"
+        >
           {swatch.name}
         </Typography>
       </div>
@@ -145,8 +148,12 @@ const FoundationTypographyPreview = () => (
   <FlexWrapper direction="col" items="start" gap={3} classes="w-full">
     <Typography variant="H2">Design systems need strong hierarchy.</Typography>
     <Typography variant="H4">Section heading</Typography>
-    <Typography variant="B1" classes="!font-normal !text-neutral-600 dark:!text-neutral-300">
-      Body text establishes the default reading rhythm across pages and components.
+    <Typography
+      variant="B1"
+      classes="!font-normal !text-neutral-600 dark:!text-neutral-300"
+    >
+      Body text establishes the default reading rhythm across pages and
+      components.
     </Typography>
     <Typography variant="C1" classes="!text-neutral-500 dark:!text-neutral-400">
       Caption and supporting details
@@ -199,11 +206,19 @@ const ActionDrawerPreview = () => {
       <Button variant="outline" color="neutral" onClick={() => setIsOpen(true)}>
         Open drawer
       </Button>
-      <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} title="Inspector">
+      <Drawer
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Inspector"
+      >
         <FlexWrapper direction="col" items="start" gap={3}>
           <Typography variant="B1">Spacing</Typography>
-          <Typography variant="B2" classes="!font-normal !text-neutral-500 dark:!text-neutral-400">
-            Adjust padding, layout, and section structure from a contextual side panel.
+          <Typography
+            variant="B2"
+            classes="!font-normal !text-neutral-500 dark:!text-neutral-400"
+          >
+            Adjust padding, layout, and section structure from a contextual side
+            panel.
           </Typography>
         </FlexWrapper>
       </Drawer>
@@ -246,8 +261,16 @@ const InputRadioPreview = () => {
       value={value}
       onChange={setValue}
       options={[
-        { id: 'team', label: 'Team', desc: 'Share internally with the product team.' },
-        { id: 'client', label: 'Client', desc: 'Prepare a presentation-friendly version.' },
+        {
+          id: 'team',
+          label: 'Team',
+          desc: 'Share internally with the product team.',
+        },
+        {
+          id: 'client',
+          label: 'Client',
+          desc: 'Prepare a presentation-friendly version.',
+        },
       ]}
     />
   );
@@ -269,7 +292,12 @@ const InputSwitchPreview = () => {
 const InputDatePickerPreview = () => {
   const [value, setValue] = useState<Date | null>(new Date());
 
-  return <DatePicker value={value} onChange={(nextValue) => setValue(nextValue as Date | null)} />;
+  return (
+    <DatePicker
+      value={value}
+      onChange={(nextValue) => setValue(nextValue as Date | null)}
+    />
+  );
 };
 
 const InputUploadDropzonePreview = () => {
@@ -289,7 +317,12 @@ const NavigationPaginationPreview = () => {
   const [page, setPage] = useState(3);
 
   return (
-    <Pagination currentPage={page} totalPages={8} siblingCount={1} onPageChange={setPage} />
+    <Pagination
+      currentPage={page}
+      totalPages={8}
+      siblingCount={1}
+      onPageChange={setPage}
+    />
   );
 };
 
@@ -356,17 +389,20 @@ const LayoutDividerPreview = () => (
 const previewExamples: Record<string, Record<string, PreviewConfig>> = {
   foundation: {
     colors: {
-      description: 'Colors establish hierarchy, emphasis, and semantic meaning across the system.',
+      description:
+        'Colors establish hierarchy, emphasis, and semantic meaning across the system.',
       preview: <FoundationColorsPreview />,
     },
     typography: {
-      description: 'Typography defines readable hierarchy from hero messaging down to compact annotations.',
+      description:
+        'Typography defines readable hierarchy from hero messaging down to compact annotations.',
       preview: <FoundationTypographyPreview />,
     },
   },
   action: {
     button: {
-      description: 'Button drives primary, secondary, and lightweight actions with clear emphasis.',
+      description:
+        'Button drives primary, secondary, and lightweight actions with clear emphasis.',
       preview: (
         <FlexWrapper classes="w-full" justify="center" gap={3}>
           <Button>Primary</Button>
@@ -380,7 +416,8 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       ),
     },
     dropdown: {
-      description: 'Dropdown reveals grouped actions without leaving the current layout.',
+      description:
+        'Dropdown reveals grouped actions without leaving the current layout.',
       preview: (
         <FlexWrapper classes="w-full" justify="center">
           <ActionDropdownPreview />
@@ -388,7 +425,8 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       ),
     },
     modal: {
-      description: 'Modal interrupts the flow to confirm, review, or complete focused tasks.',
+      description:
+        'Modal interrupts the flow to confirm, review, or complete focused tasks.',
       preview: (
         <FlexWrapper classes="w-full" justify="center">
           <ActionModalPreview />
@@ -396,7 +434,8 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       ),
     },
     drawer: {
-      description: 'Drawer opens contextual tools from the edge of the screen while keeping the main page visible.',
+      description:
+        'Drawer opens contextual tools from the edge of the screen while keeping the main page visible.',
       preview: (
         <FlexWrapper classes="w-full" justify="center">
           <ActionDrawerPreview />
@@ -406,23 +445,28 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
   },
   input: {
     textinput: {
-      description: 'TextInput captures short form values with optional labels, prefixes, and validation states.',
+      description:
+        'TextInput captures short form values with optional labels, prefixes, and validation states.',
       preview: <InputTextPreview />,
     },
     checkbox: {
-      description: 'Checkbox supports independent binary selection and compact preference lists.',
+      description:
+        'Checkbox supports independent binary selection and compact preference lists.',
       preview: <InputCheckboxPreview />,
     },
     radio: {
-      description: 'Radio groups exclusive options with room for supporting descriptions.',
+      description:
+        'Radio groups exclusive options with room for supporting descriptions.',
       preview: <InputRadioPreview />,
     },
     switch: {
-      description: 'Switch handles immediate on/off preferences and setting toggles.',
+      description:
+        'Switch handles immediate on/off preferences and setting toggles.',
       preview: <InputSwitchPreview />,
     },
     datepicker: {
-      description: 'DatePicker helps users choose dates through direct calendar interaction.',
+      description:
+        'DatePicker helps users choose dates through direct calendar interaction.',
       preview: (
         <FlexWrapper classes="w-full max-w-sm" justify="center">
           <InputDatePickerPreview />
@@ -430,13 +474,15 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       ),
     },
     uploadDropzone: {
-      description: 'UploadDropzone offers click or drag-and-drop file selection in a large target area.',
+      description:
+        'UploadDropzone offers click or drag-and-drop file selection in a large target area.',
       preview: <InputUploadDropzonePreview />,
     },
   },
   navigation: {
     pagination: {
-      description: 'Pagination helps users move through larger result sets one page at a time.',
+      description:
+        'Pagination helps users move through larger result sets one page at a time.',
       preview: (
         <FlexWrapper classes="w-full" justify="center">
           <NavigationPaginationPreview />
@@ -444,11 +490,13 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       ),
     },
     tabs: {
-      description: 'Tabs switch between related content panels without leaving the current screen.',
+      description:
+        'Tabs switch between related content panels without leaving the current screen.',
       preview: <NavigationTabsPreview />,
     },
     breadcrumb: {
-      description: 'Breadcrumb reflects position in the hierarchy and gives quick access to parent levels.',
+      description:
+        'Breadcrumb reflects position in the hierarchy and gives quick access to parent levels.',
       preview: (
         <BreadCrumb
           items={[
@@ -516,7 +564,8 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
   },
   feedback: {
     alert: {
-      description: 'Alert communicates inline status and attention states inside page content.',
+      description:
+        'Alert communicates inline status and attention states inside page content.',
       preview: (
         <Alert
           title="Workspace updated"
@@ -526,15 +575,18 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       ),
     },
     progress: {
-      description: 'Progress communicates completion state for uploads, setup, and multistep flows.',
+      description:
+        'Progress communicates completion state for uploads, setup, and multistep flows.',
       preview: <Progress value={68} showValue />,
     },
     skeleton: {
-      description: 'Skeleton reserves layout while content is loading, reducing visual jumps.',
+      description:
+        'Skeleton reserves layout while content is loading, reducing visual jumps.',
       preview: <FeedbackSkeletonPreview />,
     },
     toast: {
-      description: 'Toast provides lightweight, temporary confirmation without interrupting the workflow.',
+      description:
+        'Toast provides lightweight, temporary confirmation without interrupting the workflow.',
       preview: (
         <FlexWrapper classes="w-full" justify="center">
           <Toast
@@ -548,17 +600,20 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
   },
   layout: {
     grid: {
-      description: 'Grid provides repeatable column structure for cards, dashboards, and responsive compositions.',
+      description:
+        'Grid provides repeatable column structure for cards, dashboards, and responsive compositions.',
       preview: <LayoutGridPreview />,
     },
     divider: {
-      description: 'Divider separates related groups while preserving a clean and lightweight layout rhythm.',
+      description:
+        'Divider separates related groups while preserving a clean and lightweight layout rhythm.',
       preview: <LayoutDividerPreview />,
     },
   },
   interaction: {
     splitText: {
-      description: 'SplitText reveals content character by character to add motion emphasis to key moments.',
+      description:
+        'SplitText reveals content character by character to add motion emphasis to key moments.',
       preview: (
         <div className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 p-8 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100">
           <SplitText
@@ -570,11 +625,13 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       ),
     },
     sticker: {
-      description: 'Sticker creates a playful board where visual elements can be placed and arranged.',
+      description:
+        'Sticker creates a playful board where visual elements can be placed and arranged.',
       preview: <Sticker boardWidth={520} boardHeight={280} />,
     },
     countUp: {
-      description: 'CountUp draws attention to metrics and KPIs with animated number transitions.',
+      description:
+        'CountUp draws attention to metrics and KPIs with animated number transitions.',
       preview: (
         <FlexWrapper classes="w-full" justify="center" gap={8}>
           <CountUp
@@ -662,18 +719,10 @@ export default function ComponentCategoryPage() {
     );
   }
 
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Components', href: '/components' },
-    { label: category.label, href: `/components/${category.id}` },
-  ];
-
   const categoryPreviewMap = previewExamples[category.id] ?? {};
 
   return (
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={8}>
-      <BreadCrumb items={breadcrumbItems} />
-
       <section className="w-full rounded-[32px] border border-neutral-200 bg-gradient-to-br from-white via-neutral-50 to-secondary-50/60 px-6 py-10 shadow-sm dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-900 md:px-10 md:py-12">
         <FlexWrapper direction="col" items="start" gap={4}>
           <Typography variant="H1">{category.label}</Typography>

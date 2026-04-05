@@ -57,6 +57,7 @@ namespace Layout {
     id: string;
     label: string;
     items: NavItem[];
+    href: string;
   }
 
   interface SNBProps {
