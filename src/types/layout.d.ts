@@ -19,6 +19,14 @@ namespace Layout {
     children?: React.ReactNode;
   }
 
+  /** Grid */
+  interface GridProps {
+    cols?: 1 | 2 | 3 | 4 | 5 | 6;
+    gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16;
+    classes?: string;
+    children?: React.ReactNode;
+  }
+
   /** GuideSection */
   interface GuideSectionProps {
     title: string;
@@ -55,5 +63,11 @@ namespace Layout {
     isOpen: boolean;
     onClose?: () => void;
     desktopHidden?: boolean;
+  }
+
+  /** Divider */
+  interface DividerProps {
+    orientation?: 'horizontal' | 'vertical';
+    classes?: string;
   }
 }
