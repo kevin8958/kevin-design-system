@@ -22,6 +22,7 @@ import ComponentUploadDropzonePage from '@/pages/components/input/uploadDropzone
 import ComponentPaginationPage from '@/pages/components/navigation/pagination/ComponentPaginationPage';
 import ComponentTabsPage from '@/pages/components/navigation/tabs/ComponentTabsPage';
 import ComponentBreadcrumbPage from '@/pages/components/navigation/breadcrumb/ComponentBreadcrumbPage';
+import ComponentAvatarPage from '@/pages/components/dataDisplay/avatar/ComponentAvatarPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,6 +107,7 @@ function App() {
             path="navigation/breadcrumb"
             element={<ComponentBreadcrumbPage />}
           />
+          <Route path="dataDisplay/avatar" element={<ComponentAvatarPage />} />
         </Route>
       </Routes>
     </AppProvider>
