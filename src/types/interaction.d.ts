@@ -21,6 +21,7 @@ namespace Interaction {
     variant?: SplitTextVariant;
     delay?: number;
     repeat?: boolean;
+    replayOnView?: boolean;
   }
 
   interface StickerOption {

@@ -53,10 +53,15 @@ const SplitText = ({
   variant = 'B1',
   delay = 40,
   repeat = false,
+  replayOnView = false,
 }: Interaction.SplitTextProps) => {
   const ref = useRef<HTMLParagraphElement>(null);
   const [cycle, setCycle] = useState(repeat ? 1 : 0);
-  const isInView = useInView(ref, { once: !repeat, margin: '0px' });
+  const wasInViewRef = useRef(false);
+  const isInView = useInView(ref, {
+    once: !(repeat || replayOnView),
+    margin: '0px',
+  });
 
   useEffect(() => {
     if (!repeat) return;
@@ -69,16 +74,47 @@ const SplitText = ({
   }, [delay, repeat, text]);
 
   useEffect(() => {
-    if (repeat || !isInView || cycle > 0) {
+    if (repeat) {
       return;
     }
 
-    const timeout = globalThis.setTimeout(() => {
+    let timeout: ReturnType<typeof setTimeout> | undefined;
+
+    if (replayOnView) {
+      if (isInView && !wasInViewRef.current) {
+        timeout = globalThis.setTimeout(() => {
+          setCycle((prev) => prev + 1);
+        }, 0);
+      }
+
+      wasInViewRef.current = isInView;
+
+      return () => {
+        if (timeout) {
+          globalThis.clearTimeout(timeout);
+        }
+      };
+    }
+
+    if (!isInView || cycle > 0) {
+      return;
+    }
+
+    timeout = globalThis.setTimeout(() => {
       setCycle(1);
     }, 0);
 
-    return () => globalThis.clearTimeout(timeout);
-  }, [cycle, isInView, repeat]);
+    return () => {
+      if (timeout) {
+        globalThis.clearTimeout(timeout);
+      }
+    };
+  }, [cycle, isInView, repeat, replayOnView]);
+
+  const shouldAnimate = repeat || cycle > 0;
+  const shouldShowAnimatedCharacters = replayOnView
+    ? shouldAnimate && isInView
+    : shouldAnimate;
 
   return (
     <p
@@ -90,7 +126,7 @@ const SplitText = ({
         classes,
       )}
     >
-      {cycle > 0 ? (
+      {shouldShowAnimatedCharacters ? (
         <SplitTextCharacters key={cycle} text={text} delay={delay} />
       ) : (
         text.split('').map((char, index) => (

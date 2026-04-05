@@ -5,7 +5,7 @@ import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
 const SplitTextStateGuide = () => {
-  const exampleCode = `<SplitText text="Scroll-triggered once" />
+  const exampleCode = `<SplitText text="Scroll-triggered once" replayOnView />
 <SplitText text="Looping emphasis" repeat delay={60} variant="H3" />`;
 
   return (
@@ -21,7 +21,11 @@ const SplitTextStateGuide = () => {
             gap={6}
           >
             <FlexWrapper direction="col" items="start" gap={3}>
-              <SplitText text="Scroll-triggered once" variant="B1" />
+              <SplitText
+                text="Scroll-triggered once"
+                variant="B1"
+                replayOnView
+              />
               <Typography variant="C1" classes="!text-neutral-300">
                 Scroll Into View
               </Typography>

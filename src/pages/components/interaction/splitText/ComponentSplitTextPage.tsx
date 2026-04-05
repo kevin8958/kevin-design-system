@@ -89,6 +89,13 @@ const propsData = [
   },
   {
     id: '5',
+    property: 'replayOnView',
+    type: 'boolean',
+    default: 'false',
+    description: 'Replays the animation each time the text re-enters the viewport.',
+  },
+  {
+    id: '6',
     property: 'classes',
     type: 'string',
     default: "''",
