@@ -1,5 +1,11 @@
-import { useRef, useState } from 'react';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  useLocation,
+} from 'react-router-dom';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Gnb from '@/components/layout/Gnb';
 import Snb from '@/components/layout/Snb';
@@ -40,6 +46,11 @@ import ComponentCategoryPage from '@/pages/components/category/ComponentCategory
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [pathname]);
 
   return (
     <div className="relative w-full min-h-screen">
@@ -57,6 +68,12 @@ function BaseLayout() {
 function DocsLayout() {
   const [isOpen, setIsOpen] = useState(false);
   const mainRef = useRef<HTMLElement | null>(null);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [pathname]);
 
   return (
     <div className="relative w-full min-h-screen">
