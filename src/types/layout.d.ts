@@ -66,6 +66,10 @@ namespace Layout {
     desktopHidden?: boolean;
   }
 
+  interface ScrollTopButtonProps {
+    scrollTargetRef?: React.RefObject<HTMLElement | null>;
+  }
+
   /** Divider */
   interface DividerProps {
     orientation?: 'horizontal' | 'vertical';

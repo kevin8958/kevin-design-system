@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Gnb from '@/components/layout/Gnb';
 import Snb from '@/components/layout/Snb';
+import ScrollTopButton from '@/components/layout/ScrollTopButton';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import GettingStarted from './pages/GettingStarted';
 import Components from './pages/Components';
@@ -48,12 +49,14 @@ function BaseLayout() {
       <main className="w-full max-w-7xl mx-auto px-4 pt-4">
         <Outlet />
       </main>
+      <ScrollTopButton />
     </div>
   );
 }
 
 function DocsLayout() {
   const [isOpen, setIsOpen] = useState(false);
+  const mainRef = useRef<HTMLElement | null>(null);
 
   return (
     <div className="relative w-full min-h-screen">
@@ -64,10 +67,14 @@ function DocsLayout() {
         classes="relative! w-full max-w-7xl mx-auto min-h-[calc(100dvh-64px)]"
       >
         <Snb isOpen={isOpen} onClose={() => setIsOpen(false)} />
-        <main className="flex flex-col flex-1 px-4 overflow-scroll pt-4">
+        <main
+          ref={mainRef}
+          className="flex flex-col flex-1 px-4 overflow-scroll pt-4"
+        >
           <Outlet />
         </main>
       </FlexWrapper>
+      <ScrollTopButton scrollTargetRef={mainRef} />
     </div>
   );
 }
