@@ -6,18 +6,25 @@ import GuideSection from '@/components/layout/GuideSection';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import { useModal } from '@/hooks/useModal';
 
+type ModalPreviewControls = Pick<
+  Action.ModalProps,
+  'maxWidth' | 'state' | 'position'
+>;
+
 type ModalConfig = {
   hideCancel: boolean;
   hideBottom: boolean;
-  title: string;
 };
 
-const ActionExample = () => {
+const ActionExample = ({
+  maxWidth,
+  state,
+  position,
+}: ModalPreviewControls) => {
   const { open, ModalWrapper } = useModal();
   const [config, setConfig] = useState<ModalConfig>({
     hideCancel: false,
     hideBottom: false,
-    title: 'Standard Modal',
   });
 
   const handleOpen = (newConfig: ModalConfig) => {
@@ -30,24 +37,22 @@ const ActionExample = () => {
       code={`<ModalWrapper \n  hideCancel={${config.hideCancel}} \n  hideBottom={${config.hideBottom}}\n>...`}
       className="flex-1"
     >
-      <FlexWrapper items="center" justify="center" gap={6}>
+      <FlexWrapper items="center" justify="center" gap={6} classes="flex-wrap">
         <Button
           onClick={() =>
             handleOpen({
               hideCancel: false,
               hideBottom: false,
-              title: 'Standard Modal',
             })
           }
         >
-          Standard
+          Default Footer
         </Button>
         <Button
           onClick={() =>
             handleOpen({
               hideCancel: true,
               hideBottom: false,
-              title: 'Hide Cancel (Show X)',
             })
           }
         >
@@ -58,7 +63,6 @@ const ActionExample = () => {
             handleOpen({
               hideCancel: false,
               hideBottom: true,
-              title: 'Hide Bottom (Show X)',
             })
           }
         >
@@ -67,10 +71,12 @@ const ActionExample = () => {
       </FlexWrapper>
 
       <ModalWrapper
-        title={config.title}
+        maxWidth={maxWidth}
+        state={state}
+        position={position}
+        title="Modal"
         hideCancel={config.hideCancel}
         hideBottom={config.hideBottom}
-        onConfirm={() => alert('Confirmed!')}
       >
         <Typography variant="B2">
           {config.hideBottom
@@ -84,11 +90,11 @@ const ActionExample = () => {
   );
 };
 
-const ModalActionGuide = () => (
+const ModalActionGuide = (props: ModalPreviewControls) => (
   <GuideSection
     title="Action Controls"
     description="Control the visibility of action buttons and the top close icon."
-    example={<ActionExample />}
+    example={<ActionExample {...props} />}
   />
 );
 

@@ -35,4 +35,37 @@ describe('ButtonGroup', () => {
 
     expect(handleChange).not.toHaveBeenCalled();
   });
+
+  it('expands to fill available width when fullWidth is true', () => {
+    const { container } = render(
+      <ButtonGroup items={items} value="one" fullWidth />,
+    );
+
+    expect(container.firstChild).toHaveClass('w-full');
+  });
+
+  it('passes the selected color through to active items', () => {
+    render(<ButtonGroup items={items} value="one" color="danger" />);
+
+    expect(screen.getByRole('button', { name: 'One' }).className).toContain(
+      'bg-danger',
+    );
+  });
+
+  it('does not call onChange when the whole group is disabled', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <ButtonGroup
+        items={items}
+        value="one"
+        disabled
+        onChange={handleChange}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Two' }));
+
+    expect(handleChange).not.toHaveBeenCalled();
+  });
 });

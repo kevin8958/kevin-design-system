@@ -6,7 +6,12 @@ import Dropdown from '@/components/action/Dropdown';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const DangerExample = () => {
+type DropdownPreviewControls = Pick<
+  Action.DropdownProps,
+  'size' | 'buttonVariant'
+>;
+
+const DangerExample = ({ size, buttonVariant }: DropdownPreviewControls) => {
   const items: Action.DropdownItem[] = [
     {
       type: 'item',
@@ -30,7 +35,9 @@ const DangerExample = () => {
   ];
 
   const exampleCode = `<Dropdown
-  buttonItem="Dropdown"
+  size="${size}"
+  buttonVariant="${buttonVariant}"
+  label="Dropdown"
   items={[
     { type: 'item', id: 'profile', label: 'Profile Settings', icon: <LuUser /> },
     { type: 'item', id: 'preferences', label: 'Preferences', icon: <LuSettings /> },
@@ -50,18 +57,23 @@ const DangerExample = () => {
         justify="center"
         classes="w-full min-h-[200px]"
       >
-        <Dropdown label="Dropdown" items={items} />
+        <Dropdown
+          size={size}
+          buttonVariant={buttonVariant}
+          label="Dropdown"
+          items={items}
+        />
       </FlexWrapper>
     </CodeExample>
   );
 };
 
-const DropdownDangerGuide = () => {
+const DropdownDangerGuide = (props: DropdownPreviewControls) => {
   return (
     <GuideSection
       title="Danger State"
       description="Use the danger property to highlight destructive actions like deletion or account deactivation."
-      example={<DangerExample />}
+      example={<DangerExample {...props} />}
     />
   );
 };

@@ -53,7 +53,7 @@ const IconPositionExample = ({
               >
                 Button
               </Button>
-              <Typography variant="C1" classes="uppercase font-mono opacity-60">
+              <Typography variant="C1">
                 {option.value}
               </Typography>
             </FlexWrapper>

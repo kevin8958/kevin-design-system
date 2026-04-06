@@ -25,7 +25,7 @@ const WidthExample = ({ size, variant, color }: ButtonPreviewControls) => {
           <Button size={size} variant={variant} color={color}>
             Button
           </Button>
-          <Typography variant="C1" classes="uppercase font-mono opacity-60">
+          <Typography variant="C1">
             Auto Width
           </Typography>
         </FlexWrapper>
@@ -33,7 +33,7 @@ const WidthExample = ({ size, variant, color }: ButtonPreviewControls) => {
           <Button size={size} variant={variant} color={color} fullWidth>
             Button
           </Button>
-          <Typography variant="C1" classes="uppercase font-mono opacity-60">
+          <Typography variant="C1">
             Full Width
           </Typography>
         </FlexWrapper>

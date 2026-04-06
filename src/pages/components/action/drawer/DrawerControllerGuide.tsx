@@ -3,29 +3,15 @@ import Select from '@/components/input/Select';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Typography from '@/components/foundation/Typography';
 
-const sizes: Action.ButtonSize[] = ['sm', 'md', 'lg'];
-const variants: Action.ButtonVariant[] = ['contain', 'outline', 'clear'];
-const colors: Action.ButtonColor[] = [
-  'primary',
-  'neutral',
-  'info',
-  'success',
-  'warning',
-  'danger',
-];
+const sizes: Action.DrawerSize[] = ['sm', 'md', 'lg', 'xl', 'full'];
+
 const defaultValues = {
-  Size: 'md',
-  Variant: 'contain',
-  Color: 'neutral',
+  Size: 'lg',
 } as const;
 
-type ButtonControllerProps = {
-  size: Action.ButtonSize;
-  variant: Action.ButtonVariant;
-  color: Action.ButtonColor;
-  onSizeChange: (next: Action.ButtonSize) => void;
-  onVariantChange: (next: Action.ButtonVariant) => void;
-  onColorChange: (next: Action.ButtonColor) => void;
+type DrawerControllerProps = {
+  size: Action.DrawerSize;
+  onSizeChange: (next: Action.DrawerSize) => void;
 };
 
 const renderControlRow = <T extends string>(
@@ -48,6 +34,7 @@ const renderControlRow = <T extends string>(
     <div className="hidden md:block">
       <ButtonGroup
         size="sm"
+        color="neutral"
         items={options.map((option) => ({
           label:
             option === defaultValues[label as keyof typeof defaultValues]
@@ -79,24 +66,16 @@ const renderControlRow = <T extends string>(
   </FlexWrapper>
 );
 
-const ButtonControllerGuide = ({
+const DrawerControllerGuide = ({
   size,
-  variant,
-  color,
   onSizeChange,
-  onVariantChange,
-  onColorChange,
-}: ButtonControllerProps) => {
+}: DrawerControllerProps) => {
   return (
     <FlexWrapper direction="col" items="start" gap={5}>
-      <Typography variant="C1">
-        * : Default
-      </Typography>
+      <Typography variant="C1">* : Default</Typography>
       {renderControlRow('Size', sizes, size, onSizeChange)}
-      {renderControlRow('Variant', variants, variant, onVariantChange)}
-      {renderControlRow('Color', colors, color, onColorChange)}
     </FlexWrapper>
   );
 };
 
-export default ButtonControllerGuide;
+export default DrawerControllerGuide;

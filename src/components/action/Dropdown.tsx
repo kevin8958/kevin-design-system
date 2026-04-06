@@ -44,6 +44,7 @@ const Dropdown = (props: Action.DropdownProps) => {
     buttonVariant = 'contain',
     size = 'md',
     label,
+    disabled = false,
     buttonClasses,
   } = props;
 
@@ -62,7 +63,7 @@ const Dropdown = (props: Action.DropdownProps) => {
   });
   const { setReference, setFloating } = refs;
 
-  const click = useClick(context);
+  const click = useClick(context, { enabled: !disabled });
   const dismiss = useDismiss(context);
   const role = useRole(context);
 
@@ -182,6 +183,7 @@ const Dropdown = (props: Action.DropdownProps) => {
         ref={setReference}
         variant={buttonVariant}
         size={size}
+        disabled={disabled}
         classes={buttonClasses}
         {...getReferenceProps()}
       >

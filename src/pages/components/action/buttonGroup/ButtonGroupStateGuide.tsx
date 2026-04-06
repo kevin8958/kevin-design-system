@@ -3,42 +3,49 @@ import ButtonGroup from '@/components/action/ButtonGroup';
 import CodeExample from '@/components/interaction/CodeExample';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import GuideSection from '@/components/layout/GuideSection';
+import Typography from '@/components/foundation/Typography';
 
 const disabledItems: Action.ButtonGroupItem[] = [
-  { label: 'Left', value: 'left' },
-  { label: 'Center', value: 'center', disabled: true },
-  { label: 'Right', value: 'right' },
+  { label: 'Button', value: 'first' },
+  { label: 'Button', value: 'second', disabled: true },
+  { label: 'Button', value: 'third' },
 ];
 
-const fullWidthItems: Action.ButtonGroupItem[] = [
-  { label: 'Primary', value: 'primary' },
-  { label: 'Neutral', value: 'neutral' },
-  { label: 'Danger', value: 'danger' },
+const groupItems: Action.ButtonGroupItem[] = [
+  { label: 'Button', value: 'first' },
+  { label: 'Button', value: 'second' },
+  { label: 'Button', value: 'third' },
 ];
 
-const StateExample = () => {
-  const [disabledValue, setDisabledValue] = useState('left');
-  const [fullWidthValue, setFullWidthValue] = useState('primary');
+type ButtonGroupPreviewControls = Pick<Action.ButtonGroupProps, 'size' | 'color'>;
+
+const StateExample = ({ size, color }: ButtonGroupPreviewControls) => {
+  const [disabledValue, setDisabledValue] = useState('first');
+  const [groupValue, setGroupValue] = useState('second');
 
   const exampleCode = `<ButtonGroup
+  size="${size}"
+  color="${color}"
   items={[
-    { label: 'Left', value: 'left' },
-    { label: 'Center', value: 'center', disabled: true },
-    { label: 'Right', value: 'right' },
+    { label: 'Button', value: 'first' },
+    { label: 'Button', value: 'second', disabled: true },
+    { label: 'Button', value: 'third' },
   ]}
   value={disabledValue}
   onChange={setDisabledValue}
 />
 
 <ButtonGroup
-  fullWidth
+  size="${size}"
+  color="${color}"
+  disabled
   items={[
-    { label: 'Primary', value: 'primary' },
-    { label: 'Neutral', value: 'neutral' },
-    { label: 'Danger', value: 'danger' },
+    { label: 'Button', value: 'first' },
+    { label: 'Button', value: 'second' },
+    { label: 'Button', value: 'third' },
   ]}
-  value={fullWidthValue}
-  onChange={setFullWidthValue}
+  value={groupValue}
+  onChange={setGroupValue}
 />`;
 
   return (
@@ -50,31 +57,43 @@ const StateExample = () => {
         gap={6}
         classes="w-full"
       >
-        <ButtonGroup
-          items={disabledItems}
-          value={disabledValue}
-          onChange={setDisabledValue}
-        />
-
-        <div className="w-full max-w-lg">
+        <FlexWrapper direction="col" items="center" gap={3}>
           <ButtonGroup
-            fullWidth
-            items={fullWidthItems}
-            value={fullWidthValue}
-            onChange={setFullWidthValue}
+            size={size}
+            color={color}
+            items={disabledItems}
+            value={disabledValue}
+            onChange={setDisabledValue}
           />
-        </div>
+          <Typography variant="C1">
+            Disabled Option
+          </Typography>
+        </FlexWrapper>
+
+        <FlexWrapper direction="col" items="center" gap={3}>
+          <ButtonGroup
+            size={size}
+            color={color}
+            disabled
+            items={groupItems}
+            value={groupValue}
+            onChange={setGroupValue}
+          />
+          <Typography variant="C1">
+            Disabled Group
+          </Typography>
+        </FlexWrapper>
       </FlexWrapper>
     </CodeExample>
   );
 };
 
-const ButtonGroupStateGuide = () => {
+const ButtonGroupStateGuide = (props: ButtonGroupPreviewControls) => {
   return (
     <GuideSection
       title="State"
-      description="Support disabled options and stretch groups across available width when needed."
-      example={<StateExample />}
+      description="Handle unavailable options at the item level or lock the entire group when changes are temporarily unavailable."
+      example={<StateExample {...props} />}
     />
   );
 };

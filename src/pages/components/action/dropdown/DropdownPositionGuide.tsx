@@ -5,7 +5,12 @@ import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const PositionExample = () => {
+type DropdownPreviewControls = Pick<
+  Action.DropdownProps,
+  'size' | 'buttonVariant'
+>;
+
+const PositionExample = ({ size, buttonVariant }: DropdownPreviewControls) => {
   const positionOptions: {
     id: 'left' | 'right';
     value: string;
@@ -36,15 +41,14 @@ const PositionExample = () => {
           >
             <Dropdown
               items={menuItems}
+              size={size}
+              buttonVariant={buttonVariant}
               dialogPosition={option.id}
-              label={option.value}
+              label="Dropdown"
               dialogWidth={100}
               buttonClasses="w-[100px]"
             />
-            <Typography
-              variant="C1"
-              classes="text-primary-500 font-medium uppercase"
-            >
+            <Typography variant="C1">
               {option.value}
             </Typography>
           </FlexWrapper>
@@ -54,12 +58,12 @@ const PositionExample = () => {
   );
 };
 
-const DropdownPositionGuide = () => {
+const DropdownPositionGuide = (props: DropdownPreviewControls) => {
   return (
     <GuideSection
       title="Position"
       description="Control the alignment of the dropdown menu relative to the trigger button. Use left or right to set the anchor point."
-      example={<PositionExample />}
+      example={<PositionExample {...props} />}
     />
   );
 };

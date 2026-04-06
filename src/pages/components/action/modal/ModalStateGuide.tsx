@@ -1,37 +1,36 @@
-import { useState } from 'react';
-
 import Button from '@/components/action/Button';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 import Typography from '@/components/foundation/Typography';
 import { useModal } from '@/hooks/useModal';
 
-const StateExample = () => {
+type ModalPreviewControls = Pick<
+  Action.ModalProps,
+  'maxWidth' | 'state' | 'position'
+>;
+
+const StateExample = ({
+  maxWidth,
+  state,
+  position,
+}: ModalPreviewControls) => {
   const { open, ModalWrapper } = useModal();
-  const [state, setState] = useState<Action.ModalState>('info');
-  const states = ['info', 'success', 'warning', 'danger'] as const;
 
   return (
     <CodeExample
-      code="<ModalWrapper state={state}>...</ModalWrapper>"
+      code={`<ModalWrapper maxWidth="${maxWidth}" state="${state}" position="${position}">...</ModalWrapper>`}
       className="flex-1"
     >
-      <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
-        {states.map((s) => (
-          <Button
-            key={s}
-            color={s}
-            onClick={() => {
-              setState(s);
-              open();
-            }}
-          >
-            {s.charAt(0).toUpperCase() + s.slice(1)}
-          </Button>
-        ))}
+      <div className="flex w-full justify-center">
+        <Button onClick={open}>Button</Button>
       </div>
 
-      <ModalWrapper title={state.toUpperCase()} state={state}>
+      <ModalWrapper
+        maxWidth={maxWidth}
+        title="Modal"
+        state={state}
+        position={position}
+      >
         <div className="space-y-6">
           <Typography variant="B2">
             This modal is currently in {state} state.
@@ -42,11 +41,11 @@ const StateExample = () => {
   );
 };
 
-const ModalStateGuide = () => (
+const ModalStateGuide = (props: ModalPreviewControls) => (
   <GuideSection
     title="Status & Feedback"
     description="Use predefined states to convey intent and urgency."
-    example={<StateExample />}
+    example={<StateExample {...props} />}
   />
 );
 

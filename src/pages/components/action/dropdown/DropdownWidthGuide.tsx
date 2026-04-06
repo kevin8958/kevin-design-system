@@ -1,17 +1,26 @@
 import React from 'react';
-import FlexWrapper from '@/components/layout/FlexWrapper'; // 경로 프로젝트 기준 수정
+import FlexWrapper from '@/components/layout/FlexWrapper';
 import Dropdown from '@/components/action/Dropdown';
 import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const WidthExample = () => {
+type DropdownPreviewControls = Pick<
+  Action.DropdownProps,
+  'size' | 'buttonVariant'
+>;
+
+const WidthExample = ({ size, buttonVariant }: DropdownPreviewControls) => {
   const exampleCode = `<Dropdown 
-  buttonItem="Menu" 
+  size="${size}"
+  buttonVariant="${buttonVariant}"
+  label="Dropdown" 
   items={items} 
 />
 <Dropdown 
-  buttonItem="Menu" 
+  size="${size}"
+  buttonVariant="${buttonVariant}"
+  label="Dropdown" 
   buttonClasses="w-[100px]" 
   dialogWidth={100} 
   items={items} 
@@ -29,23 +38,28 @@ const WidthExample = () => {
       maxHeight={200}
     >
       <FlexWrapper items="center" justify="center" gap={6} classes="w-full">
-        {/* Fit Content Case */}
         <FlexWrapper direction="col" items="center" gap={3} classes="shrink-0">
-          <Dropdown items={menuItems} label="Fit Content" />
-          <Typography variant="C1" classes="text-primary-500 font-medium">
+          <Dropdown
+            size={size}
+            buttonVariant={buttonVariant}
+            items={menuItems}
+            label="Dropdown"
+          />
+          <Typography variant="C1">
             Fit Content
           </Typography>
         </FlexWrapper>
 
-        {/* Fixed Width Case */}
         <FlexWrapper direction="col" items="center" gap={3} classes="shrink-0">
           <Dropdown
+            size={size}
+            buttonVariant={buttonVariant}
             items={menuItems}
-            label="Fixed"
+            label="Dropdown"
             buttonClasses="w-[100px]"
             dialogWidth={100}
           />
-          <Typography variant="C1" classes="text-primary-500 font-medium">
+          <Typography variant="C1">
             Fixed Width (100px)
           </Typography>
         </FlexWrapper>
@@ -54,12 +68,12 @@ const WidthExample = () => {
   );
 };
 
-const DropdownWidthGuide = () => {
+const DropdownWidthGuide = (props: DropdownPreviewControls) => {
   return (
     <GuideSection
       title="Width"
       description="Control how the dropdown menu handles its width. By default, it shrinks or expands to fit the content."
-      example={<WidthExample />}
+      example={<WidthExample {...props} />}
     />
   );
 };

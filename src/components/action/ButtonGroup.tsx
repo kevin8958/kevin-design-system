@@ -6,6 +6,8 @@ const ButtonGroup = ({
   value,
   onChange,
   size = 'sm',
+  color = 'neutral',
+  disabled = false,
   classes,
   itemClasses,
   fullWidth = false,
@@ -27,11 +29,11 @@ const ButtonGroup = ({
             key={item.value}
             type="button"
             size={size}
-            color="neutral"
+            color={color}
             variant={selected ? 'contain' : 'outline'}
-            disabled={item.disabled}
+            disabled={disabled || item.disabled}
             onClick={() => {
-              if (!item.disabled) {
+              if (!disabled && !item.disabled) {
                 onChange?.(item.value);
               }
             }}

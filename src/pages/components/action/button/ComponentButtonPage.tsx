@@ -19,7 +19,7 @@ import { LuExternalLink } from 'react-icons/lu';
 export default function ComponentButtonPage() {
   const [size, setSize] = useState<Action.ButtonSize>('md');
   const [variant, setVariant] = useState<Action.ButtonVariant>('contain');
-  const [color, setColor] = useState<Action.ButtonColor>('primary');
+  const [color, setColor] = useState<Action.ButtonColor>('neutral');
 
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
@@ -112,7 +112,7 @@ const propsData = [
     id: '5',
     property: 'color',
     type: ['primary', 'neutral', 'info', 'success', 'warning', 'danger'],
-    default: 'primary',
+    default: 'neutral',
     description: 'The color of the button.',
   },
   {

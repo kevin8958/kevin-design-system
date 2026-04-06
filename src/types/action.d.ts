@@ -74,6 +74,7 @@ namespace Action {
     buttonVariant?: ButtonVariant;
     size?: ButtonSize;
     label?: string | React.ReactNode;
+    disabled?: boolean;
     buttonClasses?: string;
   }
 
@@ -82,6 +83,8 @@ namespace Action {
     value: string;
     onChange?: (value: string) => void;
     size?: ButtonSize;
+    color?: ButtonColor;
+    disabled?: boolean;
     classes?: string;
     itemClasses?: string;
     fullWidth?: boolean;

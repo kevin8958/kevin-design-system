@@ -4,7 +4,6 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import Typography from '@/components/foundation/Typography';
 
 const sizes: Action.ButtonSize[] = ['sm', 'md', 'lg'];
-const variants: Action.ButtonVariant[] = ['contain', 'outline', 'clear'];
 const colors: Action.ButtonColor[] = [
   'primary',
   'neutral',
@@ -15,16 +14,13 @@ const colors: Action.ButtonColor[] = [
 ];
 const defaultValues = {
   Size: 'md',
-  Variant: 'contain',
   Color: 'neutral',
 } as const;
 
-type ButtonControllerProps = {
+type ButtonGroupControllerProps = {
   size: Action.ButtonSize;
-  variant: Action.ButtonVariant;
   color: Action.ButtonColor;
   onSizeChange: (next: Action.ButtonSize) => void;
-  onVariantChange: (next: Action.ButtonVariant) => void;
   onColorChange: (next: Action.ButtonColor) => void;
 };
 
@@ -48,6 +44,7 @@ const renderControlRow = <T extends string>(
     <div className="hidden md:block">
       <ButtonGroup
         size="sm"
+        color="neutral"
         items={options.map((option) => ({
           label:
             option === defaultValues[label as keyof typeof defaultValues]
@@ -79,24 +76,21 @@ const renderControlRow = <T extends string>(
   </FlexWrapper>
 );
 
-const ButtonControllerGuide = ({
+const ButtonGroupControllerGuide = ({
   size,
-  variant,
   color,
   onSizeChange,
-  onVariantChange,
   onColorChange,
-}: ButtonControllerProps) => {
+}: ButtonGroupControllerProps) => {
   return (
     <FlexWrapper direction="col" items="start" gap={5}>
       <Typography variant="C1">
         * : Default
       </Typography>
       {renderControlRow('Size', sizes, size, onSizeChange)}
-      {renderControlRow('Variant', variants, variant, onVariantChange)}
       {renderControlRow('Color', colors, color, onColorChange)}
     </FlexWrapper>
   );
 };
 
-export default ButtonControllerGuide;
+export default ButtonGroupControllerGuide;

@@ -57,7 +57,7 @@ const ShapeExample = ({ size, variant, color }: ButtonPreviewControls) => {
             >
               {option.id === 'rect' ? 'Button' : undefined}
             </Button>
-            <Typography variant="C1" classes="uppercase font-mono opacity-60">
+            <Typography variant="C1">
               {option.id}
             </Typography>
           </FlexWrapper>

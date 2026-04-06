@@ -52,4 +52,10 @@ describe('Button Component', () => {
     const buttonElement = screen.getByRole('button', { name: /wide button/i });
     expect(buttonElement).toHaveClass('w-full');
   });
+
+  it('should use neutral color by default', () => {
+    render(<Button>Default Color</Button>);
+    const buttonElement = screen.getByRole('button', { name: /default color/i });
+    expect(buttonElement.className).toContain('bg-neutral-800');
+  });
 });

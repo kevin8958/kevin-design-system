@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import Button from '@/components/action/Button';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -6,11 +7,14 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import SimpleTable from '@/components/data/SimpleTable';
 import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
-import DrawerSizeGuide from './DrawerSizeGuide';
+import DrawerControllerGuide from './DrawerControllerGuide';
 import { DrawerActionGuide } from './DrawerActionGuide';
 import { DrawerLoadingGuide } from './DrawerLoadingGuide';
+import DrawerStateGuide from './DrawerStateGuide';
 
 export default function ComponentDrawerPage() {
+  const [size, setSize] = useState<Action.DrawerSize>('lg');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Action', href: '/components/action' },
@@ -44,9 +48,10 @@ export default function ComponentDrawerPage() {
             </Button>
           </FlexWrapper>
 
-          <DrawerSizeGuide />
-          <DrawerActionGuide />
-          <DrawerLoadingGuide />
+          <DrawerControllerGuide size={size} onSizeChange={setSize} />
+          <DrawerActionGuide size={size} />
+          <DrawerLoadingGuide size={size} />
+          <DrawerStateGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
@@ -92,7 +97,7 @@ const propsData = [
     id: '5',
     property: 'size',
     type: ["'sm'", "'md'", "'lg'", "'xl'", "'full'"],
-    default: "'md'",
+    default: "'lg'",
     description: 'Determines the width of the drawer on desktop screens.',
   },
   {

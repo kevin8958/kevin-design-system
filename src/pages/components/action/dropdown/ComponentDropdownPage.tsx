@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Button from '@/components/action/Button';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -7,14 +8,18 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import SimpleTable from '@/components/data/SimpleTable';
 import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
+import DropdownControllerGuide from '@/pages/components/action/dropdown/DropdownControllerGuide';
 import DropdownWidthGuide from '@/pages/components/action/dropdown/DropdownWidthGuide';
 import DropdownPositionGuide from '@/pages/components/action/dropdown/DropdownPositionGuide';
 import DropdownGroupGuide from '@/pages/components/action/dropdown/DropdownGroupGuide';
 import DropdownDangerGuide from '@/pages/components/action/dropdown/DropdownDangerGuide';
-import DropdownSizeGuide from './DropdownSizeGuide';
 import DropdownSubMenuGuide from '@/pages/components/action/dropdown/DropdownSubMenuGuide';
+import DropdownStateGuide from '@/pages/components/action/dropdown/DropdownStateGuide';
 
 export default function ComponentDropdownPage() {
+  const [size, setSize] = useState<Action.ButtonSize>('md');
+  const [buttonVariant, setButtonVariant] = useState<Action.ButtonVariant>('contain');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Action', href: '/components/action' },
@@ -48,12 +53,18 @@ export default function ComponentDropdownPage() {
             </Button>
           </FlexWrapper>
 
-          <DropdownSizeGuide />
-          <DropdownWidthGuide />
-          <DropdownPositionGuide />
-          <DropdownGroupGuide />
-          <DropdownDangerGuide />
-          <DropdownSubMenuGuide />
+          <DropdownControllerGuide
+            size={size}
+            buttonVariant={buttonVariant}
+            onSizeChange={setSize}
+            onVariantChange={setButtonVariant}
+          />
+          <DropdownDangerGuide size={size} buttonVariant={buttonVariant} />
+          <DropdownGroupGuide size={size} buttonVariant={buttonVariant} />
+          <DropdownPositionGuide size={size} buttonVariant={buttonVariant} />
+          <DropdownStateGuide size={size} buttonVariant={buttonVariant} />
+          <DropdownSubMenuGuide size={size} buttonVariant={buttonVariant} />
+          <DropdownWidthGuide size={size} buttonVariant={buttonVariant} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
@@ -96,13 +107,34 @@ const propsData = [
   },
   {
     id: '5',
-    property: 'buttonItem',
+    property: 'label',
     type: ['string', 'React.ReactNode'],
     default: '',
     description: 'Content of the button that opens the dropdown.',
   },
   {
     id: '6',
+    property: 'disabled',
+    type: 'boolean',
+    default: 'false',
+    description: 'If true, the trigger is disabled and the menu cannot be opened.',
+  },
+  {
+    id: '7',
+    property: 'buttonVariant',
+    type: ['contain', 'outline', 'clear'],
+    default: 'contain',
+    description: 'Controls the trigger button visual style.',
+  },
+  {
+    id: '8',
+    property: 'size',
+    type: ['sm', 'md', 'lg'],
+    default: 'md',
+    description: 'Controls the trigger button size.',
+  },
+  {
+    id: '9',
     property: 'buttonClasses',
     type: 'string',
     default: '',

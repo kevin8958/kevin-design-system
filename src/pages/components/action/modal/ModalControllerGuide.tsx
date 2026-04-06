@@ -3,29 +3,23 @@ import Select from '@/components/input/Select';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Typography from '@/components/foundation/Typography';
 
-const sizes: Action.ButtonSize[] = ['sm', 'md', 'lg'];
-const variants: Action.ButtonVariant[] = ['contain', 'outline', 'clear'];
-const colors: Action.ButtonColor[] = [
-  'primary',
-  'neutral',
-  'info',
-  'success',
-  'warning',
-  'danger',
-];
+const sizes: Action.ModalSize[] = ['sm', 'md', 'lg', 'xl', '2xl', 'full'];
+const states: Action.ModalState[] = ['default', 'info', 'success', 'warning', 'danger'];
+const positions: Action.ModalPosition[] = ['top', 'center', 'bottom'];
+
 const defaultValues = {
   Size: 'md',
-  Variant: 'contain',
-  Color: 'neutral',
+  State: 'default',
+  Position: 'center',
 } as const;
 
-type ButtonControllerProps = {
-  size: Action.ButtonSize;
-  variant: Action.ButtonVariant;
-  color: Action.ButtonColor;
-  onSizeChange: (next: Action.ButtonSize) => void;
-  onVariantChange: (next: Action.ButtonVariant) => void;
-  onColorChange: (next: Action.ButtonColor) => void;
+type ModalControllerProps = {
+  maxWidth: Action.ModalSize;
+  state: Action.ModalState;
+  position: Action.ModalPosition;
+  onSizeChange: (next: Action.ModalSize) => void;
+  onStateChange: (next: Action.ModalState) => void;
+  onPositionChange: (next: Action.ModalPosition) => void;
 };
 
 const renderControlRow = <T extends string>(
@@ -48,6 +42,7 @@ const renderControlRow = <T extends string>(
     <div className="hidden md:block">
       <ButtonGroup
         size="sm"
+        color="neutral"
         items={options.map((option) => ({
           label:
             option === defaultValues[label as keyof typeof defaultValues]
@@ -79,24 +74,22 @@ const renderControlRow = <T extends string>(
   </FlexWrapper>
 );
 
-const ButtonControllerGuide = ({
-  size,
-  variant,
-  color,
+const ModalControllerGuide = ({
+  maxWidth,
+  state,
+  position,
   onSizeChange,
-  onVariantChange,
-  onColorChange,
-}: ButtonControllerProps) => {
+  onStateChange,
+  onPositionChange,
+}: ModalControllerProps) => {
   return (
     <FlexWrapper direction="col" items="start" gap={5}>
-      <Typography variant="C1">
-        * : Default
-      </Typography>
-      {renderControlRow('Size', sizes, size, onSizeChange)}
-      {renderControlRow('Variant', variants, variant, onVariantChange)}
-      {renderControlRow('Color', colors, color, onColorChange)}
+      <Typography variant="C1">* : Default</Typography>
+      {renderControlRow('Size', sizes, maxWidth, onSizeChange)}
+      {renderControlRow('State', states, state, onStateChange)}
+      {renderControlRow('Position', positions, position, onPositionChange)}
     </FlexWrapper>
   );
 };
 
-export default ButtonControllerGuide;
+export default ModalControllerGuide;

@@ -46,7 +46,7 @@ export const Default: Story = {
   args: {
     children: 'Button',
     variant: 'contain',
-    color: 'primary',
+    color: 'neutral',
     size: 'md',
   },
 };

@@ -43,7 +43,7 @@ const AlignmentExample = ({ size, variant, color }: ButtonPreviewControls) => {
           >
             Button
           </Button>
-          <Typography variant="C1" classes="uppercase font-mono opacity-60">
+          <Typography variant="C1">
             Center
           </Typography>
         </FlexWrapper>
@@ -57,7 +57,7 @@ const AlignmentExample = ({ size, variant, color }: ButtonPreviewControls) => {
           >
             Button
           </Button>
-          <Typography variant="C1" classes="uppercase font-mono opacity-60">
+          <Typography variant="C1">
             Start
           </Typography>
         </FlexWrapper>

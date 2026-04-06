@@ -6,7 +6,12 @@ import Dropdown from '@/components/action/Dropdown';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const SubMenuExample = () => {
+type DropdownPreviewControls = Pick<
+  Action.DropdownProps,
+  'size' | 'buttonVariant'
+>;
+
+const SubMenuExample = ({ size, buttonVariant }: DropdownPreviewControls) => {
   const items: Action.DropdownItem[] = [
     { type: 'item', id: 'copy', label: 'Copy Link', icon: <LuLink /> },
     {
@@ -28,7 +33,9 @@ const SubMenuExample = () => {
   ];
 
   const exampleCode = `<Dropdown
-  buttonItem="Menu"
+  size="${size}"
+  buttonVariant="${buttonVariant}"
+  label="Dropdown"
   items={[
     { type: 'item', id: 'copy', label: 'Copy Link', icon: <LuLink /> },
     {
@@ -55,18 +62,24 @@ const SubMenuExample = () => {
         justify="center"
         classes="w-full min-h-[300px]"
       >
-        <Dropdown label="Share Menu" items={items} dialogWidth={140} />
+        <Dropdown
+          size={size}
+          buttonVariant={buttonVariant}
+          label="Dropdown"
+          items={items}
+          dialogWidth={140}
+        />
       </FlexWrapper>
     </CodeExample>
   );
 };
 
-const DropdownSubMenuGuide = () => {
+const DropdownSubMenuGuide = (props: DropdownPreviewControls) => {
   return (
     <GuideSection
       title="Submenus"
       description="Nest additional layers of actions within a single menu item to keep the primary interface clean while providing access to complex options."
-      example={<SubMenuExample />}
+      example={<SubMenuExample {...props} />}
     />
   );
 };

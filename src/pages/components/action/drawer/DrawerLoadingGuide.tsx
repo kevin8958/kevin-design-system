@@ -7,7 +7,9 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import Drawer from '@/components/action/Drawer';
 import { useDrawer } from '@/hooks/useDrawer';
 
-const LoadingExample = () => {
+type DrawerPreviewControls = Pick<Action.DrawerProps, 'size'>;
+
+const LoadingExample = ({ size }: DrawerPreviewControls) => {
   const { isOpen, open, close } = useDrawer();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,9 +22,10 @@ const LoadingExample = () => {
     }, 2000);
   };
 
-  const exampleCode = `<Drawer 
+const exampleCode = `<Drawer 
   isOpen={isOpen} 
   onClose={close}
+  size="${size}"
   loading={true} // 버튼에 스피너가 표시됩니다
   onConfirm={handleConfirm}
 >
@@ -31,13 +34,15 @@ const LoadingExample = () => {
 
   return (
     <CodeExample code={exampleCode} className="flex-1" maxHeight={250}>
-      <FlexWrapper justify="center">
-        <Button onClick={open}>Open Loading Drawer</Button>
+      <FlexWrapper direction="col" items="center" justify="center" gap={3}>
+        <Button onClick={open}>Loading Action</Button>
+        <Typography variant="C1">Loading Confirm</Typography>
       </FlexWrapper>
 
       <Drawer
         isOpen={isOpen}
         onClose={close}
+        size={size}
         title="Async Action"
         loading={isLoading}
         onConfirm={handleConfirm}
@@ -53,10 +58,10 @@ const LoadingExample = () => {
   );
 };
 
-export const DrawerLoadingGuide = () => (
+export const DrawerLoadingGuide = (props: DrawerPreviewControls) => (
   <GuideSection
     title="Loading State"
     description="Use the 'loading' prop to provide visual feedback during asynchronous operations like form submissions."
-    example={<LoadingExample />}
+    example={<LoadingExample {...props} />}
   />
 );

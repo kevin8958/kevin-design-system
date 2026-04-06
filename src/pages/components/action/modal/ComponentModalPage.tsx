@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import Button from '@/components/action/Button';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -6,12 +7,16 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import SimpleTable from '@/components/data/SimpleTable';
 import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
-import ModalSizeGuide from '@/pages/components/action/modal/ModalSizeGuide';
+import ModalControllerGuide from '@/pages/components/action/modal/ModalControllerGuide';
 import ModalStateGuide from '@/pages/components/action/modal/ModalStateGuide';
 import ModalActionGuide from '@/pages/components/action/modal/ModalActionGuide';
-import ModalPositionGuide from '@/pages/components/action/modal/ModalPositionGuide';
+import ModalLoadingGuide from '@/pages/components/action/modal/ModalLoadingGuide';
 
 export default function ComponentModalPage() {
+  const [maxWidth, setMaxWidth] = useState<Action.ModalSize>('md');
+  const [state, setState] = useState<Action.ModalState>('default');
+  const [position, setPosition] = useState<Action.ModalPosition>('center');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Action', href: '/components/action' },
@@ -45,10 +50,29 @@ export default function ComponentModalPage() {
             </Button>
           </FlexWrapper>
 
-          <ModalSizeGuide />
-          <ModalStateGuide />
-          <ModalActionGuide />
-          <ModalPositionGuide />
+          <ModalControllerGuide
+            maxWidth={maxWidth}
+            state={state}
+            position={position}
+            onSizeChange={setMaxWidth}
+            onStateChange={setState}
+            onPositionChange={setPosition}
+          />
+          <ModalActionGuide
+            maxWidth={maxWidth}
+            state={state}
+            position={position}
+          />
+          <ModalLoadingGuide
+            maxWidth={maxWidth}
+            state={state}
+            position={position}
+          />
+          <ModalStateGuide
+            maxWidth={maxWidth}
+            state={state}
+            position={position}
+          />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

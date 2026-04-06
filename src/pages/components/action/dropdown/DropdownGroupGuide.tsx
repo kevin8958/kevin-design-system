@@ -6,7 +6,12 @@ import Dropdown from '@/components/action/Dropdown';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const GroupExample = () => {
+type DropdownPreviewControls = Pick<
+  Action.DropdownProps,
+  'size' | 'buttonVariant'
+>;
+
+const GroupExample = ({ size, buttonVariant }: DropdownPreviewControls) => {
   const items: Action.DropdownItem[] = [
     {
       type: 'group',
@@ -44,7 +49,9 @@ const GroupExample = () => {
   ];
 
   const exampleCode = `<Dropdown
-  buttonItem="Menu"
+  size="${size}"
+  buttonVariant="${buttonVariant}"
+  label="Dropdown"
   items={[
     {
       type: 'group',
@@ -75,18 +82,24 @@ const GroupExample = () => {
         justify="center"
         classes="w-full min-h-[300px]"
       >
-        <Dropdown label="Menu" items={items} dialogWidth={180} />
+        <Dropdown
+          size={size}
+          buttonVariant={buttonVariant}
+          label="Dropdown"
+          items={items}
+          dialogWidth={180}
+        />
       </FlexWrapper>
     </CodeExample>
   );
 };
 
-const DropdownGroupGuide = () => {
+const DropdownGroupGuide = (props: DropdownPreviewControls) => {
   return (
     <GuideSection
       title="Grouped Items"
       description="Organize related actions into labeled groups using separators to improve navigability within complex menus."
-      example={<GroupExample />}
+      example={<GroupExample {...props} />}
     />
   );
 };

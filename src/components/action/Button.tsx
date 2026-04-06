@@ -135,7 +135,7 @@ const buttonVariants = cva(
     defaultVariants: {
       variant: 'contain',
       size: 'md',
-      color: 'primary',
+      color: 'neutral',
       shape: 'rect',
     },
   },
@@ -150,7 +150,7 @@ const Button = forwardRef<HTMLButtonElement, Action.ButtonProps>(
       children,
       size = 'md',
       variant = 'contain',
-      color = 'primary',
+      color = 'neutral',
       shape = 'rect',
       justify = 'center',
       fullWidth = false,

@@ -20,7 +20,14 @@ const meta: Meta<typeof ButtonGroup> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
+    color: {
+      control: 'select',
+      options: ['primary', 'neutral', 'info', 'success', 'warning', 'danger'],
+    },
     fullWidth: {
+      control: 'boolean',
+    },
+    disabled: {
       control: 'boolean',
     },
   },
@@ -38,7 +45,8 @@ export const Default: Story = {
     );
   },
   args: {
-    size: 'sm',
+    size: 'md',
+    color: 'neutral',
   },
 };
 
@@ -63,6 +71,27 @@ export const FullWidth: Story = {
     );
   },
   args: {
-    size: 'sm',
+    size: 'md',
+    color: 'neutral',
+  },
+};
+
+export const Disabled: Story = {
+  render: (args) => {
+    const [value, setValue] = useState('contain');
+
+    return (
+      <ButtonGroup
+        {...args}
+        disabled
+        items={items}
+        value={value}
+        onChange={setValue}
+      />
+    );
+  },
+  args: {
+    size: 'md',
+    color: 'neutral',
   },
 };
