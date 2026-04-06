@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cva } from 'class-variance-authority';
 import { forwardRef } from 'react';
+import { LuArrowUpRight } from 'react-icons/lu';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center rounded-lg text-center font-medium transition-all duration-200 ease-in-out disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.97] select-none outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary-500',
@@ -151,80 +152,114 @@ const Button = forwardRef<HTMLButtonElement, Action.ButtonProps>(
       variant = 'contain',
       color = 'primary',
       shape = 'rect',
+      justify = 'center',
+      fullWidth = false,
       disabled,
       loading,
       prompted,
       icon,
+      href,
+      target,
+      rel,
       iconPosition = 'left',
       onClick,
       ...rest
     } = props;
 
+    const resolvedIcon =
+      href && !icon ? <LuArrowUpRight className="text-[1.05em]" /> : icon;
+    const resolvedIconPosition = href && !icon ? 'right' : iconPosition;
+    const content = (
+      <AnimatePresence mode="wait" initial={false}>
+        {loading ? (
+          <motion.div
+            key="loader"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="flex items-center justify-center"
+          >
+            <svg
+              className="size-4 animate-spin text-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={classNames(
+              'w-full flex items-center gap-[inherit]',
+              justify === 'start' ? 'justify-start text-left' : 'justify-center',
+            )}
+          >
+            {resolvedIcon && resolvedIconPosition === 'left' && (
+              <span className="flex shrink-0">{resolvedIcon}</span>
+            )}
+            {children}
+            {resolvedIcon && resolvedIconPosition === 'right' && (
+              <span className="flex shrink-0">{resolvedIcon}</span>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
+
+    const resolvedClasses = classNames(
+      buttonVariants({ variant, size, color, shape }),
+      prompted && 'animate-flash-fast',
+      (resolvedIcon && !children) || shape === 'circle' ? 'px-0!' : '',
+      fullWidth && 'w-full',
+      classes || className,
+    );
+
+    if (href) {
+      return (
+        <motion.a
+          {...rest}
+          ref={ref as unknown as React.Ref<HTMLAnchorElement>}
+          href={href}
+          target={target}
+          rel={rel}
+          onClick={onClick}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+          className={resolvedClasses}
+        >
+          {content}
+        </motion.a>
+      );
+    }
+
     return (
       <motion.button
         {...rest}
-        ref={ref}
+        ref={ref as React.Ref<HTMLButtonElement>}
         type={type}
         onClick={onClick}
         disabled={disabled || loading}
         whileTap={{ scale: 0.97 }}
         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-        className={classNames(
-          buttonVariants({ variant, size, color, shape }),
-          prompted && 'animate-flash-fast',
-          icon && !children ? 'px-0!' : '',
-          classes || className,
-        )}
+        className={resolvedClasses}
       >
-        <AnimatePresence mode="wait" initial={false}>
-          {loading ? (
-            <motion.div
-              key="loader"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className="flex items-center justify-center"
-            >
-              <svg
-                className="size-4 animate-spin text-current"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="content"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className={
-                'w-full flex items-center justify-center gap-[inherit]'
-              }
-            >
-              {icon && iconPosition === 'left' && (
-                <span className="flex shrink-0">{icon}</span>
-              )}
-              {children}
-              {icon && iconPosition === 'right' && (
-                <span className="flex shrink-0">{icon}</span>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {content}
       </motion.button>
     );
   },

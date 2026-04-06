@@ -4,16 +4,27 @@ import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const StateExample = () => {
+type ButtonPreviewControls = Pick<
+  Action.ButtonProps,
+  'size' | 'variant' | 'color'
+>;
+
+const StateExample = ({ size, variant, color }: ButtonPreviewControls) => {
   const statusOptions = [
     { id: 'disabled', label: 'Disabled' },
     { id: 'loading', label: 'Loading' },
     { id: 'prompted', label: 'Prompted' },
   ];
 
-  const exampleCode = `<Button disabled>Disabled</Button>
-<Button loading>Loading</Button>
-<Button prompted>Prompted</Button>`;
+  const exampleCode = `<Button size="${size}" variant="${variant}" color="${color}" disabled>
+  Button
+</Button>
+<Button size="${size}" variant="${variant}" color="${color}" loading>
+  Button
+</Button>
+<Button size="${size}" variant="${variant}" color="${color}" prompted>
+  Button
+</Button>`;
 
   return (
     <CodeExample code={exampleCode} className="flex-1 min-w-[320px]">
@@ -22,6 +33,9 @@ const StateExample = () => {
           <div key={option.id}>
             <FlexWrapper classes="!gap-3" direction="col" items="center">
               <Button
+                size={size}
+                variant={variant}
+                color={color}
                 disabled={option.id === 'disabled'}
                 loading={option.id === 'loading'}
                 prompted={option.id === 'prompted'}
@@ -29,7 +43,9 @@ const StateExample = () => {
               >
                 Button
               </Button>
-              <Typography variant="C1">{option.id}</Typography>
+              <Typography variant="C1" classes="uppercase font-mono opacity-60">
+                {option.label}
+              </Typography>
             </FlexWrapper>
           </div>
         ))}
@@ -38,12 +54,12 @@ const StateExample = () => {
   );
 };
 
-const ButtonStateGuide = () => {
+const ButtonStateGuide = (props: ButtonPreviewControls) => {
   return (
     <GuideSection
       title="State"
       description="Manage interactive states to provide visual feedback."
-      example={<StateExample />}
+      example={<StateExample {...props} />}
     />
   );
 };

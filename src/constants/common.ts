@@ -57,6 +57,11 @@ export const designSystemMenus = [
             href: '/components/action/button',
           },
           {
+            id: 'buttonGroup',
+            label: 'ButtonGroup',
+            href: '/components/action/buttonGroup',
+          },
+          {
             id: 'dropdown',
             label: 'Dropdown',
             href: '/components/action/dropdown',
@@ -80,6 +85,11 @@ export const designSystemMenus = [
             id: 'textinput',
             label: 'TextInput',
             href: '/components/input/textInput',
+          },
+          {
+            id: 'select',
+            label: 'Select',
+            href: '/components/input/select',
           },
           {
             id: 'checkbox',

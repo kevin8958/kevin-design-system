@@ -40,4 +40,16 @@ describe('Button Component', () => {
     const buttonElement = screen.getByRole('button');
     expect(buttonElement).toHaveClass(customClass);
   });
+
+  it('should render a link when href is provided', () => {
+    render(<Button href="/components">Read Docs</Button>);
+    const linkElement = screen.getByRole('link', { name: /read docs/i });
+    expect(linkElement).toHaveAttribute('href', '/components');
+  });
+
+  it('should apply full width classes when fullWidth is true', () => {
+    render(<Button fullWidth>Wide Button</Button>);
+    const buttonElement = screen.getByRole('button', { name: /wide button/i });
+    expect(buttonElement).toHaveClass('w-full');
+  });
 });

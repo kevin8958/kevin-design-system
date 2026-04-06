@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cva } from 'class-variance-authority';
+import classNames from 'classnames';
 import {
   useFloating,
   autoUpdate,
@@ -92,32 +93,31 @@ const Dropdown = (props: Action.DropdownProps) => {
               className="w-full list-none"
               style={itemWidthStyle}
             >
-              <Button
-                variant="clear"
-                size="sm"
-                color={item.danger ? 'danger' : 'neutral'}
-                classes="!w-full !justify-start !font-normal !min-w-0 !max-w-full"
+              <button
+                type="button"
+                className={classNames(
+                  'flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors',
+                  item.danger
+                    ? 'text-danger hover:bg-danger/10'
+                    : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800',
+                )}
                 onClick={() => {
                   item.onClick?.();
                   onChange?.(item.id);
                   setIsOpen(false);
                 }}
               >
-                <div className="flex w-full items-center gap-2 min-w-0">
-                  {item.icon && (
-                    <span className="shrink-0 text-lg opacity-80">
-                      {item.icon}
-                    </span>
-                  )}
-                  <span
-                    className="truncate flex-1 text-left"
-                    style={labelStyle}
-                    title={item.label}
-                  >
-                    {item.label}
-                  </span>
-                </div>
-              </Button>
+                {item.icon && (
+                  <span className="shrink-0 text-lg opacity-80">{item.icon}</span>
+                )}
+                <span
+                  className="truncate flex-1 text-left"
+                  style={labelStyle}
+                  title={item.label}
+                >
+                  {item.label}
+                </span>
+              </button>
             </li>
           );
         case 'group':
@@ -147,10 +147,9 @@ const Dropdown = (props: Action.DropdownProps) => {
               className="group relative w-full list-none"
               style={itemWidthStyle}
             >
-              <Button
-                variant="clear"
-                size="sm"
-                classes="!px-3 !py-2 !w-full !justify-between !font-normal group-hover:bg-neutral-100 dark:group-hover:bg-neutral-800 !min-w-0"
+              <button
+                type="button"
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-neutral-700 transition-colors group-hover:bg-neutral-100 dark:text-neutral-300 dark:group-hover:bg-neutral-800"
               >
                 <div className="w-full flex items-center gap-2 min-w-0 flex-1">
                   {item.icon && (
@@ -161,7 +160,7 @@ const Dropdown = (props: Action.DropdownProps) => {
                   <span className="truncate">{item.label}</span>
                 </div>
                 <LuChevronRight className="ml-2 shrink-0 opacity-50 transition-transform group-hover:translate-x-0.5" />
-              </Button>
+              </button>
               <div className="absolute top-0 left-[calc(100%+0.2rem)] z-[60] hidden pl-1 group-hover:block">
                 <motion.ul
                   initial={{ opacity: 0, x: -5 }}

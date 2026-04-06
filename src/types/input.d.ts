@@ -25,6 +25,29 @@ namespace Input {
     onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   }
 
+  /** Select */
+  type SelectOption = {
+    label: string;
+    value: string;
+    disabled?: boolean;
+  };
+
+  type SelectSize = 'sm' | 'md' | 'lg';
+
+  interface SelectProps {
+    label?: string;
+    placeholder?: string;
+    id?: string;
+    classes?: string;
+    value?: string;
+    size?: SelectSize;
+    disabled?: boolean;
+    invalid?: boolean;
+    errorMsg?: string;
+    options: SelectOption[];
+    onChange?: (value: string) => void;
+  }
+
   /** Checkbox */
   type CheckboxSize = 'sm' | 'md' | 'lg';
 

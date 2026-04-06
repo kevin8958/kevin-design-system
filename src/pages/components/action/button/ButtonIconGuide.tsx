@@ -7,7 +7,16 @@ import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const IconPositionExample = () => {
+type ButtonPreviewControls = Pick<
+  Action.ButtonProps,
+  'size' | 'variant' | 'color'
+>;
+
+const IconPositionExample = ({
+  size,
+  variant,
+  color,
+}: ButtonPreviewControls) => {
   const iconOptions: {
     id: Action.ButtonIconPosition;
     value: string;
@@ -15,8 +24,11 @@ const IconPositionExample = () => {
     { id: 'left', value: 'Left Icon' },
     { id: 'right', value: 'Right Icon' },
   ];
-  const exampleCode = `<Button 
-  icon={<HiOutlineHeart />} 
+  const exampleCode = `<Button
+  size="${size}"
+  variant="${variant}"
+  color="${color}"
+  icon={<HiOutlineHeart />}
   iconPosition="left" // or "right"
 >
   Button
@@ -33,12 +45,17 @@ const IconPositionExample = () => {
           <div key={option.id}>
             <FlexWrapper classes="!gap-3" direction="col" items="center">
               <Button
+                size={size}
+                variant={variant}
+                color={color}
                 icon={<HiOutlineHeart className="text-lg" />}
                 iconPosition={option.id as Action.ButtonIconPosition}
               >
                 Button
               </Button>
-              <Typography variant="C1">{option.id}</Typography>
+              <Typography variant="C1" classes="uppercase font-mono opacity-60">
+                {option.value}
+              </Typography>
             </FlexWrapper>
           </div>
         ))}
@@ -46,12 +63,13 @@ const IconPositionExample = () => {
     </CodeExample>
   );
 };
-const ButtonIconGuide = () => {
+
+const ButtonIconGuide = (props: ButtonPreviewControls) => {
   return (
     <GuideSection
       title="Icon & Placement"
       description="Configure icon properties and alignment within the button."
-      example={<IconPositionExample />}
+      example={<IconPositionExample {...props} />}
     />
   );
 };

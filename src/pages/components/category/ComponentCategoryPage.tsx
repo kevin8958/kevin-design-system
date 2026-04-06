@@ -151,6 +151,16 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         alt: 'Button mock preview',
       },
     },
+    buttonGroup: {
+      description:
+        'ButtonGroup switches between a small set of equal-priority options in a single row.',
+      imagePreview: {
+        src: '/category-previews/action/button-group.svg',
+        darkSrc: '/category-previews/action/button-group-dark.svg',
+        minHeight: 140,
+        alt: 'ButtonGroup mock preview',
+      },
+    },
     dropdown: {
       description:
         'Dropdown reveals grouped actions without leaving the current layout.',
@@ -190,6 +200,15 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         src: '/category-previews/input/textinput.svg',
         alt: 'TextInput mock preview',
         minHeight: 160,
+      },
+    },
+    select: {
+      description:
+        'Select presents a compact trigger with a focused list of predefined options.',
+      imagePreview: {
+        src: '/category-previews/input/select.svg',
+        alt: 'Select mock preview',
+        minHeight: 172,
       },
     },
     checkbox: {

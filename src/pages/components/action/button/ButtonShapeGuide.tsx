@@ -5,7 +5,12 @@ import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const ShapeExample = () => {
+type ButtonPreviewControls = Pick<
+  Action.ButtonProps,
+  'size' | 'variant' | 'color'
+>;
+
+const ShapeExample = ({ size, variant, color }: ButtonPreviewControls) => {
   const shapeOptions: {
     id: Action.ButtonShape;
     value: string;
@@ -14,8 +19,16 @@ const ShapeExample = () => {
     { id: 'circle', value: 'Circle' },
   ];
 
-  const exampleCode = `<Button shape="rect">Button</Button>
-<Button shape="circle" icon={<HiOutlineHeart />} />`;
+  const exampleCode = `<Button size="${size}" variant="${variant}" color="${color}" shape="rect">
+  Button
+</Button>
+<Button
+  size="${size}"
+  variant="${variant}"
+  color="${color}"
+  shape="circle"
+  icon={<HiOutlineHeart />}
+/>`;
 
   return (
     <CodeExample
@@ -32,6 +45,9 @@ const ShapeExample = () => {
         {shapeOptions.map((option) => (
           <FlexWrapper key={option.id} direction="col" items="center" gap={3}>
             <Button
+              size={size}
+              variant={variant}
+              color={color}
               shape={option.id}
               icon={
                 option.id === 'circle' ? (
@@ -51,12 +67,12 @@ const ShapeExample = () => {
   );
 };
 
-const ButtonShapeGuide = () => {
+const ButtonShapeGuide = (props: ButtonPreviewControls) => {
   return (
     <GuideSection
       title="Shape"
       description="Define button geometry for different visual hierarchies."
-      example={<ShapeExample />}
+      example={<ShapeExample {...props} />}
     />
   );
 };

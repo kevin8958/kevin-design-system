@@ -26,9 +26,15 @@ const meta: Meta<typeof Button> = {
       control: 'radio',
       options: ['rect', 'circle'],
     },
+    justify: {
+      control: 'radio',
+      options: ['start', 'center'],
+    },
+    fullWidth: { control: 'boolean' },
     disabled: { control: 'boolean' },
     loading: { control: 'boolean' },
     prompted: { control: 'boolean' },
+    href: { control: 'text' },
     onClick: { action: 'clicked' },
   },
 };
@@ -142,4 +148,27 @@ export const CircleShape: Story = {
       <Button {...args} shape="circle" size="lg" icon={<LuPlus size={24} />} />
     </div>
   ),
+};
+
+export const WidthAndAlignment: Story = {
+  render: (args: Action.ButtonProps) => (
+    <div className="flex w-[320px] flex-col gap-4">
+      <Button {...args} fullWidth justify="center" icon={<LuSearch size={16} />}>
+        Center Aligned
+      </Button>
+      <Button {...args} fullWidth justify="start" icon={<LuSearch size={16} />}>
+        Start Aligned
+      </Button>
+    </div>
+  ),
+};
+
+export const LinkButton: Story = {
+  args: {
+    children: 'Read Docs',
+    href: '#',
+    variant: 'outline',
+    color: 'neutral',
+    size: 'md',
+  },
 };

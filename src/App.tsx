@@ -16,10 +16,12 @@ import Components from './pages/Components';
 import Colors from '@/pages/components/foundation/colors/page';
 import Typography from '@/pages/components/foundation/typography/page';
 import ComponentButtonPage from '@/pages/components/action/button/ComponentButtonPage';
+import ComponentButtonGroupPage from '@/pages/components/action/buttonGroup/ComponentButtonGroupPage';
 import ComponentDropdownPage from '@/pages/components/action/dropdown/ComponentDropdownPage';
 import ComponentModalPage from './pages/components/action/modal/ComponentModalPage';
 import ComponentDrawerPage from './pages/components/action/drawer/ComponentDrawerPage';
 import ComponentTextInputPage from '@/pages/components/input/textinput/ComponentTextInputPage';
+import ComponentSelectPage from '@/pages/components/input/select/ComponentSelectPage';
 import ComponentCheckboxPage from '@/pages/components/input/checkbox/ComponentCheckboxPage';
 import ComponentRadioPage from '@/pages/components/input/radio/ComponentRadioPage';
 import ComponentSwitchPage from '@/pages/components/input/switch/ComponentSwitchPage';
@@ -120,11 +122,16 @@ function App() {
           <Route path="foundation/typography" element={<Typography />} />
           {/* action */}
           <Route path="action/button" element={<ComponentButtonPage />} />
+          <Route
+            path="action/buttonGroup"
+            element={<ComponentButtonGroupPage />}
+          />
           <Route path="action/dropdown" element={<ComponentDropdownPage />} />
           <Route path="action/modal" element={<ComponentModalPage />} />
           <Route path="action/drawer" element={<ComponentDrawerPage />} />
           {/* input */}
           <Route path="input/textinput" element={<ComponentTextInputPage />} />
+          <Route path="input/select" element={<ComponentSelectPage />} />
           <Route path="input/checkbox/*" element={<ComponentCheckboxPage />} />
           <Route path="input/radio/*" element={<ComponentRadioPage />} />
           <Route path="input/switch/*" element={<ComponentSwitchPage />} />

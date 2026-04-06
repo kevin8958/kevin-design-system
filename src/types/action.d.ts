@@ -11,6 +11,12 @@ namespace Action {
     | 'danger';
   type ButtonIconPosition = 'left' | 'right';
   type ButtonShape = 'rect' | 'circle';
+  type ButtonJustify = 'start' | 'center';
+  type ButtonGroupItem = {
+    label: React.ReactNode;
+    value: string;
+    disabled?: boolean;
+  };
 
   type DropdownItem =
     | {
@@ -44,12 +50,17 @@ namespace Action {
     variant?: ButtonVariant;
     color?: ButtonColor;
     shape?: ButtonShape;
+    justify?: ButtonJustify;
+    fullWidth?: boolean;
     disabled?: boolean;
     loading?: boolean;
     prompted?: boolean;
     icon?: React.ReactNode;
     iconPosition?: ButtonIconPosition;
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    href?: string;
+    target?: React.HTMLAttributeAnchorTarget;
+    rel?: string;
+    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
     className?: string;
     id?: string;
     style?: React.CSSProperties;
@@ -65,6 +76,17 @@ namespace Action {
     label?: string | React.ReactNode;
     buttonClasses?: string;
   }
+
+  interface ButtonGroupProps {
+    items: ButtonGroupItem[];
+    value: string;
+    onChange?: (value: string) => void;
+    size?: ButtonSize;
+    classes?: string;
+    itemClasses?: string;
+    fullWidth?: boolean;
+  }
+
   type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
   type ModalState = 'default' | 'info' | 'success' | 'warning' | 'danger';
   type ModalPosition = 'top' | 'center' | 'bottom';
