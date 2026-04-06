@@ -1,39 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import Button from '@/components/action/Button';
-import Drawer from '@/components/action/Drawer';
-import Dropdown from '@/components/action/Dropdown';
-import Modal from '@/components/action/Modal';
-import Avatar from '@/components/data/Avatar';
-import Badge from '@/components/data/Badge';
-import SimpleTable from '@/components/data/SimpleTable';
-import Tag from '@/components/data/Tag';
-import Tooltip from '@/components/data/Tooltip';
-import Alert from '@/components/feedback/Alert';
-import Progress from '@/components/feedback/Progress';
-import Skeleton from '@/components/feedback/Skeleton';
-import Toast from '@/components/feedback/Toast';
 import Typography from '@/components/foundation/Typography';
-import ColorScalePreview from '@/pages/components/foundation/colors/ColorScalePreview';
-import CountUp from '@/components/interaction/CountUp';
-import SplitText from '@/components/interaction/SplitText';
-import Sticker from '@/components/interaction/Sticker';
-import DatePicker from '@/components/input/DatePicker';
-import Checkbox from '@/components/input/Checkbox';
-import Radio from '@/components/input/Radio';
-import Switch from '@/components/input/Switch';
-import TextInput from '@/components/input/TextInput';
-import UploadDropzone from '@/components/input/UploadDropzone';
-import Divider from '@/components/layout/Divider';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Grid from '@/components/layout/Grid';
-import BreadCrumb from '@/components/navigation/BreadCrumb';
-import Pagination from '@/components/navigation/Pagination';
-import Tabs from '@/components/navigation/Tabs';
 import { designSystemMenus } from '@/constants/common';
+import ColorScalePreview from '@/pages/components/foundation/colors/ColorScalePreview';
 import { Link, useParams } from 'react-router-dom';
 import { LuArrowUpRight } from 'react-icons/lu';
+import ImagePreview from './previews/ImagePreview';
 
 type CategoryItem = {
   id: string;
@@ -50,7 +24,13 @@ type CategoryConfig = {
 
 type PreviewConfig = {
   description: string;
-  preview: React.ReactNode;
+  preview?: React.ReactNode;
+  imagePreview?: {
+    src: string;
+    alt: string;
+    minHeight?: number;
+    darkSrc?: string;
+  };
 };
 
 const categoryDescriptions: Record<string, string> = {
@@ -110,17 +90,6 @@ const categoryConfigs: CategoryConfig[] = [
   },
 ];
 
-const tableColumns = [
-  { label: 'Name', key: 'name' },
-  { label: 'Role', key: 'role' },
-  { label: 'Status', key: 'status' },
-];
-
-const tableData = [
-  { id: '1', name: 'Alice Kim', role: 'Designer', status: 'Active' },
-  { id: '2', name: 'Bob Lee', role: 'Engineer', status: 'Reviewing' },
-];
-
 const FoundationColorsPreview = () => (
   <Grid cols={1} gap={3} classes="w-full lg:grid-cols-3">
     {[
@@ -132,7 +101,10 @@ const FoundationColorsPreview = () => (
         key={palette.name}
         className="rounded-2xl border border-neutral-200 bg-white p-3 dark:border-neutral-800 dark:bg-neutral-900"
       >
-        <ColorScalePreview title={palette.name} prefix={palette.prefix as 'primary' | 'secondary' | 'neutral'} />
+        <ColorScalePreview
+          title={palette.name}
+          prefix={palette.prefix as 'primary' | 'secondary' | 'neutral'}
+        />
       </div>
     ))}
   </Grid>
@@ -155,231 +127,6 @@ const FoundationTypographyPreview = () => (
   </FlexWrapper>
 );
 
-const ActionDropdownPreview = () => (
-  <Dropdown
-    label="Open menu"
-    items={[
-      { type: 'item', id: 'edit', label: 'Edit' },
-      { type: 'item', id: 'duplicate', label: 'Duplicate' },
-      {
-        type: 'submenu',
-        id: 'share',
-        label: 'Share',
-        items: [
-          { type: 'item', id: 'copy-link', label: 'Copy link' },
-          { type: 'item', id: 'email', label: 'Email invite' },
-        ],
-      },
-    ]}
-  />
-);
-
-const ActionModalPreview = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setIsOpen(true)}>Open modal</Button>
-      <Modal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        title="Share design review"
-        confirmText="Send"
-      >
-        Invite collaborators and collect feedback in one place.
-      </Modal>
-    </>
-  );
-};
-
-const ActionDrawerPreview = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <>
-      <Button variant="outline" color="neutral" onClick={() => setIsOpen(true)}>
-        Open drawer
-      </Button>
-      <Drawer
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        title="Inspector"
-      >
-        <FlexWrapper direction="col" items="start" gap={3}>
-          <Typography variant="B1">Spacing</Typography>
-          <Typography
-            variant="B2"
-            classes="!font-normal !text-neutral-500 dark:!text-neutral-400"
-          >
-            Adjust padding, layout, and section structure from a contextual side
-            panel.
-          </Typography>
-        </FlexWrapper>
-      </Drawer>
-    </>
-  );
-};
-
-const InputTextPreview = () => {
-  const [value, setValue] = useState('Design system');
-
-  return (
-    <TextInput
-      label="Project name"
-      value={value}
-      placeholder="Enter a name"
-      onChange={(event) => setValue(event.target.value)}
-    />
-  );
-};
-
-const InputCheckboxPreview = () => {
-  const [checked, setChecked] = useState(true);
-
-  return (
-    <Checkbox
-      label="Enable notifications"
-      checked={checked}
-      onChange={({ checked: nextChecked }) => setChecked(nextChecked)}
-      size="md"
-    />
-  );
-};
-
-const InputRadioPreview = () => {
-  const [value, setValue] = useState('team');
-
-  return (
-    <Radio
-      title="Audience"
-      value={value}
-      onChange={setValue}
-      options={[
-        {
-          id: 'team',
-          label: 'Team',
-          desc: 'Share internally with the product team.',
-        },
-        {
-          id: 'client',
-          label: 'Client',
-          desc: 'Prepare a presentation-friendly version.',
-        },
-      ]}
-    />
-  );
-};
-
-const InputSwitchPreview = () => {
-  const [checked, setChecked] = useState(true);
-
-  return (
-    <Switch
-      label="Auto save"
-      description="Save changes automatically while editing."
-      checked={checked}
-      onChange={setChecked}
-    />
-  );
-};
-
-const InputDatePickerPreview = () => {
-  const [value, setValue] = useState<Date | null>(new Date());
-
-  return (
-    <DatePicker
-      value={value}
-      onChange={(nextValue) => setValue(nextValue as Date | null)}
-    />
-  );
-};
-
-const InputUploadDropzonePreview = () => {
-  const [files, setFiles] = useState<File[]>([]);
-
-  return (
-    <UploadDropzone
-      files={files}
-      onChange={setFiles}
-      multiple
-      helperText="Drop files here or browse from your device."
-    />
-  );
-};
-
-const NavigationPaginationPreview = () => {
-  const [page, setPage] = useState(3);
-
-  return (
-    <Pagination
-      currentPage={page}
-      totalPages={8}
-      siblingCount={1}
-      onPageChange={setPage}
-    />
-  );
-};
-
-const NavigationTabsPreview = () => {
-  const [value, setValue] = useState('overview');
-
-  return (
-    <Tabs
-      value={value}
-      onChange={setValue}
-      items={[
-        {
-          id: 'overview',
-          label: 'Overview',
-          content: 'Overview content for the selected tab.',
-        },
-        {
-          id: 'activity',
-          label: 'Activity',
-          content: 'Recent updates, history, and collaboration notes.',
-        },
-        {
-          id: 'settings',
-          label: 'Settings',
-          content: 'Configuration and behavior options for this workspace.',
-        },
-      ]}
-    />
-  );
-};
-
-const FeedbackSkeletonPreview = () => (
-  <FlexWrapper direction="col" items="start" gap={3} classes="w-full">
-    <Skeleton width="40%" height={18} />
-    <Skeleton width="100%" height={16} />
-    <Skeleton width="82%" height={16} />
-    <Skeleton variant="rect" width="100%" height={120} />
-  </FlexWrapper>
-);
-
-const LayoutGridPreview = () => (
-  <Grid cols={3} gap={3} classes="w-full">
-    {[1, 2, 3, 4, 5, 6].map((item) => (
-      <div
-        key={item}
-        className="flex h-20 items-center justify-center rounded-2xl border border-neutral-200 bg-white text-sm font-semibold text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200"
-      >
-        Cell {item}
-      </div>
-    ))}
-  </Grid>
-);
-
-const LayoutDividerPreview = () => (
-  <FlexWrapper classes="w-full" justify="center" items="center" gap={4}>
-    <Typography variant="B1">Content</Typography>
-    <Divider orientation="vertical" classes="!min-h-8" />
-    <Typography variant="B1">Details</Typography>
-    <Divider orientation="vertical" classes="!min-h-8" />
-    <Typography variant="B1">Actions</Typography>
-  </FlexWrapper>
-);
-
 const previewExamples: Record<string, Record<string, PreviewConfig>> = {
   foundation: {
     colors: {
@@ -397,254 +144,274 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
     button: {
       description:
         'Button drives primary, secondary, and lightweight actions with clear emphasis.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center" gap={3}>
-          <Button>Primary</Button>
-          <Button variant="outline" color="neutral">
-            Secondary
-          </Button>
-          <Button variant="clear" color="danger">
-            Destructive
-          </Button>
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/action/button.svg',
+        darkSrc: '/category-previews/action/button-dark.svg',
+        minHeight: 124,
+        alt: 'Button mock preview',
+      },
     },
     dropdown: {
       description:
         'Dropdown reveals grouped actions without leaving the current layout.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center">
-          <ActionDropdownPreview />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/action/dropdown.svg',
+        darkSrc: '/category-previews/action/dropdown-dark.svg',
+        minHeight: 180,
+        alt: 'Dropdown mock preview',
+      },
     },
     modal: {
       description:
         'Modal interrupts the flow to confirm, review, or complete focused tasks.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center">
-          <ActionModalPreview />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/action/modal.svg',
+        darkSrc: '/category-previews/action/modal-dark.svg',
+        minHeight: 180,
+        alt: 'Modal mock preview',
+      },
     },
     drawer: {
       description:
         'Drawer opens contextual tools from the edge of the screen while keeping the main page visible.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center">
-          <ActionDrawerPreview />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/action/drawer.svg',
+        darkSrc: '/category-previews/action/drawer-dark.svg',
+        minHeight: 180,
+        alt: 'Drawer mock preview',
+      },
     },
   },
   input: {
     textinput: {
       description:
         'TextInput captures short form values with optional labels, prefixes, and validation states.',
-      preview: <InputTextPreview />,
+      imagePreview: {
+        src: '/category-previews/input/textinput.svg',
+        alt: 'TextInput mock preview',
+        minHeight: 160,
+      },
     },
     checkbox: {
       description:
         'Checkbox supports independent binary selection and compact preference lists.',
-      preview: <InputCheckboxPreview />,
+      imagePreview: {
+        src: '/category-previews/input/checkbox.svg',
+        alt: 'Checkbox mock preview',
+        minHeight: 160,
+      },
     },
     radio: {
       description:
         'Radio groups exclusive options with room for supporting descriptions.',
-      preview: <InputRadioPreview />,
+      imagePreview: {
+        src: '/category-previews/input/radio.svg',
+        alt: 'Radio mock preview',
+        minHeight: 160,
+      },
     },
     switch: {
       description:
         'Switch handles immediate on/off preferences and setting toggles.',
-      preview: <InputSwitchPreview />,
+      imagePreview: {
+        src: '/category-previews/input/switch.svg',
+        alt: 'Switch mock preview',
+        minHeight: 160,
+      },
     },
     datepicker: {
       description:
         'DatePicker helps users choose dates through direct calendar interaction.',
-      preview: (
-        <FlexWrapper classes="w-full max-w-sm" justify="center">
-          <InputDatePickerPreview />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/input/datepicker.svg',
+        alt: 'DatePicker mock preview',
+        minHeight: 180,
+      },
     },
     uploadDropzone: {
       description:
         'UploadDropzone offers click or drag-and-drop file selection in a large target area.',
-      preview: <InputUploadDropzonePreview />,
+      imagePreview: {
+        src: '/category-previews/input/upload-dropzone.svg',
+        alt: 'UploadDropzone mock preview',
+        minHeight: 180,
+      },
     },
   },
   navigation: {
     pagination: {
       description:
         'Pagination helps users move through larger result sets one page at a time.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center">
-          <NavigationPaginationPreview />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/navigation/pagination.svg',
+        alt: 'Pagination mock preview',
+        minHeight: 140,
+      },
     },
     tabs: {
       description:
         'Tabs switch between related content panels without leaving the current screen.',
-      preview: <NavigationTabsPreview />,
+      imagePreview: {
+        src: '/category-previews/navigation/tabs.svg',
+        alt: 'Tabs mock preview',
+        minHeight: 150,
+      },
     },
     breadcrumb: {
       description:
         'Breadcrumb reflects position in the hierarchy and gives quick access to parent levels.',
-      preview: (
-        <BreadCrumb
-          items={[
-            { label: 'Components', href: '/components' },
-            { label: 'Navigation', href: '/components/navigation' },
-            { label: 'Breadcrumb', href: '/components/navigation/breadcrumb' },
-          ]}
-        />
-      ),
+      imagePreview: {
+        src: '/category-previews/navigation/breadcrumb.svg',
+        alt: 'Breadcrumb mock preview',
+        minHeight: 136,
+      },
     },
   },
   dataDisplay: {
     avatar: {
       description:
         'Avatar previews identity with image, initials, and presence.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center" gap={4}>
-          <Avatar src="/sticker/alice.png" name="Alice Kim" status="online" />
-          <Avatar src="/sticker/bob.png" name="Bob Lee" status="busy" />
-          <Avatar name="Charlie Park" status="offline" />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/data-display/avatar.svg',
+        alt: 'Avatar mock preview',
+        minHeight: 148,
+      },
     },
     badge: {
       description:
         'Badge surfaces compact status labels and semantic emphasis.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center" gap={3}>
-          <Badge label="Neutral" />
-          <Badge label="Primary" variant="primary" />
-          <Badge label="Success" variant="success" />
-          <Badge label="Warning" variant="warning" />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/data-display/badge.svg',
+        alt: 'Badge mock preview',
+        minHeight: 148,
+      },
     },
     table: {
       description:
         'Table organizes structured content in a readable, scannable format.',
-      preview: <SimpleTable columns={tableColumns} data={tableData} />,
+      imagePreview: {
+        src: '/category-previews/data-display/table.svg',
+        alt: 'Table mock preview',
+        minHeight: 186,
+      },
     },
     tag: {
       description:
         'Tag highlights classification and filters with a stronger boundary.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center" gap={3}>
-          <Tag label="Design System" />
-          <Tag label="Featured" variant="primary" />
-          <Tag label="Preview" size="lg" />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/data-display/tag.svg',
+        alt: 'Tag mock preview',
+        minHeight: 148,
+      },
     },
     tooltip: {
       description:
         'Tooltip reveals lightweight supporting context on hover or focus.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center">
-          <Tooltip content="Helpful supporting information appears here.">
-            <Button variant="outline" color="neutral">
-              Hover target
-            </Button>
-          </Tooltip>
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/data-display/tooltip.svg',
+        alt: 'Tooltip mock preview',
+        minHeight: 148,
+      },
     },
   },
   feedback: {
     alert: {
       description:
         'Alert communicates inline status and attention states inside page content.',
-      preview: (
-        <Alert
-          title="Workspace updated"
-          description="All team members now see the latest navigation changes."
-          variant="success"
-        />
-      ),
+      imagePreview: {
+        src: '/category-previews/feedback/alert.svg',
+        alt: 'Alert mock preview',
+        minHeight: 148,
+      },
     },
     progress: {
       description:
         'Progress communicates completion state for uploads, setup, and multistep flows.',
-      preview: <Progress value={68} showValue />,
+      imagePreview: {
+        src: '/category-previews/feedback/progress.svg',
+        alt: 'Progress mock preview',
+        minHeight: 144,
+      },
     },
     skeleton: {
       description:
         'Skeleton reserves layout while content is loading, reducing visual jumps.',
-      preview: <FeedbackSkeletonPreview />,
+      imagePreview: {
+        src: '/category-previews/feedback/skeleton.svg',
+        alt: 'Skeleton mock preview',
+        minHeight: 148,
+      },
     },
     toast: {
       description:
         'Toast provides lightweight, temporary confirmation without interrupting the workflow.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center">
-          <Toast
-            title="Changes saved"
-            description="The page layout has been updated successfully."
-            variant="success"
-          />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/feedback/toast.svg',
+        alt: 'Toast mock preview',
+        minHeight: 148,
+      },
     },
   },
   layout: {
     grid: {
       description:
         'Grid provides repeatable column structure for cards, dashboards, and responsive compositions.',
-      preview: <LayoutGridPreview />,
+      imagePreview: {
+        src: '/category-previews/layout/grid.svg',
+        alt: 'Grid mock preview',
+        minHeight: 148,
+      },
     },
     divider: {
       description:
         'Divider separates related groups while preserving a clean and lightweight layout rhythm.',
-      preview: <LayoutDividerPreview />,
+      imagePreview: {
+        src: '/category-previews/layout/divider.svg',
+        alt: 'Divider mock preview',
+        minHeight: 132,
+      },
     },
   },
   interaction: {
     splitText: {
       description:
         'SplitText reveals content character by character to add motion emphasis to key moments.',
-      preview: (
-        <div className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 p-8 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100">
-          <SplitText
-            text="Animate a headline as it comes into view."
-            variant="H3"
-            replayOnView
-          />
-        </div>
-      ),
+      imagePreview: {
+        src: '/category-previews/interaction/split-text.svg',
+        alt: 'SplitText mock preview',
+        minHeight: 148,
+      },
     },
     sticker: {
       description:
         'Sticker creates a playful board where visual elements can be placed and arranged.',
-      preview: <Sticker boardWidth={520} boardHeight={280} />,
+      imagePreview: {
+        src: '/category-previews/interaction/sticker.svg',
+        alt: 'Sticker mock preview',
+        minHeight: 172,
+      },
     },
     countUp: {
       description:
         'CountUp draws attention to metrics and KPIs with animated number transitions.',
-      preview: (
-        <FlexWrapper classes="w-full" justify="center" gap={8}>
-          <CountUp
-            from={0}
-            to={1280}
-            duration={2}
-            className="text-4xl font-bold text-neutral-900 dark:text-neutral-50"
-          />
-          <CountUp
-            from={0}
-            to={98.6}
-            duration={2}
-            className="text-4xl font-bold text-neutral-900 dark:text-neutral-50"
-          />
-        </FlexWrapper>
-      ),
+      imagePreview: {
+        src: '/category-previews/interaction/count-up.svg',
+        alt: 'CountUp mock preview',
+        minHeight: 148,
+      },
     },
   },
 };
+
+const gridCategoryIds = new Set([
+  'action',
+  'input',
+  'navigation',
+  'dataDisplay',
+  'feedback',
+  'layout',
+  'interaction',
+]);
 
 const PreviewBlock = ({
   item,
@@ -679,7 +446,12 @@ const PreviewBlock = ({
 
         <div className="w-full rounded-3xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-950/60">
           {preview ? (
-            <div className="w-full">{preview.preview}</div>
+            <div className="w-full">
+              {preview.preview ??
+                (preview.imagePreview ? (
+                  <ImagePreview {...preview.imagePreview} />
+                ) : null)}
+            </div>
           ) : (
             <FlexWrapper
               classes="w-full min-h-[160px]"
@@ -730,13 +502,25 @@ export default function ComponentCategoryPage() {
       </section>
 
       <FlexWrapper direction="col" items="start" gap={6} classes="w-full">
-        {category.items.map((item) => (
-          <PreviewBlock
-            key={item.id}
-            item={item}
-            preview={categoryPreviewMap[item.id]}
-          />
-        ))}
+        {gridCategoryIds.has(category.id) ? (
+          <div className="grid w-full grid-cols-1 gap-6 xl:grid-cols-2">
+            {category.items.map((item) => (
+              <PreviewBlock
+                key={item.id}
+                item={item}
+                preview={categoryPreviewMap[item.id]}
+              />
+            ))}
+          </div>
+        ) : (
+          category.items.map((item) => (
+            <PreviewBlock
+              key={item.id}
+              item={item}
+              preview={categoryPreviewMap[item.id]}
+            />
+          ))
+        )}
       </FlexWrapper>
     </FlexWrapper>
   );
