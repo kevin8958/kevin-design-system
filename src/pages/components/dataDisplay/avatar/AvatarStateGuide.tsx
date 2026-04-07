@@ -4,21 +4,28 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const StateExample = () => {
-  const exampleCode = `<Avatar src="/sticker/alice.png" name="Alice Kim" status="online" />
-<Avatar name="Charlie Park" status="busy" />`;
+type AvatarPreviewControls = Pick<Data.AvatarProps, 'size'>;
+
+const StateExample = ({ size = 'md' }: AvatarPreviewControls) => {
+  const exampleCode = `<Avatar name="Alice Kim" size="${size}" status="online" />
+<Avatar name="Brian Lee" size="${size}" status="offline" />
+<Avatar name="Charlie Park" size="${size}" status="busy" />`;
 
   return (
     <CodeExample code={exampleCode} className="flex-1">
       <FlexWrapper direction="col" items="start" gap={6} classes="w-full p-4">
-        <FlexWrapper gap={6} items="center">
+        <FlexWrapper gap={6} items="center" classes="flex-wrap">
           <FlexWrapper direction="col" items="center" gap={3}>
-            <Avatar src="/sticker/alice.png" name="Alice Kim" status="online" />
-            <Typography variant="C1">Image + Status</Typography>
+            <Avatar name="Alice Kim" size={size} status="online" />
+            <Typography variant="C1">Online</Typography>
           </FlexWrapper>
           <FlexWrapper direction="col" items="center" gap={3}>
-            <Avatar name="Charlie Park" status="busy" />
-            <Typography variant="C1">Fallback Initials</Typography>
+            <Avatar name="Brian Lee" size={size} status="offline" />
+            <Typography variant="C1">Offline</Typography>
+          </FlexWrapper>
+          <FlexWrapper direction="col" items="center" gap={3}>
+            <Avatar name="Charlie Park" size={size} status="busy" />
+            <Typography variant="C1">Busy</Typography>
           </FlexWrapper>
         </FlexWrapper>
       </FlexWrapper>
@@ -26,12 +33,12 @@ const StateExample = () => {
   );
 };
 
-const AvatarStateGuide = () => {
+const AvatarStateGuide = (props: AvatarPreviewControls) => {
   return (
     <GuideSection
       title="State"
-      description="Combine imagery, initials, and lightweight presence indicators to keep identity visible in different contexts."
-      example={<StateExample />}
+      description="Layer lightweight presence indicators onto avatars to show availability without overwhelming the identity cue."
+      example={<StateExample {...props} />}
     />
   );
 };

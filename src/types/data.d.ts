@@ -6,6 +6,13 @@ namespace Data {
   type TagSize = 'sm' | 'md' | 'lg';
   type TagVariant = 'neutral' | 'primary';
   type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
+  type TooltipColor =
+    | 'primary'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger';
 
   interface AvatarProps {
     src?: string;
@@ -34,6 +41,7 @@ namespace Data {
     content: React.ReactNode;
     children: React.ReactNode;
     position?: TooltipPosition;
+    color?: TooltipColor;
     classes?: string;
   }
 

@@ -1,6 +1,8 @@
 'use client';
 
-import BadgeSizeGuide from '@/pages/components/dataDisplay/badge/BadgeSizeGuide';
+import { useState } from 'react';
+import BadgeContentGuide from '@/pages/components/dataDisplay/badge/BadgeContentGuide';
+import BadgeControllerGuide from '@/pages/components/dataDisplay/badge/BadgeControllerGuide';
 import BadgeVariantGuide from '@/pages/components/dataDisplay/badge/BadgeVariantGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -11,6 +13,7 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentBadgePage() {
+  const [size, setSize] = useState<Data.BadgeSize>('md');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Data Display', href: '/components/dataDisplay' },
@@ -45,8 +48,9 @@ export default function ComponentBadgePage() {
             </Button>
           </FlexWrapper>
 
-          <BadgeSizeGuide />
-          <BadgeVariantGuide />
+          <BadgeControllerGuide size={size} onSizeChange={setSize} />
+          <BadgeContentGuide size={size} />
+          <BadgeVariantGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

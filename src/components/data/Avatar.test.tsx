@@ -25,4 +25,42 @@ describe('Avatar', () => {
 
     expect(container.querySelector('.bg-success')).toBeInTheDocument();
   });
+
+  it('keeps clipping on the avatar surface without clipping the status indicator', () => {
+    const { container } = render(<Avatar name="Alice Kim" status="online" />);
+
+    expect(container.firstChild).not.toHaveClass('overflow-hidden');
+    expect(
+      container.querySelector('.overflow-hidden.rounded-full'),
+    ).toBeInTheDocument();
+  });
+
+  it('positions the status indicator on the bottom-right corner', () => {
+    const { container } = render(
+      <Avatar name="Alice Kim" status="online" size="sm" />,
+    );
+
+    expect(container.querySelector('.bottom-0.right-0')).toBeInTheDocument();
+    expect(container.querySelector('.translate-x-1\\/4.translate-y-1\\/4')).toBeInTheDocument();
+  });
+
+  it('uses softer offsets for larger avatar sizes', () => {
+    const { container: mdContainer } = render(
+      <Avatar name="Alice Kim" status="online" size="md" />,
+    );
+    const { container: lgContainer } = render(
+      <Avatar name="Alice Kim" status="online" size="lg" />,
+    );
+
+    expect(
+      mdContainer.querySelector(
+        '.bottom-px.right-px.translate-x-\\[12\\%\\].translate-y-\\[12\\%\\]',
+      ),
+    ).toBeInTheDocument();
+    expect(
+      lgContainer.querySelector(
+        '.bottom-0\\.5.right-0\\.5.translate-x-\\[4\\%\\].translate-y-\\[4\\%\\]',
+      ),
+    ).toBeInTheDocument();
+  });
 });

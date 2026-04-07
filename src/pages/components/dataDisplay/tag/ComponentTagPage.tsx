@@ -1,6 +1,8 @@
 'use client';
 
-import TagSizeGuide from '@/pages/components/dataDisplay/tag/TagSizeGuide';
+import { useState } from 'react';
+import TagContentGuide from '@/pages/components/dataDisplay/tag/TagContentGuide';
+import TagControllerGuide from '@/pages/components/dataDisplay/tag/TagControllerGuide';
 import TagVariantGuide from '@/pages/components/dataDisplay/tag/TagVariantGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -11,6 +13,7 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentTagPage() {
+  const [size, setSize] = useState<Data.TagSize>('md');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Data Display', href: '/components/dataDisplay' },
@@ -45,8 +48,9 @@ export default function ComponentTagPage() {
             </Button>
           </FlexWrapper>
 
-          <TagSizeGuide />
-          <TagVariantGuide />
+          <TagControllerGuide size={size} onSizeChange={setSize} />
+          <TagContentGuide size={size} />
+          <TagVariantGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

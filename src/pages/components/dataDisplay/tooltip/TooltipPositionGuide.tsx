@@ -7,11 +7,13 @@ import GuideSection from '@/components/layout/GuideSection';
 
 const positions: Data.TooltipPosition[] = ['top', 'right', 'bottom', 'left'];
 
-const PositionExample = () => {
-  const exampleCode = `<Tooltip content="Top" position="top"><Button>Top</Button></Tooltip>
-<Tooltip content="Right" position="right"><Button>Right</Button></Tooltip>
-<Tooltip content="Bottom" position="bottom"><Button>Bottom</Button></Tooltip>
-<Tooltip content="Left" position="left"><Button>Left</Button></Tooltip>`;
+type TooltipPreviewControls = Pick<Data.TooltipProps, 'color'>;
+
+const PositionExample = ({ color = 'neutral' }: TooltipPreviewControls) => {
+  const exampleCode = `<Tooltip content="Top" position="top" color="${color}"><Button>Top</Button></Tooltip>
+<Tooltip content="Right" position="right" color="${color}"><Button>Right</Button></Tooltip>
+<Tooltip content="Bottom" position="bottom" color="${color}"><Button>Bottom</Button></Tooltip>
+<Tooltip content="Left" position="left" color="${color}"><Button>Left</Button></Tooltip>`;
 
   return (
     <CodeExample code={exampleCode} className="flex-1">
@@ -19,7 +21,12 @@ const PositionExample = () => {
         <Typography variant="C1">Hover each trigger to compare placement.</Typography>
         <FlexWrapper gap={4} items="center">
           {positions.map((position) => (
-            <Tooltip key={position} content={position} position={position}>
+            <Tooltip
+              key={position}
+              content={position}
+              position={position}
+              color={color}
+            >
               <Button variant="outline" color="neutral" size="sm">
                 {position}
               </Button>
@@ -31,12 +38,12 @@ const PositionExample = () => {
   );
 };
 
-const TooltipPositionGuide = () => {
+const TooltipPositionGuide = (props: TooltipPreviewControls) => {
   return (
     <GuideSection
       title="Position"
       description="Choose a placement that keeps the tooltip visible without blocking nearby content."
-      example={<PositionExample />}
+      example={<PositionExample {...props} />}
     />
   );
 };

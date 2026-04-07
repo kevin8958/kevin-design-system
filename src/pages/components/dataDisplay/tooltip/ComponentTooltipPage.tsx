@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import TooltipControllerGuide from '@/pages/components/dataDisplay/tooltip/TooltipControllerGuide';
 import TooltipTypeGuide from '@/pages/components/dataDisplay/tooltip/TooltipTypeGuide';
 import TooltipPositionGuide from '@/pages/components/dataDisplay/tooltip/TooltipPositionGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
@@ -11,6 +13,7 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentTooltipPage() {
+  const [color, setColor] = useState<Data.TooltipColor>('neutral');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Data Display', href: '/components/dataDisplay' },
@@ -45,8 +48,12 @@ export default function ComponentTooltipPage() {
             </Button>
           </FlexWrapper>
 
-          <TooltipTypeGuide />
-          <TooltipPositionGuide />
+          <TooltipControllerGuide
+            color={color}
+            onColorChange={setColor}
+          />
+          <TooltipTypeGuide color={color} />
+          <TooltipPositionGuide color={color} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
@@ -82,6 +89,20 @@ const propsData = [
   },
   {
     id: '4',
+    property: 'color',
+    type: [
+      "'neutral'",
+      "'primary'",
+      "'info'",
+      "'success'",
+      "'warning'",
+      "'danger'",
+    ],
+    default: "'neutral'",
+    description: 'Controls the tooltip surface color treatment.',
+  },
+  {
+    id: '5',
     property: 'classes',
     type: 'string',
     default: "''",

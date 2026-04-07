@@ -1,7 +1,9 @@
 'use client';
 
-import AvatarSizeGuide from '@/pages/components/dataDisplay/avatar/AvatarSizeGuide';
+import { useState } from 'react';
+import AvatarControllerGuide from '@/pages/components/dataDisplay/avatar/AvatarControllerGuide';
 import AvatarStateGuide from '@/pages/components/dataDisplay/avatar/AvatarStateGuide';
+import AvatarTypeGuide from '@/pages/components/dataDisplay/avatar/AvatarTypeGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -11,6 +13,7 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentAvatarPage() {
+  const [size, setSize] = useState<Data.AvatarSize>('md');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Data Display', href: '/components/dataDisplay' },
@@ -45,8 +48,9 @@ export default function ComponentAvatarPage() {
             </Button>
           </FlexWrapper>
 
-          <AvatarSizeGuide />
-          <AvatarStateGuide />
+          <AvatarControllerGuide size={size} onSizeChange={setSize} />
+          <AvatarTypeGuide size={size} />
+          <AvatarStateGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

@@ -11,6 +11,10 @@ const meta: Meta<typeof Tooltip> = {
       control: 'select',
       options: ['top', 'right', 'bottom', 'left'],
     },
+    color: {
+      control: 'select',
+      options: ['neutral', 'primary', 'info', 'success', 'warning', 'danger'],
+    },
   },
 };
 
@@ -21,6 +25,7 @@ export const Default: Story = {
   args: {
     content: 'Helpful supporting text.',
     position: 'top',
+    color: 'neutral',
     children: <Button variant="outline" color="neutral">Hover me</Button>,
   },
 };
