@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 import { FaChevronRight } from 'react-icons/fa';
-import { useLocation } from 'react-router-dom';
 
 const breadcrumbVariants = cva(
   'flex items-center gap-1.5 text-sm transition-all duration-200 ease-in-out',
@@ -19,7 +18,7 @@ const breadcrumbVariants = cva(
 );
 
 const BreadCrumb = ({ items, className }: Navigation.BreadCrumbProps) => {
-  const { pathname } = useLocation();
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
   return (
     <nav aria-label="Breadcrumb" className={classNames('py-2', className)}>
       <ol className="flex items-center gap-1.5">

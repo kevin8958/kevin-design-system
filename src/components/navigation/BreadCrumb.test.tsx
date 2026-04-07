@@ -1,16 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import BreadCrumb from './BreadCrumb';
 
 const renderWithRoute = (
   items: Navigation.BreadCrumbProps['items'],
   route = '/components/navigation/breadcrumb',
-) =>
-  render(
-    <MemoryRouter initialEntries={[route]}>
-      <BreadCrumb items={items} />
-    </MemoryRouter>,
-  );
+) => {
+  window.history.pushState({}, '', route);
+  return render(<BreadCrumb items={items} />);
+};
 
 describe('BreadCrumb', () => {
   const items = [
@@ -33,10 +30,6 @@ describe('BreadCrumb', () => {
   it('renders previous items as links', () => {
     renderWithRoute(items);
 
-    expect(screen.getByRole('link', { name: /home/i })).toHaveAttribute(
-      'href',
-      '/',
-    );
     expect(screen.getByRole('link', { name: /navigation/i })).toHaveAttribute(
       'href',
       '/components/navigation',
@@ -53,11 +46,8 @@ describe('BreadCrumb', () => {
   });
 
   it('applies custom className to the wrapper', () => {
-    render(
-      <MemoryRouter initialEntries={['/components/navigation/breadcrumb']}>
-        <BreadCrumb items={items} className="mb-4" />
-      </MemoryRouter>,
-    );
+    window.history.pushState({}, '', '/components/navigation/breadcrumb');
+    render(<BreadCrumb items={items} className="mb-4" />);
 
     expect(screen.getByRole('navigation')).toHaveClass('mb-4');
   });

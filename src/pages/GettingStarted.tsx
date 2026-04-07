@@ -10,6 +10,8 @@ import {
 } from 'react-icons/lu';
 
 const installCommand = 'npm install kevin-design-system';
+const localCheckCommand = `npm pack
+npm install ./kevin-design-system-0.1.0.tgz`;
 const usageExample = `import { Button, TextInput } from 'kevin-design-system';
 
 export default function App() {
@@ -23,25 +25,25 @@ export default function App() {
 
 const steps = [
   {
-    title: 'Install the package',
+    title: 'Install after publish',
     description:
-      'The package name and install flow are prepared in advance so the onboarding experience can be designed now.',
+      'Once the package is published to npm, the intended install flow will use the package name directly.',
     icon: <LuPackage size={18} />,
     code: installCommand,
   },
   {
     title: 'Import the components you need',
     description:
-      'Use direct imports from the package and compose only the pieces required by each product surface.',
+      'Use direct imports from the package entry. Library styles are bundled automatically, so no extra stylesheet import is required.',
     icon: <LuComponent size={18} />,
     code: usageExample,
   },
   {
-    title: 'Build with the same design language',
+    title: 'Verify locally before publish',
     description:
-      'Foundations, components, and interactive primitives will be documented here so teams can adopt the system consistently.',
+      'The current package can already be packed locally and installed from the generated tarball for smoke testing.',
     icon: <LuBox size={18} />,
-    code: 'Docs, theming guidance, and package distribution are planned next.',
+    code: localCheckCommand,
   },
 ];
 
@@ -66,7 +68,7 @@ export default function GettingStarted() {
               variant="B1"
               classes="max-w-3xl !font-normal !text-neutral-600 dark:!text-neutral-300"
             >
-              The real package distribution flow is not live yet, but we can already shape the onboarding around the intended install, import, and usage experience.
+              The package build, typings, and tarball flow are ready. npm publishing is the next step, and the install guide below now reflects both the final npm command and the current local verification path.
             </Typography>
           </FlexWrapper>
 
@@ -75,7 +77,7 @@ export default function GettingStarted() {
               variant="C1"
               classes="mb-2 !text-neutral-500 dark:!text-neutral-400"
             >
-              Install Command
+              Publish Install Command
             </Typography>
             <code className="block overflow-x-auto whitespace-pre-wrap text-sm font-medium text-secondary-700 dark:text-primary-300">
               {installCommand}
@@ -110,7 +112,7 @@ export default function GettingStarted() {
                 variant="B2"
                 classes="mt-2 !font-normal !text-neutral-600 dark:!text-neutral-300"
               >
-                This page is intentionally written like a real setup guide so we can refine the developer experience before package publishing is implemented.
+                This page now mirrors the real packaging work in the repo: package entry, bundled styles, emitted types, and local tarball validation are ready, while public npm publishing is still pending.
               </Typography>
             </div>
 
@@ -156,40 +158,40 @@ export default function GettingStarted() {
                 variant="B2"
                 classes="mt-2 !font-normal !text-neutral-600 dark:!text-neutral-300"
               >
-                The installation and distribution story is being staged ahead of the actual package release.
+                The install flow is no longer just a placeholder. The library build and local package verification are complete, and the last major step is publishing to npm.
               </Typography>
             </div>
 
-            <div className="w-full rounded-2xl border border-warning/20 bg-warning/10 p-4 dark:border-warning/30 dark:bg-warning/10">
-              <Typography variant="H4" classes="!text-warning">
-                Placeholder Setup
+            <div className="w-full rounded-2xl border border-secondary-200 bg-secondary-50/70 p-4 dark:border-primary-400/20 dark:bg-primary-400/10">
+              <Typography variant="H4" classes="!text-secondary-700 dark:!text-primary-300">
+                Ready for Local Validation
               </Typography>
               <Typography
                 variant="B2"
                 classes="mt-2 !font-normal !text-neutral-700 dark:!text-neutral-200"
               >
-                `npm install kevin-design-system` is presented as the intended future command. Package publishing, versioning, and real registry installation will be implemented later.
+                `npm run build:lib` and `npm pack` already produce a usable package tarball. After npm publish, the same library can be installed with `npm install kevin-design-system`.
               </Typography>
             </div>
 
             <FlexWrapper direction="col" items="start" gap={3} classes="w-full">
               <div className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950/70">
-                <Typography variant="H4">What You Can Explore Now</Typography>
+                <Typography variant="H4">Ready Now</Typography>
                 <Typography
                   variant="B2"
                   classes="mt-2 !font-normal !text-neutral-600 dark:!text-neutral-300"
                 >
-                  Component docs, category previews, and usage examples are already available while the actual install pipeline is still pending.
+                  Library entry exports, bundled component styles, emitted TypeScript declarations, and local consumer smoke testing.
                 </Typography>
               </div>
 
               <div className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950/70">
-                <Typography variant="H4">What Comes Next</Typography>
+                <Typography variant="H4">Next Up</Typography>
                 <Typography
                   variant="B2"
                   classes="mt-2 !font-normal !text-neutral-600 dark:!text-neutral-300"
                 >
-                  Package publishing, versioned release notes, theme setup instructions, and framework-specific integration examples.
+                  npm publish, package release notes, and broader consumer validation across real projects and frameworks.
                 </Typography>
               </div>
             </FlexWrapper>

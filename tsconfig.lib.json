@@ -1,0 +1,36 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "composite": false,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": false,
+    "rootDir": "./src",
+    "outDir": "./dist/types",
+    "incremental": false,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.lib.tsbuildinfo"
+  },
+  "include": [
+    "src/index.ts",
+    "src/vite-env.d.ts",
+    "src/components/**/*.ts",
+    "src/components/**/*.tsx",
+    "src/libs/**/*.ts",
+    "src/types/**/*.d.ts",
+    "src/index.d.ts"
+  ],
+  "exclude": [
+    "src/pages/**",
+    "src/main.tsx",
+    "src/App.tsx",
+    "src/stories/**",
+    "src/components/layout/Gnb.tsx",
+    "src/components/layout/Snb.tsx",
+    "src/components/layout/GuideSection.tsx",
+    "src/components/layout/ScrollTopButton.tsx",
+    "src/components/interaction/CodeExample.tsx",
+    "src/components/**/*.stories.tsx",
+    "src/components/**/*.test.tsx"
+  ]
+}

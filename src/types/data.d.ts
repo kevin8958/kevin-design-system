@@ -1,4 +1,14 @@
 namespace Data {
+  type Column = {
+    key: string;
+    label: string;
+  };
+
+  type Row = {
+    id: string;
+    [key: string]: unknown;
+  };
+
   type AvatarSize = 'sm' | 'md' | 'lg';
   type AvatarStatus = 'online' | 'offline' | 'busy';
   type BadgeSize = 'sm' | 'md' | 'lg';

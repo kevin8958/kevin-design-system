@@ -2,6 +2,12 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { LuTrash2, LuX } from 'react-icons/lu';
 import Button from '@/components/action/Button';
+import aliceSticker from '@/assets/sticker/alice.png';
+import bobSticker from '@/assets/sticker/bob.png';
+import charlieSticker from '@/assets/sticker/charlie.png';
+import danaSticker from '@/assets/sticker/dana.png';
+import stickerOne from '@/assets/sticker/sticker1.png';
+import stickerTwo from '@/assets/sticker/sticker2.png';
 
 interface PlacedSticker extends Interaction.StickerOption {
   instanceId: number;
@@ -13,25 +19,25 @@ interface PlacedSticker extends Interaction.StickerOption {
 const DEFAULT_OPTIONS: Interaction.StickerOption[] = [
   {
     id: 1,
-    src: '/sticker/sticker1.png',
+    src: stickerOne,
     alt: 'Orange smile sticker',
     label: 'Sticker 1',
   },
   {
     id: 2,
-    src: '/sticker/sticker2.png',
+    src: stickerTwo,
     alt: 'Blue cat sticker',
     label: 'Sticker 2',
   },
-  { id: 3, src: '/sticker/alice.png', alt: 'Alice sticker', label: 'Alice' },
-  { id: 4, src: '/sticker/bob.png', alt: 'Bob sticker', label: 'Bob' },
+  { id: 3, src: aliceSticker, alt: 'Alice sticker', label: 'Alice' },
+  { id: 4, src: bobSticker, alt: 'Bob sticker', label: 'Bob' },
   {
     id: 5,
-    src: '/sticker/charlie.png',
+    src: charlieSticker,
     alt: 'Charlie sticker',
     label: 'Charlie',
   },
-  { id: 6, src: '/sticker/dana.png', alt: 'Dana sticker', label: 'Dana' },
+  { id: 6, src: danaSticker, alt: 'Dana sticker', label: 'Dana' },
 ];
 
 const STICKER_WIDTH = 88;

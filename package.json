@@ -1,18 +1,45 @@
 {
   "name": "kevin-design-system",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "A React component library for Kevin Design System.",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "keywords": [
+    "design-system",
+    "react",
+    "components",
+    "ui"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && npm run build-storybook && mv storybook-static dist/storybook",
-    "build-storybook": "storybook build",
+    "build": "npm run build:lib && npm run build:docs",
+    "build:lib": "vite build --config vite.lib.config.ts && node scripts/inject-lib-styles.mjs && tsc -p tsconfig.lib.json && node scripts/prepare-lib-types.mjs",
+    "build:docs": "tsc -b && vite build --outDir dist-docs && npm run build-storybook",
+    "build-storybook": "storybook build -o dist-docs/storybook",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepack": "npm run build:lib"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -24,20 +51,19 @@
   "dependencies": {
     "@floating-ui/react": "^0.27.19",
     "@headlessui/react": "^2.2.9",
-    "@uidotdev/usehooks": "^2.4.1",
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.20",
-    "headlessui": "^0.0.0",
+    "framer-motion": "^12.23.24",
     "motion": "^12.35.0",
-    "react": "^19.2.0",
     "react-datepicker": "^9.1.0",
-    "react-dom": "^19.2.0",
     "react-icons": "^5.6.0",
-    "react-router-dom": "^7.13.1",
-    "tailwind-merge": "^3.5.0",
-    "tailwindcss": "^4.2.1"
+    "tailwind-merge": "^3.5.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
@@ -75,7 +101,11 @@
     "playwright": "^1.58.2",
     "postcss": "^8.5.8",
     "prettier": "^3.8.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.1",
     "storybook": "^10.2.16",
+    "tailwindcss": "^4.2.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1",
