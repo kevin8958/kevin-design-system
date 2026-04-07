@@ -6,13 +6,17 @@ import { LuEye, LuEyeOff } from 'react-icons/lu';
 import Button from '@/components/action/Button';
 import { useState } from 'react';
 
-const SuffixExample = () => {
+type TextInputPreviewControls = Pick<Input.TextInputProps, 'size'>;
+
+const SuffixExample = ({ size }: TextInputPreviewControls) => {
   const [showPassword, setShowPassword] = useState(false);
   const exampleCode = `<TextInput 
+  size="${size}"
   placeholder="Weight" 
   suffix={<span className="text-sm text-neutral-400">kg</span>} 
 />
 <TextInput 
+  size="${size}"
   type="password"
   placeholder="Password" 
   suffix={
@@ -38,10 +42,12 @@ const SuffixExample = () => {
         classes="w-full"
       >
         <TextInput
+          size={size}
           placeholder="Weight"
           suffix={<span className="text-sm text-neutral-400 mr-2">kg</span>}
         />
         <TextInput
+          size={size}
           type={showPassword ? 'text' : 'password'}
           placeholder="Password"
           suffix={
@@ -61,12 +67,12 @@ const SuffixExample = () => {
   );
 };
 
-const TextInputSuffixGuide = () => {
+const TextInputSuffixGuide = (props: TextInputPreviewControls) => {
   return (
     <GuideSection
       title="Suffix"
       description="Add icons, text, or interactive elements to the right side of the input."
-      example={<SuffixExample />}
+      example={<SuffixExample {...props} />}
     />
   );
 };

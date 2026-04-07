@@ -1,6 +1,7 @@
 'use client';
 
-import SwitchSizeGuide from '@/pages/components/input/switch/SwitchSizeGuide';
+import { useState } from 'react';
+import SwitchControllerGuide from '@/pages/components/input/switch/SwitchControllerGuide';
 import SwitchStateGuide from '@/pages/components/input/switch/SwitchStateGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -11,6 +12,8 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentSwitchPage() {
+  const [size, setSize] = useState<Input.SwitchSize>('md');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Input', href: '/components/input' },
@@ -45,8 +48,8 @@ export default function ComponentSwitchPage() {
             </Button>
           </FlexWrapper>
 
-          <SwitchSizeGuide />
-          <SwitchStateGuide />
+          <SwitchControllerGuide size={size} onSizeChange={setSize} />
+          <SwitchStateGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

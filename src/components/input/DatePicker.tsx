@@ -22,6 +22,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     minDate,
     maxDate,
     isError,
+    errorMsg,
     isFilter,
     disabled,
     hideHeaderButtons,
@@ -43,8 +44,27 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     setPrevProps({ startDate, endDate });
   }
 
+  const inputDisplayValue = (() => {
+    if (isRange) {
+      if (!start) return undefined;
+
+      const formattedStart = dayjs(start).format('MMM D, YYYY');
+      if (!end) return formattedStart;
+      const formattedEnd = dayjs(end).format('MMM D, YYYY');
+
+      return `${formattedStart} - ${formattedEnd}`;
+    }
+
+    if (value instanceof Date) {
+      return dayjs(value).format('MMM D, YYYY');
+    }
+
+    return undefined;
+  })();
+
   return (
-    <DatePicker
+    <div className="flex w-full flex-col gap-1.5">
+      <DatePicker
       portalId="datepicker-portal"
       className={classNames(
         'box-border h-full w-full !rounded-lg px-4 text-center !text-sm !outline-none placeholder:text-neutral-300 focus:z-10',
@@ -68,7 +88,8 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
             variant === 'clear',
         },
       )}
-      dateFormat="MMM dd, yyyy"
+      dateFormat="MMM d, yyyy"
+      value={inputDisplayValue}
       openToDate={value || undefined}
       selected={value || null}
       disabled={disabled}
@@ -216,7 +237,12 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
           </div>
         );
       }}
-    />
+      />
+
+      {isError && errorMsg && (
+        <p className="text-xs font-medium text-danger">{errorMsg}</p>
+      )}
+    </div>
   );
 };
 

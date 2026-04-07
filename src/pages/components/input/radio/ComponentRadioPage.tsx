@@ -1,6 +1,7 @@
 'use client';
 
-import RadioSizeGuide from '@/pages/components/input/radio/RadioSizeGuide';
+import { useState } from 'react';
+import RadioControllerGuide from '@/pages/components/input/radio/RadioControllerGuide';
 import RadioStateGuide from '@/pages/components/input/radio/RadioStateGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -11,6 +12,8 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentRadioPage() {
+  const [size, setSize] = useState<Input.RadioSize>('md');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Input', href: '/components/input' },
@@ -45,8 +48,8 @@ export default function ComponentRadioPage() {
             </Button>
           </FlexWrapper>
 
-          <RadioSizeGuide />
-          <RadioStateGuide />
+          <RadioControllerGuide size={size} onSizeChange={setSize} />
+          <RadioStateGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

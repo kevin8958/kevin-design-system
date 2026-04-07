@@ -6,7 +6,7 @@ import GuideSection from '@/components/layout/GuideSection';
 const StateExample = () => {
   const exampleCode = `<Checkbox label="Default" />
 <Checkbox label="Checked" checked />
-<Checkbox label="Invalid" invalid />
+<Checkbox label="Invalid" invalid errorMsg="Please check this field." />
 <Checkbox label="Disabled" disabled />
 <Checkbox label="Disabled Checked" disabled checked />`;
 
@@ -21,7 +21,11 @@ const StateExample = () => {
       >
         <Checkbox label="Default State" />
         <Checkbox label="Checked State" checked />
-        <Checkbox label="Invalid State" invalid />
+        <Checkbox
+          label="Invalid State"
+          invalid
+          errorMsg="Please check this field."
+        />
         <Checkbox label="Disabled State" disabled />
         <Checkbox label="Disabled Checked" disabled checked />
       </FlexWrapper>

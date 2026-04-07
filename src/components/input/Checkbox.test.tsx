@@ -56,6 +56,23 @@ describe('Checkbox Component', () => {
     expect(visualBox).toHaveClass('border-danger');
   });
 
+  it('should render error message when invalid and errorMsg are provided', () => {
+    render(
+      <Checkbox
+        label="Invalid"
+        id="invalid-msg-cb"
+        invalid
+        errorMsg="Please check this field."
+      />,
+    );
+
+    expect(screen.getByText(/please check this field\./i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/invalid/i)).toHaveAttribute(
+      'aria-describedby',
+      'invalid-msg-cb-error',
+    );
+  });
+
   it('should apply correct size classes based on the size prop', () => {
     const { container: smContainer } = render(<Checkbox id="sm" size="sm" />);
     const { container: lgContainer } = render(<Checkbox id="lg" size="lg" />);

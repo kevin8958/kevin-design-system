@@ -10,10 +10,13 @@ const options: Input.SelectOption[] = [
   { label: 'Danger', value: 'danger' },
 ];
 
-const StateExample = () => {
+type SelectPreviewControls = Pick<Input.SelectProps, 'size'>;
+
+const StateExample = ({ size }: SelectPreviewControls) => {
   const [value, setValue] = useState('');
 
   const exampleCode = `<Select
+  size="${size}"
   options={options}
   value={value}
   onChange={setValue}
@@ -21,6 +24,7 @@ const StateExample = () => {
 />
 
 <Select
+  size="${size}"
   options={options}
   value=""
   disabled
@@ -28,6 +32,7 @@ const StateExample = () => {
 />
 
 <Select
+  size="${size}"
   options={options}
   value=""
   invalid
@@ -39,6 +44,7 @@ const StateExample = () => {
       <FlexWrapper direction="col" items="center" justify="center" gap={6} classes="w-full">
         <div className="w-full max-w-sm">
           <Select
+            size={size}
             options={options}
             value={value}
             onChange={setValue}
@@ -46,10 +52,17 @@ const StateExample = () => {
           />
         </div>
         <div className="w-full max-w-sm">
-          <Select options={options} value="" disabled placeholder="Disabled" />
+          <Select
+            size={size}
+            options={options}
+            value=""
+            disabled
+            placeholder="Disabled"
+          />
         </div>
         <div className="w-full max-w-sm">
           <Select
+            size={size}
             options={options}
             value=""
             invalid
@@ -62,12 +75,12 @@ const StateExample = () => {
   );
 };
 
-const SelectStateGuide = () => {
+const SelectStateGuide = (props: SelectPreviewControls) => {
   return (
     <GuideSection
       title="State"
       description="Use placeholder, disabled, and validation states to guide selection flows."
-      example={<StateExample />}
+      example={<StateExample {...props} />}
     />
   );
 };

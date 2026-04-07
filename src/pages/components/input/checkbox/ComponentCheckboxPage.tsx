@@ -1,6 +1,5 @@
 'use client';
 
-import CheckboxSizeGuide from '@/pages/components/input/checkbox/CheckboxSizeGuide';
 import CheckboxStateGuide from '@/pages/components/input/checkbox/CheckboxStateGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -45,8 +44,6 @@ export default function ComponentCheckboxPage() {
             </Button>
           </FlexWrapper>
 
-          {/* 가이드 섹션들 */}
-          <CheckboxSizeGuide />
           <CheckboxStateGuide />
 
           {/* Props Table */}
@@ -106,13 +103,20 @@ const propsData = [
   },
   {
     id: '7',
+    property: 'errorMsg',
+    type: 'string',
+    default: "''",
+    description: 'Helper text shown below the checkbox when invalid is true.',
+  },
+  {
+    id: '8',
     property: 'onChange',
     type: '(data: { id: string; checked: boolean }) => void',
     default: 'undefined',
     description: 'Callback function triggered when the checked state changes.',
   },
   {
-    id: '8',
+    id: '9',
     property: 'classes',
     type: 'string',
     default: "''",

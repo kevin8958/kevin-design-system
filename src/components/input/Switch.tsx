@@ -13,8 +13,12 @@ const switchVariants = cva(
       },
       state: {
         default:
-          'bg-neutral-200 dark:bg-neutral-800 border border-transparent dark:border-neutral-700',
-        active: 'bg-secondary-600 dark:bg-primary-600',
+          'bg-neutral-200 dark:bg-neutral-700 border border-transparent dark:border-neutral-600',
+        active: 'bg-neutral-900 dark:bg-neutral-300',
+        disabled:
+          'bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700',
+        disabledChecked:
+          'bg-neutral-300 dark:bg-neutral-500 border border-neutral-300 dark:border-neutral-500',
         invalid: 'bg-danger',
       },
     },
@@ -27,7 +31,7 @@ const switchVariants = cva(
 
 const thumbVariants = cva(
   // shadow를 강화하여 입체감 부여
-  'pointer-events-none block rounded-full bg-white shadow-md ring-0 transition-transform duration-200 dark:bg-white',
+  'pointer-events-none block rounded-full bg-white shadow-[0_1px_2px_rgba(15,23,42,0.18),0_2px_6px_rgba(15,23,42,0.12)] ring-0 transition-transform duration-200 dark:bg-white',
   {
     variants: {
       size: {
@@ -66,6 +70,7 @@ const Switch = forwardRef<HTMLInputElement, Input.SwitchProps>((props, ref) => {
   } = props;
 
   const id = useId();
+  const errorId = `${id}-error`;
 
   const handleToggle = () => {
     if (!disabled) {
@@ -82,12 +87,15 @@ const Switch = forwardRef<HTMLInputElement, Input.SwitchProps>((props, ref) => {
           id={id}
           aria-checked={checked}
           aria-invalid={invalid}
+          aria-describedby={invalid && errorMsg ? errorId : undefined}
           disabled={disabled}
           onClick={handleToggle}
           className={switchVariants({
             size,
             state: disabled
-              ? 'default'
+              ? checked
+                ? 'disabledChecked'
+                : 'disabled'
               : invalid
                 ? 'invalid'
                 : checked
@@ -147,7 +155,10 @@ const Switch = forwardRef<HTMLInputElement, Input.SwitchProps>((props, ref) => {
       </div>
 
       {invalid && errorMsg && (
-        <p className="text-xs font-medium text-danger animate-in fade-in slide-in-from-top-1">
+        <p
+          id={errorId}
+          className="text-xs font-medium text-danger animate-in fade-in slide-in-from-top-1"
+        >
           {errorMsg}
         </p>
       )}

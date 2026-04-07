@@ -56,6 +56,12 @@ describe('Switch Component', () => {
     expect(switchButton).toHaveClass('bg-danger');
   });
 
+  it('should visually distinguish disabled checked state', () => {
+    render(<Switch label="Disabled On" disabled checked />);
+
+    expect(screen.getByRole('switch')).toHaveClass('bg-neutral-300');
+  });
+
   it('should trigger toggle when clicking the label', () => {
     const handleChange = jest.fn();
     render(

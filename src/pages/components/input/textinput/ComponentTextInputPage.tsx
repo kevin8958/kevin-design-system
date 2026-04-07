@@ -1,10 +1,11 @@
 'use client';
 
-import TextInputSizeGuide from '@/pages/components/input/textinput/TextInputSizeGuide';
+import { useState } from 'react';
 import TextInputStateGuide from '@/pages/components/input/textinput/TextInputStateGuide';
 import TextInputTypeGuide from '@/pages/components/input/textinput/TextInputTypeGuide';
 import TextInputPrefixGuide from '@/pages/components/input/textinput/TextInputPrefixGuide';
 import TextInputSuffixGuide from '@/pages/components/input/textinput/TextInputSuffixGuide';
+import TextInputControllerGuide from '@/pages/components/input/textinput/TextInputControllerGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -14,6 +15,8 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentTextInputPage() {
+  const [size, setSize] = useState<Input.TextInputSize>('md');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Input', href: '/components/input' },
@@ -48,11 +51,11 @@ export default function ComponentTextInputPage() {
             </Button>
           </FlexWrapper>
 
-          <TextInputSizeGuide />
-          <TextInputStateGuide />
-          <TextInputTypeGuide />
-          <TextInputPrefixGuide />
-          <TextInputSuffixGuide />
+          <TextInputControllerGuide size={size} onSizeChange={setSize} />
+          <TextInputPrefixGuide size={size} />
+          <TextInputStateGuide size={size} />
+          <TextInputSuffixGuide size={size} />
+          <TextInputTypeGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

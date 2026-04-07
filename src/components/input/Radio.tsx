@@ -10,7 +10,7 @@ const radioVariants = cva(
       state: {
         default:
           'border-neutral-200 bg-white hover:border-neutral-400 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:border-neutral-500',
-        selected: 'border-2 border-secondary-600 dark:border-primary-100',
+        selected: 'border-2 border-neutral-900 dark:border-neutral-100',
         disabled:
           'border-neutral-200 bg-neutral-50 opacity-60 cursor-not-allowed dark:border-neutral-800 dark:bg-neutral-800/50',
         invalid: 'border-2 border-danger bg-white dark:bg-neutral-900',
@@ -30,7 +30,7 @@ const circleVariants = cva(
         lg: 'size-5 mt-[4px]',
       },
       selected: {
-        true: 'border-secondary-600 dark:border-primary-100',
+        true: 'border-neutral-900 dark:border-neutral-100',
         false: 'border-neutral-300 dark:border-neutral-500',
       },
       invalid: { true: 'border-danger!', false: '' },
@@ -120,7 +120,7 @@ const Radio = forwardRef<HTMLInputElement, Input.RadioProps>((props, ref) => {
                     className={classNames(
                       invalid
                         ? 'bg-danger'
-                        : 'bg-secondary-600 dark:bg-primary-100',
+                        : 'bg-neutral-900 dark:bg-neutral-100',
                       innerCircleSize[size],
                       'rounded-full',
                     )}

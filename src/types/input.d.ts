@@ -58,6 +58,7 @@ namespace Input {
     checked?: boolean;
     disabled?: boolean;
     invalid?: boolean;
+    errorMsg?: string;
     size?: CheckboxSize;
     onChange?: (data: { id: string; checked: boolean }) => void;
   }
@@ -113,6 +114,7 @@ namespace Input {
     minDate?: Date;
     maxDate?: Date;
     isError?: boolean;
+    errorMsg?: string;
     isNullable?: boolean;
     isFilter?: boolean;
     placeholder?: string;

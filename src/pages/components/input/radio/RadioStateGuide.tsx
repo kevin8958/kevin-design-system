@@ -4,7 +4,9 @@ import Radio from '@/components/input/Radio';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const StateExample = () => {
+type RadioPreviewControls = Pick<Input.RadioProps, 'size'>;
+
+const StateExample = ({ size }: RadioPreviewControls) => {
   const [selectedDefault, setSelectedDefault] = useState('1');
   const [selectedInvalid, setSelectedInvalid] = useState('1');
 
@@ -29,6 +31,7 @@ const StateExample = () => {
   const exampleCode = `// Default & Disabled
 <Radio 
   title="Availability"
+  size="${size}"
   options={defaultOptions}
   value={value}
   onChange={setValue}
@@ -37,6 +40,7 @@ const StateExample = () => {
 // Invalid with Error Message
 <Radio 
   title="Validation"
+  size="${size}"
   invalid={true}
   errorMsg="This selection is currently unavailable."
   options={invalidOptions}
@@ -51,6 +55,7 @@ const StateExample = () => {
         <FlexWrapper direction="col" gap={2} classes="w-full">
           <Radio
             title="Account Type"
+            size={size}
             value={selectedDefault}
             options={defaultOptions}
             onChange={setSelectedDefault}
@@ -61,6 +66,7 @@ const StateExample = () => {
         <FlexWrapper direction="col" gap={2} classes="w-full">
           <Radio
             title="Subscription Plan"
+            size={size}
             value={selectedInvalid}
             options={invalidOptions}
             onChange={setSelectedInvalid}
@@ -77,12 +83,12 @@ const StateExample = () => {
   );
 };
 
-const RadioStateGuide = () => {
+const RadioStateGuide = (props: RadioPreviewControls) => {
   return (
     <GuideSection
       title="Interactive States"
       description="Detailed view of how the radio component handles interaction, restrictions, and validation errors."
-      example={<StateExample />}
+      example={<StateExample {...props} />}
     />
   );
 };

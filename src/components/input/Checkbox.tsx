@@ -16,7 +16,7 @@ const checkboxVariants = cva(
         default:
           'border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-900 text-transparent',
         checked:
-          'border-secondary-600 bg-secondary-600 text-white dark:border-primary-500 dark:bg-primary-500 dark:text-neutral-800',
+          'border-neutral-900 bg-neutral-900 text-white dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-900',
         disabled:
           'border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800 text-transparent cursor-not-allowed',
         disabledChecked:
@@ -45,6 +45,7 @@ const Checkbox = forwardRef<HTMLInputElement, Input.CheckboxProps>(
       checked = false,
       disabled = false,
       invalid = false,
+      errorMsg,
       size = 'sm',
       classes = '',
       onChange,
@@ -52,6 +53,7 @@ const Checkbox = forwardRef<HTMLInputElement, Input.CheckboxProps>(
 
     const internalId = useId();
     const id = externalId || internalId;
+    const errorId = `${id}-error`;
 
     const getState = () => {
       if (disabled && checked) return 'disabledChecked';
@@ -62,39 +64,51 @@ const Checkbox = forwardRef<HTMLInputElement, Input.CheckboxProps>(
     };
 
     return (
-      <label
-        htmlFor={id}
-        className={classNames(
-          'flex items-center gap-2 select-none w-fit',
-          disabled
-            ? 'text-neutral-400 dark:text-neutral-600 cursor-not-allowed'
-            : 'text-neutral-700 dark:text-neutral-100 cursor-pointer',
-          classes,
-        )}
-      >
-        <input
-          ref={ref}
-          id={id}
-          type="checkbox"
-          checked={checked}
-          disabled={disabled}
-          onChange={(e) => {
-            if (disabled) return;
-            onChange?.({ id, checked: e.target.checked });
-          }}
-          className="peer sr-only"
-        />
+      <div className={classNames('flex w-fit flex-col gap-1.5', classes)}>
+        <label
+          htmlFor={id}
+          className={classNames(
+            'flex items-center gap-2 select-none',
+            disabled
+              ? 'text-neutral-400 dark:text-neutral-600 cursor-not-allowed'
+              : 'text-neutral-700 dark:text-neutral-100 cursor-pointer',
+          )}
+        >
+          <input
+            ref={ref}
+            id={id}
+            type="checkbox"
+            checked={checked}
+            disabled={disabled}
+            aria-invalid={invalid}
+            aria-describedby={invalid && errorMsg ? errorId : undefined}
+            onChange={(e) => {
+              if (disabled) return;
+              onChange?.({ id, checked: e.target.checked });
+            }}
+            className="peer sr-only"
+          />
 
-        <span className={checkboxVariants({ size, state: getState() })}>
-          <BsCheck className={checkIconSize[size]} />
-        </span>
-
-        {label && (
-          <span className="text-sm font-medium break-keep leading-none">
-            {label}
+          <span className={checkboxVariants({ size, state: getState() })}>
+            <BsCheck className={checkIconSize[size]} />
           </span>
+
+          {label && (
+            <span className="text-sm font-medium break-keep leading-none">
+              {label}
+            </span>
+          )}
+        </label>
+
+        {invalid && errorMsg && (
+          <p
+            id={errorId}
+            className="pl-7 text-xs text-danger md:pl-8"
+          >
+            {errorMsg}
+          </p>
         )}
-      </label>
+      </div>
     );
   },
 );

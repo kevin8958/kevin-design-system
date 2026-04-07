@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -7,10 +8,12 @@ import SimpleTable from '@/components/data/SimpleTable';
 import Button from '@/components/action/Button';
 import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
-import SelectSizeGuide from './SelectSizeGuide';
+import SelectControllerGuide from './SelectControllerGuide';
 import SelectStateGuide from './SelectStateGuide';
 
 export default function ComponentSelectPage() {
+  const [size, setSize] = useState<Input.SelectSize>('md');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Input', href: '/components/input' },
@@ -42,8 +45,8 @@ export default function ComponentSelectPage() {
             </Button>
           </FlexWrapper>
 
-          <SelectSizeGuide />
-          <SelectStateGuide />
+          <SelectControllerGuide size={size} onSizeChange={setSize} />
+          <SelectStateGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

@@ -61,7 +61,7 @@ describe('CustomDatePicker', () => {
   });
 
   it('displays the correct formatted date in the input', () => {
-    const testDate = new Date(2026, 3, 2); // Apr 02, 2026
+    const testDate = new Date(2026, 3, 2); // Apr 2, 2026
     render(
       <CustomDatePicker
         type="single"
@@ -71,6 +71,38 @@ describe('CustomDatePicker', () => {
     );
 
     const input = screen.getByRole('textbox') as HTMLInputElement;
-    expect(input.value).toBe('Apr 02, 2026');
+    expect(input.value).toBe('Apr 2, 2026');
+  });
+
+  it('displays helper text for incomplete range selection', () => {
+    const startDate = new Date(2026, 3, 6);
+
+    render(
+      <CustomDatePicker
+        type="range"
+        isRange
+        value={null}
+        startDate={startDate}
+        endDate={undefined}
+        onChange={mockOnChange}
+      />,
+    );
+
+    const input = screen.getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toBe('Apr 6, 2026');
+  });
+
+  it('renders error message when isError and errorMsg are provided', () => {
+    render(
+      <CustomDatePicker
+        type="single"
+        value={new Date(2026, 3, 2)}
+        isError
+        errorMsg="Please select a valid date."
+        onChange={mockOnChange}
+      />,
+    );
+
+    expect(screen.getByText(/please select a valid date\./i)).toBeInTheDocument();
   });
 });

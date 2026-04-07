@@ -4,14 +4,21 @@ import CustomDatePicker from '@/components/input/DatePicker';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const StateExample = () => {
+type DatePickerPreviewControls = Pick<Input.DatepickerProps, 'size'>;
+
+const StateExample = ({ size }: DatePickerPreviewControls) => {
   const [date] = useState<Date | null>(new Date());
 
   const exampleCode = `// Error State
-<CustomDatePicker isError value={date} />
+<CustomDatePicker
+  size="${size}"
+  isError
+  errorMsg="Please select a valid date."
+  value={date}
+/>
 
 // Disabled State
-<CustomDatePicker disabled value={date} />`;
+<CustomDatePicker size="${size}" disabled value={date} />`;
 
   return (
     <CodeExample code={exampleCode} className="flex-1">
@@ -19,7 +26,9 @@ const StateExample = () => {
         <div className="w-full">
           <p className="mb-2 text-sm font-medium">Error State</p>
           <CustomDatePicker
+            size={size}
             isError
+            errorMsg="Please select a valid date."
             value={date}
             onChange={() => {}}
             placeholder="Invalid date"
@@ -29,6 +38,7 @@ const StateExample = () => {
         <div className="w-full">
           <p className="mb-2 text-sm font-medium">Disabled State</p>
           <CustomDatePicker
+            size={size}
             disabled
             value={date}
             onChange={() => {}}
@@ -40,12 +50,12 @@ const StateExample = () => {
   );
 };
 
-const DatePickerStateGuide = () => {
+const DatePickerStateGuide = (props: DatePickerPreviewControls) => {
   return (
     <GuideSection
       title="States"
       description="Visual feedback for validation errors and disabled interactions."
-      example={<StateExample />}
+      example={<StateExample {...props} />}
     />
   );
 };

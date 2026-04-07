@@ -4,12 +4,16 @@ import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 import { LuSearch } from 'react-icons/lu';
 
-const PrefixExample = () => {
+type TextInputPreviewControls = Pick<Input.TextInputProps, 'size'>;
+
+const PrefixExample = ({ size }: TextInputPreviewControls) => {
   const exampleCode = `<TextInput 
+  size="${size}"
   placeholder="Search for something..." 
   prefix={<LuSearch className="text-neutral-400" />} 
 />
 <TextInput 
+  size="${size}"
   type="number"
   placeholder="0.00" 
   prefix={<span className="text-sm font-medium text-neutral-400">$</span>} 
@@ -25,10 +29,12 @@ const PrefixExample = () => {
         classes="w-full"
       >
         <TextInput
+          size={size}
           placeholder="Search for something..."
           prefix={<LuSearch className="text-neutral-400" />}
         />
         <TextInput
+          size={size}
           type="number"
           placeholder="0.00"
           prefix={
@@ -40,12 +46,12 @@ const PrefixExample = () => {
   );
 };
 
-const TextInputPrefixGuide = () => {
+const TextInputPrefixGuide = (props: TextInputPreviewControls) => {
   return (
     <GuideSection
       title="Prefix"
       description="Add icons or indicators to the left side of the input to provide context."
-      example={<PrefixExample />}
+      example={<PrefixExample {...props} />}
     />
   );
 };

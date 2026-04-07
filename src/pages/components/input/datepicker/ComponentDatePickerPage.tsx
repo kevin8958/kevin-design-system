@@ -1,6 +1,7 @@
 'use client';
 
-import DatePickerSizeGuide from '@/pages/components/input/datepicker/DatePickerSizeGuide';
+import { useState } from 'react';
+import DatePickerControllerGuide from '@/pages/components/input/datepicker/DatePickerControllerGuide';
 import DatePickerStateGuide from '@/pages/components/input/datepicker/DatePickerStateGuide';
 import DatePickerTypeGuide from '@/pages/components/input/datepicker/DatePickerTypeGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
@@ -12,6 +13,8 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentDatePickerPage() {
+  const [size, setSize] = useState<Input.DatepickerSize>('md');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Input', href: '/components/input' },
@@ -46,9 +49,9 @@ export default function ComponentDatePickerPage() {
             </Button>
           </FlexWrapper>
           {/* 주요 기능 가이드 섹션 */}
-          <DatePickerTypeGuide /> {/* Single & Range 선택 모드 설명 */}
-          <DatePickerSizeGuide />
-          <DatePickerStateGuide />
+          <DatePickerControllerGuide size={size} onSizeChange={setSize} />
+          <DatePickerTypeGuide size={size} />
+          <DatePickerStateGuide size={size} />
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
             <SimpleTable columns={propsColumn} data={propsData} />
@@ -113,20 +116,27 @@ const propsData = [
   },
   {
     id: '8',
+    property: 'errorMsg',
+    type: 'string',
+    default: "''",
+    description: 'Helper text shown below the input when isError is true.',
+  },
+  {
+    id: '9',
     property: 'minDate / maxDate',
     type: 'Date',
     default: 'undefined',
     description: 'Restricts the selectable date range in the calendar.',
   },
   {
-    id: '9',
+    id: '10',
     property: 'disabled',
     type: 'boolean',
     default: 'false',
     description: 'Prevents user interaction with the input and calendar.',
   },
   {
-    id: '10',
+    id: '11',
     property: 'placeholder',
     type: 'string',
     default: "'Select date'",

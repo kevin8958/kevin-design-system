@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const inputVariants = cva(
   [
-    'form-control rounded-md box-border w-full overflow-hidden border border-neutral-300 text-neutral-700 dark:border-neutral-300 dark:text-neutral-300 bg-white dark:bg-neutral-900 p-2 !text-base text-ellipsis outline-0 transition-all duration-200 ease-in-out placeholder:text-neutral-800/30 dark:placeholder:text-neutral-100/30',
+    'form-control rounded-lg box-border w-full overflow-hidden border border-neutral-300 text-neutral-700 dark:border-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-900 p-2 !text-base text-ellipsis outline-0 transition-all duration-200 ease-in-out placeholder:text-neutral-800/30 dark:placeholder:text-neutral-100/30',
     'autofill:shadow-[0_0_0_1000px_white_inset] dark:autofill:shadow-[0_0_0_1000px_#121627_inset]',
     'autofill:text-neutral-700 dark:autofill:text-neutral-300',
     '[&:-webkit-autofill]:shadow-[0_0_0_1000px_white_inset] dark:[&:-webkit-autofill]:shadow-[0_0_0_1000px_#121627_inset]',
@@ -19,9 +19,9 @@ const inputVariants = cva(
         lg: 'h-[48px] max-h-[48px]',
       },
       error: {
-        true: '!border-danger focus:ring-2 focus:ring-danger/70 dark:focus:ring-danger/70',
+        true: '!border-danger focus:ring-1 focus:ring-danger dark:focus:ring-danger',
         false:
-          'focus:border-secondary-400/80 dark:focus:border-primary-100/80 focus:ring-2 focus:ring-secondary-700/70 dark:focus:ring-primary-100/70',
+          'hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
       },
       disabled: {
         true: 'bg-neutral-100/10! !text-[#8C9097] cursor-not-allowed',
