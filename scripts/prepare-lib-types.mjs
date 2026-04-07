@@ -2,11 +2,11 @@ import { cpSync, existsSync, mkdirSync, rmSync } from 'node:fs';
 import path from 'node:path';
 
 const rootDir = process.cwd();
-const distTypesDir = path.join(rootDir, 'dist', 'types');
+const distTypesDir = path.join(rootDir, 'dist-lib', 'types');
 const distNamespacesDir = path.join(distTypesDir, 'types');
 
 if (!existsSync(distTypesDir)) {
-  throw new Error('dist/types was not generated before prepare-lib-types ran.');
+  throw new Error('dist-lib/types was not generated before prepare-lib-types ran.');
 }
 
 mkdirSync(distNamespacesDir, { recursive: true });

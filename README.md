@@ -52,10 +52,10 @@ npm run build:lib
 
 This produces:
 
-- `dist/index.js`
-- `dist/index.cjs`
-- `dist/styles.css`
-- `dist/types`
+- `dist-lib/index.js`
+- `dist-lib/index.cjs`
+- `dist-lib/styles.css`
+- `dist-lib/types`
 
 ## Local Package Check
 

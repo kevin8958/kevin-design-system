@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const rootDir = process.cwd();
-const distDir = path.join(rootDir, 'dist');
+const distDir = path.join(rootDir, 'dist-lib');
 const cssPath = path.join(distDir, 'styles.css');
 const esmPath = path.join(distDir, 'index.js');
 const cjsPath = path.join(distDir, 'index.cjs');

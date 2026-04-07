@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "description": "A React component library for Kevin Design System.",
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "./dist-lib/index.cjs",
+  "module": "./dist-lib/index.js",
+  "types": "./dist-lib/types/index.d.ts",
   "files": [
-    "dist",
+    "dist-lib",
     "README.md"
   ],
   "sideEffects": [
@@ -21,18 +21,18 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "types": "./dist-lib/types/index.d.ts",
+      "import": "./dist-lib/index.js",
+      "require": "./dist-lib/index.cjs"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist-lib/styles.css"
   },
   "scripts": {
     "dev": "vite",
     "build": "npm run build:lib && npm run build:docs",
     "build:lib": "vite build --config vite.lib.config.ts && node scripts/inject-lib-styles.mjs && tsc -p tsconfig.lib.json && node scripts/prepare-lib-types.mjs",
-    "build:docs": "tsc -b && vite build --outDir dist-docs && npm run build-storybook",
-    "build-storybook": "storybook build -o dist-docs/storybook",
+    "build:docs": "tsc -b && vite build --outDir dist && npm run build-storybook",
+    "build-storybook": "storybook build -o dist/storybook",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
