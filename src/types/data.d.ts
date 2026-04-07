@@ -6,7 +6,7 @@ namespace Data {
 
   type Row = {
     id: string;
-    [key: string]: unknown;
+    [key: string]: React.ReactNode;
   };
 
   type AvatarSize = 'sm' | 'md' | 'lg';
