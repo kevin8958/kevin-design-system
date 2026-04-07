@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import Button from '@/components/action/Button';
 import { HiCode, HiEye, HiCheck } from 'react-icons/hi';
 import { LuCopy } from 'react-icons/lu';
@@ -12,6 +12,9 @@ interface CodeExampleProps {
   maxHeight?: number;
 }
 
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
 const CodeExample = ({
   children,
   code,
@@ -22,19 +25,31 @@ const CodeExample = ({
   const [isCopied, setIsCopied] = useState(false);
 
   const [containerHeight, setContainerHeight] = useState<number>(150);
+  const [isHeightReady, setIsHeightReady] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    setIsHeightReady(false);
+
     const updateHeight = () => {
       const pHeight = previewRef.current?.scrollHeight || 0;
       const cHeight = codeRef.current?.scrollHeight || 0;
-      setContainerHeight(
-        Math.min(Math.max(pHeight, cHeight, 150), maxHeight || 1000),
+      const nextHeight = Math.min(
+        Math.max(pHeight, cHeight, 150),
+        maxHeight || 1000,
+      );
+
+      setContainerHeight((prevHeight) =>
+        prevHeight === nextHeight ? prevHeight : nextHeight,
       );
     };
 
     updateHeight();
+
+    const readyFrame = window.requestAnimationFrame(() => {
+      setIsHeightReady(true);
+    });
 
     const observer = new ResizeObserver(() => {
       window.requestAnimationFrame(updateHeight);
@@ -43,7 +58,10 @@ const CodeExample = ({
     if (previewRef.current) observer.observe(previewRef.current);
     if (codeRef.current) observer.observe(codeRef.current);
 
-    return () => observer.disconnect();
+    return () => {
+      window.cancelAnimationFrame(readyFrame);
+      observer.disconnect();
+    };
   }, [children, code, maxHeight]);
 
   const handleCopy = async () => {
@@ -98,7 +116,10 @@ const CodeExample = ({
 
       {/* 3. Content Area */}
       <div
-        className="relative w-full transition-[height] duration-300 ease-in-out"
+        className={classNames(
+          'relative w-full',
+          isHeightReady && 'transition-[height] duration-300 ease-in-out',
+        )}
         style={{ height: containerHeight }}
       >
         {/* Ghost Layer for Height Calculation */}
