@@ -1,7 +1,9 @@
 'use client';
 
-import SkeletonVariantGuide from '@/pages/components/feedback/skeleton/SkeletonVariantGuide';
+import { useState } from 'react';
+import SkeletonControllerGuide from '@/pages/components/feedback/skeleton/SkeletonControllerGuide';
 import SkeletonStateGuide from '@/pages/components/feedback/skeleton/SkeletonStateGuide';
+import SkeletonTypeGuide from '@/pages/components/feedback/skeleton/SkeletonTypeGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -11,6 +13,7 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentSkeletonPage() {
+  const [variant, setVariant] = useState<Feedback.SkeletonVariant>('line');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Feedback', href: '/components/feedback' },
@@ -45,8 +48,12 @@ export default function ComponentSkeletonPage() {
             </Button>
           </FlexWrapper>
 
-          <SkeletonVariantGuide />
-          <SkeletonStateGuide />
+          <SkeletonControllerGuide
+            variant={variant}
+            onVariantChange={setVariant}
+          />
+          <SkeletonTypeGuide variant={variant} />
+          <SkeletonStateGuide variant={variant} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

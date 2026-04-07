@@ -3,11 +3,14 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const StateExample = () => {
-  const exampleCode = `<Alert title="Persistent" description="Visible until the layout changes." />
+type AlertPreviewControls = Pick<Feedback.AlertProps, 'variant'>;
+
+const StateExample = ({ variant = 'info' }: AlertPreviewControls) => {
+  const exampleCode = `<Alert title="Persistent" description="Visible until the layout changes." variant="${variant}" />
 <Alert
   title="Dismissible"
   description="Users can close this alert."
+  variant="${variant}"
   closable
   onClose={() => {}}
 />`;
@@ -18,12 +21,12 @@ const StateExample = () => {
         <Alert
           title="Persistent"
           description="Visible until the layout changes."
-          variant="info"
+          variant={variant}
         />
         <Alert
           title="Dismissible"
           description="Users can close this alert."
-          variant="warning"
+          variant={variant}
           closable
           onClose={() => {}}
         />
@@ -32,12 +35,12 @@ const StateExample = () => {
   );
 };
 
-const AlertStateGuide = () => {
+const AlertStateGuide = (props: AlertPreviewControls) => {
   return (
     <GuideSection
       title="State"
       description="Use persistent alerts for ongoing messaging and dismissible alerts when users should be able to clear them."
-      example={<StateExample />}
+      example={<StateExample {...props} />}
     />
   );
 };

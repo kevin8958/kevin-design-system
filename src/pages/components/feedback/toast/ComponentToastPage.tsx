@@ -1,7 +1,9 @@
 'use client';
 
-import ToastVariantGuide from '@/pages/components/feedback/toast/ToastVariantGuide';
+import { useState } from 'react';
 import ToastStateGuide from '@/pages/components/feedback/toast/ToastStateGuide';
+import ToastControllerGuide from '@/pages/components/feedback/toast/ToastControllerGuide';
+import ToastTypeGuide from '@/pages/components/feedback/toast/ToastTypeGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -11,6 +13,7 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentToastPage() {
+  const [variant, setVariant] = useState<Feedback.ToastVariant>('info');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Feedback', href: '/components/feedback' },
@@ -45,8 +48,9 @@ export default function ComponentToastPage() {
             </Button>
           </FlexWrapper>
 
-          <ToastVariantGuide />
-          <ToastStateGuide />
+          <ToastControllerGuide variant={variant} onVariantChange={setVariant} />
+          <ToastTypeGuide variant={variant} />
+          <ToastStateGuide variant={variant} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
@@ -82,20 +86,51 @@ const propsData = [
   },
   {
     id: '4',
+    property: 'placement',
+    type: [
+      "'top-left'",
+      "'top-center'",
+      "'top-right'",
+      "'bottom-left'",
+      "'bottom-center'",
+      "'bottom-right'",
+    ],
+    default: 'undefined',
+    description:
+      'Absolutely positions the toast inside the nearest positioned container.',
+  },
+  {
+    id: '5',
+    property: 'autoClose',
+    type: 'number',
+    default: 'undefined',
+    description:
+      'Automatically dismisses the toast after the given number of milliseconds.',
+  },
+  {
+    id: '6',
+    property: 'stackIndex',
+    type: 'number',
+    default: '0',
+    description:
+      'Offsets placed toasts vertically so multiple messages can stack without overlap.',
+  },
+  {
+    id: '7',
     property: 'closable',
     type: 'boolean',
     default: 'false',
     description: 'Shows a dismiss button when true.',
   },
   {
-    id: '5',
+    id: '8',
     property: 'onClose',
     type: '() => void',
     default: 'undefined',
     description: 'Called when the dismiss button is clicked.',
   },
   {
-    id: '6',
+    id: '9',
     property: 'classes',
     type: 'string',
     default: "''",

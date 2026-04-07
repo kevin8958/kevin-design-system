@@ -1,7 +1,8 @@
 'use client';
 
-import ProgressSizeGuide from '@/pages/components/feedback/progress/ProgressSizeGuide';
-import ProgressStateGuide from '@/pages/components/feedback/progress/ProgressStateGuide';
+import { useState } from 'react';
+import ProgressControllerGuide from '@/pages/components/feedback/progress/ProgressControllerGuide';
+import ProgressTypeGuide from '@/pages/components/feedback/progress/ProgressTypeGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -11,6 +12,7 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentProgressPage() {
+  const [size, setSize] = useState<Feedback.ProgressSize>('md');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Feedback', href: '/components/feedback' },
@@ -45,8 +47,8 @@ export default function ComponentProgressPage() {
             </Button>
           </FlexWrapper>
 
-          <ProgressSizeGuide />
-          <ProgressStateGuide />
+          <ProgressControllerGuide size={size} onSizeChange={setSize} />
+          <ProgressTypeGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

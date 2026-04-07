@@ -1,7 +1,9 @@
 'use client';
 
-import AlertVariantGuide from '@/pages/components/feedback/alert/AlertVariantGuide';
+import { useState } from 'react';
+import AlertControllerGuide from '@/pages/components/feedback/alert/AlertControllerGuide';
 import AlertStateGuide from '@/pages/components/feedback/alert/AlertStateGuide';
+import AlertTypeGuide from '@/pages/components/feedback/alert/AlertTypeGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -11,6 +13,7 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentAlertPage() {
+  const [variant, setVariant] = useState<Feedback.AlertVariant>('info');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Feedback', href: '/components/feedback' },
@@ -45,8 +48,9 @@ export default function ComponentAlertPage() {
             </Button>
           </FlexWrapper>
 
-          <AlertVariantGuide />
-          <AlertStateGuide />
+          <AlertControllerGuide variant={variant} onVariantChange={setVariant} />
+          <AlertTypeGuide variant={variant} />
+          <AlertStateGuide variant={variant} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

@@ -3,6 +3,13 @@ namespace Feedback {
   type ProgressSize = 'sm' | 'md' | 'lg';
   type SkeletonVariant = 'line' | 'rect' | 'circle';
   type ToastVariant = 'info' | 'success' | 'warning' | 'danger';
+  type ToastPlacement =
+    | 'top-left'
+    | 'top-center'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-center'
+    | 'bottom-right';
 
   interface AlertProps {
     title?: string;
@@ -32,6 +39,9 @@ namespace Feedback {
     title?: string;
     description?: string;
     variant?: ToastVariant;
+    placement?: ToastPlacement;
+    autoClose?: number;
+    stackIndex?: number;
     closable?: boolean;
     onClose?: () => void;
     classes?: string;
