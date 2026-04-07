@@ -25,9 +25,9 @@ export default function App() {
 
 const steps = [
   {
-    title: 'Install after publish',
+    title: 'Install the package',
     description:
-      'Once the package is published to npm, the intended install flow will use the package name directly.',
+      'The package is now published to npm, so the standard install flow uses the package name directly.',
     icon: <LuPackage size={18} />,
     code: installCommand,
   },
@@ -39,9 +39,9 @@ const steps = [
     code: usageExample,
   },
   {
-    title: 'Verify locally before publish',
+    title: 'Verify locally when needed',
     description:
-      'The current package can already be packed locally and installed from the generated tarball for smoke testing.',
+      'For local smoke tests or release verification, you can still pack the current workspace and install it from a tarball.',
     icon: <LuBox size={18} />,
     code: localCheckCommand,
   },
@@ -68,7 +68,7 @@ export default function GettingStarted() {
               variant="B1"
               classes="max-w-3xl !font-normal !text-neutral-600 dark:!text-neutral-300"
             >
-              The package build, typings, and tarball flow are ready. npm publishing is the next step, and the install guide below now reflects both the final npm command and the current local verification path.
+              Kevin Design System is now published to npm. The install guide below reflects the live package command, direct component imports, and an optional local tarball workflow for smoke testing.
             </Typography>
           </FlexWrapper>
 
@@ -77,7 +77,7 @@ export default function GettingStarted() {
               variant="C1"
               classes="mb-2 !text-neutral-500 dark:!text-neutral-400"
             >
-              Publish Install Command
+              Install Command
             </Typography>
             <code className="block overflow-x-auto whitespace-pre-wrap text-sm font-medium text-secondary-700 dark:text-primary-300">
               {installCommand}
@@ -107,12 +107,12 @@ export default function GettingStarted() {
         <div className="rounded-[28px] border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
           <FlexWrapper direction="col" items="start" gap={6}>
             <div>
-              <Typography variant="H3">Planned Installation Flow</Typography>
+              <Typography variant="H3">Installation Flow</Typography>
               <Typography
                 variant="B2"
                 classes="mt-2 !font-normal !text-neutral-600 dark:!text-neutral-300"
               >
-                This page now mirrors the real packaging work in the repo: package entry, bundled styles, emitted types, and local tarball validation are ready, while public npm publishing is still pending.
+                This page now mirrors the live package setup: published npm install command, bundled library styles, emitted TypeScript types, and a local tarball verification path when you want to test changes before a release.
               </Typography>
             </div>
 
@@ -158,19 +158,19 @@ export default function GettingStarted() {
                 variant="B2"
                 classes="mt-2 !font-normal !text-neutral-600 dark:!text-neutral-300"
               >
-                The install flow is no longer just a placeholder. The library build and local package verification are complete, and the last major step is publishing to npm.
+                The package is published and installable. The remaining work is mostly around release hygiene, broader validation, and keeping the docs aligned with each published version.
               </Typography>
             </div>
 
             <div className="w-full rounded-2xl border border-secondary-200 bg-secondary-50/70 p-4 dark:border-primary-400/20 dark:bg-primary-400/10">
               <Typography variant="H4" classes="!text-secondary-700 dark:!text-primary-300">
-                Ready for Local Validation
+                Published to npm
               </Typography>
               <Typography
                 variant="B2"
                 classes="mt-2 !font-normal !text-neutral-700 dark:!text-neutral-200"
               >
-                `npm run build:lib` and `npm pack` already produce a usable package tarball. After npm publish, the same library can be installed with `npm install kevin-design-system`.
+                You can install the package today with `npm install kevin-design-system`. The local tarball workflow is still useful when you want to test unreleased changes before publishing another version.
               </Typography>
             </div>
 
@@ -181,7 +181,7 @@ export default function GettingStarted() {
                   variant="B2"
                   classes="mt-2 !font-normal !text-neutral-600 dark:!text-neutral-300"
                 >
-                  Library entry exports, bundled component styles, emitted TypeScript declarations, and local consumer smoke testing.
+                  npm installation, library entry exports, bundled component styles, emitted TypeScript declarations, and local consumer smoke testing.
                 </Typography>
               </div>
 
@@ -191,7 +191,7 @@ export default function GettingStarted() {
                   variant="B2"
                   classes="mt-2 !font-normal !text-neutral-600 dark:!text-neutral-300"
                 >
-                  npm publish, package release notes, and broader consumer validation across real projects and frameworks.
+                  Release notes, versioned changelog updates, and broader consumer validation across real projects and frameworks.
                 </Typography>
               </div>
             </FlexWrapper>
