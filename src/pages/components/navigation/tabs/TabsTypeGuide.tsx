@@ -23,7 +23,9 @@ const defaultItems: Navigation.TabsItem[] = [
   },
 ];
 
-const TypeExample = () => {
+type TabsPreviewControls = Pick<Navigation.TabsProps, 'size'>;
+
+const TypeExample = ({ size }: TabsPreviewControls) => {
   const [value, setValue] = useState('overview');
 
   const exampleCode = `const [value, setValue] = useState('overview');
@@ -31,6 +33,7 @@ const TypeExample = () => {
 <Tabs
   items={items}
   value={value}
+  size="${size}"
   onChange={setValue}
 />`;
 
@@ -38,18 +41,18 @@ const TypeExample = () => {
     <CodeExample code={exampleCode} className="flex-1">
       <FlexWrapper direction="col" items="start" gap={4} classes="w-full p-4">
         <Typography variant="C1">Default Tabs</Typography>
-        <Tabs items={defaultItems} value={value} onChange={setValue} />
+        <Tabs items={defaultItems} value={value} size={size} onChange={setValue} />
       </FlexWrapper>
     </CodeExample>
   );
 };
 
-const TabsTypeGuide = () => {
+const TabsTypeGuide = (props: TabsPreviewControls) => {
   return (
     <GuideSection
       title="Type"
       description="Use tabs to switch between related views without leaving the current page."
-      example={<TypeExample />}
+      example={<TypeExample {...props} />}
     />
   );
 };

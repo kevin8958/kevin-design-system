@@ -5,7 +5,12 @@ import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
-const TypeExample = () => {
+type PaginationPreviewControls = Pick<
+  Navigation.PaginationProps,
+  'siblingCount'
+>;
+
+const TypeExample = ({ siblingCount }: PaginationPreviewControls) => {
   const [defaultPage, setDefaultPage] = useState(3);
   const [longRangePage, setLongRangePage] = useState(10);
 
@@ -14,13 +19,14 @@ const TypeExample = () => {
 <Pagination
   currentPage={page}
   totalPages={8}
+  siblingCount={${siblingCount}}
   onPageChange={setPage}
 />
 
 <Pagination
   currentPage={longRangePage}
   totalPages={20}
-  siblingCount={1}
+  siblingCount={${siblingCount}}
   onPageChange={setLongRangePage}
 />`;
 
@@ -32,7 +38,7 @@ const TypeExample = () => {
           <Pagination
             currentPage={defaultPage}
             totalPages={8}
-            siblingCount={1}
+            siblingCount={siblingCount}
             onPageChange={setDefaultPage}
           />
         </FlexWrapper>
@@ -42,7 +48,7 @@ const TypeExample = () => {
           <Pagination
             currentPage={longRangePage}
             totalPages={20}
-            siblingCount={1}
+            siblingCount={siblingCount}
             onPageChange={setLongRangePage}
           />
         </FlexWrapper>
@@ -51,12 +57,12 @@ const TypeExample = () => {
   );
 };
 
-const PaginationTypeGuide = () => {
+const PaginationTypeGuide = (props: PaginationPreviewControls) => {
   return (
     <GuideSection
       title="Range"
       description="Show short and long page ranges with automatic ellipsis handling."
-      example={<TypeExample />}
+      example={<TypeExample {...props} />}
     />
   );
 };

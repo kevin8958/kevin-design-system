@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import PaginationControllerGuide from '@/pages/components/navigation/pagination/PaginationControllerGuide';
 import PaginationTypeGuide from '@/pages/components/navigation/pagination/PaginationTypeGuide';
 import PaginationStateGuide from '@/pages/components/navigation/pagination/PaginationStateGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
@@ -11,6 +13,8 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentPaginationPage() {
+  const [siblingCount, setSiblingCount] = useState(1);
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Navigation', href: '/components/navigation' },
@@ -45,8 +49,12 @@ export default function ComponentPaginationPage() {
             </Button>
           </FlexWrapper>
 
-          <PaginationTypeGuide />
-          <PaginationStateGuide />
+          <PaginationControllerGuide
+            siblingCount={siblingCount}
+            onSiblingCountChange={setSiblingCount}
+          />
+          <PaginationTypeGuide siblingCount={siblingCount} />
+          <PaginationStateGuide siblingCount={siblingCount} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
@@ -78,7 +86,8 @@ const propsData = [
     property: 'siblingCount',
     type: 'number',
     default: '1',
-    description: 'Number of adjacent page buttons shown around the current page.',
+    description:
+      'Number of adjacent page buttons shown on each side of the current page.',
   },
   {
     id: '4',

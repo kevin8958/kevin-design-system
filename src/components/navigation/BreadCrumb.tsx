@@ -8,7 +8,7 @@ const breadcrumbVariants = cva(
   {
     variants: {
       status: {
-        active: 'text-secondary-400 font-bold dark:text-primary-400',
+        active: 'font-bold text-primary-600 dark:text-primary-400',
         inactive: 'text-neutral-600! font-semibold dark:text-neutral-500!',
       },
     },

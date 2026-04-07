@@ -56,4 +56,41 @@ describe('Pagination', () => {
 
     expect(handleChange).not.toHaveBeenCalled();
   });
+
+  it('shows all pages when the total page count fits within the sibling range', () => {
+    render(<Pagination currentPage={3} totalPages={7} siblingCount={2} />);
+
+    for (let page = 1; page <= 7; page += 1) {
+      expect(
+        screen.getByRole('button', { name: new RegExp(`page ${page}`, 'i') }),
+      ).toBeInTheDocument();
+    }
+  });
+
+  it('shows a left ellipsis with the trailing sibling range near the end', () => {
+    render(<Pagination currentPage={6} totalPages={8} siblingCount={2} />);
+
+    expect(screen.getByRole('button', { name: /page 1/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 4/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 5/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 6/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 7/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 8/i })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /page 2/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /page 3/i })).not.toBeInTheDocument();
+  });
+
+  it('keeps two visible siblings when the current page is 5 near the end', () => {
+    render(<Pagination currentPage={5} totalPages={8} siblingCount={2} />);
+
+    expect(screen.getByRole('button', { name: /page 1/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 3/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 4/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 5/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 6/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 7/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /page 8/i })).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: /page 8/i })).toHaveLength(1);
+    expect(screen.queryByRole('button', { name: /page 2/i })).not.toBeInTheDocument();
+  });
 });

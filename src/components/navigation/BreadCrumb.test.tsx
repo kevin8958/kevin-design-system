@@ -49,7 +49,7 @@ describe('BreadCrumb', () => {
     expect(
       screen.queryByRole('link', { name: /breadcrumb/i }),
     ).not.toBeInTheDocument();
-    expect(screen.getByText('Breadcrumb')).toBeInTheDocument();
+    expect(screen.getByText('Breadcrumb')).toHaveClass('text-primary-600');
   });
 
   it('applies custom className to the wrapper', () => {

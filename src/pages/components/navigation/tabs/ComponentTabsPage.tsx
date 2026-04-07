@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
+import TabsControllerGuide from '@/pages/components/navigation/tabs/TabsControllerGuide';
 import TabsTypeGuide from '@/pages/components/navigation/tabs/TabsTypeGuide';
-import TabsSizeGuide from '@/pages/components/navigation/tabs/TabsSizeGuide';
 import TabsStateGuide from '@/pages/components/navigation/tabs/TabsStateGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
@@ -12,6 +13,8 @@ import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentTabsPage() {
+  const [size, setSize] = useState<Navigation.TabsSize>('md');
+
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Navigation', href: '/components/navigation' },
@@ -46,9 +49,9 @@ export default function ComponentTabsPage() {
             </Button>
           </FlexWrapper>
 
-          <TabsTypeGuide />
-          <TabsSizeGuide />
-          <TabsStateGuide />
+          <TabsControllerGuide size={size} onSizeChange={setSize} />
+          <TabsTypeGuide size={size} />
+          <TabsStateGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

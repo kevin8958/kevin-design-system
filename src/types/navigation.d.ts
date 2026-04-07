@@ -9,6 +9,7 @@ namespace Navigation {
   interface PaginationProps {
     currentPage: number;
     totalPages: number;
+    // Number of visible pages shown on each side of the current page.
     siblingCount?: number;
     disabled?: boolean;
     classes?: string;

@@ -10,7 +10,7 @@ const paginationButtonVariants = cva(
         default:
           'border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800',
         active:
-          'border-secondary-500 bg-secondary-500 text-white hover:bg-secondary-600 dark:border-primary-400 dark:bg-primary-400 dark:text-neutral-900 dark:hover:bg-primary-300',
+          'border-neutral-900 bg-neutral-900 text-white hover:bg-neutral-800 dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200',
         ghost:
           'border-transparent bg-transparent text-neutral-500 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800',
       },
@@ -26,43 +26,39 @@ const getPageRange = (
   totalPages: number,
   siblingCount: number,
 ) => {
-  const totalPageNumbers = siblingCount + 5;
+  const totalPageNumbers = siblingCount * 2 + 3;
 
-  if (totalPageNumbers >= totalPages) {
+  if (totalPages <= totalPageNumbers) {
     return Array.from({ length: totalPages }, (_, index) => index + 1);
   }
 
-  const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
-  const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
-  const shouldShowLeftDots = leftSiblingIndex > 2;
-  const shouldShowRightDots = rightSiblingIndex < totalPages - 1;
+  const leftSiblingIndex = Math.max(currentPage - siblingCount, 2);
+  const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages - 1);
+  const pages: Array<number | 'dots'> = [1];
 
-  if (!shouldShowLeftDots && shouldShowRightDots) {
-    const leftItemCount = 3 + 2 * siblingCount;
-    const leftRange = Array.from(
-      { length: leftItemCount },
-      (_, index) => index + 1,
-    );
-
-    return [...leftRange, 'dots', totalPages];
+  if (leftSiblingIndex > 2) {
+    pages.push('dots');
+  } else {
+    for (let page = 2; page < leftSiblingIndex; page += 1) {
+      pages.push(page);
+    }
   }
 
-  if (shouldShowLeftDots && !shouldShowRightDots) {
-    const rightItemCount = 3 + 2 * siblingCount;
-    const rightRange = Array.from(
-      { length: rightItemCount },
-      (_, index) => totalPages - rightItemCount + index + 1,
-    );
-
-    return [1, 'dots', ...rightRange];
+  for (let page = leftSiblingIndex; page <= rightSiblingIndex; page += 1) {
+    pages.push(page);
   }
 
-  const middleRange = Array.from(
-    { length: rightSiblingIndex - leftSiblingIndex + 1 },
-    (_, index) => leftSiblingIndex + index,
-  );
+  if (rightSiblingIndex < totalPages - 1) {
+    pages.push('dots');
+  } else {
+    for (let page = rightSiblingIndex + 1; page < totalPages; page += 1) {
+      pages.push(page);
+    }
+  }
 
-  return [1, 'dots', ...middleRange, 'dots', totalPages];
+  pages.push(totalPages);
+
+  return pages;
 };
 
 const Pagination = ({
