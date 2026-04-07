@@ -20,7 +20,7 @@ export default function ComponentTextInputPage() {
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Input', href: '/components/input' },
-    { label: 'TextInput', href: '/components/input/textinput' },
+    { label: 'TextInput', href: '/components/input/textInput' },
   ];
 
   const handleOpenStorybook = () => {
