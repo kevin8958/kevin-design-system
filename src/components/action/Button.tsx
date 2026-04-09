@@ -5,7 +5,7 @@ import { forwardRef } from 'react';
 import { LuArrowUpRight } from 'react-icons/lu';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-lg text-center font-medium transition-all duration-200 ease-in-out disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.97] select-none outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary-500',
+  'inline-flex cursor-pointer items-center justify-center rounded-lg text-center font-medium transition-all duration-200 ease-in-out disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.97] select-none outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary-500',
   {
     variants: {
       variant: {

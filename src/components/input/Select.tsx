@@ -19,7 +19,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { LuCheck, LuChevronDown } from 'react-icons/lu';
 
 const triggerVariants = cva(
-  'relative flex w-full items-center justify-between rounded-xl border bg-white text-left text-neutral-700 shadow-sm outline-none transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
+  'relative flex w-full cursor-pointer items-center justify-between rounded-xl border bg-white text-left text-neutral-700 shadow-sm outline-none transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
   {
     variants: {
       size: {
@@ -185,7 +185,7 @@ const Select = forwardRef<HTMLButtonElement, Input.SelectProps>((props, ref) => 
                             setIsOpen(false);
                           }}
                           className={classNames(
-                            'flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors',
+                            'flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors',
                             option.disabled
                               ? 'cursor-not-allowed text-neutral-400 dark:text-neutral-500'
                               : selected

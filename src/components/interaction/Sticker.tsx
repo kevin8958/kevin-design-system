@@ -194,7 +194,7 @@ const Sticker = ({
                 type="button"
                 aria-label={`Remove ${sticker.label || sticker.alt || 'sticker'}`}
                 onClick={() => removeSticker(sticker.instanceId)}
-                className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full bg-white/95 text-neutral-700 opacity-0 shadow-md transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-neutral-950/85 dark:text-neutral-100"
+                className="absolute -right-2 -top-2 flex size-7 cursor-pointer items-center justify-center rounded-full bg-white/95 text-neutral-700 opacity-0 shadow-md transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-neutral-950/85 dark:text-neutral-100"
               >
                 <LuX size={14} />
               </button>
@@ -210,7 +210,7 @@ const Sticker = ({
               key={option.id}
               type="button"
               onClick={() => addSticker(option)}
-              className="flex aspect-square items-center justify-center rounded-2xl border border-neutral-200 bg-white p-3 transition hover:bg-neutral-50 active:scale-[0.98] dark:border-neutral-100/15 dark:bg-neutral-900/60 dark:hover:bg-neutral-100/10"
+              className="flex aspect-square cursor-pointer items-center justify-center rounded-2xl border border-neutral-200 bg-white p-3 transition hover:bg-neutral-50 active:scale-[0.98] dark:border-neutral-100/15 dark:bg-neutral-900/60 dark:hover:bg-neutral-100/10"
             >
               <img
                 src={option.src}

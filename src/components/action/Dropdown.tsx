@@ -97,7 +97,7 @@ const Dropdown = (props: Action.DropdownProps) => {
               <button
                 type="button"
                 className={classNames(
-                  'flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors',
+                  'flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors',
                   item.danger
                     ? 'text-danger hover:bg-danger/10'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800',
@@ -150,7 +150,7 @@ const Dropdown = (props: Action.DropdownProps) => {
             >
               <button
                 type="button"
-                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-neutral-700 transition-colors group-hover:bg-neutral-100 dark:text-neutral-300 dark:group-hover:bg-neutral-800"
+                className="flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-neutral-700 transition-colors group-hover:bg-neutral-100 dark:text-neutral-300 dark:group-hover:bg-neutral-800"
               >
                 <div className="w-full flex items-center gap-2 min-w-0 flex-1">
                   {item.icon && (

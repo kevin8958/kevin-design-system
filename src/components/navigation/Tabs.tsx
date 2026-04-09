@@ -6,7 +6,7 @@ const tabsListVariants = cva(
 );
 
 const tabButtonVariants = cva(
-  'inline-flex min-w-0 flex-1 items-center justify-center rounded-xl font-medium transition-all duration-200 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2',
+  'inline-flex min-w-0 flex-1 cursor-pointer items-center justify-center rounded-xl font-medium transition-all duration-200 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2',
   {
     variants: {
       size: {

@@ -5,7 +5,7 @@ import { LuFiles, LuUpload, LuX } from 'react-icons/lu';
 import Button from '@/components/action/Button';
 
 const dropzoneVariants = cva(
-  'relative flex w-full flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed bg-white px-5 py-6 text-center transition-all duration-200 ease-in-out dark:bg-neutral-900 min-h-[208px]',
+  'relative flex w-full cursor-pointer flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed bg-white px-5 py-6 text-center transition-all duration-200 ease-in-out dark:bg-neutral-900 min-h-[208px]',
   {
     variants: {
       state: {
