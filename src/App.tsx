@@ -32,6 +32,7 @@ import ComponentTabsPage from '@/pages/components/navigation/tabs/ComponentTabsP
 import ComponentBreadcrumbPage from '@/pages/components/navigation/breadcrumb/ComponentBreadcrumbPage';
 import ComponentAvatarPage from '@/pages/components/dataDisplay/avatar/ComponentAvatarPage';
 import ComponentBadgePage from '@/pages/components/dataDisplay/badge/ComponentBadgePage';
+import ComponentMetricCardPage from '@/pages/components/dataDisplay/metricCard/ComponentMetricCardPage';
 import ComponentTablePage from '@/pages/components/dataDisplay/table/ComponentTablePage';
 import ComponentTagPage from '@/pages/components/dataDisplay/tag/ComponentTagPage';
 import ComponentTooltipPage from '@/pages/components/dataDisplay/tooltip/ComponentTooltipPage';
@@ -154,6 +155,10 @@ function App() {
           />
           <Route path="dataDisplay/avatar" element={<ComponentAvatarPage />} />
           <Route path="dataDisplay/badge" element={<ComponentBadgePage />} />
+          <Route
+            path="dataDisplay/metricCard"
+            element={<ComponentMetricCardPage />}
+          />
           <Route path="dataDisplay/table" element={<ComponentTablePage />} />
           <Route path="dataDisplay/tag" element={<ComponentTagPage />} />
           <Route

@@ -15,6 +15,8 @@ namespace Data {
   type BadgeVariant = 'neutral' | 'primary' | 'success' | 'warning' | 'danger';
   type TagSize = 'sm' | 'md' | 'lg';
   type TagVariant = 'neutral' | 'primary';
+  type MetricCardSize = 'sm' | 'md' | 'lg';
+  type MetricCardTrend = 'up' | 'down' | 'neutral';
   type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
   type TooltipColor =
     | 'primary'
@@ -44,6 +46,22 @@ namespace Data {
     label: string;
     size?: TagSize;
     variant?: TagVariant;
+    classes?: string;
+  }
+
+  interface MetricCardProps {
+    title: string;
+    value: number;
+    change?: number;
+    size?: MetricCardSize;
+    trend?: MetricCardTrend;
+    prefix?: string;
+    suffix?: string;
+    changeSuffix?: string;
+    decimals?: number;
+    changeDecimals?: number;
+    animated?: boolean;
+    duration?: number;
     classes?: string;
   }
 

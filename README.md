@@ -33,7 +33,7 @@ export function Example() {
 - Action: `Button`, `ButtonGroup`, `Dropdown`, `Modal`, `Drawer`
 - Input: `TextInput`, `Select`, `Checkbox`, `Radio`, `Switch`, `DatePicker`, `UploadDropzone`
 - Navigation: `Pagination`, `Tabs`, `BreadCrumb`
-- Data Display: `Avatar`, `Badge`, `Table`, `Tag`, `Tooltip`
+- Data Display: `Avatar`, `Badge`, `MetricCard`, `Table`, `Tag`, `Tooltip`
 - Feedback: `Alert`, `Progress`, `Skeleton`, `Toast`
 - Layout: `Box`, `FlexWrapper`, `Grid`, `Divider`
 - Interaction: `CountUp`, `SplitText`, `Sticker`

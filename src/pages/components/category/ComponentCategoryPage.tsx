@@ -305,6 +305,15 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         minHeight: 148,
       },
     },
+    metricCard: {
+      description:
+        'MetricCard combines an animated value and directional delta for dashboard summaries.',
+      imagePreview: {
+        src: '/category-previews/data-display/metric-card.svg',
+        alt: 'MetricCard mock preview',
+        minHeight: 168,
+      },
+    },
     table: {
       description:
         'Table organizes structured content in a readable, scannable format.',

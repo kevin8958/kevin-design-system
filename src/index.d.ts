@@ -32,6 +32,7 @@ export { default as Breadcrumb } from './components/navigation/BreadCrumb';
 
 export { default as Avatar } from './components/data/Avatar';
 export { default as Badge } from './components/data/Badge';
+export { default as MetricCard } from './components/data/MetricCard';
 export { default as Table } from './components/data/Table';
 export { default as Tag } from './components/data/Tag';
 export { default as Tooltip } from './components/data/Tooltip';

@@ -54,13 +54,13 @@
 
   --color-text-primary: #1a1a1a;
   --color-danger: #d32f2f;
-  --color-warning: #f57c00;
+  --color-warning: #d97706;
   --color-info: #0288d1;
-  --color-success: #388e3c;
+  --color-success: #3bac87;
   --color-danger-light: #f9d6d5;
-  --color-warning-light: #ffe0b2;
+  --color-warning-light: #fde68a;
   --color-info-light: #b3e5fc;
-  --color-success-light: #c8e6c9;
+  --color-success-light: #c4e6db;
   --color-emphasis: #e3d026;
 
   --shadow-custom-light:

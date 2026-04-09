@@ -158,6 +158,11 @@ export const designSystemMenus = [
             href: '/components/dataDisplay/badge',
           },
           {
+            id: 'metricCard',
+            label: 'MetricCard',
+            href: '/components/dataDisplay/metricCard',
+          },
+          {
             id: 'table',
             label: 'Table',
             href: '/components/dataDisplay/table',
