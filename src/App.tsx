@@ -46,6 +46,10 @@ import ComponentCountUpPage from '@/pages/components/interaction/countUp/Compone
 import ComponentSplitTextPage from '@/pages/components/interaction/splitText/ComponentSplitTextPage';
 import ComponentStickerPage from '@/pages/components/interaction/sticker/ComponentStickerPage';
 import ComponentCategoryPage from '@/pages/components/category/ComponentCategoryPage';
+import ComponentBottomNavigationPage from '@/pages/components/mobile/bottomNavigation/ComponentBottomNavigationPage';
+import ComponentTopAppBarPage from '@/pages/components/mobile/topAppBar/ComponentTopAppBarPage';
+import ComponentBottomSheetPage from '@/pages/components/mobile/bottomSheet/ComponentBottomSheetPage';
+import ComponentMobileNavDrawerPage from '@/pages/components/mobile/mobileNavDrawer/ComponentMobileNavDrawerPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -180,6 +184,16 @@ function App() {
             path="interaction/countUp"
             element={<ComponentCountUpPage />}
           />
+          <Route
+            path="mobile/bottomNavigation"
+            element={<ComponentBottomNavigationPage />}
+          />
+          <Route path="mobile/topAppBar" element={<ComponentTopAppBarPage />} />
+          <Route
+            path="mobile/bottomSheet"
+            element={<ComponentBottomSheetPage />}
+          />
+          <Route path="mobile/navDrawer" element={<ComponentMobileNavDrawerPage />} />
         </Route>
       </Routes>
     </AppProvider>

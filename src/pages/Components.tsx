@@ -13,6 +13,7 @@ const categoryHighlights: Record<string, string> = {
   feedback: 'Respond to state changes with clarity.',
   layout: 'Compose screens with reusable structure.',
   interaction: 'Add motion and character to the experience.',
+  mobile: 'Build mobile-first navigation and overlay patterns.',
 };
 
 const foundationMenu = designSystemMenus.find(
@@ -24,6 +25,7 @@ const componentsMenu = designSystemMenus.find(
 const interactionMenu = designSystemMenus.find(
   (menu) => menu.id === 'interaction',
 );
+const mobileMenu = designSystemMenus.find((menu) => menu.id === 'mobile');
 
 const categories = [
   {
@@ -39,6 +41,11 @@ const categories = [
     label: section.group,
     items: section.items,
   })) ?? []),
+  {
+    id: 'mobile',
+    label: 'Mobile',
+    items: mobileMenu?.items ?? [],
+  },
   {
     id: 'interaction',
     label: 'Interaction',

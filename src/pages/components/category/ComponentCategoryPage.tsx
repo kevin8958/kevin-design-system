@@ -49,6 +49,8 @@ const categoryDescriptions: Record<string, string> = {
   layout: 'Primitives for spacing, separation, and responsive composition.',
   interaction:
     'Motion-driven and playful UI elements that add behavior and expression.',
+  mobile:
+    'Mobile-first navigation and overlay patterns designed to feel at home inside compact viewports.',
 };
 
 const foundationMenu = designSystemMenus.find(
@@ -60,6 +62,7 @@ const componentsMenu = designSystemMenus.find(
 const interactionMenu = designSystemMenus.find(
   (menu) => menu.id === 'interaction',
 );
+const mobileMenu = designSystemMenus.find((menu) => menu.id === 'mobile');
 
 const categoryConfigs: CategoryConfig[] = [
   {
@@ -82,6 +85,12 @@ const categoryConfigs: CategoryConfig[] = [
       ],
     items: section.items,
   })) ?? []),
+  {
+    id: 'mobile',
+    label: 'Mobile',
+    description: categoryDescriptions.mobile,
+    items: mobileMenu?.items ?? [],
+  },
   {
     id: 'interaction',
     label: 'Interaction',
@@ -429,6 +438,44 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
       },
     },
   },
+  mobile: {
+    bottomNavigation: {
+      description:
+        'BottomNavigation keeps a handful of primary destinations reachable with a single thumb-friendly tap.',
+      imagePreview: {
+        src: '/category-previews/mobile/bottom-navigation.svg',
+        alt: 'BottomNavigation mock preview',
+        minHeight: 228,
+      },
+    },
+    topAppBar: {
+      description:
+        'TopAppBar anchors the current screen with navigation affordances and compact actions.',
+      imagePreview: {
+        src: '/category-previews/mobile/top-app-bar.svg',
+        alt: 'TopAppBar mock preview',
+        minHeight: 220,
+      },
+    },
+    bottomSheet: {
+      description:
+        'BottomSheet reveals filters, pickers, and contextual actions without taking users away from the current screen.',
+      imagePreview: {
+        src: '/category-previews/mobile/bottom-sheet.svg',
+        alt: 'BottomSheet mock preview',
+        minHeight: 236,
+      },
+    },
+    navDrawer: {
+      description:
+        'NavDrawer gathers secondary destinations behind a burger menu while keeping the main screen focused.',
+      imagePreview: {
+        src: '/category-previews/mobile/mobile-nav-drawer.svg',
+        alt: 'NavDrawer mock preview',
+        minHeight: 236,
+      },
+    },
+  },
 };
 
 const gridCategoryIds = new Set([
@@ -439,6 +486,7 @@ const gridCategoryIds = new Set([
   'feedback',
   'layout',
   'interaction',
+  'mobile',
 ]);
 
 const PreviewBlock = ({

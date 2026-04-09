@@ -7,6 +7,7 @@
 /// <reference path="./types/input.d.ts" />
 /// <reference path="./types/interaction.d.ts" />
 /// <reference path="./types/layout.d.ts" />
+/// <reference path="./types/mobile.d.ts" />
 /// <reference path="./types/navigation.d.ts" />
 
 export { default as Typography } from './components/foundation/Typography';
@@ -50,3 +51,9 @@ export { default as Divider } from './components/layout/Divider';
 export { default as CountUp } from './components/interaction/CountUp';
 export { default as SplitText } from './components/interaction/SplitText';
 export { default as Sticker } from './components/interaction/Sticker';
+
+export { default as BottomNavigation } from './components/mobile/BottomNavigation';
+export { default as TopAppBar } from './components/mobile/TopAppBar';
+export { default as BottomSheet } from './components/mobile/BottomSheet';
+export { default as NavDrawer } from './components/mobile/MobileNavDrawer';
+export { default as MobileNavDrawer } from './components/mobile/MobileNavDrawer';

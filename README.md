@@ -37,6 +37,7 @@ export function Example() {
 - Feedback: `Alert`, `Progress`, `Skeleton`, `Toast`
 - Layout: `Box`, `FlexWrapper`, `Grid`, `Divider`
 - Interaction: `CountUp`, `SplitText`, `Sticker`
+- Mobile: `BottomNavigation`, `TopAppBar`, `BottomSheet`, `NavDrawer`
 
 ## Styling Notes
 

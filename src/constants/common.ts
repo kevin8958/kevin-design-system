@@ -214,6 +214,33 @@ export const designSystemMenus = [
     ],
   },
   {
+    id: 'mobile',
+    label: 'Mobile',
+    href: null,
+    items: [
+      {
+        id: 'bottomNavigation',
+        label: 'BottomNavigation',
+        href: '/components/mobile/bottomNavigation',
+      },
+      {
+        id: 'topAppBar',
+        label: 'TopAppBar',
+        href: '/components/mobile/topAppBar',
+      },
+      {
+        id: 'bottomSheet',
+        label: 'BottomSheet',
+        href: '/components/mobile/bottomSheet',
+      },
+      {
+        id: 'navDrawer',
+        label: 'NavDrawer',
+        href: '/components/mobile/navDrawer',
+      },
+    ],
+  },
+  {
     id: 'interaction',
     label: 'Interaction',
     href: null,
