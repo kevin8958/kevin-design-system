@@ -1,6 +1,6 @@
 import {
   FloatingPortal,
-  Placement,
+  type Placement,
   arrow,
   autoUpdate,
   flip,
@@ -37,7 +37,9 @@ const Popover = ({
   contentClasses,
 }: Action.PopoverProps) => {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
-  const [arrowElement, setArrowElement] = useState<HTMLSpanElement | null>(null);
+  const [arrowElement, setArrowElement] = useState<HTMLSpanElement | null>(
+    null,
+  );
   const isControlled = open !== undefined;
   const isOpen = isControlled ? open : uncontrolledOpen;
 
@@ -52,19 +54,24 @@ const Popover = ({
     onOpenChange?.(nextOpen);
   };
 
-  const { refs, floatingStyles, context, placement: resolvedPlacement, middlewareData } =
-    useFloating({
-      open: isOpen,
-      onOpenChange: setOpen,
-      placement,
-      middleware: [
-        offset(12),
-        flip({ fallbackAxisSideDirection: 'end' }),
-        shift({ padding: 10 }),
-        ...(showArrow ? [arrow({ element: arrowElement })] : []),
-      ],
-      whileElementsMounted: autoUpdate,
-    });
+  const {
+    refs,
+    floatingStyles,
+    context,
+    placement: resolvedPlacement,
+    middlewareData,
+  } = useFloating({
+    open: isOpen,
+    onOpenChange: setOpen,
+    placement,
+    middleware: [
+      offset(12),
+      flip({ fallbackAxisSideDirection: 'end' }),
+      shift({ padding: 10 }),
+      ...(showArrow ? [arrow({ element: arrowElement })] : []),
+    ],
+    whileElementsMounted: autoUpdate,
+  });
   const { setReference, setFloating } = refs;
 
   const click = useClick(context, { enabled: !disabled });
@@ -96,7 +103,11 @@ const Popover = ({
       {...getFloatingProps()}
     >
       <motion.div
-        initial={{ opacity: 0, y: resolvedSide === 'top' ? 8 : -8, scale: 0.96 }}
+        initial={{
+          opacity: 0,
+          y: resolvedSide === 'top' ? 8 : -8,
+          scale: 0.96,
+        }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: resolvedSide === 'top' ? 8 : -8, scale: 0.96 }}
         transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
@@ -168,7 +179,7 @@ const Popover = ({
       <AnimatePresence>
         {isOpen &&
           (portal ? (
-        <FloatingPortal>{floatingNode}</FloatingPortal>
+            <FloatingPortal>{floatingNode}</FloatingPortal>
           ) : (
             floatingNode
           ))}
