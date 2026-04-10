@@ -17,6 +17,19 @@ namespace Action {
     value: string;
     disabled?: boolean;
   };
+  type AccordionType = 'single' | 'multiple';
+  type AccordionItem = {
+    id: string;
+    title: React.ReactNode;
+    content: React.ReactNode;
+    description?: React.ReactNode;
+    icon?: React.ReactNode;
+    badge?: React.ReactNode;
+    disabled?: boolean;
+  };
+
+  type PopoverSide = 'top' | 'right' | 'bottom' | 'left';
+  type PopoverAlign = 'start' | 'center' | 'end';
 
   type DropdownItem =
     | {
@@ -76,6 +89,36 @@ namespace Action {
     label?: string | React.ReactNode;
     disabled?: boolean;
     buttonClasses?: string;
+  }
+
+  interface AccordionProps {
+    items: AccordionItem[];
+    type?: AccordionType;
+    value?: string[];
+    defaultValue?: string[];
+    onChange?: (value: string[]) => void;
+    size?: ButtonSize;
+    collapsible?: boolean;
+    classes?: string;
+    itemClasses?: string;
+  }
+
+  interface PopoverProps {
+    trigger: React.ReactNode;
+    children?: React.ReactNode;
+    title?: React.ReactNode;
+    description?: React.ReactNode;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    side?: PopoverSide;
+    align?: PopoverAlign;
+    width?: number;
+    showArrow?: boolean;
+    disabled?: boolean;
+    portal?: boolean;
+    classes?: string;
+    contentClasses?: string;
   }
 
   interface ButtonGroupProps {

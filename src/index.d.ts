@@ -14,7 +14,9 @@ export { default as Typography } from './components/foundation/Typography';
 
 export { default as Button } from './components/action/Button';
 export { default as ButtonGroup } from './components/action/ButtonGroup';
+export { default as Accordion } from './components/action/Accordion';
 export { default as Dropdown } from './components/action/Dropdown';
+export { default as Popover } from './components/action/Popover';
 export { default as Modal } from './components/action/Modal';
 export { default as Drawer } from './components/action/Drawer';
 

@@ -150,6 +150,16 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
     },
   },
   action: {
+    accordion: {
+      description:
+        'Accordion organizes dense sections into expandable rows without losing the surrounding page context.',
+      imagePreview: {
+        src: '/category-previews/action/accordion.svg',
+        darkSrc: '/category-previews/action/accordion-dark.svg',
+        minHeight: 180,
+        alt: 'Accordion mock preview',
+      },
+    },
     button: {
       description:
         'Button drives primary, secondary, and lightweight actions with clear emphasis.',
@@ -178,6 +188,16 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         darkSrc: '/category-previews/action/dropdown-dark.svg',
         minHeight: 180,
         alt: 'Dropdown mock preview',
+      },
+    },
+    popover: {
+      description:
+        'Popover surfaces compact details and secondary actions around the current trigger.',
+      imagePreview: {
+        src: '/category-previews/action/popover.svg',
+        darkSrc: '/category-previews/action/popover-dark.svg',
+        minHeight: 180,
+        alt: 'Popover mock preview',
       },
     },
     modal: {

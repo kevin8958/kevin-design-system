@@ -52,6 +52,11 @@ export const designSystemMenus = [
         group: 'Action',
         items: [
           {
+            id: 'accordion',
+            label: 'Accordion',
+            href: '/components/action/accordion',
+          },
+          {
             id: 'button',
             label: 'Button',
             href: '/components/action/button',
@@ -65,6 +70,11 @@ export const designSystemMenus = [
             id: 'dropdown',
             label: 'Dropdown',
             href: '/components/action/dropdown',
+          },
+          {
+            id: 'popover',
+            label: 'Popover',
+            href: '/components/action/popover',
           },
           {
             id: 'modal',

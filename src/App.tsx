@@ -17,7 +17,9 @@ import Colors from '@/pages/components/foundation/colors/page';
 import Typography from '@/pages/components/foundation/typography/page';
 import ComponentButtonPage from '@/pages/components/action/button/ComponentButtonPage';
 import ComponentButtonGroupPage from '@/pages/components/action/buttonGroup/ComponentButtonGroupPage';
+import ComponentAccordionPage from '@/pages/components/action/accordion/ComponentAccordionPage';
 import ComponentDropdownPage from '@/pages/components/action/dropdown/ComponentDropdownPage';
+import ComponentPopoverPage from '@/pages/components/action/popover/ComponentPopoverPage';
 import ComponentModalPage from './pages/components/action/modal/ComponentModalPage';
 import ComponentDrawerPage from './pages/components/action/drawer/ComponentDrawerPage';
 import ComponentTextInputPage from '@/pages/components/input/textinput/ComponentTextInputPage';
@@ -126,12 +128,14 @@ function App() {
           <Route path="foundation/colors" element={<Colors />} />
           <Route path="foundation/typography" element={<Typography />} />
           {/* action */}
+          <Route path="action/accordion" element={<ComponentAccordionPage />} />
           <Route path="action/button" element={<ComponentButtonPage />} />
           <Route
             path="action/buttonGroup"
             element={<ComponentButtonGroupPage />}
           />
           <Route path="action/dropdown" element={<ComponentDropdownPage />} />
+          <Route path="action/popover" element={<ComponentPopoverPage />} />
           <Route path="action/modal" element={<ComponentModalPage />} />
           <Route path="action/drawer" element={<ComponentDrawerPage />} />
           {/* input */}
