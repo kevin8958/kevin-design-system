@@ -49,4 +49,10 @@ describe('BottomNavigation', () => {
 
     expect(handleChange).not.toHaveBeenCalled();
   });
+
+  it('keeps badge highlighted even when the item is not active', () => {
+    render(<BottomNavigation items={items} value="home" />);
+
+    expect(screen.getByText('3')).toHaveClass('bg-secondary-500');
+  });
 });

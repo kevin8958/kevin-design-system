@@ -9,9 +9,9 @@ const sheetPanelVariants = cva(
   {
     variants: {
       size: {
-        sm: 'max-h-[42%]',
-        md: 'max-h-[58%]',
-        lg: 'max-h-[76%]',
+        sm: 'min-h-[34%] max-h-[42%]',
+        md: 'min-h-[48%] max-h-[58%]',
+        lg: 'min-h-[64%] max-h-[76%]',
         full: 'h-full rounded-none',
       },
     },
@@ -53,11 +53,15 @@ const BottomSheet = ({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.18 }}
             />
-            <div className="absolute inset-0 overflow-hidden">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
               <div className="flex h-full w-full items-end justify-center">
                 <motion.div
                   data-testid="bottom-sheet-panel"
-                  className={classNames(sheetPanelVariants({ size }), classes)}
+                  className={classNames(
+                    'pointer-events-auto',
+                    sheetPanelVariants({ size }),
+                    classes,
+                  )}
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: '100%', opacity: 0 }}
@@ -129,7 +133,7 @@ const BottomSheet = ({
           />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-hidden">
+        <div className="pointer-events-none fixed inset-0 overflow-hidden">
           <div className="flex h-full w-full items-end justify-center">
             <Transition.Child
               as={Fragment}
@@ -142,7 +146,11 @@ const BottomSheet = ({
             >
               <Dialog.Panel
                 data-testid="bottom-sheet-panel"
-                className={classNames(sheetPanelVariants({ size }), classes)}
+                className={classNames(
+                  'pointer-events-auto',
+                  sheetPanelVariants({ size }),
+                  classes,
+                )}
               >
                 {showDragHandle && (
                   <div className="flex justify-center px-5 pt-3">

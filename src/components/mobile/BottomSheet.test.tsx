@@ -31,4 +31,22 @@ describe('BottomSheet', () => {
 
     expect(handleClose).toHaveBeenCalled();
   });
+
+  it('applies visible size differences even with short content', () => {
+    const { rerender } = render(
+      <BottomSheet isOpen size="md" contained>
+        <div>Sheet content</div>
+      </BottomSheet>,
+    );
+
+    expect(screen.getByTestId('bottom-sheet-panel')).toHaveClass('min-h-[48%]');
+
+    rerender(
+      <BottomSheet isOpen size="lg" contained>
+        <div>Sheet content</div>
+      </BottomSheet>,
+    );
+
+    expect(screen.getByTestId('bottom-sheet-panel')).toHaveClass('min-h-[64%]');
+  });
 });

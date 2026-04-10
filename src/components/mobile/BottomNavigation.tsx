@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 
 const navigationVariants = cva(
-  'flex w-full items-stretch rounded-t-[28px] border-t border-neutral-200 bg-white/95 px-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] pt-2 shadow-[0_-8px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-950/95',
+  'flex w-full max-w-full items-stretch overflow-hidden rounded-t-[28px] border-t border-neutral-200 bg-white/95 px-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] pt-2 shadow-[0_-8px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-950/95',
 );
 
 const itemVariants = cva(
@@ -30,7 +30,7 @@ const badgeVariants = cva(
     variants: {
       state: {
         default:
-          'bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200',
+          'bg-secondary-500 text-white dark:bg-primary-400 dark:text-neutral-900',
         active:
           'bg-secondary-500 text-white dark:bg-primary-400 dark:text-neutral-900',
       },

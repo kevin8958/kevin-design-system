@@ -6,7 +6,6 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import SimpleTable from '@/components/data/SimpleTable';
 import Button from '@/components/action/Button';
 import BottomNavigationContentGuide from '@/pages/components/mobile/bottomNavigation/BottomNavigationContentGuide';
-import BottomNavigationStateGuide from '@/pages/components/mobile/bottomNavigation/BottomNavigationStateGuide';
 import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 
@@ -75,7 +74,6 @@ export default function ComponentBottomNavigationPage() {
           </FlexWrapper>
 
           <BottomNavigationContentGuide />
-          <BottomNavigationStateGuide />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

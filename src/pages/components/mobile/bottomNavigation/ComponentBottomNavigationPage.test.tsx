@@ -27,6 +27,5 @@ describe('ComponentBottomNavigationPage', () => {
       screen.getByRole('heading', { name: 'BottomNavigation' }),
     ).toBeInTheDocument();
     expect(screen.getByText('Content')).toBeInTheDocument();
-    expect(screen.getByText('State')).toBeInTheDocument();
   });
 });

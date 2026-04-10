@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { designSystemMenus } from '@/constants/common';
 import { cn } from '@/libs/utils';
@@ -14,6 +14,7 @@ const NAV_ITEMS = [
 const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const { pathname } = useLocation();
   const [isResizing, setIsResizing] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -32,6 +33,28 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (desktopHidden && !isOpen) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      const nav = navRef.current;
+      if (!nav) return;
+
+      const currentElement =
+        nav.querySelector<HTMLElement>('[data-snb-current="item"]') ||
+        nav.querySelector<HTMLElement>('[data-snb-current="menu"]') ||
+        nav.querySelector<HTMLElement>('[data-snb-current="nav"]');
+
+      currentElement?.scrollIntoView({
+        block: 'center',
+        inline: 'nearest',
+        behavior: 'auto',
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, isOpen, desktopHidden]);
 
   const flattenedMenus: Layout.FlattenedMenu[] = (
     designSystemMenus as Layout.DesignSystemMenu[]
@@ -83,7 +106,7 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
       >
         <div className="mx-auto mb-2 mt-1 h-1.5 w-12 shrink-0 rounded-full bg-neutral-300 dark:bg-neutral-700 md:hidden" />
 
-        <nav className="w-full p-4 overflow-y-auto">
+        <nav ref={navRef} className="w-full overflow-y-auto p-4">
           <ul className="flex flex-col w-full gap-1 pb-2 md:hidden">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname.startsWith(item.href);
@@ -92,6 +115,8 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
                   <Link
                     to={item.href}
                     onClick={onClose}
+                    aria-current={isActive ? 'page' : undefined}
+                    data-snb-current={isActive ? 'nav' : undefined}
                     className={cn(
                       'block w-full rounded-md px-2 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
                       isActive
@@ -122,6 +147,8 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
                         <Link
                           to={menu.href}
                           onClick={onClose}
+                          aria-current={pathname === menu.href ? 'page' : undefined}
+                          data-snb-current={pathname === menu.href ? 'menu' : undefined}
                           className={cn(
                             'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors group font-bold!',
                             'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
@@ -142,6 +169,8 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
                               key={item.id}
                               to={item.href}
                               onClick={onClose}
+                              aria-current={isActiveItem ? 'page' : undefined}
+                              data-snb-current={isActiveItem ? 'item' : undefined}
                               className={cn(
                                 'rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
                                 isActiveItem
