@@ -97,9 +97,19 @@ export const designSystemMenus = [
             href: '/components/input/textInput',
           },
           {
+            id: 'textarea',
+            label: 'Textarea',
+            href: '/components/input/textarea',
+          },
+          {
             id: 'select',
             label: 'Select',
             href: '/components/input/select',
+          },
+          {
+            id: 'combobox',
+            label: 'Combobox',
+            href: '/components/input/combobox',
           },
           {
             id: 'checkbox',

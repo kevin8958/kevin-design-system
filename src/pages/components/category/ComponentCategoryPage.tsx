@@ -227,8 +227,19 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'TextInput captures short form values with optional labels, prefixes, and validation states.',
       imagePreview: {
         src: '/category-previews/input/textinput.svg',
+        darkSrc: '/category-previews/input/textinput-dark.svg',
         alt: 'TextInput mock preview',
         minHeight: 160,
+      },
+    },
+    textarea: {
+      description:
+        'Textarea handles longer notes, descriptions, and multi-line responses while preserving the same input language.',
+      imagePreview: {
+        src: '/category-previews/input/textarea.svg',
+        darkSrc: '/category-previews/input/textarea-dark.svg',
+        alt: 'Textarea mock preview',
+        minHeight: 172,
       },
     },
     select: {
@@ -236,8 +247,19 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Select presents a compact trigger with a focused list of predefined options.',
       imagePreview: {
         src: '/category-previews/input/select.svg',
+        darkSrc: '/category-previews/input/select-dark.svg',
         alt: 'Select mock preview',
         minHeight: 172,
+      },
+    },
+    combobox: {
+      description:
+        'Combobox combines search and selection for longer option lists without leaving the input flow.',
+      imagePreview: {
+        src: '/category-previews/input/combobox.svg',
+        darkSrc: '/category-previews/input/combobox-dark.svg',
+        alt: 'Combobox mock preview',
+        minHeight: 186,
       },
     },
     checkbox: {
@@ -245,6 +267,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Checkbox supports independent binary selection and compact preference lists.',
       imagePreview: {
         src: '/category-previews/input/checkbox.svg',
+        darkSrc: '/category-previews/input/checkbox-dark.svg',
         alt: 'Checkbox mock preview',
         minHeight: 160,
       },
@@ -254,6 +277,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Radio groups exclusive options with room for supporting descriptions.',
       imagePreview: {
         src: '/category-previews/input/radio.svg',
+        darkSrc: '/category-previews/input/radio-dark.svg',
         alt: 'Radio mock preview',
         minHeight: 160,
       },
@@ -263,6 +287,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Switch handles immediate on/off preferences and setting toggles.',
       imagePreview: {
         src: '/category-previews/input/switch.svg',
+        darkSrc: '/category-previews/input/switch-dark.svg',
         alt: 'Switch mock preview',
         minHeight: 160,
       },
@@ -272,6 +297,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'DatePicker helps users choose dates through direct calendar interaction.',
       imagePreview: {
         src: '/category-previews/input/datepicker.svg',
+        darkSrc: '/category-previews/input/datepicker-dark.svg',
         alt: 'DatePicker mock preview',
         minHeight: 180,
       },
@@ -281,6 +307,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'UploadDropzone offers click or drag-and-drop file selection in a large target area.',
       imagePreview: {
         src: '/category-previews/input/upload-dropzone.svg',
+        darkSrc: '/category-previews/input/upload-dropzone-dark.svg',
         alt: 'UploadDropzone mock preview',
         minHeight: 180,
       },

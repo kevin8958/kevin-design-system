@@ -23,7 +23,9 @@ import ComponentPopoverPage from '@/pages/components/action/popover/ComponentPop
 import ComponentModalPage from './pages/components/action/modal/ComponentModalPage';
 import ComponentDrawerPage from './pages/components/action/drawer/ComponentDrawerPage';
 import ComponentTextInputPage from '@/pages/components/input/textinput/ComponentTextInputPage';
+import ComponentTextareaPage from '@/pages/components/input/textarea/ComponentTextareaPage';
 import ComponentSelectPage from '@/pages/components/input/select/ComponentSelectPage';
+import ComponentComboboxPage from '@/pages/components/input/combobox/ComponentComboboxPage';
 import ComponentCheckboxPage from '@/pages/components/input/checkbox/ComponentCheckboxPage';
 import ComponentRadioPage from '@/pages/components/input/radio/ComponentRadioPage';
 import ComponentSwitchPage from '@/pages/components/input/switch/ComponentSwitchPage';
@@ -140,7 +142,9 @@ function App() {
           <Route path="action/drawer" element={<ComponentDrawerPage />} />
           {/* input */}
           <Route path="input/textinput" element={<ComponentTextInputPage />} />
+          <Route path="input/textarea" element={<ComponentTextareaPage />} />
           <Route path="input/select" element={<ComponentSelectPage />} />
+          <Route path="input/combobox" element={<ComponentComboboxPage />} />
           <Route path="input/checkbox/*" element={<ComponentCheckboxPage />} />
           <Route path="input/radio/*" element={<ComponentRadioPage />} />
           <Route path="input/switch/*" element={<ComponentSwitchPage />} />

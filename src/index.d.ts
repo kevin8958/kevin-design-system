@@ -21,7 +21,9 @@ export { default as Modal } from './components/action/Modal';
 export { default as Drawer } from './components/action/Drawer';
 
 export { default as TextInput } from './components/input/TextInput';
+export { default as Textarea } from './components/input/Textarea';
 export { default as Select } from './components/input/Select';
+export { default as Combobox } from './components/input/Combobox';
 export { default as Checkbox } from './components/input/Checkbox';
 export { default as Radio } from './components/input/Radio';
 export { default as Switch } from './components/input/Switch';
