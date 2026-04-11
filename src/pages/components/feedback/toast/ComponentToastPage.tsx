@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ToastStateGuide from '@/pages/components/feedback/toast/ToastStateGuide';
 import ToastControllerGuide from '@/pages/components/feedback/toast/ToastControllerGuide';
 import ToastTypeGuide from '@/pages/components/feedback/toast/ToastTypeGuide';
+import ToastProviderSystemGuide from '@/pages/components/feedback/toastProvider/ToastProviderSystemGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -14,6 +15,7 @@ import { LuExternalLink } from 'react-icons/lu';
 
 export default function ComponentToastPage() {
   const [variant, setVariant] = useState<Feedback.ToastVariant>('info');
+  const [placement, setPlacement] = useState<Feedback.ToastPlacement>('top-right');
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
     { label: 'Feedback', href: '/components/feedback' },
@@ -48,13 +50,24 @@ export default function ComponentToastPage() {
             </Button>
           </FlexWrapper>
 
-          <ToastControllerGuide variant={variant} onVariantChange={setVariant} />
+          <ToastControllerGuide
+            variant={variant}
+            placement={placement}
+            onVariantChange={setVariant}
+            onPlacementChange={setPlacement}
+          />
           <ToastTypeGuide variant={variant} />
           <ToastStateGuide variant={variant} />
+          <ToastProviderSystemGuide variant={variant} placement={placement} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
             <SimpleTable columns={propsColumn} data={propsData} />
+          </FlexWrapper>
+
+          <FlexWrapper classes="w-full" items="start" direction="col">
+            <Typography variant="H3">Provider Props</Typography>
+            <SimpleTable columns={propsColumn} data={providerProps} />
           </FlexWrapper>
         </FlexWrapper>
       </FlexWrapper>
@@ -135,5 +148,29 @@ const propsData = [
     type: 'string',
     default: "''",
     description: 'Additional classes for custom styling overrides.',
+  },
+];
+
+const providerProps = [
+  {
+    id: '1',
+    property: 'placement',
+    type: 'Feedback.ToastPlacement',
+    default: "'top-right'",
+    description: 'Controls where the viewport appears on screen.',
+  },
+  {
+    id: '2',
+    property: 'maxVisible',
+    type: 'number',
+    default: '4',
+    description: 'Limits how many toasts remain mounted at the same time.',
+  },
+  {
+    id: '3',
+    property: 'classes',
+    type: 'string',
+    default: "''",
+    description: 'Additional classes applied to the viewport wrapper.',
   },
 ];

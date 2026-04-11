@@ -26,5 +26,7 @@ describe('ComponentToastPage', () => {
     fireEvent.click(screen.getByRole('button', { name: 'warning' }));
 
     expect(screen.getAllByText(/variant="warning"/).length).toBeGreaterThan(0);
+    expect(screen.getByText('System')).toBeInTheDocument();
+    expect(screen.getByText('Provider Props')).toBeInTheDocument();
   });
 });

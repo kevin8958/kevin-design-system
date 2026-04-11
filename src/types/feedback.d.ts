@@ -11,6 +11,45 @@ namespace Feedback {
     | 'bottom-center'
     | 'bottom-right';
 
+  interface ToastItem {
+    id: string;
+    title?: string;
+    description?: string;
+    variant?: ToastVariant;
+    autoClose?: number;
+    closable?: boolean;
+  }
+
+  interface ToastViewportProps {
+    toasts: ToastItem[];
+    placement?: ToastPlacement;
+    classes?: string;
+    onRemove?: (id: string) => void;
+  }
+
+  interface ToastProviderProps {
+    children: React.ReactNode;
+    placement?: ToastPlacement;
+    maxVisible?: number;
+    classes?: string;
+  }
+
+  interface ToastContextValue {
+    toasts: ToastItem[];
+    placement: ToastPlacement;
+    push: (toast: Omit<ToastItem, 'id'> & { id?: string }) => string;
+    dismiss: (id: string) => void;
+    clear: () => void;
+    info: (toast: Omit<ToastItem, 'id' | 'variant'> & { id?: string }) => string;
+    success: (
+      toast: Omit<ToastItem, 'id' | 'variant'> & { id?: string },
+    ) => string;
+    warning: (
+      toast: Omit<ToastItem, 'id' | 'variant'> & { id?: string },
+    ) => string;
+    danger: (toast: Omit<ToastItem, 'id' | 'variant'> & { id?: string }) => string;
+  }
+
   interface AlertProps {
     title?: string;
     description?: string;

@@ -77,6 +77,11 @@ export const designSystemMenus = [
             href: '/components/action/popover',
           },
           {
+            id: 'actionSheet',
+            label: 'ActionSheet',
+            href: '/components/action/actionSheet',
+          },
+          {
             id: 'modal',
             label: 'Modal',
             href: '/components/action/modal',
@@ -146,6 +151,11 @@ export const designSystemMenus = [
             label: 'Pagination',
             href: '/components/navigation/pagination',
           },
+          {
+            id: 'stepper',
+            label: 'Stepper',
+            href: '/components/navigation/stepper',
+          },
           { id: 'tabs', label: 'Tabs', href: '/components/navigation/tabs' },
           {
             id: 'breadcrumb',
@@ -176,6 +186,16 @@ export const designSystemMenus = [
             id: 'badge',
             label: 'Badge',
             href: '/components/dataDisplay/badge',
+          },
+          {
+            id: 'descriptionList',
+            label: 'DescriptionList',
+            href: '/components/dataDisplay/descriptionList',
+          },
+          {
+            id: 'emptyState',
+            label: 'EmptyState',
+            href: '/components/dataDisplay/emptyState',
           },
           {
             id: 'metricCard',

@@ -46,6 +46,30 @@ namespace Mobile {
     overlayClasses?: string;
   }
 
+  type ActionSheetTone = 'default' | 'danger';
+
+  interface ActionSheetItem {
+    id: string;
+    label: string;
+    description?: string;
+    icon?: React.ReactNode;
+    tone?: ActionSheetTone;
+    disabled?: boolean;
+  }
+
+  interface ActionSheetProps {
+    isOpen: boolean;
+    onClose?: () => void;
+    onSelect?: (id: string) => void;
+    title?: string;
+    description?: string;
+    items: ActionSheetItem[];
+    size?: BottomSheetSize;
+    contained?: boolean;
+    classes?: string;
+    overlayClasses?: string;
+  }
+
   /** NavDrawer */
   type NavDrawerSize = 'sm' | 'md';
 

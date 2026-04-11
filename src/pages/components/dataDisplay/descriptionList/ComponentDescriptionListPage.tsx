@@ -1,0 +1,104 @@
+'use client';
+
+import { useState } from 'react';
+import BreadCrumb from '@/components/navigation/BreadCrumb';
+import Typography from '@/components/foundation/Typography';
+import FlexWrapper from '@/components/layout/FlexWrapper';
+import SimpleTable from '@/components/data/SimpleTable';
+import Button from '@/components/action/Button';
+import { propsColumn, STORYBOOK_URL } from '@/constants/common';
+import { LuExternalLink } from 'react-icons/lu';
+import DescriptionListControllerGuide from './DescriptionListControllerGuide';
+import DescriptionListContentGuide from './DescriptionListContentGuide';
+import DescriptionListLayoutGuide from './DescriptionListLayoutGuide';
+
+export default function ComponentDescriptionListPage() {
+  const [size, setSize] = useState<Data.DescriptionListSize>('md');
+  const [columns, setColumns] = useState<Data.DescriptionListColumns>(1);
+
+  const breadcrumbItems = [
+    { label: 'Components', href: '/components' },
+    { label: 'Data Display', href: '/components/dataDisplay' },
+    {
+      label: 'DescriptionList',
+      href: '/components/dataDisplay/descriptionList',
+    },
+  ];
+
+  const handleOpenStorybook = () => {
+    window.open(
+      `${STORYBOOK_URL}?path=/docs/components-data-display-descriptionlist--docs`,
+      '_blank',
+    );
+  };
+
+  return (
+    <FlexWrapper classes="w-full pb-20 px-4" direction="col" justify="start">
+      <BreadCrumb items={breadcrumbItems} />
+
+      <FlexWrapper justify="center">
+        <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
+          <FlexWrapper justify="start" items="end" classes="w-full">
+            <Typography variant="H1">DescriptionList</Typography>
+            <Button
+              classes="mb-2"
+              variant="outline"
+              color="neutral"
+              size="sm"
+              icon={<LuExternalLink size={14} />}
+              iconPosition="right"
+              onClick={handleOpenStorybook}
+            >
+              Storybook
+            </Button>
+          </FlexWrapper>
+
+          <DescriptionListControllerGuide
+            size={size}
+            columns={columns}
+            onSizeChange={setSize}
+            onColumnsChange={setColumns}
+          />
+          <DescriptionListContentGuide size={size} columns={columns} />
+          <DescriptionListLayoutGuide size={size} columns={columns} />
+
+          <FlexWrapper classes="w-full" items="start" direction="col">
+            <Typography variant="H3">Props</Typography>
+            <SimpleTable columns={propsColumn} data={propsData} />
+          </FlexWrapper>
+        </FlexWrapper>
+      </FlexWrapper>
+    </FlexWrapper>
+  );
+}
+
+const propsData = [
+  {
+    id: '1',
+    property: 'items',
+    type: 'DescriptionListItem[]',
+    default: '[]',
+    description: 'Label-value rows with optional supporting hints.',
+  },
+  {
+    id: '2',
+    property: 'size',
+    type: ["'sm'", "'md'", "'lg'"],
+    default: "'md'",
+    description: 'Controls padding and typography for each item card.',
+  },
+  {
+    id: '3',
+    property: 'columns',
+    type: ['1', '2'],
+    default: '1',
+    description: 'Switches between a single-column stack and a two-column layout.',
+  },
+  {
+    id: '4',
+    property: 'classes',
+    type: 'string',
+    default: "''",
+    description: 'Additional classes applied to the root grid.',
+  },
+];

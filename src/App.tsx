@@ -20,6 +20,7 @@ import ComponentButtonGroupPage from '@/pages/components/action/buttonGroup/Comp
 import ComponentAccordionPage from '@/pages/components/action/accordion/ComponentAccordionPage';
 import ComponentDropdownPage from '@/pages/components/action/dropdown/ComponentDropdownPage';
 import ComponentPopoverPage from '@/pages/components/action/popover/ComponentPopoverPage';
+import ComponentActionSheetPage from '@/pages/components/mobile/actionSheet/ComponentActionSheetPage';
 import ComponentModalPage from './pages/components/action/modal/ComponentModalPage';
 import ComponentDrawerPage from './pages/components/action/drawer/ComponentDrawerPage';
 import ComponentTextInputPage from '@/pages/components/input/textinput/ComponentTextInputPage';
@@ -32,10 +33,13 @@ import ComponentSwitchPage from '@/pages/components/input/switch/ComponentSwitch
 import ComponentDatePickerPage from '@/pages/components/input/datepicker/ComponentDatePickerPage';
 import ComponentUploadDropzonePage from '@/pages/components/input/uploadDropzone/ComponentUploadDropzonePage';
 import ComponentPaginationPage from '@/pages/components/navigation/pagination/ComponentPaginationPage';
+import ComponentStepperPage from '@/pages/components/navigation/stepper/ComponentStepperPage';
 import ComponentTabsPage from '@/pages/components/navigation/tabs/ComponentTabsPage';
 import ComponentBreadcrumbPage from '@/pages/components/navigation/breadcrumb/ComponentBreadcrumbPage';
 import ComponentAvatarPage from '@/pages/components/dataDisplay/avatar/ComponentAvatarPage';
 import ComponentBadgePage from '@/pages/components/dataDisplay/badge/ComponentBadgePage';
+import ComponentDescriptionListPage from '@/pages/components/dataDisplay/descriptionList/ComponentDescriptionListPage';
+import ComponentEmptyStatePage from '@/pages/components/dataDisplay/emptyState/ComponentEmptyStatePage';
 import ComponentMetricCardPage from '@/pages/components/dataDisplay/metricCard/ComponentMetricCardPage';
 import ComponentTablePage from '@/pages/components/dataDisplay/table/ComponentTablePage';
 import ComponentTagPage from '@/pages/components/dataDisplay/tag/ComponentTagPage';
@@ -138,6 +142,10 @@ function App() {
           />
           <Route path="action/dropdown" element={<ComponentDropdownPage />} />
           <Route path="action/popover" element={<ComponentPopoverPage />} />
+          <Route
+            path="action/actionSheet"
+            element={<ComponentActionSheetPage />}
+          />
           <Route path="action/modal" element={<ComponentModalPage />} />
           <Route path="action/drawer" element={<ComponentDrawerPage />} />
           {/* input */}
@@ -160,6 +168,7 @@ function App() {
             path="navigation/pagination"
             element={<ComponentPaginationPage />}
           />
+          <Route path="navigation/stepper" element={<ComponentStepperPage />} />
           <Route path="navigation/tabs" element={<ComponentTabsPage />} />
           <Route
             path="navigation/breadcrumb"
@@ -167,6 +176,14 @@ function App() {
           />
           <Route path="dataDisplay/avatar" element={<ComponentAvatarPage />} />
           <Route path="dataDisplay/badge" element={<ComponentBadgePage />} />
+          <Route
+            path="dataDisplay/descriptionList"
+            element={<ComponentDescriptionListPage />}
+          />
+          <Route
+            path="dataDisplay/emptyState"
+            element={<ComponentEmptyStatePage />}
+          />
           <Route
             path="dataDisplay/metricCard"
             element={<ComponentMetricCardPage />}

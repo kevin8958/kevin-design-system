@@ -17,6 +17,9 @@ namespace Data {
   type TagVariant = 'neutral' | 'primary';
   type MetricCardSize = 'sm' | 'md' | 'lg';
   type MetricCardTrend = 'up' | 'down' | 'neutral';
+  type EmptyStateSize = 'sm' | 'md' | 'lg';
+  type DescriptionListSize = 'sm' | 'md' | 'lg';
+  type DescriptionListColumns = 1 | 2;
   type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
   type TooltipColor =
     | 'primary'
@@ -62,6 +65,29 @@ namespace Data {
     changeDecimals?: number;
     animated?: boolean;
     duration?: number;
+    classes?: string;
+  }
+
+  interface EmptyStateProps {
+    title: string;
+    description?: string;
+    icon?: React.ReactNode;
+    primaryAction?: React.ReactNode;
+    secondaryAction?: React.ReactNode;
+    size?: EmptyStateSize;
+    classes?: string;
+  }
+
+  type DescriptionListItem = {
+    label: string;
+    value: React.ReactNode;
+    hint?: React.ReactNode;
+  };
+
+  interface DescriptionListProps {
+    items: DescriptionListItem[];
+    size?: DescriptionListSize;
+    columns?: DescriptionListColumns;
     classes?: string;
   }
 

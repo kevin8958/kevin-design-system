@@ -154,6 +154,15 @@ namespace Action {
   }
 
   type DrawerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  type ActionSheetTone = 'default' | 'danger';
+  type ActionSheetItem = {
+    id: string;
+    label: string;
+    description?: string;
+    icon?: React.ReactNode;
+    tone?: ActionSheetTone;
+    disabled?: boolean;
+  };
 
   interface DrawerProps {
     isOpen: boolean;
@@ -167,5 +176,18 @@ namespace Action {
     hideBottom?: boolean;
     loading?: boolean;
     classes?: string;
+  }
+
+  interface ActionSheetProps {
+    isOpen: boolean;
+    onClose?: () => void;
+    onSelect?: (id: string) => void;
+    title?: string;
+    description?: string;
+    items: ActionSheetItem[];
+    size?: 'sm' | 'md' | 'lg';
+    contained?: boolean;
+    classes?: string;
+    overlayClasses?: string;
   }
 }

@@ -1,9 +1,9 @@
 <svg width="380" height="160" viewBox="0 0 380 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="110" y="98" width="160" height="36" rx="12" fill="#262626"/>
-  <rect x="152" y="112" width="76" height="8" rx="4" fill="white" fill-opacity="0.95"/>
-  <rect x="142" y="22" width="144" height="74" rx="18" fill="#FFFFFF" stroke="#E5E5E5"/>
-  <rect x="160" y="38" width="64" height="8" rx="4" fill="#171717"/>
+  <rect x="110" y="98" width="160" height="36" rx="12" fill="#F5F5F5"/>
+  <rect x="152" y="112" width="76" height="8" rx="4" fill="#171717"/>
+  <rect x="142" y="22" width="144" height="74" rx="18" fill="#171717" stroke="#404040"/>
+  <rect x="160" y="38" width="64" height="8" rx="4" fill="#FAFAFA"/>
   <rect x="160" y="54" width="102" height="6" rx="3" fill="#A3A3A3"/>
-  <rect x="160" y="68" width="90" height="6" rx="3" fill="#D4D4D4"/>
-  <rect x="196" y="88" width="14" height="14" transform="rotate(45 196 88)" fill="#FFFFFF" stroke="#E5E5E5"/>
+  <rect x="160" y="68" width="90" height="6" rx="3" fill="#525252"/>
+  <rect x="196" y="88" width="14" height="14" transform="rotate(45 196 88)" fill="#171717" stroke="#404040"/>
 </svg>

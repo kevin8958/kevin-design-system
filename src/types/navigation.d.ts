@@ -26,12 +26,32 @@ namespace Navigation {
 
   type TabsSize = 'sm' | 'md' | 'lg';
 
+  type StepperSize = 'sm' | 'md' | 'lg';
+  type StepperOrientation = 'horizontal' | 'vertical';
+
+  type StepperItem = {
+    id: string;
+    label: string;
+    description?: string;
+    disabled?: boolean;
+  };
+
   interface TabsProps {
     items: TabsItem[];
     value: string;
     onChange?: (id: string) => void;
     disabled?: boolean;
     size?: TabsSize;
+    classes?: string;
+  }
+
+  interface StepperProps {
+    items: StepperItem[];
+    value: string;
+    onChange?: (id: string) => void;
+    size?: StepperSize;
+    orientation?: StepperOrientation;
+    allowStepClick?: boolean;
     classes?: string;
   }
 }

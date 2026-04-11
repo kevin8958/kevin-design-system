@@ -200,6 +200,16 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         alt: 'Popover mock preview',
       },
     },
+    actionSheet: {
+      description:
+        'ActionSheet gathers a short list of contextual actions in a bottom-revealed menu that works across touch and web layouts.',
+      imagePreview: {
+        src: '/category-previews/action/action-sheet.svg',
+        darkSrc: '/category-previews/action/action-sheet-dark.svg',
+        minHeight: 180,
+        alt: 'ActionSheet mock preview',
+      },
+    },
     modal: {
       description:
         'Modal interrupts the flow to confirm, review, or complete focused tasks.',
@@ -319,8 +329,19 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Pagination helps users move through larger result sets one page at a time.',
       imagePreview: {
         src: '/category-previews/navigation/pagination.svg',
+        darkSrc: '/category-previews/navigation/pagination-dark.svg',
         alt: 'Pagination mock preview',
         minHeight: 140,
+      },
+    },
+    stepper: {
+      description:
+        'Stepper shows progress across multi-step flows while keeping the next stage visible from the start.',
+      imagePreview: {
+        src: '/category-previews/navigation/stepper.svg',
+        darkSrc: '/category-previews/navigation/stepper-dark.svg',
+        alt: 'Stepper mock preview',
+        minHeight: 164,
       },
     },
     tabs: {
@@ -328,6 +349,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Tabs switch between related content panels without leaving the current screen.',
       imagePreview: {
         src: '/category-previews/navigation/tabs.svg',
+        darkSrc: '/category-previews/navigation/tabs-dark.svg',
         alt: 'Tabs mock preview',
         minHeight: 150,
       },
@@ -337,6 +359,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Breadcrumb reflects position in the hierarchy and gives quick access to parent levels.',
       imagePreview: {
         src: '/category-previews/navigation/breadcrumb.svg',
+        darkSrc: '/category-previews/navigation/breadcrumb-dark.svg',
         alt: 'Breadcrumb mock preview',
         minHeight: 136,
       },
@@ -348,6 +371,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Avatar previews identity with image, initials, and presence.',
       imagePreview: {
         src: '/category-previews/data-display/avatar.svg',
+        darkSrc: '/category-previews/data-display/avatar-dark.svg',
         alt: 'Avatar mock preview',
         minHeight: 148,
       },
@@ -357,8 +381,29 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Badge surfaces compact status labels and semantic emphasis.',
       imagePreview: {
         src: '/category-previews/data-display/badge.svg',
+        darkSrc: '/category-previews/data-display/badge-dark.svg',
         alt: 'Badge mock preview',
         minHeight: 148,
+      },
+    },
+    descriptionList: {
+      description:
+        'DescriptionList presents calm label-value pairs for metadata, settings, and account details.',
+      imagePreview: {
+        src: '/category-previews/data-display/description-list.svg',
+        darkSrc: '/category-previews/data-display/description-list-dark.svg',
+        alt: 'DescriptionList mock preview',
+        minHeight: 176,
+      },
+    },
+    emptyState: {
+      description:
+        'EmptyState explains why nothing is shown yet and points people toward a useful next action.',
+      imagePreview: {
+        src: '/category-previews/data-display/empty-state.svg',
+        darkSrc: '/category-previews/data-display/empty-state-dark.svg',
+        alt: 'EmptyState mock preview',
+        minHeight: 180,
       },
     },
     metricCard: {
@@ -366,6 +411,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'MetricCard combines an animated value and directional delta for dashboard summaries.',
       imagePreview: {
         src: '/category-previews/data-display/metric-card.svg',
+        darkSrc: '/category-previews/data-display/metric-card-dark.svg',
         alt: 'MetricCard mock preview',
         minHeight: 168,
       },
@@ -375,6 +421,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Table organizes structured content in a readable, scannable format.',
       imagePreview: {
         src: '/category-previews/data-display/table.svg',
+        darkSrc: '/category-previews/data-display/table-dark.svg',
         alt: 'Table mock preview',
         minHeight: 186,
       },
@@ -384,6 +431,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Tag highlights classification and filters with a stronger boundary.',
       imagePreview: {
         src: '/category-previews/data-display/tag.svg',
+        darkSrc: '/category-previews/data-display/tag-dark.svg',
         alt: 'Tag mock preview',
         minHeight: 148,
       },
@@ -393,6 +441,7 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         'Tooltip reveals lightweight supporting context on hover or focus.',
       imagePreview: {
         src: '/category-previews/data-display/tooltip.svg',
+        darkSrc: '/category-previews/data-display/tooltip-dark.svg',
         alt: 'Tooltip mock preview',
         minHeight: 148,
       },
