@@ -1,11 +1,11 @@
-# kevin-design-system
+# @kevinworks/design-system
 
 A React component library for Kevin Design System.
 
 ## Installation
 
 ```bash
-npm install kevin-design-system
+npm install @kevinworks/design-system
 ```
 
 `react` and `react-dom` are peer dependencies and must already exist in the consuming app.
@@ -15,7 +15,7 @@ npm install kevin-design-system
 The package entry automatically loads the bundled library styles, so you can import components directly without a separate CSS import.
 
 ```tsx
-import { Button, TextInput } from 'kevin-design-system';
+import { Button, TextInput } from '@kevinworks/design-system';
 
 export function Example() {
   return (

@@ -9,10 +9,10 @@ import {
   LuPackage,
 } from 'react-icons/lu';
 
-const installCommand = 'npm install kevin-design-system';
+const installCommand = 'npm install @kevinworks/design-system';
 const localCheckCommand = `npm pack
-npm install ./kevin-design-system-0.1.0.tgz`;
-const usageExample = `import { Button, TextInput } from 'kevin-design-system';
+npm install ./kevinworks-design-system-0.1.2.tgz`;
+const usageExample = `import { Button, TextInput } from '@kevinworks/design-system';
 
 export default function App() {
   return (
@@ -68,7 +68,7 @@ export default function GettingStarted() {
               variant="B1"
               classes="max-w-3xl !font-normal !text-neutral-600 dark:!text-neutral-300"
             >
-              Kevin Design System is now published to npm. The install guide below reflects the live package command, direct component imports, and an optional local tarball workflow for smoke testing.
+              Kevin Design System is now published to npm. The install guide below reflects the live scoped package command, direct component imports, and an optional local tarball workflow for smoke testing.
             </Typography>
           </FlexWrapper>
 
@@ -170,7 +170,7 @@ export default function GettingStarted() {
                 variant="B2"
                 classes="mt-2 !font-normal !text-neutral-700 dark:!text-neutral-200"
               >
-                You can install the package today with `npm install kevin-design-system`. The local tarball workflow is still useful when you want to test unreleased changes before publishing another version.
+                You can install the package today with `npm install @kevinworks/design-system`. The local tarball workflow is still useful when you want to test unreleased changes before publishing another version.
               </Typography>
             </div>
 

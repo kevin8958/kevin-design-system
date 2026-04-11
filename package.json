@@ -1,5 +1,5 @@
 {
-  "name": "kevin-design-system",
+  "name": "@kevinworks/design-system",
   "version": "0.1.2",
   "description": "A React component library for Kevin Design System.",
   "type": "module",
@@ -26,6 +26,9 @@
       "require": "./dist-lib/index.cjs"
     },
     "./styles.css": "./dist-lib/styles.css"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "dev": "vite",
