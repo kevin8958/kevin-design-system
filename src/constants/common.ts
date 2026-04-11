@@ -5,10 +5,19 @@ export const propsColumn = [
   { label: 'Description', key: 'description' },
 ];
 
-export const STORYBOOK_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:6006'
-    : '/storybook/index.html';
+const processEnv =
+  typeof globalThis !== 'undefined' && 'process' in globalThis
+    ? (globalThis as { process?: { env?: { NODE_ENV?: string } } }).process?.env
+    : undefined;
+
+const isLocalDevelopment =
+  (typeof window !== 'undefined' &&
+    ['localhost', '127.0.0.1'].includes(window.location.hostname)) ||
+  processEnv?.NODE_ENV === 'development';
+
+export const STORYBOOK_URL = isLocalDevelopment
+  ? 'http://localhost:6006'
+  : '/storybook/index.html';
 
 export const designSystemMenus = [
   {
