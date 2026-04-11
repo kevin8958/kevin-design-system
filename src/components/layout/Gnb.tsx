@@ -8,6 +8,7 @@ import {
 import { useTheme } from '@/providers/ThemeProvider';
 import Button from '@/components/action/Button';
 import Divider from '@/components/layout/Divider';
+import GnbSearch from '@/components/layout/GnbSearch';
 import { cn } from '@/libs/utils';
 
 const NAV_ITEMS = [
@@ -71,6 +72,7 @@ const Gnb = ({ isOpen, onToggle }: GnbProps) => {
           <Divider classes="hidden md:block" />
 
           <div className="flex items-center gap-2">
+            <GnbSearch />
             <Button
               onClick={toggleTheme}
               aria-label="Toggle Theme"

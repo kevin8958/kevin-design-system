@@ -303,3 +303,96 @@ export const designSystemMenus = [
     ],
   },
 ];
+
+export const searchEntries: Layout.SearchEntry[] = [
+  {
+    id: 'getting-started',
+    label: 'Getting Started',
+    href: '/getting-started',
+    group: 'Overview',
+    keywords: ['home', 'install', 'setup', 'npm', 'publish'],
+  },
+  {
+    id: 'components-root',
+    label: 'Components',
+    href: '/components',
+    group: 'Overview',
+    keywords: ['docs', 'catalog', 'library'],
+  },
+  {
+    id: 'foundation-root',
+    label: 'Foundation',
+    href: '/components/foundation',
+    group: 'Category',
+  },
+  {
+    id: 'action-root',
+    label: 'Action',
+    href: '/components/action',
+    group: 'Category',
+  },
+  {
+    id: 'input-root',
+    label: 'Input',
+    href: '/components/input',
+    group: 'Category',
+  },
+  {
+    id: 'navigation-root',
+    label: 'Navigation',
+    href: '/components/navigation',
+    group: 'Category',
+  },
+  {
+    id: 'data-display-root',
+    label: 'Data Display',
+    href: '/components/dataDisplay',
+    group: 'Category',
+    keywords: ['data display', 'display'],
+  },
+  {
+    id: 'feedback-root',
+    label: 'Feedback',
+    href: '/components/feedback',
+    group: 'Category',
+  },
+  {
+    id: 'layout-root',
+    label: 'Layout',
+    href: '/components/layout',
+    group: 'Category',
+  },
+  {
+    id: 'mobile-root',
+    label: 'Mobile',
+    href: '/components/mobile',
+    group: 'Category',
+  },
+  {
+    id: 'interaction-root',
+    label: 'Interaction',
+    href: '/components/interaction',
+    group: 'Category',
+  },
+  ...designSystemMenus.flatMap((menu) => {
+    if (menu.id === 'components' && menu.sections) {
+      return menu.sections.flatMap((section) =>
+        section.items.map((item) => ({
+          id: item.id,
+          label: item.label,
+          href: item.href,
+          group: section.group,
+          keywords: [section.group.toLowerCase(), item.id.toLowerCase()],
+        })),
+      );
+    }
+
+    return (menu.items ?? []).map((item) => ({
+      id: item.id,
+      label: item.label,
+      href: item.href,
+      group: menu.label,
+      keywords: [menu.label.toLowerCase(), item.id.toLowerCase()],
+    }));
+  }),
+];

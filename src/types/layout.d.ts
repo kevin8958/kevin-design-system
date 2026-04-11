@@ -60,6 +60,14 @@ namespace Layout {
     href: string;
   }
 
+  interface SearchEntry {
+    id: string;
+    label: string;
+    href: string;
+    group: string;
+    keywords?: string[];
+  }
+
   interface SNBProps {
     isOpen: boolean;
     onClose?: () => void;
