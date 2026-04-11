@@ -17,7 +17,6 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 ### Changed
 - Expanded the documentation catalog with new component pages, stories, tests, and refreshed category preview artwork
 - Refined `Toast` documentation to cover provider and viewport usage within the main toast docs flow
-- Switched the published package name to the scoped npm package `@kevinworks/design-system`
 
 ### Fixed
 - Fixed publish-time runtime errors by removing direct `process` access from shared constants
