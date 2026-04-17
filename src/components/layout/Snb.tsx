@@ -11,9 +11,20 @@ const NAV_ITEMS = [
   { label: 'COMPONENTS', href: '/components' },
 ];
 
+type PlatformMenuGroup = {
+  id: string;
+  label: string;
+  href?: string;
+  items: Layout.NavItem[];
+  status?: 'ready' | 'working';
+};
+
 const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const { pathname } = useLocation();
   const [isResizing, setIsResizing] = useState(false);
+  const [selectedPlatform, setSelectedPlatform] = useState<'web' | 'app'>(
+    'web',
+  );
   const navRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -56,32 +67,111 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     return () => window.cancelAnimationFrame(frame);
   }, [pathname, isOpen, desktopHidden]);
 
-  const flattenedMenus: Layout.FlattenedMenu[] = (
-    designSystemMenus as Layout.DesignSystemMenu[]
-  ).flatMap((menu) => {
-    if (menu.id === 'components' && menu.sections) {
-      return menu.sections.map((section) => ({
-        id:
-          section.group === 'Data Display'
-            ? 'dataDisplay'
-            : section.group.toLowerCase(),
-        label: section.group,
-        items: section.items,
-        href:
-          section.group === 'Data Display'
-            ? '/components/dataDisplay'
-            : `/components/${section.group.toLowerCase()}`,
-      }));
-    }
-    return [
-      {
-        id: menu.id,
-        label: menu.label,
-        items: menu.items || [],
-        href: `/components/${menu.id}`,
-      },
-    ];
-  });
+  const foundationMenu = (designSystemMenus as Layout.DesignSystemMenu[]).find(
+    (menu) => menu.id === 'foundation',
+  );
+  const componentsMenu = (designSystemMenus as Layout.DesignSystemMenu[]).find(
+    (menu) => menu.id === 'components',
+  );
+  const mobileMenu = (designSystemMenus as Layout.DesignSystemMenu[]).find(
+    (menu) => menu.id === 'mobile',
+  );
+  const interactionMenu = (designSystemMenus as Layout.DesignSystemMenu[]).find(
+    (menu) => menu.id === 'interaction',
+  );
+
+  const foundationGroups: PlatformMenuGroup[] = foundationMenu
+    ? [
+        {
+          id: foundationMenu.id,
+          label: foundationMenu.label,
+          href: '/components/foundation',
+          items: foundationMenu.items ?? [],
+          status: 'ready',
+        },
+      ]
+    : [];
+
+  const webGroups: PlatformMenuGroup[] = [
+    ...((componentsMenu?.sections ?? []).map((section) => ({
+      id:
+        section.group === 'Data Display'
+          ? 'dataDisplay'
+          : section.group.toLowerCase(),
+      label: section.group,
+      items: section.items,
+      href:
+        section.group === 'Data Display'
+          ? '/components/dataDisplay'
+          : `/components/${section.group.toLowerCase()}`,
+      status: 'ready' as const,
+    })) ?? []),
+    ...(mobileMenu
+      ? [
+          {
+            id: mobileMenu.id,
+            label: mobileMenu.label,
+            href: '/components/mobile',
+            items: mobileMenu.items ?? [],
+            status: 'ready' as const,
+          },
+        ]
+      : []),
+    ...(interactionMenu
+      ? [
+          {
+            id: interactionMenu.id,
+            label: interactionMenu.label,
+            href: '/components/interaction',
+            items: interactionMenu.items ?? [],
+            status: 'ready' as const,
+          },
+        ]
+      : []),
+  ];
+
+  const appGroups: PlatformMenuGroup[] = [
+    {
+      id: 'app-action',
+      label: 'Action',
+      items: [{ id: 'app-action-wip', label: '작업중', href: '/components' }],
+      status: 'working',
+    },
+    {
+      id: 'app-input',
+      label: 'Input',
+      items: [{ id: 'app-input-wip', label: '작업중', href: '/components' }],
+      status: 'working',
+    },
+    {
+      id: 'app-navigation',
+      label: 'Navigation',
+      items: [
+        { id: 'app-navigation-wip', label: '작업중', href: '/components' },
+      ],
+      status: 'working',
+    },
+    {
+      id: 'app-data-display',
+      label: 'Data Display',
+      items: [
+        { id: 'app-data-display-wip', label: '작업중', href: '/components' },
+      ],
+      status: 'working',
+    },
+    {
+      id: 'app-feedback',
+      label: 'Feedback',
+      items: [{ id: 'app-feedback-wip', label: '작업중', href: '/components' }],
+      status: 'working',
+    },
+  ];
+
+  const menuSections = [
+    { id: 'foundation', label: 'Foundation', groups: foundationGroups },
+  ];
+  const activePlatformGroups =
+    selectedPlatform === 'web' ? webGroups : appGroups;
 
   return (
     <>
@@ -135,57 +225,217 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
             <>
               <Divider orientation="horizontal" classes="md:hidden" />
               <ul className="flex flex-col gap-1 pt-2 pb-10">
-                {flattenedMenus.map((menu) => {
-                  const isActiveMenu =
-                    pathname === menu.href ||
-                    pathname.startsWith(`${menu.href}/`) ||
-                    menu.items.some((item) => pathname.startsWith(item.href));
+                {menuSections.map((section) => (
+                  <li key={section.id} className="mb-4">
+                    <div className="flex flex-col gap-1">
+                      {section.groups.map((menu) => {
+                        const isReady = menu.status !== 'working';
+                        const isActiveMenu =
+                          isReady &&
+                          !!menu.href &&
+                          (pathname === menu.href ||
+                            pathname.startsWith(`${menu.href}/`) ||
+                            menu.items.some((item) =>
+                              pathname.startsWith(item.href),
+                            ));
 
-                  return (
-                    <li key={menu.id} className="mb-1">
-                      <div className="flex flex-col mt-0.5">
-                        <Link
-                          to={menu.href}
-                          onClick={onClose}
-                          aria-current={pathname === menu.href ? 'page' : undefined}
-                          data-snb-current={pathname === menu.href ? 'menu' : undefined}
-                          className={cn(
-                            'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors group font-bold!',
-                            'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
-                            isActiveMenu
-                              ? 'text-secondary-500! dark:text-primary-400!'
-                              : 'text-neutral-500! dark:text-neutral-100!',
-                          )}
-                        >
-                          <span className="text-sm tracking-wider uppercase">
-                            {menu.label}
-                          </span>
-                        </Link>
+                        return (
+                          <div key={menu.id} className="mt-0.5">
+                            {isReady && menu.href ? (
+                              <Link
+                                to={menu.href}
+                                onClick={onClose}
+                                aria-current={
+                                  pathname === menu.href ? 'page' : undefined
+                                }
+                                data-snb-current={
+                                  pathname === menu.href ? 'menu' : undefined
+                                }
+                                className={cn(
+                                  'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors group font-bold!',
+                                  'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
+                                  isActiveMenu
+                                    ? 'text-secondary-500! dark:text-primary-400!'
+                                    : 'text-neutral-500! dark:text-neutral-100!',
+                                )}
+                              >
+                                <span className="text-sm tracking-wider uppercase">
+                                  {menu.label}
+                                </span>
+                              </Link>
+                            ) : (
+                              <div className="flex w-full items-center justify-between rounded-md p-2 text-left">
+                                <span className="text-sm font-bold tracking-wider uppercase text-neutral-500 dark:text-neutral-100">
+                                  {menu.label}
+                                </span>
+                                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                                  작업중
+                                </span>
+                              </div>
+                            )}
 
-                        {menu.items.map((item) => {
-                          const isActiveItem = pathname === item.href;
-                          return (
+                            <div className="flex flex-col gap-0.5">
+                              {menu.items.map((item) => {
+                                const isActiveItem =
+                                  isReady && pathname === item.href;
+
+                                if (!isReady) {
+                                  return (
+                                    <div
+                                      key={item.id}
+                                      className="flex w-full items-center rounded-md px-6 py-2.5 text-base text-neutral-400 dark:text-neutral-500 md:py-1.5 md:text-sm"
+                                    >
+                                      <span>{item.label}</span>
+                                    </div>
+                                  );
+                                }
+
+                                return (
+                                  <Link
+                                    key={item.id}
+                                    to={item.href}
+                                    onClick={onClose}
+                                    aria-current={
+                                      isActiveItem ? 'page' : undefined
+                                    }
+                                    data-snb-current={
+                                      isActiveItem ? 'item' : undefined
+                                    }
+                                    className={cn(
+                                      'block w-full rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200',
+                                      isActiveItem
+                                        ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
+                                        : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
+                                    )}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </li>
+                ))}
+
+                <li className="mb-4">
+                  <div className="mb-3 px-2">
+                    <div className="inline-flex w-full rounded-xl bg-neutral-100 p-1 dark:bg-neutral-800/80">
+                      {(['web', 'app'] as const).map((platform) => {
+                        const isActive = selectedPlatform === platform;
+
+                        return (
+                          <button
+                            key={platform}
+                            type="button"
+                            onClick={() => setSelectedPlatform(platform)}
+                            className={cn(
+                              'flex-1 rounded-[10px] px-3 py-2 text-sm font-semibold transition-colors',
+                              isActive
+                                ? 'bg-white text-secondary-500 shadow-sm dark:bg-neutral-900 dark:text-primary-400'
+                                : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200',
+                            )}
+                          >
+                            {platform.toUpperCase()}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    {activePlatformGroups.map((menu) => {
+                      const isReady = menu.status !== 'working';
+                      const isActiveMenu =
+                        isReady &&
+                        !!menu.href &&
+                        (pathname === menu.href ||
+                          pathname.startsWith(`${menu.href}/`) ||
+                          menu.items.some((item) =>
+                            pathname.startsWith(item.href),
+                          ));
+
+                      return (
+                        <div key={menu.id} className="mt-0.5">
+                          {isReady && menu.href ? (
                             <Link
-                              key={item.id}
-                              to={item.href}
+                              to={menu.href}
                               onClick={onClose}
-                              aria-current={isActiveItem ? 'page' : undefined}
-                              data-snb-current={isActiveItem ? 'item' : undefined}
+                              aria-current={
+                                pathname === menu.href ? 'page' : undefined
+                              }
+                              data-snb-current={
+                                pathname === menu.href ? 'menu' : undefined
+                              }
                               className={cn(
-                                'rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200 mb-0.5',
-                                isActiveItem
-                                  ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
-                                  : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
+                                'flex w-full items-center justify-between rounded-md p-2 text-left text-sm transition-colors group font-bold!',
+                                'hover:bg-neutral-990/5 dark:hover:bg-neutral-800/30 bg-transparent!',
+                                isActiveMenu
+                                  ? 'text-secondary-500! dark:text-primary-400!'
+                                  : 'text-neutral-500! dark:text-neutral-100!',
                               )}
                             >
-                              {item.label}
+                              <span className="text-sm tracking-wider uppercase">
+                                {menu.label}
+                              </span>
                             </Link>
-                          );
-                        })}
-                      </div>
-                    </li>
-                  );
-                })}
+                          ) : (
+                            <div className="flex w-full items-center justify-between rounded-md p-2 text-left">
+                              <span className="text-sm font-bold tracking-wider uppercase text-neutral-500 dark:text-neutral-100">
+                                {menu.label}
+                              </span>
+                              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                                작업중
+                              </span>
+                            </div>
+                          )}
+
+                          <div className="flex flex-col gap-0.5">
+                            {menu.items.map((item) => {
+                              const isActiveItem =
+                                isReady && pathname === item.href;
+
+                              if (!isReady) {
+                                return (
+                                  <div
+                                    key={item.id}
+                                    className="flex w-full items-center rounded-md px-6 py-2.5 text-base text-neutral-400 dark:text-neutral-500 md:py-1.5 md:text-sm"
+                                  >
+                                    <span>{item.label}</span>
+                                  </div>
+                                );
+                              }
+
+                              return (
+                                <Link
+                                  key={item.id}
+                                  to={item.href}
+                                  onClick={onClose}
+                                  aria-current={
+                                    isActiveItem ? 'page' : undefined
+                                  }
+                                  data-snb-current={
+                                    isActiveItem ? 'item' : undefined
+                                  }
+                                  className={cn(
+                                    'block w-full rounded-md px-6 py-2.5 text-base md:py-1.5 md:text-sm transition-all duration-200',
+                                    isActiveItem
+                                      ? 'bg-secondary-500/10! text-secondary-500! dark:bg-primary-400/10! dark:text-primary-400! font-bold'
+                                      : 'text-neutral-500! dark:text-neutral-400! hover:text-neutral-900! dark:hover:text-neutral-200!',
+                                  )}
+                                >
+                                  {item.label}
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </li>
               </ul>
             </>
           )}
