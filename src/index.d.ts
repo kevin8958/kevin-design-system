@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference types="react" />
 /// <reference path="./types/action.d.ts" />
+/// <reference path="./types/app.d.ts" />
 /// <reference path="./types/data.d.ts" />
 /// <reference path="./types/feedback.d.ts" />
 /// <reference path="./types/foundation.d.ts" />
@@ -68,3 +69,5 @@ export { default as TopAppBar } from './components/mobile/TopAppBar';
 export { default as BottomSheet } from './components/mobile/BottomSheet';
 export { default as NavDrawer } from './components/mobile/MobileNavDrawer';
 export { default as MobileNavDrawer } from './components/mobile/MobileNavDrawer';
+
+export { default as AppButton } from './components/app/AppButton';

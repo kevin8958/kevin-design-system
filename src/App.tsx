@@ -58,6 +58,7 @@ import ComponentBottomNavigationPage from '@/pages/components/mobile/bottomNavig
 import ComponentTopAppBarPage from '@/pages/components/mobile/topAppBar/ComponentTopAppBarPage';
 import ComponentBottomSheetPage from '@/pages/components/mobile/bottomSheet/ComponentBottomSheetPage';
 import ComponentMobileNavDrawerPage from '@/pages/components/mobile/mobileNavDrawer/ComponentMobileNavDrawerPage';
+import ComponentAppButtonPage from '@/pages/components/app/button/ComponentAppButtonPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -218,7 +219,11 @@ function App() {
             path="mobile/bottomSheet"
             element={<ComponentBottomSheetPage />}
           />
-          <Route path="mobile/navDrawer" element={<ComponentMobileNavDrawerPage />} />
+          <Route
+            path="mobile/navDrawer"
+            element={<ComponentMobileNavDrawerPage />}
+          />
+          <Route path="app/button" element={<ComponentAppButtonPage />} />
         </Route>
       </Routes>
     </AppProvider>

@@ -22,13 +22,15 @@ type PlatformMenuGroup = {
 const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const { pathname } = useLocation();
   const [isResizing, setIsResizing] = useState(false);
-  const [selectedPlatform, setSelectedPlatform] = useState<'web' | 'app'>(
-    'web',
-  );
+  const [selectedPlatform, setSelectedPlatform] = useState<
+    'web' | 'app' | null
+  >(null);
   const navRef = useRef<HTMLElement | null>(null);
+  const visiblePlatform =
+    selectedPlatform ?? (pathname.startsWith('/components/app') ? 'app' : 'web');
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       setIsResizing(true);
       clearTimeout(timer);
@@ -134,8 +136,11 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     {
       id: 'app-action',
       label: 'Action',
-      items: [{ id: 'app-action-wip', label: '작업중', href: '/components' }],
-      status: 'working',
+      href: '/components/app/button',
+      items: [
+        { id: 'app-button', label: 'Button', href: '/components/app/button' },
+      ],
+      status: 'ready',
     },
     {
       id: 'app-input',
@@ -170,8 +175,7 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const menuSections = [
     { id: 'foundation', label: 'Foundation', groups: foundationGroups },
   ];
-  const activePlatformGroups =
-    selectedPlatform === 'web' ? webGroups : appGroups;
+  const activePlatformGroups = visiblePlatform === 'web' ? webGroups : appGroups;
 
   return (
     <>
@@ -324,7 +328,7 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
                   <div className="mb-3 px-2">
                     <div className="inline-flex w-full rounded-xl bg-neutral-100 p-1 dark:bg-neutral-800/80">
                       {(['web', 'app'] as const).map((platform) => {
-                        const isActive = selectedPlatform === platform;
+                        const isActive = visiblePlatform === platform;
 
                         return (
                           <button
@@ -381,6 +385,12 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
                                 {menu.label}
                               </span>
                             </Link>
+                          ) : isReady ? (
+                            <div className="flex w-full items-center justify-between rounded-md p-2 text-left">
+                              <span className="text-sm font-bold tracking-wider uppercase text-neutral-500 dark:text-neutral-100">
+                                {menu.label}
+                              </span>
+                            </div>
                           ) : (
                             <div className="flex w-full items-center justify-between rounded-md p-2 text-left">
                               <span className="text-sm font-bold tracking-wider uppercase text-neutral-500 dark:text-neutral-100">
