@@ -58,6 +58,7 @@ import ComponentBottomNavigationPage from '@/pages/components/mobile/bottomNavig
 import ComponentTopAppBarPage from '@/pages/components/mobile/topAppBar/ComponentTopAppBarPage';
 import ComponentBottomSheetPage from '@/pages/components/mobile/bottomSheet/ComponentBottomSheetPage';
 import ComponentMobileNavDrawerPage from '@/pages/components/mobile/mobileNavDrawer/ComponentMobileNavDrawerPage';
+import ComponentAppAccordionPage from '@/pages/components/app/accordion/ComponentAppAccordionPage';
 import ComponentAppButtonPage from '@/pages/components/app/button/ComponentAppButtonPage';
 
 function BaseLayout() {
@@ -223,6 +224,7 @@ function App() {
             path="mobile/navDrawer"
             element={<ComponentMobileNavDrawerPage />}
           />
+          <Route path="app/accordion" element={<ComponentAppAccordionPage />} />
           <Route path="app/button" element={<ComponentAppButtonPage />} />
         </Route>
       </Routes>

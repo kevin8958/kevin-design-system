@@ -384,6 +384,13 @@ export const searchEntries: Layout.SearchEntry[] = [
     group: 'Category',
   },
   {
+    id: 'app-accordion',
+    label: 'App Accordion',
+    href: '/components/app/accordion',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'accordion'],
+  },
+  {
     id: 'app-button',
     label: 'App Button',
     href: '/components/app/button',

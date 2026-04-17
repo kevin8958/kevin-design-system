@@ -136,8 +136,13 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     {
       id: 'app-action',
       label: 'Action',
-      href: '/components/app/button',
+      href: '/components/app/accordion',
       items: [
+        {
+          id: 'app-accordion',
+          label: 'Accordion',
+          href: '/components/app/accordion',
+        },
         { id: 'app-button', label: 'Button', href: '/components/app/button' },
       ],
       status: 'ready',
