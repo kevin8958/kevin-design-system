@@ -397,6 +397,13 @@ export const searchEntries: Layout.SearchEntry[] = [
     group: 'App',
     keywords: ['app', 'react native', 'native', 'button'],
   },
+  {
+    id: 'app-button-group',
+    label: 'App ButtonGroup',
+    href: '/components/app/buttonGroup',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'button group', 'segmented'],
+  },
   ...designSystemMenus.flatMap((menu) => {
     if (menu.id === 'components' && menu.sections) {
       return menu.sections.flatMap((section) =>

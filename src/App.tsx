@@ -60,6 +60,7 @@ import ComponentBottomSheetPage from '@/pages/components/mobile/bottomSheet/Comp
 import ComponentMobileNavDrawerPage from '@/pages/components/mobile/mobileNavDrawer/ComponentMobileNavDrawerPage';
 import ComponentAppAccordionPage from '@/pages/components/app/accordion/ComponentAppAccordionPage';
 import ComponentAppButtonPage from '@/pages/components/app/button/ComponentAppButtonPage';
+import ComponentAppButtonGroupPage from '@/pages/components/app/buttonGroup/ComponentAppButtonGroupPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -226,6 +227,10 @@ function App() {
           />
           <Route path="app/accordion" element={<ComponentAppAccordionPage />} />
           <Route path="app/button" element={<ComponentAppButtonPage />} />
+          <Route
+            path="app/buttonGroup"
+            element={<ComponentAppButtonGroupPage />}
+          />
         </Route>
       </Routes>
     </AppProvider>

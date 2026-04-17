@@ -144,6 +144,11 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
           href: '/components/app/accordion',
         },
         { id: 'app-button', label: 'Button', href: '/components/app/button' },
+        {
+          id: 'app-button-group',
+          label: 'ButtonGroup',
+          href: '/components/app/buttonGroup',
+        },
       ],
       status: 'ready',
     },

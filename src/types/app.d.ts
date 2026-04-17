@@ -11,6 +11,12 @@ namespace App {
   type AppButtonIconPosition = 'left' | 'right';
   type AppButtonShape = 'rect' | 'circle';
   type AppButtonJustify = 'start' | 'center';
+  type AppButtonGroupItem = {
+    label: React.ReactNode;
+    value: string;
+    disabled?: boolean;
+    testID?: string;
+  };
   type AppAccordionType = 'single' | 'multiple';
   type AppAccordionSize = 'sm' | 'md' | 'lg';
   type AppAccordionItem = {
@@ -54,6 +60,19 @@ namespace App {
     style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     itemStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     contentStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    testID?: string;
+  }
+
+  interface ButtonGroupProps {
+    items: AppButtonGroupItem[];
+    value: string;
+    onChange?: (value: string) => void;
+    size?: AppButtonSize;
+    color?: AppButtonColor;
+    disabled?: boolean;
+    fullWidth?: boolean;
+    style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    itemStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     testID?: string;
   }
 }
