@@ -404,6 +404,13 @@ export const searchEntries: Layout.SearchEntry[] = [
     group: 'App',
     keywords: ['app', 'react native', 'native', 'button group', 'segmented'],
   },
+  {
+    id: 'app-dropdown',
+    label: 'App Dropdown',
+    href: '/components/app/dropdown',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'dropdown', 'menu'],
+  },
   ...designSystemMenus.flatMap((menu) => {
     if (menu.id === 'components' && menu.sections) {
       return menu.sections.flatMap((section) =>

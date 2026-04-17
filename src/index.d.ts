@@ -73,3 +73,4 @@ export { default as MobileNavDrawer } from './components/mobile/MobileNavDrawer'
 export { default as AppButton } from './components/app/AppButton';
 export { default as AppButtonGroup } from './components/app/AppButtonGroup';
 export { default as AppAccordion } from './components/app/AppAccordion';
+export { default as AppDropdown } from './components/app/AppDropdown';

@@ -149,6 +149,11 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
           label: 'ButtonGroup',
           href: '/components/app/buttonGroup',
         },
+        {
+          id: 'app-dropdown',
+          label: 'Dropdown',
+          href: '/components/app/dropdown',
+        },
       ],
       status: 'ready',
     },

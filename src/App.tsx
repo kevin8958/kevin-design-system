@@ -61,6 +61,7 @@ import ComponentMobileNavDrawerPage from '@/pages/components/mobile/mobileNavDra
 import ComponentAppAccordionPage from '@/pages/components/app/accordion/ComponentAppAccordionPage';
 import ComponentAppButtonPage from '@/pages/components/app/button/ComponentAppButtonPage';
 import ComponentAppButtonGroupPage from '@/pages/components/app/buttonGroup/ComponentAppButtonGroupPage';
+import ComponentAppDropdownPage from '@/pages/components/app/dropdown/ComponentAppDropdownPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -231,6 +232,7 @@ function App() {
             path="app/buttonGroup"
             element={<ComponentAppButtonGroupPage />}
           />
+          <Route path="app/dropdown" element={<ComponentAppDropdownPage />} />
         </Route>
       </Routes>
     </AppProvider>

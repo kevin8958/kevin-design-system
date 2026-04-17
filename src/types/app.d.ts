@@ -17,6 +17,28 @@ namespace App {
     disabled?: boolean;
     testID?: string;
   };
+  type DropdownItem =
+    | {
+        type: 'item';
+        id: string;
+        label: React.ReactNode;
+        icon?: React.ReactNode;
+        onPress?: () => void;
+        danger?: boolean;
+      }
+    | {
+        type: 'group';
+        id: string;
+        label?: React.ReactNode;
+        items: DropdownItem[];
+      }
+    | {
+        type: 'submenu';
+        id: string;
+        label: React.ReactNode;
+        icon?: React.ReactNode;
+        items: DropdownItem[];
+      };
   type AppAccordionType = 'single' | 'multiple';
   type AppAccordionSize = 'sm' | 'md' | 'lg';
   type AppAccordionItem = {
@@ -72,6 +94,25 @@ namespace App {
     disabled?: boolean;
     fullWidth?: boolean;
     style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    itemStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    testID?: string;
+  }
+
+  interface DropdownProps {
+    items: DropdownItem[];
+    onChange?: (value: string) => void;
+    dialogPosition?: 'left' | 'right';
+    dialogWidth?: number;
+    label?: React.ReactNode;
+    disabled?: boolean;
+    buttonVariant?: AppButtonVariant;
+    size?: AppButtonSize;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    buttonStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    menuStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     itemStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     testID?: string;
   }
