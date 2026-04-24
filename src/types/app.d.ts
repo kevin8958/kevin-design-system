@@ -11,6 +11,22 @@ namespace App {
   type AppButtonIconPosition = 'left' | 'right';
   type AppButtonShape = 'rect' | 'circle';
   type AppButtonJustify = 'start' | 'center';
+  type AppPopoverSide = 'top' | 'right' | 'bottom' | 'left';
+  type AppPopoverAlign = 'start' | 'center' | 'end';
+  type AppActionSheetTone = 'default' | 'danger';
+  type AppActionSheetSize = 'sm' | 'md' | 'lg';
+  type AppActionSheetItem = {
+    id: string;
+    label: React.ReactNode;
+    description?: React.ReactNode;
+    icon?: React.ReactNode;
+    tone?: AppActionSheetTone;
+    disabled?: boolean;
+  };
+  type AppModalSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+  type AppModalState = 'default' | 'info' | 'success' | 'warning' | 'danger';
+  type AppModalPosition = 'top' | 'center' | 'bottom';
+  type AppDrawerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
   type AppButtonGroupItem = {
     label: React.ReactNode;
     value: string;
@@ -114,6 +130,78 @@ namespace App {
     buttonStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     menuStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     itemStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    testID?: string;
+  }
+
+  interface PopoverProps {
+    trigger: React.ReactNode;
+    children?: React.ReactNode;
+    title?: React.ReactNode;
+    description?: React.ReactNode;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    side?: AppPopoverSide;
+    align?: AppPopoverAlign;
+    width?: number;
+    showArrow?: boolean;
+    disabled?: boolean;
+    style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    contentStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    testID?: string;
+  }
+
+  interface ActionSheetProps {
+    isOpen: boolean;
+    onClose?: () => void;
+    onSelect?: (id: string) => void;
+    title?: React.ReactNode;
+    description?: React.ReactNode;
+    items: AppActionSheetItem[];
+    size?: AppActionSheetSize;
+    style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    overlayStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    sheetStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    itemStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    testID?: string;
+  }
+
+  interface ModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onConfirm?: () => void;
+    title?: React.ReactNode;
+    children?: React.ReactNode;
+    maxWidth?: AppModalSize;
+    state?: AppModalState;
+    position?: AppModalPosition;
+    confirmText?: string;
+    cancelText?: string;
+    hideCancel?: boolean;
+    hideBottom?: boolean;
+    loading?: boolean;
+    style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    overlayStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    panelStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    contentStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    testID?: string;
+  }
+
+  interface DrawerProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onConfirm?: () => void;
+    title?: React.ReactNode;
+    children?: React.ReactNode;
+    size?: AppDrawerSize;
+    confirmText?: string;
+    cancelText?: string;
+    hideBottom?: boolean;
+    loading?: boolean;
+    style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    overlayStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    panelStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    contentStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     testID?: string;
   }
 }

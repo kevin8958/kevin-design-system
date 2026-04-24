@@ -286,76 +286,80 @@ const AppDropdown = ({
         style,
       ]}
     >
-      <AppButton
-        label={label ?? 'Dropdown'}
-        variant={buttonVariant}
-        size={size}
-        disabled={disabled}
-        onPress={() => {
-          if (!disabled) {
-            setOpen(!isOpen);
-          }
-        }}
-        style={buttonStyle}
-      />
+      <View style={styles.anchor}>
+        <AppButton
+          label={label ?? 'Dropdown'}
+          variant={buttonVariant}
+          size={size}
+          disabled={disabled}
+          onPress={() => {
+            if (!disabled) {
+              setOpen(!isOpen);
+            }
+          }}
+          style={buttonStyle}
+        />
 
-      {isOpen ? (
-        <View
-          style={[
-            styles.menuWrap,
-            dialogPosition === 'left' ? styles.alignLeft : styles.alignRight,
-            dialogWidth
-              ? { width: dialogWidth }
-              : { minWidth: 180, width: 200 },
-          ]}
-        >
+        {isOpen ? (
           <View
             style={[
-              styles.menuPanel,
-              {
-                backgroundColor: colors.panelBackground,
-                borderColor: colors.panelBorder,
-              },
-              menuStyle,
+              styles.menuWrap,
+              dialogPosition === 'left' ? styles.alignLeft : styles.alignRight,
+              dialogWidth
+                ? { width: dialogWidth }
+                : { minWidth: 180, width: 200 },
             ]}
           >
-            {submenuStack.length > 0 ? (
-              <Pressable
-                accessibilityRole="button"
-                onPress={() =>
-                  setSubmenuStack((current) => current.slice(0, -1))
-                }
-                style={({ pressed }) => [
-                  styles.menuItem,
-                  {
-                    backgroundColor: pressed ? colors.itemHover : 'transparent',
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.submenuIndicator,
-                    { color: colors.submenuIndicator },
+            <View
+              style={[
+                styles.menuPanel,
+                {
+                  backgroundColor: colors.panelBackground,
+                  borderColor: colors.panelBorder,
+                },
+                menuStyle,
+              ]}
+            >
+              {submenuStack.length > 0 ? (
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={() =>
+                    setSubmenuStack((current) => current.slice(0, -1))
+                  }
+                  style={({ pressed }) => [
+                    styles.menuItem,
+                    {
+                      backgroundColor: pressed
+                        ? colors.itemHover
+                        : 'transparent',
+                    },
                   ]}
                 >
-                  {'<'}
-                </Text>
-                <View style={styles.menuItemLabelWrap}>
-                  {renderTextNode(
-                    submenuStack[submenuStack.length - 1]?.label ?? 'Back',
-                    [
-                      styles.menuItemText,
-                      { color: colors.itemText },
-                    ],
-                  )}
-                </View>
-              </Pressable>
-            ) : null}
+                  <Text
+                    style={[
+                      styles.submenuIndicator,
+                      { color: colors.submenuIndicator },
+                    ]}
+                  >
+                    {'<'}
+                  </Text>
+                  <View style={styles.menuItemLabelWrap}>
+                    {renderTextNode(
+                      submenuStack[submenuStack.length - 1]?.label ?? 'Back',
+                      [
+                        styles.menuItemText,
+                        { color: colors.itemText },
+                      ],
+                    )}
+                  </View>
+                </Pressable>
+              ) : null}
 
-            <View>{renderMenuEntries(visibleItems)}</View>
+              <View>{renderMenuEntries(visibleItems)}</View>
+            </View>
           </View>
-        </View>
-      ) : null}
+        ) : null}
+      </View>
     </View>
   );
 };
@@ -363,7 +367,10 @@ const AppDropdown = ({
 const styles = StyleSheet.create({
   root: {
     alignSelf: 'flex-start',
+  },
+  anchor: {
     position: 'relative',
+    alignSelf: 'flex-start',
   },
   menuWrap: {
     marginTop: 8,

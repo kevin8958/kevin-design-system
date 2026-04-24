@@ -411,6 +411,34 @@ export const searchEntries: Layout.SearchEntry[] = [
     group: 'App',
     keywords: ['app', 'react native', 'native', 'dropdown', 'menu'],
   },
+  {
+    id: 'app-popover',
+    label: 'App Popover',
+    href: '/components/app/popover',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'popover', 'floating'],
+  },
+  {
+    id: 'app-action-sheet',
+    label: 'App ActionSheet',
+    href: '/components/app/actionSheet',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'action sheet', 'bottom sheet'],
+  },
+  {
+    id: 'app-modal',
+    label: 'App Modal',
+    href: '/components/app/modal',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'modal', 'dialog'],
+  },
+  {
+    id: 'app-drawer',
+    label: 'App Drawer',
+    href: '/components/app/drawer',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'drawer', 'side sheet'],
+  },
   ...designSystemMenus.flatMap((menu) => {
     if (menu.id === 'components' && menu.sections) {
       return menu.sections.flatMap((section) =>

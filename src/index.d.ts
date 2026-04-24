@@ -74,3 +74,7 @@ export { default as AppButton } from './components/app/AppButton';
 export { default as AppButtonGroup } from './components/app/AppButtonGroup';
 export { default as AppAccordion } from './components/app/AppAccordion';
 export { default as AppDropdown } from './components/app/AppDropdown';
+export { default as AppPopover } from './components/app/AppPopover';
+export { default as AppActionSheet } from './components/app/AppActionSheet';
+export { default as AppModal } from './components/app/AppModal';
+export { default as AppDrawer } from './components/app/AppDrawer';

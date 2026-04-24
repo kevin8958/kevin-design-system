@@ -154,6 +154,26 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
           label: 'Dropdown',
           href: '/components/app/dropdown',
         },
+        {
+          id: 'app-popover',
+          label: 'Popover',
+          href: '/components/app/popover',
+        },
+        {
+          id: 'app-action-sheet',
+          label: 'ActionSheet',
+          href: '/components/app/actionSheet',
+        },
+        {
+          id: 'app-modal',
+          label: 'Modal',
+          href: '/components/app/modal',
+        },
+        {
+          id: 'app-drawer',
+          label: 'Drawer',
+          href: '/components/app/drawer',
+        },
       ],
       status: 'ready',
     },

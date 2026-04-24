@@ -59,9 +59,13 @@ import ComponentTopAppBarPage from '@/pages/components/mobile/topAppBar/Componen
 import ComponentBottomSheetPage from '@/pages/components/mobile/bottomSheet/ComponentBottomSheetPage';
 import ComponentMobileNavDrawerPage from '@/pages/components/mobile/mobileNavDrawer/ComponentMobileNavDrawerPage';
 import ComponentAppAccordionPage from '@/pages/components/app/accordion/ComponentAppAccordionPage';
+import ComponentAppActionSheetPage from '@/pages/components/app/actionSheet/ComponentAppActionSheetPage';
 import ComponentAppButtonPage from '@/pages/components/app/button/ComponentAppButtonPage';
 import ComponentAppButtonGroupPage from '@/pages/components/app/buttonGroup/ComponentAppButtonGroupPage';
+import ComponentAppDrawerPage from '@/pages/components/app/drawer/ComponentAppDrawerPage';
 import ComponentAppDropdownPage from '@/pages/components/app/dropdown/ComponentAppDropdownPage';
+import ComponentAppModalPage from '@/pages/components/app/modal/ComponentAppModalPage';
+import ComponentAppPopoverPage from '@/pages/components/app/popover/ComponentAppPopoverPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -227,12 +231,19 @@ function App() {
             element={<ComponentMobileNavDrawerPage />}
           />
           <Route path="app/accordion" element={<ComponentAppAccordionPage />} />
+          <Route
+            path="app/actionSheet"
+            element={<ComponentAppActionSheetPage />}
+          />
           <Route path="app/button" element={<ComponentAppButtonPage />} />
           <Route
             path="app/buttonGroup"
             element={<ComponentAppButtonGroupPage />}
           />
+          <Route path="app/drawer" element={<ComponentAppDrawerPage />} />
           <Route path="app/dropdown" element={<ComponentAppDropdownPage />} />
+          <Route path="app/modal" element={<ComponentAppModalPage />} />
+          <Route path="app/popover" element={<ComponentAppPopoverPage />} />
         </Route>
       </Routes>
     </AppProvider>

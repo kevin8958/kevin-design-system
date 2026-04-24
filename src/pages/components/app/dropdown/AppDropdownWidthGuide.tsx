@@ -18,7 +18,6 @@ const AppDropdownWidthGuide = ({
   size="${size}"
   buttonVariant="${buttonVariant}"
   label="Dropdown"
-  defaultOpen
   items={items}
 />
 
@@ -27,7 +26,6 @@ const AppDropdownWidthGuide = ({
   buttonVariant="${buttonVariant}"
   label="Dropdown"
   dialogWidth={280}
-  defaultOpen
   items={items}
 />`;
 
@@ -43,7 +41,6 @@ const AppDropdownWidthGuide = ({
                 size={size}
                 buttonVariant={buttonVariant}
                 label="Dropdown"
-                defaultOpen
                 items={widthItems}
               />
               <AppDropdown
@@ -51,7 +48,6 @@ const AppDropdownWidthGuide = ({
                 buttonVariant={buttonVariant}
                 label="Dropdown"
                 dialogWidth={280}
-                defaultOpen
                 items={widthItems}
               />
             </FlexWrapper>

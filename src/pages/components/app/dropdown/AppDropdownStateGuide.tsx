@@ -18,7 +18,6 @@ const AppDropdownStateGuide = ({
   size="${size}"
   buttonVariant="${buttonVariant}"
   label="Dropdown"
-  defaultOpen
   items={items}
 />
 
@@ -42,7 +41,6 @@ const AppDropdownStateGuide = ({
                 size={size}
                 buttonVariant={buttonVariant}
                 label="Dropdown"
-                defaultOpen
                 items={widthItems}
               />
               <AppDropdown

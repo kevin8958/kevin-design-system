@@ -17,7 +17,6 @@ const AppDropdownSubMenuGuide = ({
   size="${size}"
   buttonVariant="${buttonVariant}"
   label="Dropdown"
-  defaultOpen
   items={[
     { type: 'item', id: 'profile', label: 'Profile' },
     {
@@ -45,7 +44,6 @@ const AppDropdownSubMenuGuide = ({
               size={size}
               buttonVariant={buttonVariant}
               label="Dropdown"
-              defaultOpen
               items={submenuItems}
             />
           </AppDropdownPreviewFrame>

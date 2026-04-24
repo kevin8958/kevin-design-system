@@ -17,7 +17,6 @@ const AppDropdownDangerGuide = ({
   size="${size}"
   buttonVariant="${buttonVariant}"
   label="Dropdown"
-  defaultOpen
   items={[
     { type: 'item', id: 'rename', label: 'Rename' },
     { type: 'item', id: 'archive', label: 'Archive' },
@@ -36,7 +35,6 @@ const AppDropdownDangerGuide = ({
               size={size}
               buttonVariant={buttonVariant}
               label="Dropdown"
-              defaultOpen
               items={dangerItems}
             />
           </AppDropdownPreviewFrame>

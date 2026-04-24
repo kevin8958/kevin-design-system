@@ -17,7 +17,6 @@ const AppDropdownGroupGuide = ({
   size="${size}"
   buttonVariant="${buttonVariant}"
   label="Dropdown"
-  defaultOpen
   items={[
     {
       type: 'group',
@@ -52,7 +51,6 @@ const AppDropdownGroupGuide = ({
               size={size}
               buttonVariant={buttonVariant}
               label="Dropdown"
-              defaultOpen
               items={groupedItems}
             />
           </AppDropdownPreviewFrame>

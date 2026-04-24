@@ -19,7 +19,6 @@ const AppDropdownPositionGuide = ({
   buttonVariant="${buttonVariant}"
   dialogPosition="left"
   label="Dropdown"
-  defaultOpen
   items={items}
 />
 
@@ -28,7 +27,6 @@ const AppDropdownPositionGuide = ({
   buttonVariant="${buttonVariant}"
   dialogPosition="right"
   label="Dropdown"
-  defaultOpen
   items={items}
 />`;
 
@@ -45,7 +43,6 @@ const AppDropdownPositionGuide = ({
                 buttonVariant={buttonVariant}
                 dialogPosition="left"
                 label="Dropdown"
-                defaultOpen
                 items={widthItems}
               />
               <AppDropdown
@@ -53,7 +50,6 @@ const AppDropdownPositionGuide = ({
                 buttonVariant={buttonVariant}
                 dialogPosition="right"
                 label="Dropdown"
-                defaultOpen
                 items={widthItems}
               />
             </FlexWrapper>
