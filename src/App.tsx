@@ -66,6 +66,15 @@ import ComponentAppDrawerPage from '@/pages/components/app/drawer/ComponentAppDr
 import ComponentAppDropdownPage from '@/pages/components/app/dropdown/ComponentAppDropdownPage';
 import ComponentAppModalPage from '@/pages/components/app/modal/ComponentAppModalPage';
 import ComponentAppPopoverPage from '@/pages/components/app/popover/ComponentAppPopoverPage';
+import ComponentAppTextInputPage from '@/pages/components/app/textInput/ComponentAppTextInputPage';
+import ComponentAppTextareaPage from '@/pages/components/app/textarea/ComponentAppTextareaPage';
+import ComponentAppSelectPage from '@/pages/components/app/select/ComponentAppSelectPage';
+import ComponentAppComboboxPage from '@/pages/components/app/combobox/ComponentAppComboboxPage';
+import ComponentAppCheckboxPage from '@/pages/components/app/checkbox/ComponentAppCheckboxPage';
+import ComponentAppRadioPage from '@/pages/components/app/radio/ComponentAppRadioPage';
+import ComponentAppSwitchPage from '@/pages/components/app/switch/ComponentAppSwitchPage';
+import ComponentAppDatePickerPage from '@/pages/components/app/datepicker/ComponentAppDatePickerPage';
+import ComponentAppUploadDropzonePage from '@/pages/components/app/uploadDropzone/ComponentAppUploadDropzonePage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -244,6 +253,18 @@ function App() {
           <Route path="app/dropdown" element={<ComponentAppDropdownPage />} />
           <Route path="app/modal" element={<ComponentAppModalPage />} />
           <Route path="app/popover" element={<ComponentAppPopoverPage />} />
+          <Route path="app/textInput" element={<ComponentAppTextInputPage />} />
+          <Route path="app/textarea" element={<ComponentAppTextareaPage />} />
+          <Route path="app/select" element={<ComponentAppSelectPage />} />
+          <Route path="app/combobox" element={<ComponentAppComboboxPage />} />
+          <Route path="app/checkbox" element={<ComponentAppCheckboxPage />} />
+          <Route path="app/radio" element={<ComponentAppRadioPage />} />
+          <Route path="app/switch" element={<ComponentAppSwitchPage />} />
+          <Route path="app/datepicker" element={<ComponentAppDatePickerPage />} />
+          <Route
+            path="app/uploadDropzone"
+            element={<ComponentAppUploadDropzonePage />}
+          />
         </Route>
       </Routes>
     </AppProvider>

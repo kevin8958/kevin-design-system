@@ -1,4 +1,9 @@
 namespace App {
+  type AppStyleProp = import('react-native').StyleProp<
+    import('react-native').ViewStyle
+  >;
+  type AppInputSize = 'sm' | 'md' | 'lg';
+  type AppTextInputType = 'text' | 'password' | 'email' | 'number';
   type AppButtonVariant = 'contain' | 'outline' | 'clear';
   type AppButtonColor =
     | 'primary'
@@ -27,6 +32,27 @@ namespace App {
   type AppModalState = 'default' | 'info' | 'success' | 'warning' | 'danger';
   type AppModalPosition = 'top' | 'center' | 'bottom';
   type AppDrawerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  type AppSelectOption = {
+    label: React.ReactNode;
+    value: string;
+    description?: React.ReactNode;
+    disabled?: boolean;
+    icon?: React.ReactNode;
+    keywords?: string[];
+  };
+  type AppRadioOption = {
+    id: string;
+    label: React.ReactNode;
+    desc?: React.ReactNode;
+    disabled?: boolean;
+  };
+  type AppUploadFileStatus = 'uploaded' | 'uploading' | 'error';
+  type AppUploadFile = {
+    id: string;
+    name: string;
+    sizeLabel?: string;
+    status?: AppUploadFileStatus;
+  };
   type AppButtonGroupItem = {
     label: React.ReactNode;
     value: string;
@@ -202,6 +228,178 @@ namespace App {
     overlayStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     panelStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
     contentStyle?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    testID?: string;
+  }
+
+  interface TextInputProps {
+    label?: React.ReactNode;
+    value?: string;
+    defaultValue?: string;
+    onChangeText?: (value: string) => void;
+    type?: AppTextInputType;
+    size?: AppInputSize;
+    placeholder?: string;
+    required?: boolean;
+    disabled?: boolean;
+    error?: boolean;
+    errorMsg?: React.ReactNode;
+    helperText?: React.ReactNode;
+    prefix?: React.ReactNode;
+    suffix?: React.ReactNode;
+    style?: AppStyleProp;
+    inputStyle?: import('react-native').StyleProp<import('react-native').TextStyle>;
+    testID?: string;
+  }
+
+  interface TextareaProps {
+    label?: React.ReactNode;
+    value?: string;
+    defaultValue?: string;
+    onChangeText?: (value: string) => void;
+    size?: AppInputSize;
+    placeholder?: string;
+    required?: boolean;
+    disabled?: boolean;
+    error?: boolean;
+    errorMsg?: React.ReactNode;
+    helperText?: React.ReactNode;
+    minRows?: number;
+    style?: AppStyleProp;
+    inputStyle?: import('react-native').StyleProp<import('react-native').TextStyle>;
+    testID?: string;
+  }
+
+  interface SelectProps {
+    label?: React.ReactNode;
+    options: AppSelectOption[];
+    value?: string;
+    defaultValue?: string;
+    onChange?: (value: string) => void;
+    placeholder?: string;
+    size?: AppInputSize;
+    disabled?: boolean;
+    invalid?: boolean;
+    errorMsg?: React.ReactNode;
+    helperText?: React.ReactNode;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    style?: AppStyleProp;
+    triggerStyle?: AppStyleProp;
+    panelStyle?: AppStyleProp;
+    optionStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface ComboboxProps {
+    label?: React.ReactNode;
+    options: AppSelectOption[];
+    value?: string;
+    defaultValue?: string;
+    onChange?: (value: string) => void;
+    placeholder?: string;
+    queryPlaceholder?: string;
+    emptyText?: React.ReactNode;
+    size?: AppInputSize;
+    disabled?: boolean;
+    invalid?: boolean;
+    errorMsg?: React.ReactNode;
+    helperText?: React.ReactNode;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    style?: AppStyleProp;
+    triggerStyle?: AppStyleProp;
+    panelStyle?: AppStyleProp;
+    optionStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface CheckboxProps {
+    label?: React.ReactNode;
+    description?: React.ReactNode;
+    checked?: boolean;
+    defaultChecked?: boolean;
+    onChange?: (checked: boolean) => void;
+    size?: AppInputSize;
+    disabled?: boolean;
+    invalid?: boolean;
+    errorMsg?: React.ReactNode;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface RadioProps {
+    title?: React.ReactNode;
+    options: AppRadioOption[];
+    value?: string;
+    defaultValue?: string;
+    onChange?: (value: string) => void;
+    size?: AppInputSize;
+    invalid?: boolean;
+    errorMsg?: React.ReactNode;
+    disabled?: boolean;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface SwitchProps {
+    label?: React.ReactNode;
+    description?: React.ReactNode;
+    checked?: boolean;
+    defaultChecked?: boolean;
+    onChange?: (checked: boolean) => void;
+    size?: AppInputSize;
+    disabled?: boolean;
+    invalid?: boolean;
+    errorMsg?: React.ReactNode;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface DatePickerProps {
+    label?: React.ReactNode;
+    value?: Date | null;
+    defaultValue?: Date | null;
+    onChange?: (
+      value: Date | null | [Date | null, Date | null],
+    ) => void;
+    isRange?: boolean;
+    startDate?: Date | null;
+    endDate?: Date | null;
+    defaultRange?: [Date | null, Date | null];
+    variant?: AppButtonVariant;
+    size?: AppInputSize;
+    isError?: boolean;
+    errorMsg?: React.ReactNode;
+    helperText?: React.ReactNode;
+    minDate?: Date;
+    maxDate?: Date;
+    disabled?: boolean;
+    placeholder?: string;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    style?: AppStyleProp;
+    panelStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface UploadDropzoneProps {
+    label?: React.ReactNode;
+    description?: React.ReactNode;
+    files?: AppUploadFile[];
+    defaultFiles?: AppUploadFile[];
+    onPressSelect?: () => void;
+    onRemoveFile?: (id: string) => void;
+    multiple?: boolean;
+    disabled?: boolean;
+    error?: boolean;
+    errorMsg?: React.ReactNode;
+    helperText?: React.ReactNode;
+    selectLabel?: React.ReactNode;
+    style?: AppStyleProp;
+    dropzoneStyle?: AppStyleProp;
     testID?: string;
   }
 }

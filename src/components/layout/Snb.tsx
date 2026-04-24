@@ -180,8 +180,43 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     {
       id: 'app-input',
       label: 'Input',
-      items: [{ id: 'app-input-wip', label: '작업중', href: '/components' }],
-      status: 'working',
+      href: '/components/app/textInput',
+      items: [
+        {
+          id: 'app-text-input',
+          label: 'TextInput',
+          href: '/components/app/textInput',
+        },
+        {
+          id: 'app-textarea',
+          label: 'Textarea',
+          href: '/components/app/textarea',
+        },
+        { id: 'app-select', label: 'Select', href: '/components/app/select' },
+        {
+          id: 'app-combobox',
+          label: 'Combobox',
+          href: '/components/app/combobox',
+        },
+        {
+          id: 'app-checkbox',
+          label: 'Checkbox',
+          href: '/components/app/checkbox',
+        },
+        { id: 'app-radio', label: 'Radio', href: '/components/app/radio' },
+        { id: 'app-switch', label: 'Switch', href: '/components/app/switch' },
+        {
+          id: 'app-datepicker',
+          label: 'DatePicker',
+          href: '/components/app/datepicker',
+        },
+        {
+          id: 'app-upload-dropzone',
+          label: 'UploadDropzone',
+          href: '/components/app/uploadDropzone',
+        },
+      ],
+      status: 'ready',
     },
     {
       id: 'app-navigation',
