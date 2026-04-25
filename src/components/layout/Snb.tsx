@@ -245,10 +245,34 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     {
       id: 'app-data-display',
       label: 'Data Display',
+      href: '/components/app/avatar',
       items: [
-        { id: 'app-data-display-wip', label: '작업중', href: '/components' },
+        { id: 'app-avatar', label: 'Avatar', href: '/components/app/avatar' },
+        { id: 'app-badge', label: 'Badge', href: '/components/app/badge' },
+        {
+          id: 'app-description-list',
+          label: 'DescriptionList',
+          href: '/components/app/descriptionList',
+        },
+        {
+          id: 'app-empty-state',
+          label: 'EmptyState',
+          href: '/components/app/emptyState',
+        },
+        {
+          id: 'app-metric-card',
+          label: 'MetricCard',
+          href: '/components/app/metricCard',
+        },
+        { id: 'app-table', label: 'Table', href: '/components/app/table' },
+        { id: 'app-tag', label: 'Tag', href: '/components/app/tag' },
+        {
+          id: 'app-tooltip',
+          label: 'Tooltip',
+          href: '/components/app/tooltip',
+        },
       ],
-      status: 'working',
+      status: 'ready',
     },
     {
       id: 'app-feedback',

@@ -79,6 +79,14 @@ import ComponentAppPaginationPage from '@/pages/components/app/pagination/Compon
 import ComponentAppStepperPage from '@/pages/components/app/stepper/ComponentAppStepperPage';
 import ComponentAppTabsPage from '@/pages/components/app/tabs/ComponentAppTabsPage';
 import ComponentAppBreadcrumbPage from '@/pages/components/app/breadcrumb/ComponentAppBreadcrumbPage';
+import ComponentAppAvatarPage from '@/pages/components/app/avatar/ComponentAppAvatarPage';
+import ComponentAppBadgePage from '@/pages/components/app/badge/ComponentAppBadgePage';
+import ComponentAppDescriptionListPage from '@/pages/components/app/descriptionList/ComponentAppDescriptionListPage';
+import ComponentAppEmptyStatePage from '@/pages/components/app/emptyState/ComponentAppEmptyStatePage';
+import ComponentAppMetricCardPage from '@/pages/components/app/metricCard/ComponentAppMetricCardPage';
+import ComponentAppTablePage from '@/pages/components/app/table/ComponentAppTablePage';
+import ComponentAppTagPage from '@/pages/components/app/tag/ComponentAppTagPage';
+import ComponentAppTooltipPage from '@/pages/components/app/tooltip/ComponentAppTooltipPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -273,6 +281,17 @@ function App() {
           <Route path="app/stepper" element={<ComponentAppStepperPage />} />
           <Route path="app/tabs" element={<ComponentAppTabsPage />} />
           <Route path="app/breadcrumb" element={<ComponentAppBreadcrumbPage />} />
+          <Route path="app/avatar" element={<ComponentAppAvatarPage />} />
+          <Route path="app/badge" element={<ComponentAppBadgePage />} />
+          <Route
+            path="app/descriptionList"
+            element={<ComponentAppDescriptionListPage />}
+          />
+          <Route path="app/emptyState" element={<ComponentAppEmptyStatePage />} />
+          <Route path="app/metricCard" element={<ComponentAppMetricCardPage />} />
+          <Route path="app/table" element={<ComponentAppTablePage />} />
+          <Route path="app/tag" element={<ComponentAppTagPage />} />
+          <Route path="app/tooltip" element={<ComponentAppTooltipPage />} />
         </Route>
       </Routes>
     </AppProvider>

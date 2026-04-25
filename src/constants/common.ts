@@ -530,6 +530,62 @@ export const searchEntries: Layout.SearchEntry[] = [
     group: 'App',
     keywords: ['app', 'react native', 'native', 'breadcrumb'],
   },
+  {
+    id: 'app-avatar',
+    label: 'App Avatar',
+    href: '/components/app/avatar',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'avatar'],
+  },
+  {
+    id: 'app-badge',
+    label: 'App Badge',
+    href: '/components/app/badge',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'badge'],
+  },
+  {
+    id: 'app-description-list',
+    label: 'App DescriptionList',
+    href: '/components/app/descriptionList',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'description list'],
+  },
+  {
+    id: 'app-empty-state',
+    label: 'App EmptyState',
+    href: '/components/app/emptyState',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'empty state'],
+  },
+  {
+    id: 'app-metric-card',
+    label: 'App MetricCard',
+    href: '/components/app/metricCard',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'metric card', 'kpi'],
+  },
+  {
+    id: 'app-table',
+    label: 'App Table',
+    href: '/components/app/table',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'table'],
+  },
+  {
+    id: 'app-tag',
+    label: 'App Tag',
+    href: '/components/app/tag',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'tag'],
+  },
+  {
+    id: 'app-tooltip',
+    label: 'App Tooltip',
+    href: '/components/app/tooltip',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'tooltip'],
+  },
   ...designSystemMenus.flatMap((menu) => {
     if (menu.id === 'components' && menu.sections) {
       return menu.sections.flatMap((section) =>

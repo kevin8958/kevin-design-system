@@ -6,6 +6,20 @@ namespace App {
   type AppTextInputType = 'text' | 'password' | 'email' | 'number';
   type AppNavigationSize = 'sm' | 'md' | 'lg';
   type AppStepperOrientation = 'horizontal' | 'vertical';
+  type AppSemanticColor =
+    | 'neutral'
+    | 'primary'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger';
+  type AppAvatarSize = 'sm' | 'md' | 'lg';
+  type AppAvatarStatus = 'online' | 'offline' | 'busy';
+  type AppLabelSize = 'sm' | 'md' | 'lg';
+  type AppCardSize = 'sm' | 'md' | 'lg';
+  type AppDescriptionListColumns = 1 | 2;
+  type AppMetricTrend = 'up' | 'down' | 'neutral';
+  type AppTooltipPosition = 'top' | 'right' | 'bottom' | 'left';
   type AppButtonVariant = 'contain' | 'outline' | 'clear';
   type AppButtonColor =
     | 'primary'
@@ -72,6 +86,19 @@ namespace App {
     href?: string;
     onPress?: () => void;
     current?: boolean;
+  };
+  type AppDescriptionListItem = {
+    label: string;
+    value: React.ReactNode;
+    hint?: React.ReactNode;
+  };
+  type AppTableColumn = {
+    key: string;
+    label: string;
+    width?: number;
+  };
+  type AppTableRow = Record<string, React.ReactNode> & {
+    id?: string;
   };
   type AppButtonGroupItem = {
     label: React.ReactNode;
@@ -464,6 +491,89 @@ namespace App {
     separator?: React.ReactNode;
     style?: AppStyleProp;
     itemStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface AvatarProps {
+    src?: string;
+    name?: string;
+    alt?: string;
+    size?: AppAvatarSize;
+    status?: AppAvatarStatus;
+    onPress?: () => void;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface BadgeProps {
+    label: string;
+    size?: AppLabelSize;
+    variant?: AppSemanticColor;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface TagProps {
+    label: string;
+    size?: AppLabelSize;
+    variant?: 'neutral' | 'primary';
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface DescriptionListProps {
+    items: AppDescriptionListItem[];
+    size?: AppCardSize;
+    columns?: AppDescriptionListColumns;
+    style?: AppStyleProp;
+    itemStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface EmptyStateProps {
+    title: React.ReactNode;
+    description?: React.ReactNode;
+    icon?: React.ReactNode;
+    primaryAction?: React.ReactNode;
+    secondaryAction?: React.ReactNode;
+    size?: AppCardSize;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface MetricCardProps {
+    title: string;
+    value: number;
+    change?: number;
+    size?: AppCardSize;
+    trend?: AppMetricTrend;
+    prefix?: string;
+    suffix?: string;
+    changeSuffix?: string;
+    decimals?: number;
+    changeDecimals?: number;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface TableProps {
+    columns: AppTableColumn[];
+    data: AppTableRow[];
+    emptyState?: React.ReactNode;
+    style?: import('react-native').StyleProp<import('react-native').ViewStyle>;
+    testID?: string;
+  }
+
+  interface TooltipProps {
+    content: React.ReactNode;
+    children: React.ReactNode;
+    position?: AppTooltipPosition;
+    color?: AppSemanticColor;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    style?: AppStyleProp;
+    contentStyle?: AppStyleProp;
     testID?: string;
   }
 }
