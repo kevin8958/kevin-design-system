@@ -3,11 +3,11 @@
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
+import InlinePlatformSwitch from '@/components/layout/InlinePlatformSwitch';
 import {
   getPatternCategories,
   isPatternPlatform,
 } from '@/constants/common';
-import { cn } from '@/libs/utils';
 import { Link, useParams } from 'react-router-dom';
 import { LuArrowUpRight } from 'react-icons/lu';
 
@@ -37,31 +37,19 @@ export default function PatternCategoryPage() {
     { label: 'Patterns', href: `/patterns/${platform}` },
     { label: category.label, href: category.href },
   ];
+  const activePlatform = platform ?? 'web';
 
   return (
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={10}>
       <BreadCrumb items={breadcrumbItems} />
 
-      <div className="inline-flex w-fit rounded-xl bg-neutral-100 p-1 dark:bg-neutral-800/80">
-        {(['web', 'app'] as const).map((entry) => {
-          const isActive = platform === entry;
-
-          return (
-            <Link
-              key={entry}
-              to={`/patterns/${entry}/${category.id}`}
-              className={cn(
-                'rounded-[10px] px-4 py-2 text-sm font-semibold transition-colors no-underline',
-                isActive
-                  ? 'bg-white text-secondary-500 shadow-sm dark:bg-neutral-900 dark:text-primary-400'
-                  : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100',
-              )}
-            >
-              {entry.toUpperCase()}
-            </Link>
-          );
-        })}
-      </div>
+      <InlinePlatformSwitch
+        activeValue={activePlatform}
+        options={[
+          { value: 'web', to: `/patterns/web/${category.id}` },
+          { value: 'app', to: `/patterns/app/${category.id}` },
+        ]}
+      />
 
       <FlexWrapper direction="col" items="start" gap={4} classes="max-w-3xl">
         <Typography variant="H1">{category.label}</Typography>
@@ -88,9 +76,15 @@ export default function PatternCategoryPage() {
                 >
                   {item.label}
                 </Typography>
-                <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
-                  작업중
-                </span>
+                {item.status === 'working' ? (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
+                    작업중
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-primary-100 px-2.5 py-1 text-[11px] font-semibold text-primary-700 dark:bg-primary-400/10 dark:text-primary-300">
+                    Ready
+                  </span>
+                )}
               </FlexWrapper>
 
               <Typography

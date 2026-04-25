@@ -362,7 +362,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Sign In',
           description:
             'Email and password entry with recovery links, social login, and browser-friendly validation.',
-          status: 'working',
+          status: 'ready',
           keywords: ['login', 'auth', 'email', 'password', 'web'],
         },
         {
@@ -492,7 +492,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Sign In',
           description:
             'Mobile sign-in flow with keyboard-aware spacing, social auth entry points, and recovery actions.',
-          status: 'working',
+          status: 'ready',
           keywords: ['login', 'auth', 'email', 'password', 'app', 'react native'],
         },
         {
