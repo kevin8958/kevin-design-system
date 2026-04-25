@@ -14,6 +14,7 @@ import { cn } from '@/libs/utils';
 const NAV_ITEMS = [
   { label: 'GETTING STARTED', href: '/getting-started' },
   { label: 'COMPONENTS', href: '/components' },
+  { label: 'PATTERNS', href: '/patterns' },
 ];
 interface GnbProps {
   isOpen?: boolean;

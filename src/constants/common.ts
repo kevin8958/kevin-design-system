@@ -313,6 +313,167 @@ export const designSystemMenus = [
   },
 ];
 
+export type PatternItem = Layout.NavItem & {
+  description: string;
+  status?: 'ready' | 'working';
+  keywords?: string[];
+};
+
+export type PatternCategory = {
+  id: string;
+  label: string;
+  href: string;
+  description: string;
+  items: PatternItem[];
+};
+
+export const patternCategories: PatternCategory[] = [
+  {
+    id: 'auth',
+    label: 'Auth',
+    href: '/patterns/auth',
+    description:
+      'Entry, recovery, and trust-building flows for sign in, sign up, and account recovery.',
+    items: [
+      {
+        id: 'sign-in',
+        label: 'Sign In',
+        href: '/patterns/auth/sign-in',
+        description:
+          'Email and password entry with recovery, alternate auth, and clear next actions.',
+        status: 'working',
+        keywords: ['login', 'auth', 'email', 'password'],
+      },
+      {
+        id: 'sign-up',
+        label: 'Sign Up',
+        href: '/patterns/auth/sign-up',
+        description:
+          'Account creation flow that combines identity fields, consent, and validation messaging.',
+        status: 'working',
+        keywords: ['register', 'signup', 'onboarding', 'form'],
+      },
+      {
+        id: 'password-reset',
+        label: 'Password Reset',
+        href: '/patterns/auth/password-reset',
+        description:
+          'Recovery flow for verification, code entry, and new password setup.',
+        status: 'working',
+        keywords: ['forgot password', 'recovery', 'reset'],
+      },
+    ],
+  },
+  {
+    id: 'forms',
+    label: 'Forms',
+    href: '/patterns/forms',
+    description:
+      'Longer structured forms that bundle inputs, validation, helper content, and submission states.',
+    items: [
+      {
+        id: 'profile-edit',
+        label: 'Profile Edit',
+        href: '/patterns/forms/profile-edit',
+        description:
+          'Editable profile form with grouped fields, helper text, and save actions.',
+        status: 'working',
+        keywords: ['profile', 'edit', 'account settings'],
+      },
+      {
+        id: 'address-entry',
+        label: 'Address Entry',
+        href: '/patterns/forms/address-entry',
+        description:
+          'Shipping and billing address flow with field grouping and validation.',
+        status: 'working',
+        keywords: ['address', 'shipping', 'billing'],
+      },
+      {
+        id: 'payment-method',
+        label: 'Payment Method',
+        href: '/patterns/forms/payment-method',
+        description:
+          'Card and payment detail collection with helper messaging and completion states.',
+        status: 'working',
+        keywords: ['payment', 'card', 'checkout'],
+      },
+    ],
+  },
+  {
+    id: 'search-filter',
+    label: 'Search & Filter',
+    href: '/patterns/search-filter',
+    description:
+      'Patterns for finding, sorting, and narrowing large sets of results across mobile and desktop contexts.',
+    items: [
+      {
+        id: 'sort-filter-bar',
+        label: 'Sort & Filter Bar',
+        href: '/patterns/search-filter/sort-filter-bar',
+        description:
+          'Persistent toolbar for sorting, filtering, and quick refinement actions.',
+        status: 'working',
+        keywords: ['filter', 'sort', 'toolbar'],
+      },
+      {
+        id: 'filter-sheet',
+        label: 'Filter Sheet',
+        href: '/patterns/search-filter/filter-sheet',
+        description:
+          'Bottom-sheet or drawer-based filter composition for denser criteria sets.',
+        status: 'working',
+        keywords: ['filter sheet', 'bottom sheet', 'drawer'],
+      },
+      {
+        id: 'search-results',
+        label: 'Search Results',
+        href: '/patterns/search-filter/search-results',
+        description:
+          'Results layout that combines query input, state feedback, and result cards.',
+        status: 'working',
+        keywords: ['results', 'search', 'listing'],
+      },
+    ],
+  },
+  {
+    id: 'states',
+    label: 'States',
+    href: '/patterns/states',
+    description:
+      'Higher-level empty, loading, and recovery moments built from feedback and layout components.',
+    items: [
+      {
+        id: 'empty-results',
+        label: 'Empty Results',
+        href: '/patterns/states/empty-results',
+        description:
+          'Search and list empty state with guidance, fallback actions, and reset affordances.',
+        status: 'working',
+        keywords: ['empty', 'no results', 'empty state'],
+      },
+      {
+        id: 'loading-panel',
+        label: 'Loading Panel',
+        href: '/patterns/states/loading-panel',
+        description:
+          'Structured loading container that combines skeletons, headings, and content spacing.',
+        status: 'working',
+        keywords: ['loading', 'skeleton', 'panel'],
+      },
+      {
+        id: 'error-recovery',
+        label: 'Error Recovery',
+        href: '/patterns/states/error-recovery',
+        description:
+          'Pattern for retry, support, and fallback actions after request failures.',
+        status: 'working',
+        keywords: ['error', 'retry', 'fallback'],
+      },
+    ],
+  },
+];
+
 export const searchEntries: Layout.SearchEntry[] = [
   {
     id: 'getting-started',
@@ -327,6 +488,13 @@ export const searchEntries: Layout.SearchEntry[] = [
     href: '/components',
     group: 'Overview',
     keywords: ['docs', 'catalog', 'library'],
+  },
+  {
+    id: 'patterns-root',
+    label: 'Patterns',
+    href: '/patterns',
+    group: 'Overview',
+    keywords: ['patterns', 'flows', 'templates', 'examples'],
   },
   {
     id: 'foundation-root',
@@ -383,6 +551,26 @@ export const searchEntries: Layout.SearchEntry[] = [
     href: '/components/interaction',
     group: 'Category',
   },
+  ...patternCategories.flatMap((category) => [
+    {
+      id: `${category.id}-root`,
+      label: category.label,
+      href: category.href,
+      group: 'Pattern Category',
+      keywords: ['pattern', category.id, category.label.toLowerCase()],
+    },
+    ...category.items.map((item) => ({
+      id: `pattern-${item.id}`,
+      label: item.label,
+      href: item.href,
+      group: `Pattern / ${category.label}`,
+      keywords: [
+        'pattern',
+        category.label.toLowerCase(),
+        ...(item.keywords ?? []),
+      ],
+    })),
+  ]),
   {
     id: 'app-accordion',
     label: 'App Accordion',

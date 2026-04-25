@@ -2,13 +2,14 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { designSystemMenus } from '@/constants/common';
+import { designSystemMenus, patternCategories } from '@/constants/common';
 import { cn } from '@/libs/utils';
 import Divider from './Divider';
 
 const NAV_ITEMS = [
   { label: 'GETTING STARTED', href: '/getting-started' },
   { label: 'COMPONENTS', href: '/components' },
+  { label: 'PATTERNS', href: '/patterns' },
 ];
 
 type PlatformMenuGroup = {
@@ -21,6 +22,7 @@ type PlatformMenuGroup = {
 
 const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const { pathname } = useLocation();
+  const isPatternsRoute = pathname.startsWith('/patterns');
   const [isResizing, setIsResizing] = useState(false);
   const [selectedPlatform, setSelectedPlatform] = useState<
     'web' | 'app' | null
@@ -296,6 +298,18 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     },
   ];
 
+  const patternGroups: PlatformMenuGroup[] = patternCategories.map((category) => ({
+    id: `pattern-${category.id}`,
+    label: category.label,
+    href: category.href,
+    items: category.items.map((item) => ({
+      id: item.id,
+      label: item.label,
+      href: item.href,
+    })),
+    status: 'ready',
+  }));
+
   const menuSections = [
     { id: 'foundation', label: 'Foundation', groups: foundationGroups },
   ];
@@ -353,7 +367,8 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
             <>
               <Divider orientation="horizontal" classes="md:hidden" />
               <ul className="flex flex-col gap-1 pt-2 pb-10">
-                {menuSections.map((section) => (
+                {!isPatternsRoute &&
+                  menuSections.map((section) => (
                   <li key={section.id} className="mb-4">
                     <div className="flex flex-col gap-1">
                       {section.groups.map((menu) => {
@@ -449,32 +464,34 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
                 ))}
 
                 <li className="mb-4">
-                  <div className="mb-3 px-2">
-                    <div className="inline-flex w-full rounded-xl bg-neutral-100 p-1 dark:bg-neutral-800/80">
-                      {(['web', 'app'] as const).map((platform) => {
-                        const isActive = visiblePlatform === platform;
+                  {!isPatternsRoute && (
+                    <div className="mb-3 px-2">
+                      <div className="inline-flex w-full rounded-xl bg-neutral-100 p-1 dark:bg-neutral-800/80">
+                        {(['web', 'app'] as const).map((platform) => {
+                          const isActive = visiblePlatform === platform;
 
-                        return (
-                          <button
-                            key={platform}
-                            type="button"
-                            onClick={() => setSelectedPlatform(platform)}
-                            className={cn(
-                              'flex-1 rounded-[10px] px-3 py-2 text-sm font-semibold transition-colors',
-                              isActive
-                                ? 'bg-white text-secondary-500 shadow-sm dark:bg-neutral-900 dark:text-primary-400'
-                                : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200',
-                            )}
-                          >
-                            {platform.toUpperCase()}
-                          </button>
-                        );
-                      })}
+                          return (
+                            <button
+                              key={platform}
+                              type="button"
+                              onClick={() => setSelectedPlatform(platform)}
+                              className={cn(
+                                'flex-1 rounded-[10px] px-3 py-2 text-sm font-semibold transition-colors',
+                                isActive
+                                  ? 'bg-white text-secondary-500 shadow-sm dark:bg-neutral-900 dark:text-primary-400'
+                                  : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200',
+                              )}
+                            >
+                              {platform.toUpperCase()}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="flex flex-col gap-1">
-                    {activePlatformGroups.map((menu) => {
+                    {(isPatternsRoute ? patternGroups : activePlatformGroups).map((menu) => {
                       const isReady = menu.status !== 'working';
                       const isActiveMenu =
                         isReady &&

@@ -1,0 +1,99 @@
+import Typography from '@/components/foundation/Typography';
+import FlexWrapper from '@/components/layout/FlexWrapper';
+import { patternCategories } from '@/constants/common';
+import { Link } from 'react-router-dom';
+import { LuArrowUpRight } from 'react-icons/lu';
+
+export default function Patterns() {
+  return (
+    <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={10}>
+      <section
+        id="top"
+        className="relative overflow-hidden rounded-[32px] border border-neutral-200 bg-gradient-to-br from-white via-emerald-50/70 to-emerald-100/70 px-6 py-10 shadow-sm dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-900 md:px-10 md:py-14"
+      >
+        <div className="pointer-events-none absolute -right-16 top-0 size-56 rounded-full bg-emerald-300/25 blur-3xl dark:bg-emerald-400/10" />
+        <div className="pointer-events-none absolute left-0 top-1/2 size-40 -translate-y-1/2 rounded-full bg-emerald-400/20 blur-3xl dark:bg-emerald-400/10" />
+
+        <FlexWrapper
+          direction="col"
+          items="start"
+          gap={10}
+          classes="relative z-10"
+        >
+          <FlexWrapper
+            direction="col"
+            items="start"
+            gap={6}
+            classes="max-w-3xl"
+          >
+            <Typography
+              variant="H1"
+              classes="text-balance !text-neutral-900 dark:!text-neutral-50"
+            >
+              Patterns
+            </Typography>
+            <Typography
+              variant="B1"
+              classes="!font-normal !text-neutral-600 dark:!text-neutral-300"
+            >
+              Patterns combine multiple components into reusable flows like auth,
+              forms, search, and recovery states.
+            </Typography>
+          </FlexWrapper>
+
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {patternCategories.map((category) => (
+              <Link
+                key={category.id}
+                to={category.href}
+                className="group relative rounded-3xl border border-neutral-200/80 bg-white/90 p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900/80 dark:hover:border-emerald-400/50"
+              >
+                <span className="absolute right-5 top-5 flex size-10 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-700 transition duration-200 group-hover:translate-x-1 group-hover:bg-emerald-50 group-hover:text-emerald-700 dark:bg-neutral-800 dark:text-neutral-200 dark:group-hover:bg-emerald-400/10 dark:group-hover:text-emerald-300">
+                  <LuArrowUpRight size={18} />
+                </span>
+
+                <FlexWrapper
+                  direction="col"
+                  items="start"
+                  gap={4}
+                  classes="h-full"
+                >
+                  <div className="w-full pr-14">
+                    <Typography
+                      variant="H4"
+                      classes="!text-neutral-900 dark:!text-neutral-50"
+                    >
+                      {category.label}
+                    </Typography>
+                    <Typography
+                      variant="C1"
+                      classes="mt-2 !text-neutral-500 dark:!text-neutral-400"
+                    >
+                      {category.description}
+                    </Typography>
+                  </div>
+
+                  <div className="flex max-h-[56px] flex-wrap gap-2 overflow-hidden">
+                    {category.items.slice(0, 4).map((item) => (
+                      <span
+                        key={item.id}
+                        className="rounded-full bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+                      >
+                        {item.label}
+                      </span>
+                    ))}
+                    {category.items.length > 4 && (
+                      <span className="px-1 py-1 text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                        +{category.items.length - 4} more
+                      </span>
+                    )}
+                  </div>
+                </FlexWrapper>
+              </Link>
+            ))}
+          </div>
+        </FlexWrapper>
+      </section>
+    </FlexWrapper>
+  );
+}

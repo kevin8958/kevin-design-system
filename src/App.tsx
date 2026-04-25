@@ -13,6 +13,7 @@ import ScrollTopButton from '@/components/layout/ScrollTopButton';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import GettingStarted from './pages/GettingStarted';
 import Components from './pages/Components';
+import Patterns from './pages/Patterns';
 import Colors from '@/pages/components/foundation/colors/page';
 import Typography from '@/pages/components/foundation/typography/page';
 import ComponentButtonPage from '@/pages/components/action/button/ComponentButtonPage';
@@ -91,6 +92,8 @@ import ComponentAppAlertPage from '@/pages/components/app/alert/ComponentAppAler
 import ComponentAppProgressPage from '@/pages/components/app/progress/ComponentAppProgressPage';
 import ComponentAppSkeletonPage from '@/pages/components/app/skeleton/ComponentAppSkeletonPage';
 import ComponentAppToastPage from '@/pages/components/app/toast/ComponentAppToastPage';
+import PatternCategoryPage from '@/pages/patterns/category/PatternCategoryPage';
+import PatternDetailPage from '@/pages/patterns/detail/PatternDetailPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -300,6 +303,12 @@ function App() {
           <Route path="app/progress" element={<ComponentAppProgressPage />} />
           <Route path="app/skeleton" element={<ComponentAppSkeletonPage />} />
           <Route path="app/toast" element={<ComponentAppToastPage />} />
+        </Route>
+
+        <Route path="/patterns" element={<DocsLayout />}>
+          <Route index element={<Patterns />} />
+          <Route path=":categoryId" element={<PatternCategoryPage />} />
+          <Route path=":categoryId/:patternId" element={<PatternDetailPage />} />
         </Route>
       </Routes>
     </AppProvider>
