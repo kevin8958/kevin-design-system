@@ -6,8 +6,8 @@ import SimpleTable from '@/components/data/SimpleTable';
 import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import FlexWrapper from '@/components/layout/FlexWrapper';
-import GuideSection from '@/components/layout/GuideSection';
 import AppDevicePreviewFrame from '@/pages/components/app/common/AppDevicePreviewFrame';
+import PatternGuideSection from '@/pages/patterns/common/PatternGuideSection';
 import PatternDocsPageShell from '@/pages/patterns/common/PatternDocsPageShell';
 import AppSignInPreview from '@/pages/patterns/app/signIn/AppSignInPreview';
 
@@ -182,12 +182,12 @@ export default function PatternAppSignInPage() {
         </FlexWrapper>
       </div>
 
-      <GuideSection
+      <PatternGuideSection
         title="Core Layout"
         description="On mobile, the first screen should carry context, credentials, recovery, and one primary CTA without forcing extra scrolling. Keep tappable targets large and avoid splitting the form across stacked surfaces."
         example={
-          <CodeExample code={coreLayoutCode} className="flex-1 min-w-[320px]">
-            <AppDevicePreviewFrame minHeight={620}>
+          <CodeExample code={coreLayoutCode} className="w-full">
+            <AppDevicePreviewFrame minHeight={620} maxWidthClass="max-w-[420px]">
               <AppSignInPreview
                 state={state}
                 showSocial={entryMode === 'social'}
@@ -197,24 +197,24 @@ export default function PatternAppSignInPage() {
         }
       />
 
-      <GuideSection
+      <PatternGuideSection
         title="Validation And Recovery"
         description="Native sign-in flows need both field-level guidance and a top-level error container when the failure is ambiguous. Keep password recovery visible close to the credential field so the next move is immediate."
         example={
-          <CodeExample code={validationCode} className="flex-1 min-w-[320px]">
-            <AppDevicePreviewFrame minHeight={660}>
+          <CodeExample code={validationCode} className="w-full">
+            <AppDevicePreviewFrame minHeight={660} maxWidthClass="max-w-[420px]">
               <AppSignInPreview state="invalid" showSocial={false} />
             </AppDevicePreviewFrame>
           </CodeExample>
         }
       />
 
-      <GuideSection
+      <PatternGuideSection
         title="Alternate Entry"
         description="If the app supports Apple, Google, or enterprise SSO, place those options beneath the primary action. This keeps the credential path obvious while still supporting faster repeat sign-in for the right audience."
         example={
-          <CodeExample code={socialCode} className="flex-1 min-w-[320px]">
-            <AppDevicePreviewFrame minHeight={660}>
+          <CodeExample code={socialCode} className="w-full">
+            <AppDevicePreviewFrame minHeight={660} maxWidthClass="max-w-[420px]">
               <AppSignInPreview
                 state="default"
                 showSocial

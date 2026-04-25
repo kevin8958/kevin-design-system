@@ -21,7 +21,7 @@ export default function WebSignInPreview({
   const isLoading = state === 'loading';
 
   return (
-    <div className="w-full max-w-[440px] rounded-[28px] border border-neutral-200 bg-white p-6 shadow-[0_24px_80px_-32px_rgba(17,24,39,0.35)] dark:border-neutral-800 dark:bg-neutral-950">
+    <div className="w-full max-w-[560px] rounded-[32px] border border-neutral-200 bg-white p-7 shadow-[0_28px_100px_-36px_rgba(17,24,39,0.38)] dark:border-neutral-800 dark:bg-neutral-950">
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-3">
           <div className="flex size-12 items-center justify-center rounded-2xl bg-primary-100 text-lg font-bold text-primary-700 dark:bg-primary-400/10 dark:text-primary-300">

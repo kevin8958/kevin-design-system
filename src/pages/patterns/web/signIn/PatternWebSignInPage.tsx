@@ -6,7 +6,7 @@ import SimpleTable from '@/components/data/SimpleTable';
 import Typography from '@/components/foundation/Typography';
 import CodeExample from '@/components/interaction/CodeExample';
 import FlexWrapper from '@/components/layout/FlexWrapper';
-import GuideSection from '@/components/layout/GuideSection';
+import PatternGuideSection from '@/pages/patterns/common/PatternGuideSection';
 import PatternDocsPageShell from '@/pages/patterns/common/PatternDocsPageShell';
 import WebSignInPreview from '@/pages/patterns/web/signIn/WebSignInPreview';
 
@@ -196,11 +196,11 @@ export default function PatternWebSignInPage() {
         </FlexWrapper>
       </div>
 
-      <GuideSection
+      <PatternGuideSection
         title="Core Layout"
         description="Keep the sign-in surface focused: identity, context, credentials, recovery, and one clear primary action. Supporting actions should stay visible but never outrank the submit path."
         example={
-          <CodeExample code={coreLayoutCode} className="flex-1 min-w-[320px]">
+          <CodeExample code={coreLayoutCode} className="w-full">
             <WebSignInPreview
               state={state}
               showSocial={entryMode === 'social'}
@@ -209,21 +209,21 @@ export default function PatternWebSignInPage() {
         }
       />
 
-      <GuideSection
+      <PatternGuideSection
         title="Validation And Recovery"
         description="Field-level issues belong next to the input, while broader failures should also appear as a top alert. Recovery links need to be close to the password field so the next step feels obvious."
         example={
-          <CodeExample code={validationCode} className="flex-1 min-w-[320px]">
+          <CodeExample code={validationCode} className="w-full">
             <WebSignInPreview state="invalid" showSocial={false} />
           </CodeExample>
         }
       />
 
-      <GuideSection
+      <PatternGuideSection
         title="Alternate Entry"
         description="Only offer social or SSO options when they truly reduce friction for the same audience. Group them beneath the primary form so the main credential path remains easy to scan."
         example={
-          <CodeExample code={socialCode} className="flex-1 min-w-[320px]">
+          <CodeExample code={socialCode} className="w-full">
             <WebSignInPreview state="default" showSocial showSupportNote={false} />
           </CodeExample>
         }

@@ -2,14 +2,18 @@ const AppDevicePreviewFrame = ({
   children,
   minHeight = 320,
   contentClasses = '',
+  maxWidthClass = 'max-w-[360px]',
 }: {
   children: React.ReactNode;
   minHeight?: number;
   contentClasses?: string;
+  maxWidthClass?: string;
 }) => {
   return (
     <div className="flex w-full justify-center">
-      <div className="w-full max-w-[360px] rounded-[28px] border border-neutral-200 bg-[#F6F7FB] p-5 dark:border-neutral-800 dark:bg-neutral-950">
+      <div
+        className={`w-full ${maxWidthClass} rounded-[28px] border border-neutral-200 bg-[#F6F7FB] p-5 dark:border-neutral-800 dark:bg-neutral-950`.trim()}
+      >
         <div
           className={`relative w-full ${contentClasses}`.trim()}
           style={{ minHeight }}
