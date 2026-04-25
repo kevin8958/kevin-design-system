@@ -1,10 +1,10 @@
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
+import InlinePlatformSwitch from '@/components/layout/InlinePlatformSwitch';
 import {
   getPatternCategories,
   isPatternPlatform,
 } from '@/constants/common';
-import { cn } from '@/libs/utils';
 import { Link, useParams } from 'react-router-dom';
 import { LuArrowUpRight } from 'react-icons/lu';
 
@@ -50,26 +50,13 @@ export default function Patterns() {
             </Typography>
           </FlexWrapper>
 
-          <div className="inline-flex rounded-xl bg-white/90 p-1 shadow-sm dark:bg-neutral-900/80">
-            {(['web', 'app'] as const).map((entry) => {
-              const isActive = platform === entry;
-
-              return (
-                <Link
-                  key={entry}
-                  to={`/patterns/${entry}`}
-                  className={cn(
-                    'rounded-[10px] px-4 py-2 text-sm font-semibold transition-colors no-underline',
-                    isActive
-                      ? 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-neutral-950'
-                      : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100',
-                  )}
-                >
-                  {entry.toUpperCase()}
-                </Link>
-              );
-            })}
-          </div>
+          <InlinePlatformSwitch
+            activeValue={platform}
+            options={[
+              { value: 'web', to: '/patterns/web' },
+              { value: 'app', to: '/patterns/app' },
+            ]}
+          />
 
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {categories.map((category) => (
