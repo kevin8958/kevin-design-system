@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AppButton from '@/components/app/AppButton';
 import AppModal from '@/components/app/AppModal';
 import CodeExample from '@/components/interaction/CodeExample';
@@ -17,6 +17,15 @@ const AppModalLoadingGuide = ({
 }: AppModalPreviewControls) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   const exampleCode = `<AppModal
   isOpen={isOpen}
@@ -41,14 +50,22 @@ const AppModalLoadingGuide = ({
             <AppModal
               isOpen={open}
               onClose={() => {
+                if (timerRef.current) {
+                  clearTimeout(timerRef.current);
+                  timerRef.current = null;
+                }
                 setLoading(false);
                 setOpen(false);
               }}
               onConfirm={() => {
+                if (timerRef.current) {
+                  clearTimeout(timerRef.current);
+                }
                 setLoading(true);
-                window.setTimeout(() => {
+                timerRef.current = setTimeout(() => {
                   setLoading(false);
                   setOpen(false);
+                  timerRef.current = null;
                 }, 1200);
               }}
               maxWidth={maxWidth}

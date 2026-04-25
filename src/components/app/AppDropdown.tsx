@@ -1,12 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-} from 'react-native';
+import { useMemo, useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import AppButton from '@/components/app/AppButton';
+import { useResolvedAppScheme } from '@/components/app/appUtils';
 
 type AppDropdownPalette = {
   panelBackground: string;
@@ -102,46 +97,17 @@ const AppDropdown = ({
   itemStyle,
   testID,
 }: App.DropdownProps) => {
-  const systemScheme = useColorScheme();
-  const [webScheme, setWebScheme] = useState<'light' | 'dark' | null>(() => {
-    if (typeof document === 'undefined') return null;
-
-    return document.documentElement.classList.contains('dark')
-      ? 'dark'
-      : 'light';
-  });
+  const resolvedScheme = useResolvedAppScheme();
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
   const [submenuStack, setSubmenuStack] = useState<
     { label?: React.ReactNode; items: App.DropdownItem[] }[]
   >([]);
-
-  const resolvedScheme =
-    webScheme ?? (systemScheme === 'dark' ? 'dark' : 'light');
   const colors = palette[resolvedScheme];
   const isOpen = open ?? internalOpen;
   const visibleItems =
     submenuStack.length > 0
       ? submenuStack[submenuStack.length - 1].items
       : items;
-
-  useEffect(() => {
-    if (typeof document === 'undefined') return undefined;
-
-    const root = document.documentElement;
-    const syncScheme = () => {
-      setWebScheme(root.classList.contains('dark') ? 'dark' : 'light');
-    };
-
-    syncScheme();
-
-    const observer = new MutationObserver(syncScheme);
-    observer.observe(root, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const setOpen = (nextOpen: boolean) => {
     if (open === undefined) {

@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
   ActivityIndicator,
   Linking,
@@ -6,8 +6,8 @@ import {
   StyleSheet,
   Text,
   View,
-  useColorScheme,
 } from 'react-native';
+import { useResolvedAppScheme } from '@/components/app/appUtils';
 
 type AppButtonPalette = Record<
   App.AppButtonColor,
@@ -161,15 +161,7 @@ const AppButton = ({
   onPress,
   testID,
 }: App.ButtonProps) => {
-  const systemScheme = useColorScheme();
-  const [webScheme, setWebScheme] = useState<'light' | 'dark' | null>(() => {
-    if (typeof document === 'undefined') return null;
-    return document.documentElement.classList.contains('dark')
-      ? 'dark'
-      : 'light';
-  });
-  const resolvedScheme =
-    webScheme ?? (systemScheme === 'dark' ? 'dark' : 'light');
+  const resolvedScheme = useResolvedAppScheme();
   const resolvedLabel = label ?? children;
   const colors = palette[resolvedScheme][color];
   const metrics = sizeStyles[size];
@@ -192,25 +184,6 @@ const AppButton = ({
   const contentJustify =
     shape === 'circle' ? 'center' : justify === 'start' ? 'flex-start' : 'center';
   const isCircle = shape === 'circle';
-
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
-
-    const root = document.documentElement;
-    const syncScheme = () => {
-      setWebScheme(root.classList.contains('dark') ? 'dark' : 'light');
-    };
-
-    syncScheme();
-
-    const observer = new MutationObserver(syncScheme);
-    observer.observe(root, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const content =
     typeof resolvedLabel === 'string' ? (

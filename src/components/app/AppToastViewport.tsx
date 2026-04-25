@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     zIndex: 40,
   },
   stack: {
-    gap: 10,
     maxWidth: 360,
     width: '100%',
   },

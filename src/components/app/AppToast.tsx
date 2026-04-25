@@ -47,8 +47,8 @@ const AppToast = ({
         {
           backgroundColor: colors.surface,
           borderColor: tone.border,
-          marginTop: isTopPlacement ? stackIndex * 10 : 0,
-          marginBottom: !isTopPlacement ? stackIndex * 10 : 0,
+          marginTop: isTopPlacement && stackIndex > 0 ? 10 : 0,
+          marginBottom: !isTopPlacement && stackIndex > 0 ? 10 : 0,
         },
         style,
       ]}

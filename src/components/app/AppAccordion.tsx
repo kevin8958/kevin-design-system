@@ -1,11 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-} from 'react-native';
+import { useMemo, useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useResolvedAppScheme } from '@/components/app/appUtils';
 
 type AppAccordionPalette = {
   surface: string;
@@ -149,16 +144,7 @@ const AppAccordion = ({
   contentStyle,
   testID,
 }: App.AccordionProps) => {
-  const systemScheme = useColorScheme();
-  const [webScheme, setWebScheme] = useState<'light' | 'dark' | null>(() => {
-    if (typeof document === 'undefined') return null;
-
-    return document.documentElement.classList.contains('dark')
-      ? 'dark'
-      : 'light';
-  });
-  const resolvedScheme =
-    webScheme ?? (systemScheme === 'dark' ? 'dark' : 'light');
+  const resolvedScheme = useResolvedAppScheme();
   const colors = palette[resolvedScheme];
   const metrics = sizeStyles[size];
   const [internalValue, setInternalValue] = useState<string[]>(
@@ -168,25 +154,6 @@ const AppAccordion = ({
     () => normalizeValue(value ?? internalValue),
     [internalValue, value],
   );
-
-  useEffect(() => {
-    if (typeof document === 'undefined') return undefined;
-
-    const root = document.documentElement;
-    const syncScheme = () => {
-      setWebScheme(root.classList.contains('dark') ? 'dark' : 'light');
-    };
-
-    syncScheme();
-
-    const observer = new MutationObserver(syncScheme);
-    observer.observe(root, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const setValue = (nextValue: string[]) => {
     if (value === undefined) {
