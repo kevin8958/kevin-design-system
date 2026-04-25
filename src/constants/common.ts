@@ -327,152 +327,305 @@ export type PatternCategory = {
   items: PatternItem[];
 };
 
-export const patternCategories: PatternCategory[] = [
-  {
-    id: 'auth',
-    label: 'Auth',
-    href: '/patterns/auth',
-    description:
-      'Entry, recovery, and trust-building flows for sign in, sign up, and account recovery.',
-    items: [
-      {
-        id: 'sign-in',
-        label: 'Sign In',
-        href: '/patterns/auth/sign-in',
-        description:
-          'Email and password entry with recovery, alternate auth, and clear next actions.',
-        status: 'working',
-        keywords: ['login', 'auth', 'email', 'password'],
-      },
-      {
-        id: 'sign-up',
-        label: 'Sign Up',
-        href: '/patterns/auth/sign-up',
-        description:
-          'Account creation flow that combines identity fields, consent, and validation messaging.',
-        status: 'working',
-        keywords: ['register', 'signup', 'onboarding', 'form'],
-      },
-      {
-        id: 'password-reset',
-        label: 'Password Reset',
-        href: '/patterns/auth/password-reset',
-        description:
-          'Recovery flow for verification, code entry, and new password setup.',
-        status: 'working',
-        keywords: ['forgot password', 'recovery', 'reset'],
-      },
-    ],
-  },
-  {
-    id: 'forms',
-    label: 'Forms',
-    href: '/patterns/forms',
-    description:
-      'Longer structured forms that bundle inputs, validation, helper content, and submission states.',
-    items: [
-      {
-        id: 'profile-edit',
-        label: 'Profile Edit',
-        href: '/patterns/forms/profile-edit',
-        description:
-          'Editable profile form with grouped fields, helper text, and save actions.',
-        status: 'working',
-        keywords: ['profile', 'edit', 'account settings'],
-      },
-      {
-        id: 'address-entry',
-        label: 'Address Entry',
-        href: '/patterns/forms/address-entry',
-        description:
-          'Shipping and billing address flow with field grouping and validation.',
-        status: 'working',
-        keywords: ['address', 'shipping', 'billing'],
-      },
-      {
-        id: 'payment-method',
-        label: 'Payment Method',
-        href: '/patterns/forms/payment-method',
-        description:
-          'Card and payment detail collection with helper messaging and completion states.',
-        status: 'working',
-        keywords: ['payment', 'card', 'checkout'],
-      },
-    ],
-  },
-  {
-    id: 'search-filter',
-    label: 'Search & Filter',
-    href: '/patterns/search-filter',
-    description:
-      'Patterns for finding, sorting, and narrowing large sets of results across mobile and desktop contexts.',
-    items: [
-      {
-        id: 'sort-filter-bar',
-        label: 'Sort & Filter Bar',
-        href: '/patterns/search-filter/sort-filter-bar',
-        description:
-          'Persistent toolbar for sorting, filtering, and quick refinement actions.',
-        status: 'working',
-        keywords: ['filter', 'sort', 'toolbar'],
-      },
-      {
-        id: 'filter-sheet',
-        label: 'Filter Sheet',
-        href: '/patterns/search-filter/filter-sheet',
-        description:
-          'Bottom-sheet or drawer-based filter composition for denser criteria sets.',
-        status: 'working',
-        keywords: ['filter sheet', 'bottom sheet', 'drawer'],
-      },
-      {
-        id: 'search-results',
-        label: 'Search Results',
-        href: '/patterns/search-filter/search-results',
-        description:
-          'Results layout that combines query input, state feedback, and result cards.',
-        status: 'working',
-        keywords: ['results', 'search', 'listing'],
-      },
-    ],
-  },
-  {
-    id: 'states',
-    label: 'States',
-    href: '/patterns/states',
-    description:
-      'Higher-level empty, loading, and recovery moments built from feedback and layout components.',
-    items: [
-      {
-        id: 'empty-results',
-        label: 'Empty Results',
-        href: '/patterns/states/empty-results',
-        description:
-          'Search and list empty state with guidance, fallback actions, and reset affordances.',
-        status: 'working',
-        keywords: ['empty', 'no results', 'empty state'],
-      },
-      {
-        id: 'loading-panel',
-        label: 'Loading Panel',
-        href: '/patterns/states/loading-panel',
-        description:
-          'Structured loading container that combines skeletons, headings, and content spacing.',
-        status: 'working',
-        keywords: ['loading', 'skeleton', 'panel'],
-      },
-      {
-        id: 'error-recovery',
-        label: 'Error Recovery',
-        href: '/patterns/states/error-recovery',
-        description:
-          'Pattern for retry, support, and fallback actions after request failures.',
-        status: 'working',
-        keywords: ['error', 'retry', 'fallback'],
-      },
-    ],
-  },
-];
+export const patternPlatforms = ['web', 'app'] as const;
+
+export type PatternPlatform = (typeof patternPlatforms)[number];
+
+type PatternSeedItem = Omit<PatternItem, 'href'>;
+type PatternSeedCategory = Omit<PatternCategory, 'href' | 'items'> & {
+  items: PatternSeedItem[];
+};
+
+const buildPatternCategories = (
+  platform: PatternPlatform,
+  categories: PatternSeedCategory[],
+): PatternCategory[] =>
+  categories.map((category) => ({
+    ...category,
+    href: `/patterns/${platform}/${category.id}`,
+    items: category.items.map((item) => ({
+      ...item,
+      href: `/patterns/${platform}/${category.id}/${item.id}`,
+    })),
+  }));
+
+const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
+  web: [
+    {
+      id: 'auth',
+      label: 'Auth',
+      description:
+        'Browser-first authentication flows for sign in, sign up, and recovery across responsive layouts.',
+      items: [
+        {
+          id: 'sign-in',
+          label: 'Sign In',
+          description:
+            'Email and password entry with recovery links, social login, and browser-friendly validation.',
+          status: 'working',
+          keywords: ['login', 'auth', 'email', 'password', 'web'],
+        },
+        {
+          id: 'sign-up',
+          label: 'Sign Up',
+          description:
+            'Account creation form with consent, inline errors, and progressive disclosure for desktop and mobile web.',
+          status: 'working',
+          keywords: ['register', 'signup', 'onboarding', 'form', 'web'],
+        },
+        {
+          id: 'password-reset',
+          label: 'Password Reset',
+          description:
+            'Recovery flow for verification, code entry, and new password setup in a browser context.',
+          status: 'working',
+          keywords: ['forgot password', 'recovery', 'reset', 'web'],
+        },
+      ],
+    },
+    {
+      id: 'forms',
+      label: 'Forms',
+      description:
+        'Structured web forms that combine validation, helper content, section grouping, and submission states.',
+      items: [
+        {
+          id: 'profile-edit',
+          label: 'Profile Edit',
+          description:
+            'Editable account form with grouped fields, inline validation, and sticky save actions.',
+          status: 'working',
+          keywords: ['profile', 'edit', 'account settings', 'web'],
+        },
+        {
+          id: 'address-entry',
+          label: 'Address Entry',
+          description:
+            'Shipping and billing address flow with clear field grouping and desktop-friendly form rhythm.',
+          status: 'working',
+          keywords: ['address', 'shipping', 'billing', 'web'],
+        },
+        {
+          id: 'payment-method',
+          label: 'Payment Method',
+          description:
+            'Card and payment detail collection with helper messaging, security cues, and completion states.',
+          status: 'working',
+          keywords: ['payment', 'card', 'checkout', 'web'],
+        },
+      ],
+    },
+    {
+      id: 'search-filter',
+      label: 'Search & Filter',
+      description:
+        'Patterns for finding, sorting, and narrowing large result sets in toolbar, drawer, and result layouts.',
+      items: [
+        {
+          id: 'sort-filter-bar',
+          label: 'Sort & Filter Bar',
+          description:
+            'Persistent toolbar for sorting, filtering, and quick refinement actions above result lists.',
+          status: 'working',
+          keywords: ['filter', 'sort', 'toolbar', 'web'],
+        },
+        {
+          id: 'filter-sheet',
+          label: 'Filter Sheet',
+          description:
+            'Drawer or modal-based filter composition for denser criteria sets on the web.',
+          status: 'working',
+          keywords: ['filter sheet', 'drawer', 'modal', 'web'],
+        },
+        {
+          id: 'search-results',
+          label: 'Search Results',
+          description:
+            'Results layout that combines query input, empty/loading states, and responsive result cards.',
+          status: 'working',
+          keywords: ['results', 'search', 'listing', 'web'],
+        },
+      ],
+    },
+    {
+      id: 'states',
+      label: 'States',
+      description:
+        'Higher-level empty, loading, and recovery moments built for dashboards, lists, and browser workflows.',
+      items: [
+        {
+          id: 'empty-results',
+          label: 'Empty Results',
+          description:
+            'Search and list empty state with guidance, fallback actions, and reset affordances.',
+          status: 'working',
+          keywords: ['empty', 'no results', 'empty state', 'web'],
+        },
+        {
+          id: 'loading-panel',
+          label: 'Loading Panel',
+          description:
+            'Structured loading container that combines skeletons, headings, and content spacing.',
+          status: 'working',
+          keywords: ['loading', 'skeleton', 'panel', 'web'],
+        },
+        {
+          id: 'error-recovery',
+          label: 'Error Recovery',
+          description:
+            'Retry, support, and fallback actions after failed requests in page-level browser flows.',
+          status: 'working',
+          keywords: ['error', 'retry', 'fallback', 'web'],
+        },
+      ],
+    },
+  ],
+  app: [
+    {
+      id: 'auth',
+      label: 'Auth',
+      description:
+        'Native authentication flows tuned for stacked layouts, keyboard-safe spacing, and touch-first actions.',
+      items: [
+        {
+          id: 'sign-in',
+          label: 'Sign In',
+          description:
+            'Mobile sign-in flow with keyboard-aware spacing, social auth entry points, and recovery actions.',
+          status: 'working',
+          keywords: ['login', 'auth', 'email', 'password', 'app', 'react native'],
+        },
+        {
+          id: 'sign-up',
+          label: 'Sign Up',
+          description:
+            'Account creation flow for app onboarding with stacked inputs, consent, and validation messaging.',
+          status: 'working',
+          keywords: ['register', 'signup', 'onboarding', 'form', 'app', 'react native'],
+        },
+        {
+          id: 'password-reset',
+          label: 'Password Reset',
+          description:
+            'Recovery sequence for code verification and new password entry in a native app context.',
+          status: 'working',
+          keywords: ['forgot password', 'recovery', 'reset', 'app', 'react native'],
+        },
+      ],
+    },
+    {
+      id: 'forms',
+      label: 'Forms',
+      description:
+        'Mobile-first form patterns with stacked fields, helper text, validation, and fixed bottom actions.',
+      items: [
+        {
+          id: 'profile-edit',
+          label: 'Profile Edit',
+          description:
+            'Editable profile form with grouped sections, keyboard-safe layout, and save actions.',
+          status: 'working',
+          keywords: ['profile', 'edit', 'account settings', 'app', 'react native'],
+        },
+        {
+          id: 'address-entry',
+          label: 'Address Entry',
+          description:
+            'Address entry flow with stacked inputs, region pickers, and touch-friendly validation.',
+          status: 'working',
+          keywords: ['address', 'shipping', 'billing', 'app', 'react native'],
+        },
+        {
+          id: 'payment-method',
+          label: 'Payment Method',
+          description:
+            'Native payment detail entry with secure field grouping and completion feedback.',
+          status: 'working',
+          keywords: ['payment', 'card', 'checkout', 'app', 'react native'],
+        },
+      ],
+    },
+    {
+      id: 'search-filter',
+      label: 'Search & Filter',
+      description:
+        'Touch-first search and filter flows for app headers, bottom sheets, chips, and result lists.',
+      items: [
+        {
+          id: 'sort-filter-bar',
+          label: 'Sort & Filter Bar',
+          description:
+            'Compact top bar for sorting, filtering, and quick refinements inside native list screens.',
+          status: 'working',
+          keywords: ['filter', 'sort', 'toolbar', 'app', 'react native'],
+        },
+        {
+          id: 'filter-sheet',
+          label: 'Filter Sheet',
+          description:
+            'Bottom-sheet based filter composition for denser criteria sets on mobile.',
+          status: 'working',
+          keywords: ['filter sheet', 'bottom sheet', 'drawer', 'app', 'react native'],
+        },
+        {
+          id: 'search-results',
+          label: 'Search Results',
+          description:
+            'Search results screen that combines query input, chips, and loading or empty feedback.',
+          status: 'working',
+          keywords: ['results', 'search', 'listing', 'app', 'react native'],
+        },
+      ],
+    },
+    {
+      id: 'states',
+      label: 'States',
+      description:
+        'Empty, loading, and recovery states designed for full-screen app views and interrupted mobile sessions.',
+      items: [
+        {
+          id: 'empty-results',
+          label: 'Empty Results',
+          description:
+            'Touch-friendly empty state with helpful guidance and next actions after no matches are found.',
+          status: 'working',
+          keywords: ['empty', 'no results', 'empty state', 'app', 'react native'],
+        },
+        {
+          id: 'loading-panel',
+          label: 'Loading Panel',
+          description:
+            'Structured loading container with skeletons and spacing tuned for mobile surfaces.',
+          status: 'working',
+          keywords: ['loading', 'skeleton', 'panel', 'app', 'react native'],
+        },
+        {
+          id: 'error-recovery',
+          label: 'Error Recovery',
+          description:
+            'Retry, support, and fallback actions after failures in native app flows.',
+          status: 'working',
+          keywords: ['error', 'retry', 'fallback', 'app', 'react native'],
+        },
+      ],
+    },
+  ],
+};
+
+export const patternCategoriesByPlatform: Record<
+  PatternPlatform,
+  PatternCategory[]
+> = {
+  web: buildPatternCategories('web', patternCategorySeeds.web),
+  app: buildPatternCategories('app', patternCategorySeeds.app),
+};
+
+export const isPatternPlatform = (
+  value?: string,
+): value is PatternPlatform => value === 'web' || value === 'app';
+
+export const getPatternCategories = (platform: PatternPlatform) =>
+  patternCategoriesByPlatform[platform];
 
 export const searchEntries: Layout.SearchEntry[] = [
   {
@@ -492,9 +645,23 @@ export const searchEntries: Layout.SearchEntry[] = [
   {
     id: 'patterns-root',
     label: 'Patterns',
-    href: '/patterns',
+    href: '/patterns/web',
     group: 'Overview',
     keywords: ['patterns', 'flows', 'templates', 'examples'],
+  },
+  {
+    id: 'patterns-web-root',
+    label: 'Web Patterns',
+    href: '/patterns/web',
+    group: 'Pattern Platform',
+    keywords: ['patterns', 'web', 'browser', 'desktop'],
+  },
+  {
+    id: 'patterns-app-root',
+    label: 'App Patterns',
+    href: '/patterns/app',
+    group: 'Pattern Platform',
+    keywords: ['patterns', 'app', 'mobile', 'react native'],
   },
   {
     id: 'foundation-root',
@@ -551,26 +718,34 @@ export const searchEntries: Layout.SearchEntry[] = [
     href: '/components/interaction',
     group: 'Category',
   },
-  ...patternCategories.flatMap((category) => [
-    {
-      id: `${category.id}-root`,
-      label: category.label,
-      href: category.href,
-      group: 'Pattern Category',
-      keywords: ['pattern', category.id, category.label.toLowerCase()],
-    },
-    ...category.items.map((item) => ({
-      id: `pattern-${item.id}`,
-      label: item.label,
-      href: item.href,
-      group: `Pattern / ${category.label}`,
-      keywords: [
-        'pattern',
-        category.label.toLowerCase(),
-        ...(item.keywords ?? []),
-      ],
-    })),
-  ]),
+  ...patternPlatforms.flatMap((platform) =>
+    getPatternCategories(platform).flatMap((category) => [
+      {
+        id: `pattern-${platform}-${category.id}-root`,
+        label: `${platform === 'web' ? 'Web' : 'App'} ${category.label}`,
+        href: category.href,
+        group: `Pattern Category / ${platform.toUpperCase()}`,
+        keywords: [
+          'pattern',
+          platform,
+          category.id,
+          category.label.toLowerCase(),
+        ],
+      },
+      ...category.items.map((item) => ({
+        id: `pattern-${platform}-${item.id}`,
+        label: `${platform === 'web' ? 'Web' : 'App'} ${item.label}`,
+        href: item.href,
+        group: `Pattern / ${platform.toUpperCase()} / ${category.label}`,
+        keywords: [
+          'pattern',
+          platform,
+          category.label.toLowerCase(),
+          ...(item.keywords ?? []),
+        ],
+      })),
+    ]),
+  ),
   {
     id: 'app-accordion',
     label: 'App Accordion',

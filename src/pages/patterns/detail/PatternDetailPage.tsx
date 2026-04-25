@@ -3,12 +3,24 @@
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
-import { patternCategories } from '@/constants/common';
-import { useParams } from 'react-router-dom';
+import {
+  getPatternCategories,
+  isPatternPlatform,
+} from '@/constants/common';
+import { cn } from '@/libs/utils';
+import { Link, useParams } from 'react-router-dom';
 
 export default function PatternDetailPage() {
-  const { categoryId, patternId } = useParams();
-  const category = patternCategories.find((entry) => entry.id === categoryId);
+  const {
+    platform: platformParam,
+    categoryId,
+    patternId,
+  } = useParams();
+  const platform = isPatternPlatform(platformParam) ? platformParam : null;
+  const category =
+    platform && categoryId
+      ? getPatternCategories(platform).find((entry) => entry.id === categoryId)
+      : null;
   const pattern = category?.items.find((entry) => entry.id === patternId);
 
   if (!category || !pattern) {
@@ -26,7 +38,7 @@ export default function PatternDetailPage() {
   }
 
   const breadcrumbItems = [
-    { label: 'Patterns', href: '/patterns' },
+    { label: 'Patterns', href: `/patterns/${platform}` },
     { label: category.label, href: category.href },
     { label: pattern.label, href: pattern.href },
   ];
@@ -34,6 +46,27 @@ export default function PatternDetailPage() {
   return (
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={10}>
       <BreadCrumb items={breadcrumbItems} />
+
+      <div className="inline-flex w-fit rounded-xl bg-neutral-100 p-1 dark:bg-neutral-800/80">
+        {(['web', 'app'] as const).map((entry) => {
+          const isActive = platform === entry;
+
+          return (
+            <Link
+              key={entry}
+              to={`/patterns/${entry}/${category.id}/${pattern.id}`}
+              className={cn(
+                'rounded-[10px] px-4 py-2 text-sm font-semibold transition-colors no-underline',
+                isActive
+                  ? 'bg-white text-secondary-500 shadow-sm dark:bg-neutral-900 dark:text-primary-400'
+                  : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100',
+              )}
+            >
+              {entry.toUpperCase()}
+            </Link>
+          );
+        })}
+      </div>
 
       <FlexWrapper direction="col" items="start" gap={4} classes="max-w-3xl">
         <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">

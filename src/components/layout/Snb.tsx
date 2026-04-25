@@ -1,8 +1,12 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { designSystemMenus, patternCategories } from '@/constants/common';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {
+  designSystemMenus,
+  getPatternCategories,
+  type PatternPlatform,
+} from '@/constants/common';
 import { cn } from '@/libs/utils';
 import Divider from './Divider';
 
@@ -22,14 +26,21 @@ type PlatformMenuGroup = {
 
 const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const isPatternsRoute = pathname.startsWith('/patterns');
   const [isResizing, setIsResizing] = useState(false);
-  const [selectedPlatform, setSelectedPlatform] = useState<
+  const [selectedComponentPlatform, setSelectedComponentPlatform] = useState<
     'web' | 'app' | null
   >(null);
   const navRef = useRef<HTMLElement | null>(null);
-  const visiblePlatform =
-    selectedPlatform ?? (pathname.startsWith('/components/app') ? 'app' : 'web');
+  const visibleComponentPlatform =
+    selectedComponentPlatform ??
+    (pathname.startsWith('/components/app') ? 'app' : 'web');
+  const visiblePatternPlatform: PatternPlatform = pathname.startsWith(
+    '/patterns/app',
+  )
+    ? 'app'
+    : 'web';
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
@@ -298,8 +309,10 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     },
   ];
 
-  const patternGroups: PlatformMenuGroup[] = patternCategories.map((category) => ({
-    id: `pattern-${category.id}`,
+  const patternGroups: PlatformMenuGroup[] = getPatternCategories(
+    visiblePatternPlatform,
+  ).map((category) => ({
+    id: `pattern-${visiblePatternPlatform}-${category.id}`,
     label: category.label,
     href: category.href,
     items: category.items.map((item) => ({
@@ -313,7 +326,21 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const menuSections = [
     { id: 'foundation', label: 'Foundation', groups: foundationGroups },
   ];
-  const activePlatformGroups = visiblePlatform === 'web' ? webGroups : appGroups;
+  const activePlatformGroups =
+    visibleComponentPlatform === 'web' ? webGroups : appGroups;
+
+  const handlePatternPlatformChange = (platform: PatternPlatform) => {
+    if (platform === visiblePatternPlatform) return;
+
+    const segments = pathname.split('/').filter(Boolean);
+    const nextSuffix =
+      segments[0] === 'patterns' && segments.length > 2
+        ? `/${segments.slice(2).join('/')}`
+        : '';
+
+    navigate(`/patterns/${platform}${nextSuffix}`);
+    onClose?.();
+  };
 
   return (
     <>
@@ -464,31 +491,35 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
                 ))}
 
                 <li className="mb-4">
-                  {!isPatternsRoute && (
-                    <div className="mb-3 px-2">
-                      <div className="inline-flex w-full rounded-xl bg-neutral-100 p-1 dark:bg-neutral-800/80">
-                        {(['web', 'app'] as const).map((platform) => {
-                          const isActive = visiblePlatform === platform;
+                  <div className="mb-3 px-2">
+                    <div className="inline-flex w-full rounded-xl bg-neutral-100 p-1 dark:bg-neutral-800/80">
+                      {(['web', 'app'] as const).map((platform) => {
+                        const isActive = isPatternsRoute
+                          ? visiblePatternPlatform === platform
+                          : visibleComponentPlatform === platform;
 
-                          return (
-                            <button
-                              key={platform}
-                              type="button"
-                              onClick={() => setSelectedPlatform(platform)}
-                              className={cn(
-                                'flex-1 rounded-[10px] px-3 py-2 text-sm font-semibold transition-colors',
-                                isActive
-                                  ? 'bg-white text-secondary-500 shadow-sm dark:bg-neutral-900 dark:text-primary-400'
-                                  : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200',
-                              )}
-                            >
-                              {platform.toUpperCase()}
-                            </button>
-                          );
-                        })}
-                      </div>
+                        return (
+                          <button
+                            key={platform}
+                            type="button"
+                            onClick={() =>
+                              isPatternsRoute
+                                ? handlePatternPlatformChange(platform)
+                                : setSelectedComponentPlatform(platform)
+                            }
+                            className={cn(
+                              'flex-1 rounded-[10px] px-3 py-2 text-sm font-semibold transition-colors',
+                              isActive
+                                ? 'bg-white text-secondary-500 shadow-sm dark:bg-neutral-900 dark:text-primary-400'
+                                : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200',
+                            )}
+                          >
+                            {platform.toUpperCase()}
+                          </button>
+                        );
+                      })}
                     </div>
-                  )}
+                  </div>
 
                   <div className="flex flex-col gap-1">
                     {(isPatternsRoute ? patternGroups : activePlatformGroups).map((menu) => {

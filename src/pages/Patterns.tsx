@@ -1,10 +1,19 @@
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
-import { patternCategories } from '@/constants/common';
-import { Link } from 'react-router-dom';
+import {
+  getPatternCategories,
+  isPatternPlatform,
+} from '@/constants/common';
+import { cn } from '@/libs/utils';
+import { Link, useParams } from 'react-router-dom';
 import { LuArrowUpRight } from 'react-icons/lu';
 
 export default function Patterns() {
+  const { platform: platformParam } = useParams();
+  const platform = isPatternPlatform(platformParam) ? platformParam : 'web';
+  const categories = getPatternCategories(platform);
+  const platformLabel = platform === 'web' ? 'Web' : 'App';
+
   return (
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={10}>
       <section
@@ -36,13 +45,34 @@ export default function Patterns() {
               variant="B1"
               classes="!font-normal !text-neutral-600 dark:!text-neutral-300"
             >
-              Patterns combine multiple components into reusable flows like auth,
-              forms, search, and recovery states.
+              {platformLabel} patterns combine multiple components into reusable
+              flows like auth, forms, search, and recovery states.
             </Typography>
           </FlexWrapper>
 
+          <div className="inline-flex rounded-xl bg-white/90 p-1 shadow-sm dark:bg-neutral-900/80">
+            {(['web', 'app'] as const).map((entry) => {
+              const isActive = platform === entry;
+
+              return (
+                <Link
+                  key={entry}
+                  to={`/patterns/${entry}`}
+                  className={cn(
+                    'rounded-[10px] px-4 py-2 text-sm font-semibold transition-colors no-underline',
+                    isActive
+                      ? 'bg-emerald-500 text-white dark:bg-emerald-400 dark:text-neutral-950'
+                      : 'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100',
+                  )}
+                >
+                  {entry.toUpperCase()}
+                </Link>
+              );
+            })}
+          </div>
+
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {patternCategories.map((category) => (
+            {categories.map((category) => (
               <Link
                 key={category.id}
                 to={category.href}

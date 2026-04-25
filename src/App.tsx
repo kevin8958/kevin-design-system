@@ -5,6 +5,7 @@ import {
   Route,
   Outlet,
   useLocation,
+  Navigate,
 } from 'react-router-dom';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Gnb from '@/components/layout/Gnb';
@@ -306,9 +307,13 @@ function App() {
         </Route>
 
         <Route path="/patterns" element={<DocsLayout />}>
-          <Route index element={<Patterns />} />
-          <Route path=":categoryId" element={<PatternCategoryPage />} />
-          <Route path=":categoryId/:patternId" element={<PatternDetailPage />} />
+          <Route index element={<Navigate to="/patterns/web" replace />} />
+          <Route path=":platform" element={<Patterns />} />
+          <Route path=":platform/:categoryId" element={<PatternCategoryPage />} />
+          <Route
+            path=":platform/:categoryId/:patternId"
+            element={<PatternDetailPage />}
+          />
         </Route>
       </Routes>
     </AppProvider>
