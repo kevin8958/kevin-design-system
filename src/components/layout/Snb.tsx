@@ -221,10 +221,26 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     {
       id: 'app-navigation',
       label: 'Navigation',
+      href: '/components/app/pagination',
       items: [
-        { id: 'app-navigation-wip', label: '작업중', href: '/components' },
+        {
+          id: 'app-pagination',
+          label: 'Pagination',
+          href: '/components/app/pagination',
+        },
+        {
+          id: 'app-stepper',
+          label: 'Stepper',
+          href: '/components/app/stepper',
+        },
+        { id: 'app-tabs', label: 'Tabs', href: '/components/app/tabs' },
+        {
+          id: 'app-breadcrumb',
+          label: 'Breadcrumb',
+          href: '/components/app/breadcrumb',
+        },
       ],
-      status: 'working',
+      status: 'ready',
     },
     {
       id: 'app-data-display',

@@ -4,6 +4,8 @@ namespace App {
   >;
   type AppInputSize = 'sm' | 'md' | 'lg';
   type AppTextInputType = 'text' | 'password' | 'email' | 'number';
+  type AppNavigationSize = 'sm' | 'md' | 'lg';
+  type AppStepperOrientation = 'horizontal' | 'vertical';
   type AppButtonVariant = 'contain' | 'outline' | 'clear';
   type AppButtonColor =
     | 'primary'
@@ -52,6 +54,24 @@ namespace App {
     name: string;
     sizeLabel?: string;
     status?: AppUploadFileStatus;
+  };
+  type AppStepperItem = {
+    id: string;
+    label: React.ReactNode;
+    description?: React.ReactNode;
+    disabled?: boolean;
+  };
+  type AppTabsItem = {
+    id: string;
+    label: React.ReactNode;
+    content?: React.ReactNode;
+    disabled?: boolean;
+  };
+  type AppBreadcrumbItem = {
+    label: React.ReactNode;
+    href?: string;
+    onPress?: () => void;
+    current?: boolean;
   };
   type AppButtonGroupItem = {
     label: React.ReactNode;
@@ -400,6 +420,50 @@ namespace App {
     selectLabel?: React.ReactNode;
     style?: AppStyleProp;
     dropzoneStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface PaginationProps {
+    currentPage: number;
+    totalPages: number;
+    siblingCount?: number;
+    disabled?: boolean;
+    onPageChange?: (page: number) => void;
+    style?: AppStyleProp;
+    itemStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface StepperProps {
+    items: AppStepperItem[];
+    value: string;
+    onChange?: (id: string) => void;
+    size?: AppNavigationSize;
+    orientation?: AppStepperOrientation;
+    allowStepPress?: boolean;
+    style?: AppStyleProp;
+    itemStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface TabsProps {
+    items: AppTabsItem[];
+    value: string;
+    onChange?: (id: string) => void;
+    disabled?: boolean;
+    size?: AppNavigationSize;
+    style?: AppStyleProp;
+    listStyle?: AppStyleProp;
+    tabStyle?: AppStyleProp;
+    panelStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface BreadcrumbProps {
+    items: AppBreadcrumbItem[];
+    separator?: React.ReactNode;
+    style?: AppStyleProp;
+    itemStyle?: AppStyleProp;
     testID?: string;
   }
 }

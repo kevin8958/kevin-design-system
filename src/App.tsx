@@ -75,6 +75,10 @@ import ComponentAppRadioPage from '@/pages/components/app/radio/ComponentAppRadi
 import ComponentAppSwitchPage from '@/pages/components/app/switch/ComponentAppSwitchPage';
 import ComponentAppDatePickerPage from '@/pages/components/app/datepicker/ComponentAppDatePickerPage';
 import ComponentAppUploadDropzonePage from '@/pages/components/app/uploadDropzone/ComponentAppUploadDropzonePage';
+import ComponentAppPaginationPage from '@/pages/components/app/pagination/ComponentAppPaginationPage';
+import ComponentAppStepperPage from '@/pages/components/app/stepper/ComponentAppStepperPage';
+import ComponentAppTabsPage from '@/pages/components/app/tabs/ComponentAppTabsPage';
+import ComponentAppBreadcrumbPage from '@/pages/components/app/breadcrumb/ComponentAppBreadcrumbPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -265,6 +269,10 @@ function App() {
             path="app/uploadDropzone"
             element={<ComponentAppUploadDropzonePage />}
           />
+          <Route path="app/pagination" element={<ComponentAppPaginationPage />} />
+          <Route path="app/stepper" element={<ComponentAppStepperPage />} />
+          <Route path="app/tabs" element={<ComponentAppTabsPage />} />
+          <Route path="app/breadcrumb" element={<ComponentAppBreadcrumbPage />} />
         </Route>
       </Routes>
     </AppProvider>

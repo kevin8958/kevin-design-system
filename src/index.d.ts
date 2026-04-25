@@ -87,3 +87,7 @@ export { default as AppRadio } from './components/app/AppRadio';
 export { default as AppSwitch } from './components/app/AppSwitch';
 export { default as AppDatePicker } from './components/app/AppDatePicker';
 export { default as AppUploadDropzone } from './components/app/AppUploadDropzone';
+export { default as AppPagination } from './components/app/AppPagination';
+export { default as AppStepper } from './components/app/AppStepper';
+export { default as AppTabs } from './components/app/AppTabs';
+export { default as AppBreadcrumb } from './components/app/AppBreadcrumb';
