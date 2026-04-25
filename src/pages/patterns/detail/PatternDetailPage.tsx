@@ -9,7 +9,9 @@ import {
   isPatternPlatform,
 } from '@/constants/common';
 import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPage';
+import PatternAppSignUpPage from '@/pages/patterns/app/signUp/PatternAppSignUpPage';
 import PatternWebSignInPage from '@/pages/patterns/web/signIn/PatternWebSignInPage';
+import PatternWebSignUpPage from '@/pages/patterns/web/signUp/PatternWebSignUpPage';
 import { useParams } from 'react-router-dom';
 
 export default function PatternDetailPage() {
@@ -29,8 +31,16 @@ export default function PatternDetailPage() {
     return <PatternWebSignInPage />;
   }
 
+  if (platform === 'web' && categoryId === 'auth' && patternId === 'sign-up') {
+    return <PatternWebSignUpPage />;
+  }
+
   if (platform === 'app' && categoryId === 'auth' && patternId === 'sign-in') {
     return <PatternAppSignInPage />;
+  }
+
+  if (platform === 'app' && categoryId === 'auth' && patternId === 'sign-up') {
+    return <PatternAppSignUpPage />;
   }
 
   if (!category || !pattern) {

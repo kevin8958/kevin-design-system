@@ -370,7 +370,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Sign Up',
           description:
             'Account creation form with consent, inline errors, and progressive disclosure for desktop and mobile web.',
-          status: 'working',
+          status: 'ready',
           keywords: ['register', 'signup', 'onboarding', 'form', 'web'],
         },
         {
@@ -500,7 +500,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Sign Up',
           description:
             'Account creation flow for app onboarding with stacked inputs, consent, and validation messaging.',
-          status: 'working',
+          status: 'ready',
           keywords: ['register', 'signup', 'onboarding', 'form', 'app', 'react native'],
         },
         {
