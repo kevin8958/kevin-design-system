@@ -16,24 +16,28 @@ const AppSkeleton = ({
   testID,
 }: App.SkeletonProps) => {
   const { colors } = useAppFeedbackTheme();
-  const [shimmer] = useState(() => new Animated.Value(0));
+  const [shimmer] = useState(() => new Animated.Value(1));
+  const useNativeDriver = typeof document === 'undefined';
 
   useEffect(() => {
-    if (!animated) return undefined;
+    if (!animated) {
+      shimmer.setValue(1);
+      return undefined;
+    }
 
     const loop = Animated.loop(
       Animated.sequence([
         Animated.timing(shimmer, {
           duration: 900,
           easing: Easing.inOut(Easing.ease),
-          toValue: 1,
-          useNativeDriver: false,
+          toValue: 0.55,
+          useNativeDriver,
         }),
         Animated.timing(shimmer, {
           duration: 900,
           easing: Easing.inOut(Easing.ease),
-          toValue: 0,
-          useNativeDriver: false,
+          toValue: 1,
+          useNativeDriver,
         }),
       ]),
     );
@@ -41,7 +45,7 @@ const AppSkeleton = ({
     loop.start();
 
     return () => loop.stop();
-  }, [animated, shimmer]);
+  }, [animated, shimmer, useNativeDriver]);
 
   const resolvedHeight =
     height ?? (variant === 'line' ? 14 : variant === 'circle' ? 40 : 72);
@@ -51,10 +55,6 @@ const AppSkeleton = ({
     typeof resolvedHeight === 'number' ? resolvedHeight / 2 : 999;
   const heightStyle = resolvedHeight as DimensionValue;
   const widthStyle = resolvedWidth as DimensionValue;
-  const animatedBackground = shimmer.interpolate({
-    inputRange: [0, 1],
-    outputRange: [colors.skeletonBase, colors.skeletonHighlight],
-  });
 
   return (
     <Animated.View
@@ -62,10 +62,11 @@ const AppSkeleton = ({
       style={[
         styles.root,
         {
-          backgroundColor: animated ? animatedBackground : colors.skeletonBase,
+          backgroundColor: colors.skeletonBase,
           borderRadius:
             variant === 'circle' ? circleRadius : variant === 'line' ? 999 : 16,
           height: heightStyle,
+          opacity: animated ? shimmer : 1,
           width: widthStyle,
         },
         style,

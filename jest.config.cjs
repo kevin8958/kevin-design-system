@@ -2,6 +2,7 @@ module.exports = {
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
+    '^react-native$': 'react-native-web',
     '^@/(.*)\\.(png|jpg|jpeg|gif|webp|svg)$': '<rootDir>/test/fileMock.js',
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
