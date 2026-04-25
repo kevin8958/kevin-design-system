@@ -14,6 +14,7 @@ import {
   stringifyAppNode,
   useAppInputTheme,
 } from '@/components/app/appInputUtils';
+import { normalizeSearchValue } from '@/libs/utils';
 
 const getPanelHeight = (optionCount: number) => Math.min(optionCount * 52 + 72, 268);
 
@@ -50,18 +51,18 @@ const AppCombobox = ({
   const isOpen = open ?? internalOpen;
   const selectedOption = options.find((option) => option.value === resolvedValue);
   const filteredOptions = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
+    const normalizedQuery = normalizeSearchValue(query);
 
     if (!normalizedQuery) return options;
 
     return options.filter((option) => {
-      const haystack = [
-        stringifyAppNode(option.label),
-        stringifyAppNode(option.description),
-        ...(option.keywords ?? []),
-      ]
-        .join(' ')
-        .toLowerCase();
+      const haystack = normalizeSearchValue(
+        [
+          stringifyAppNode(option.label),
+          stringifyAppNode(option.description),
+          ...(option.keywords ?? []),
+        ].join(' '),
+      );
 
       return haystack.includes(normalizedQuery);
     });

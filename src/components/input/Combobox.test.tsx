@@ -7,6 +7,11 @@ const options: Input.ComboboxOption[] = [
   { label: 'Support', value: 'support', disabled: true },
 ];
 
+const spacedSearchOptions: Input.ComboboxOption[] = [
+  { label: 'TextInput', value: 'text-input', description: 'Single line field' },
+  { label: 'UploadDropzone', value: 'upload-dropzone', description: 'File upload' },
+];
+
 describe('Combobox', () => {
   it('renders the placeholder by default', () => {
     render(<Combobox options={options} value="" placeholder="Search team" />);
@@ -27,6 +32,26 @@ describe('Combobox', () => {
 
     expect(screen.getByRole('option', { name: /engineering/i })).toBeInTheDocument();
     expect(screen.queryByRole('option', { name: /design/i })).not.toBeInTheDocument();
+  });
+
+  it('matches options when the query includes spaces', () => {
+    render(
+      <Combobox
+        options={spacedSearchOptions}
+        value=""
+        placeholder="Search component"
+      />,
+    );
+
+    fireEvent.focus(screen.getByRole('combobox'));
+    fireEvent.change(screen.getByRole('combobox'), {
+      target: { value: 'text input' },
+    });
+
+    expect(screen.getByRole('option', { name: /textinput/i })).toBeInTheDocument();
+    expect(
+      screen.queryByRole('option', { name: /uploaddropzone/i }),
+    ).not.toBeInTheDocument();
   });
 
   it('calls onChange when an option is selected', () => {

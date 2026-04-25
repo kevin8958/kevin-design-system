@@ -4,9 +4,25 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { LuSearch } from 'react-icons/lu';
 import Button from '@/components/action/Button';
 import { searchEntries } from '@/constants/common';
-import { cn } from '@/libs/utils';
+import { cn, normalizeSearchValue } from '@/libs/utils';
 
-const normalize = (value: string) => value.trim().toLowerCase();
+const getFilteredEntries = (query: string) => {
+  const normalizedQuery = normalizeSearchValue(query);
+
+  if (!normalizedQuery) {
+    return searchEntries.slice(0, 12);
+  }
+
+  return searchEntries
+    .filter((entry) => {
+      const haystack = normalizeSearchValue(
+        [entry.label, entry.group, ...(entry.keywords ?? []), entry.href].join(' '),
+      );
+
+      return haystack.includes(normalizedQuery);
+    })
+    .slice(0, 12);
+};
 
 const GnbSearch = () => {
   const [open, setOpen] = useState(false);
@@ -17,26 +33,7 @@ const GnbSearch = () => {
   const { pathname } = useLocation();
 
   const filteredEntries = useMemo(() => {
-    const normalizedQuery = normalize(query);
-
-    if (!normalizedQuery) {
-      return searchEntries.slice(0, 12);
-    }
-
-    return searchEntries
-      .filter((entry) => {
-        const haystack = [
-          entry.label,
-          entry.group,
-          ...(entry.keywords ?? []),
-          entry.href,
-        ]
-          .join(' ')
-          .toLowerCase();
-
-        return haystack.includes(normalizedQuery);
-      })
-      .slice(0, 12);
+    return getFilteredEntries(query);
   }, [query]);
 
   const resetSearch = () => {
@@ -58,11 +55,13 @@ const GnbSearch = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
-        handleOpen();
+        resetSearch();
+        setOpen(true);
       }
 
       if (event.key === 'Escape') {
-        handleClose();
+        setOpen(false);
+        resetSearch();
       }
     };
 
@@ -88,25 +87,7 @@ const GnbSearch = () => {
 
   const handleChangeQuery = (value: string) => {
     setQuery(value);
-
-    const normalizedQuery = normalize(value);
-    const nextFilteredEntries =
-      normalizedQuery.length === 0
-        ? searchEntries.slice(0, 12)
-        : searchEntries
-            .filter((entry) => {
-              const haystack = [
-                entry.label,
-                entry.group,
-                ...(entry.keywords ?? []),
-                entry.href,
-              ]
-                .join(' ')
-                .toLowerCase();
-
-              return haystack.includes(normalizedQuery);
-            })
-            .slice(0, 12);
+    const nextFilteredEntries = getFilteredEntries(value);
 
     setHighlightedIndex(nextFilteredEntries.length > 0 ? 0 : -1);
   };

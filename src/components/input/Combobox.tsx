@@ -16,6 +16,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
 import { LuCheck, LuChevronDown, LuSearch } from 'react-icons/lu';
+import { normalizeSearchValue } from '@/libs/utils';
 
 const triggerVariants = cva(
   'relative flex w-full items-center rounded-xl border bg-white text-neutral-700 shadow-sm outline-none transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
@@ -80,19 +81,16 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
     );
 
     const filteredOptions = useMemo(() => {
-      const normalizedQuery = query.trim().toLowerCase();
+      const normalizedQuery = normalizeSearchValue(query);
 
       if (!normalizedQuery) return options;
 
       return options.filter((option) => {
-        const haystack = [
-          option.label,
-          option.description,
-          ...(option.keywords ?? []),
-        ]
-          .filter(Boolean)
-          .join(' ')
-          .toLowerCase();
+        const haystack = normalizeSearchValue(
+          [option.label, option.description, ...(option.keywords ?? [])]
+            .filter(Boolean)
+            .join(' '),
+        );
 
         return haystack.includes(normalizedQuery);
       });

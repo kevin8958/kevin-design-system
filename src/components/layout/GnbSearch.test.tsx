@@ -39,6 +39,21 @@ describe('GnbSearch', () => {
     expect(screen.queryByText('Typography')).not.toBeInTheDocument();
   });
 
+  it('matches results even when the query includes spaces', () => {
+    render(<RenderWithRouter />);
+
+    fireEvent.click(screen.getByRole('button', { name: /open search/i }));
+    fireEvent.change(
+      screen.getByPlaceholderText(/search components, categories, or docs/i),
+      {
+        target: { value: 'text input' },
+      },
+    );
+
+    expect(screen.getByText('TextInput')).toBeInTheDocument();
+    expect(screen.queryByText('UploadDropzone')).not.toBeInTheDocument();
+  });
+
   it('opens with the keyboard shortcut', () => {
     render(<RenderWithRouter />);
 
