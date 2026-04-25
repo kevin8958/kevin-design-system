@@ -378,7 +378,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Password Reset',
           description:
             'Recovery flow for verification, code entry, and new password setup in a browser context.',
-          status: 'working',
+          status: 'ready',
           keywords: ['forgot password', 'recovery', 'reset', 'web'],
         },
       ],
@@ -508,7 +508,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Password Reset',
           description:
             'Recovery sequence for code verification and new password entry in a native app context.',
-          status: 'working',
+          status: 'ready',
           keywords: ['forgot password', 'recovery', 'reset', 'app', 'react native'],
         },
       ],
