@@ -586,6 +586,34 @@ export const searchEntries: Layout.SearchEntry[] = [
     group: 'App',
     keywords: ['app', 'react native', 'native', 'tooltip'],
   },
+  {
+    id: 'app-alert',
+    label: 'App Alert',
+    href: '/components/app/alert',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'alert', 'feedback'],
+  },
+  {
+    id: 'app-progress',
+    label: 'App Progress',
+    href: '/components/app/progress',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'progress', 'loader'],
+  },
+  {
+    id: 'app-skeleton',
+    label: 'App Skeleton',
+    href: '/components/app/skeleton',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'skeleton', 'placeholder'],
+  },
+  {
+    id: 'app-toast',
+    label: 'App Toast',
+    href: '/components/app/toast',
+    group: 'App',
+    keywords: ['app', 'react native', 'native', 'toast', 'notification'],
+  },
   ...designSystemMenus.flatMap((menu) => {
     if (menu.id === 'components' && menu.sections) {
       return menu.sections.flatMap((section) =>

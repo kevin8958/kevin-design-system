@@ -277,8 +277,22 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
     {
       id: 'app-feedback',
       label: 'Feedback',
-      items: [{ id: 'app-feedback-wip', label: '작업중', href: '/components' }],
-      status: 'working',
+      href: '/components/app/alert',
+      items: [
+        { id: 'app-alert', label: 'Alert', href: '/components/app/alert' },
+        {
+          id: 'app-progress',
+          label: 'Progress',
+          href: '/components/app/progress',
+        },
+        {
+          id: 'app-skeleton',
+          label: 'Skeleton',
+          href: '/components/app/skeleton',
+        },
+        { id: 'app-toast', label: 'Toast', href: '/components/app/toast' },
+      ],
+      status: 'ready',
     },
   ];
 

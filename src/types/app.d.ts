@@ -20,6 +20,24 @@ namespace App {
   type AppDescriptionListColumns = 1 | 2;
   type AppMetricTrend = 'up' | 'down' | 'neutral';
   type AppTooltipPosition = 'top' | 'right' | 'bottom' | 'left';
+  type AppFeedbackVariant = 'info' | 'success' | 'warning' | 'danger';
+  type AppProgressSize = 'sm' | 'md' | 'lg';
+  type AppSkeletonVariant = 'line' | 'rect' | 'circle';
+  type AppToastPlacement =
+    | 'top-left'
+    | 'top-center'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-center'
+    | 'bottom-right';
+  type AppToastItem = {
+    id: string;
+    title: string;
+    description?: string;
+    variant?: AppFeedbackVariant;
+    autoClose?: number;
+    closable?: boolean;
+  };
   type AppButtonVariant = 'contain' | 'outline' | 'clear';
   type AppButtonColor =
     | 'primary'
@@ -575,5 +593,69 @@ namespace App {
     style?: AppStyleProp;
     contentStyle?: AppStyleProp;
     testID?: string;
+  }
+
+  interface AlertProps {
+    title: React.ReactNode;
+    description?: React.ReactNode;
+    variant?: AppFeedbackVariant;
+    closable?: boolean;
+    onClose?: () => void;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface ProgressProps {
+    value: number;
+    max?: number;
+    size?: AppProgressSize;
+    showValue?: boolean;
+    style?: AppStyleProp;
+    trackStyle?: AppStyleProp;
+    indicatorStyle?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface SkeletonProps {
+    width?: number | string;
+    height?: number | string;
+    variant?: AppSkeletonVariant;
+    animated?: boolean;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface ToastProps {
+    title: string;
+    description?: string;
+    variant?: AppFeedbackVariant;
+    placement?: AppToastPlacement;
+    autoClose?: number;
+    stackIndex?: number;
+    closable?: boolean;
+    onClose?: () => void;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface ToastViewportProps {
+    toasts: AppToastItem[];
+    placement?: AppToastPlacement;
+    onClose?: (id: string) => void;
+    style?: AppStyleProp;
+    testID?: string;
+  }
+
+  interface ToastContextValue {
+    showToast: (toast: Omit<AppToastItem, 'id'> & { id?: string }) => string;
+    dismissToast: (id: string) => void;
+    clearToasts: () => void;
+    toasts: AppToastItem[];
+  }
+
+  interface ToastProviderProps {
+    children?: React.ReactNode;
+    placement?: AppToastPlacement;
+    maxVisible?: number;
   }
 }

@@ -87,6 +87,10 @@ import ComponentAppMetricCardPage from '@/pages/components/app/metricCard/Compon
 import ComponentAppTablePage from '@/pages/components/app/table/ComponentAppTablePage';
 import ComponentAppTagPage from '@/pages/components/app/tag/ComponentAppTagPage';
 import ComponentAppTooltipPage from '@/pages/components/app/tooltip/ComponentAppTooltipPage';
+import ComponentAppAlertPage from '@/pages/components/app/alert/ComponentAppAlertPage';
+import ComponentAppProgressPage from '@/pages/components/app/progress/ComponentAppProgressPage';
+import ComponentAppSkeletonPage from '@/pages/components/app/skeleton/ComponentAppSkeletonPage';
+import ComponentAppToastPage from '@/pages/components/app/toast/ComponentAppToastPage';
 
 function BaseLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -292,6 +296,10 @@ function App() {
           <Route path="app/table" element={<ComponentAppTablePage />} />
           <Route path="app/tag" element={<ComponentAppTagPage />} />
           <Route path="app/tooltip" element={<ComponentAppTooltipPage />} />
+          <Route path="app/alert" element={<ComponentAppAlertPage />} />
+          <Route path="app/progress" element={<ComponentAppProgressPage />} />
+          <Route path="app/skeleton" element={<ComponentAppSkeletonPage />} />
+          <Route path="app/toast" element={<ComponentAppToastPage />} />
         </Route>
       </Routes>
     </AppProvider>
