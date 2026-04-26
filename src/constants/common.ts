@@ -394,7 +394,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Profile Edit',
           description:
             'Editable account form with grouped fields, inline validation, and sticky save actions.',
-          status: 'working',
+          status: 'ready',
           keywords: ['profile', 'edit', 'account settings', 'web'],
         },
         {
@@ -402,7 +402,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Address Entry',
           description:
             'Shipping and billing address flow with clear field grouping and desktop-friendly form rhythm.',
-          status: 'working',
+          status: 'ready',
           keywords: ['address', 'shipping', 'billing', 'web'],
         },
         {
@@ -410,7 +410,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Payment Method',
           description:
             'Card and payment detail collection with helper messaging, security cues, and completion states.',
-          status: 'working',
+          status: 'ready',
           keywords: ['payment', 'card', 'checkout', 'web'],
         },
       ],
@@ -524,7 +524,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Profile Edit',
           description:
             'Editable profile form with grouped sections, keyboard-safe layout, and save actions.',
-          status: 'working',
+          status: 'ready',
           keywords: ['profile', 'edit', 'account settings', 'app', 'react native'],
         },
         {
@@ -532,7 +532,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Address Entry',
           description:
             'Address entry flow with stacked inputs, region pickers, and touch-friendly validation.',
-          status: 'working',
+          status: 'ready',
           keywords: ['address', 'shipping', 'billing', 'app', 'react native'],
         },
         {
@@ -540,7 +540,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Payment Method',
           description:
             'Native payment detail entry with secure field grouping and completion feedback.',
-          status: 'working',
+          status: 'ready',
           keywords: ['payment', 'card', 'checkout', 'app', 'react native'],
         },
       ],

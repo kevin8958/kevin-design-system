@@ -8,13 +8,34 @@ import {
   getPatternCategories,
   isPatternPlatform,
 } from '@/constants/common';
+import PatternAppAddressEntryPage from '@/pages/patterns/app/addressEntry/PatternAppAddressEntryPage';
 import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPage';
 import PatternAppPasswordResetPage from '@/pages/patterns/app/passwordReset/PatternAppPasswordResetPage';
+import PatternAppPaymentMethodPage from '@/pages/patterns/app/paymentMethod/PatternAppPaymentMethodPage';
+import PatternAppProfileEditPage from '@/pages/patterns/app/profileEdit/PatternAppProfileEditPage';
 import PatternAppSignUpPage from '@/pages/patterns/app/signUp/PatternAppSignUpPage';
+import PatternWebAddressEntryPage from '@/pages/patterns/web/addressEntry/PatternWebAddressEntryPage';
 import PatternWebPasswordResetPage from '@/pages/patterns/web/passwordReset/PatternWebPasswordResetPage';
+import PatternWebPaymentMethodPage from '@/pages/patterns/web/paymentMethod/PatternWebPaymentMethodPage';
+import PatternWebProfileEditPage from '@/pages/patterns/web/profileEdit/PatternWebProfileEditPage';
 import PatternWebSignInPage from '@/pages/patterns/web/signIn/PatternWebSignInPage';
 import PatternWebSignUpPage from '@/pages/patterns/web/signUp/PatternWebSignUpPage';
 import { useParams } from 'react-router-dom';
+
+const patternPageRegistry = {
+  'web:auth:sign-in': PatternWebSignInPage,
+  'web:auth:sign-up': PatternWebSignUpPage,
+  'web:auth:password-reset': PatternWebPasswordResetPage,
+  'web:forms:profile-edit': PatternWebProfileEditPage,
+  'web:forms:address-entry': PatternWebAddressEntryPage,
+  'web:forms:payment-method': PatternWebPaymentMethodPage,
+  'app:auth:sign-in': PatternAppSignInPage,
+  'app:auth:sign-up': PatternAppSignUpPage,
+  'app:auth:password-reset': PatternAppPasswordResetPage,
+  'app:forms:profile-edit': PatternAppProfileEditPage,
+  'app:forms:address-entry': PatternAppAddressEntryPage,
+  'app:forms:payment-method': PatternAppPaymentMethodPage,
+} as const;
 
 export default function PatternDetailPage() {
   const {
@@ -28,37 +49,14 @@ export default function PatternDetailPage() {
       ? getPatternCategories(platform).find((entry) => entry.id === categoryId)
       : null;
   const pattern = category?.items.find((entry) => entry.id === patternId);
+  const registryKey =
+    platform && categoryId && patternId
+      ? (`${platform}:${categoryId}:${patternId}` as keyof typeof patternPageRegistry)
+      : null;
+  const PatternPage = registryKey ? patternPageRegistry[registryKey] : null;
 
-  if (platform === 'web' && categoryId === 'auth' && patternId === 'sign-in') {
-    return <PatternWebSignInPage />;
-  }
-
-  if (platform === 'web' && categoryId === 'auth' && patternId === 'sign-up') {
-    return <PatternWebSignUpPage />;
-  }
-
-  if (
-    platform === 'web' &&
-    categoryId === 'auth' &&
-    patternId === 'password-reset'
-  ) {
-    return <PatternWebPasswordResetPage />;
-  }
-
-  if (platform === 'app' && categoryId === 'auth' && patternId === 'sign-in') {
-    return <PatternAppSignInPage />;
-  }
-
-  if (platform === 'app' && categoryId === 'auth' && patternId === 'sign-up') {
-    return <PatternAppSignUpPage />;
-  }
-
-  if (
-    platform === 'app' &&
-    categoryId === 'auth' &&
-    patternId === 'password-reset'
-  ) {
-    return <PatternAppPasswordResetPage />;
+  if (PatternPage) {
+    return <PatternPage />;
   }
 
   if (!category || !pattern) {
