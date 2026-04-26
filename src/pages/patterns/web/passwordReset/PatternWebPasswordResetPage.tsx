@@ -99,6 +99,14 @@ export default function PatternWebPasswordResetPage() {
   const [state, setState] = useState<'default' | 'invalid' | 'loading'>(
     'default',
   );
+  const selectedCode =
+    step === 'request' ? requestCode : step === 'reset' ? resetCode : successCode;
+  const selectedDescription =
+    step === 'request'
+      ? 'Use the controller to review how the recovery flow should behave when the person is only identifying their account. This first step should stay lightweight and make the next action obvious.'
+      : step === 'reset'
+        ? 'Use the controller to inspect the reset step with real verification context. The code destination, resend path, and password rules should all stay visible without crowding the form.'
+        : 'Use the controller to confirm the recovery flow closes with a clear success state. The final step should reassure the person, then send them back to sign in with one obvious next action.';
 
   return (
     <PatternDocsPageShell
@@ -169,11 +177,14 @@ export default function PatternWebPasswordResetPage() {
       </div>
 
       <PatternGuideSection
-        title="Request Step"
-        description="The first step should ask for only one thing: the email tied to the account. Keep the action focused and explain what will happen next so the user doesn’t wonder whether the code was sent."
+        title="Recovery Flow"
+        description={selectedDescription}
         example={
-          <CodeExample code={requestCode} className="w-full">
-            <WebPasswordResetPreview step="request" state={step === 'request' ? state : 'default'} />
+          <CodeExample code={selectedCode} className="w-full">
+            <WebPasswordResetPreview
+              step={step}
+              state={step === 'success' ? 'default' : state}
+            />
           </CodeExample>
         }
       />
@@ -183,7 +194,7 @@ export default function PatternWebPasswordResetPage() {
         description="Once the reset code is sent, the next screen needs to combine verification and password replacement without losing context. Show where the code went, support resend, and keep password rules close to the inputs."
         example={
           <CodeExample code={resetCode} className="w-full">
-            <WebPasswordResetPreview step="reset" state={step === 'reset' ? state : 'default'} />
+            <WebPasswordResetPreview step="reset" state="invalid" />
           </CodeExample>
         }
       />

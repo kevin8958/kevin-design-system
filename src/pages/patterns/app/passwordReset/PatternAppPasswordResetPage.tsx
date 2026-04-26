@@ -95,6 +95,16 @@ export default function PatternAppPasswordResetPage() {
   const [state, setState] = useState<'default' | 'invalid' | 'loading'>(
     'default',
   );
+  const selectedCode =
+    step === 'request' ? requestCode : step === 'reset' ? resetCode : successCode;
+  const selectedDescription =
+    step === 'request'
+      ? 'Use the controller to review the lightest recovery entry point. The request step should ask for one thing, explain what happens next, and keep the person moving without extra decisions.'
+      : step === 'reset'
+        ? 'Use the controller to inspect the in-progress reset stage. Code context, resend support, and new password rules should stay visible without forcing the person to leave the screen.'
+        : 'Use the controller to confirm the native flow lands on a clear success moment. The final state should close the loop before handing the person back to sign in.';
+  const selectedMinHeight =
+    step === 'request' ? 620 : step === 'reset' ? 760 : 520;
 
   return (
     <PatternDocsPageShell
@@ -166,14 +176,17 @@ export default function PatternAppPasswordResetPage() {
       </div>
 
       <PatternGuideSection
-        title="Request Step"
-        description="The first mobile recovery step should stay as lightweight as possible: one account email field, one primary action, and a clear explanation of what happens next."
+        title="Recovery Flow"
+        description={selectedDescription}
         example={
-          <CodeExample code={requestCode} className="w-full">
-            <AppDevicePreviewFrame minHeight={620} maxWidthClass="max-w-[420px]">
+          <CodeExample code={selectedCode} className="w-full">
+            <AppDevicePreviewFrame
+              minHeight={selectedMinHeight}
+              maxWidthClass="max-w-[420px]"
+            >
               <AppPasswordResetPreview
-                step="request"
-                state={step === 'request' ? state : 'default'}
+                step={step}
+                state={step === 'success' ? 'default' : state}
               />
             </AppDevicePreviewFrame>
           </CodeExample>
@@ -186,10 +199,7 @@ export default function PatternAppPasswordResetPage() {
         example={
           <CodeExample code={resetCode} className="w-full">
             <AppDevicePreviewFrame minHeight={760} maxWidthClass="max-w-[420px]">
-              <AppPasswordResetPreview
-                step="reset"
-                state={step === 'reset' ? state : 'default'}
-              />
+              <AppPasswordResetPreview step="reset" state="invalid" />
             </AppDevicePreviewFrame>
           </CodeExample>
         }
