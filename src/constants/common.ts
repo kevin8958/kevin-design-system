@@ -458,7 +458,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Empty Results',
           description:
             'Search and list empty state with guidance, fallback actions, and reset affordances.',
-          status: 'working',
+          status: 'ready',
           keywords: ['empty', 'no results', 'empty state', 'web'],
         },
         {
@@ -466,7 +466,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Loading Panel',
           description:
             'Structured loading container that combines skeletons, headings, and content spacing.',
-          status: 'working',
+          status: 'ready',
           keywords: ['loading', 'skeleton', 'panel', 'web'],
         },
         {
@@ -474,7 +474,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Error Recovery',
           description:
             'Retry, support, and fallback actions after failed requests in page-level browser flows.',
-          status: 'working',
+          status: 'ready',
           keywords: ['error', 'retry', 'fallback', 'web'],
         },
       ],
@@ -588,7 +588,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Empty Results',
           description:
             'Touch-friendly empty state with helpful guidance and next actions after no matches are found.',
-          status: 'working',
+          status: 'ready',
           keywords: ['empty', 'no results', 'empty state', 'app', 'react native'],
         },
         {
@@ -596,7 +596,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Loading Panel',
           description:
             'Structured loading container with skeletons and spacing tuned for mobile surfaces.',
-          status: 'working',
+          status: 'ready',
           keywords: ['loading', 'skeleton', 'panel', 'app', 'react native'],
         },
         {
@@ -604,7 +604,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Error Recovery',
           description:
             'Retry, support, and fallback actions after failures in native app flows.',
-          status: 'working',
+          status: 'ready',
           keywords: ['error', 'retry', 'fallback', 'app', 'react native'],
         },
       ],

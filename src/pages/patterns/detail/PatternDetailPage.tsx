@@ -9,7 +9,10 @@ import {
   isPatternPlatform,
 } from '@/constants/common';
 import PatternAppAddressEntryPage from '@/pages/patterns/app/addressEntry/PatternAppAddressEntryPage';
+import PatternAppEmptyResultsPage from '@/pages/patterns/app/emptyResults/PatternAppEmptyResultsPage';
+import PatternAppErrorRecoveryPage from '@/pages/patterns/app/errorRecovery/PatternAppErrorRecoveryPage';
 import PatternAppFilterSheetPage from '@/pages/patterns/app/filterSheet/PatternAppFilterSheetPage';
+import PatternAppLoadingPanelPage from '@/pages/patterns/app/loadingPanel/PatternAppLoadingPanelPage';
 import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPage';
 import PatternAppPasswordResetPage from '@/pages/patterns/app/passwordReset/PatternAppPasswordResetPage';
 import PatternAppPaymentMethodPage from '@/pages/patterns/app/paymentMethod/PatternAppPaymentMethodPage';
@@ -18,7 +21,10 @@ import PatternAppSearchResultsPage from '@/pages/patterns/app/searchResults/Patt
 import PatternAppSignUpPage from '@/pages/patterns/app/signUp/PatternAppSignUpPage';
 import PatternAppSortFilterBarPage from '@/pages/patterns/app/sortFilterBar/PatternAppSortFilterBarPage';
 import PatternWebAddressEntryPage from '@/pages/patterns/web/addressEntry/PatternWebAddressEntryPage';
+import PatternWebEmptyResultsPage from '@/pages/patterns/web/emptyResults/PatternWebEmptyResultsPage';
+import PatternWebErrorRecoveryPage from '@/pages/patterns/web/errorRecovery/PatternWebErrorRecoveryPage';
 import PatternWebFilterSheetPage from '@/pages/patterns/web/filterSheet/PatternWebFilterSheetPage';
+import PatternWebLoadingPanelPage from '@/pages/patterns/web/loadingPanel/PatternWebLoadingPanelPage';
 import PatternWebPasswordResetPage from '@/pages/patterns/web/passwordReset/PatternWebPasswordResetPage';
 import PatternWebPaymentMethodPage from '@/pages/patterns/web/paymentMethod/PatternWebPaymentMethodPage';
 import PatternWebProfileEditPage from '@/pages/patterns/web/profileEdit/PatternWebProfileEditPage';
@@ -38,6 +44,9 @@ const patternPageRegistry = {
   'web:search-filter:sort-filter-bar': PatternWebSortFilterBarPage,
   'web:search-filter:filter-sheet': PatternWebFilterSheetPage,
   'web:search-filter:search-results': PatternWebSearchResultsPage,
+  'web:states:empty-results': PatternWebEmptyResultsPage,
+  'web:states:loading-panel': PatternWebLoadingPanelPage,
+  'web:states:error-recovery': PatternWebErrorRecoveryPage,
   'app:auth:sign-in': PatternAppSignInPage,
   'app:auth:sign-up': PatternAppSignUpPage,
   'app:auth:password-reset': PatternAppPasswordResetPage,
@@ -47,6 +56,9 @@ const patternPageRegistry = {
   'app:search-filter:sort-filter-bar': PatternAppSortFilterBarPage,
   'app:search-filter:filter-sheet': PatternAppFilterSheetPage,
   'app:search-filter:search-results': PatternAppSearchResultsPage,
+  'app:states:empty-results': PatternAppEmptyResultsPage,
+  'app:states:loading-panel': PatternAppLoadingPanelPage,
+  'app:states:error-recovery': PatternAppErrorRecoveryPage,
 } as const;
 
 export default function PatternDetailPage() {
