@@ -426,7 +426,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Sort & Filter Bar',
           description:
             'Persistent toolbar for sorting, filtering, and quick refinement actions above result lists.',
-          status: 'working',
+          status: 'ready',
           keywords: ['filter', 'sort', 'toolbar', 'web'],
         },
         {
@@ -434,7 +434,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Filter Sheet',
           description:
             'Drawer or modal-based filter composition for denser criteria sets on the web.',
-          status: 'working',
+          status: 'ready',
           keywords: ['filter sheet', 'drawer', 'modal', 'web'],
         },
         {
@@ -442,7 +442,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Search Results',
           description:
             'Results layout that combines query input, empty/loading states, and responsive result cards.',
-          status: 'working',
+          status: 'ready',
           keywords: ['results', 'search', 'listing', 'web'],
         },
       ],
@@ -556,7 +556,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Sort & Filter Bar',
           description:
             'Compact top bar for sorting, filtering, and quick refinements inside native list screens.',
-          status: 'working',
+          status: 'ready',
           keywords: ['filter', 'sort', 'toolbar', 'app', 'react native'],
         },
         {
@@ -564,7 +564,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Filter Sheet',
           description:
             'Bottom-sheet based filter composition for denser criteria sets on mobile.',
-          status: 'working',
+          status: 'ready',
           keywords: ['filter sheet', 'bottom sheet', 'drawer', 'app', 'react native'],
         },
         {
@@ -572,7 +572,7 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
           label: 'Search Results',
           description:
             'Search results screen that combines query input, chips, and loading or empty feedback.',
-          status: 'working',
+          status: 'ready',
           keywords: ['results', 'search', 'listing', 'app', 'react native'],
         },
       ],

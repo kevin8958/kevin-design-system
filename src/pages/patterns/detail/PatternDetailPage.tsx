@@ -9,17 +9,23 @@ import {
   isPatternPlatform,
 } from '@/constants/common';
 import PatternAppAddressEntryPage from '@/pages/patterns/app/addressEntry/PatternAppAddressEntryPage';
+import PatternAppFilterSheetPage from '@/pages/patterns/app/filterSheet/PatternAppFilterSheetPage';
 import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPage';
 import PatternAppPasswordResetPage from '@/pages/patterns/app/passwordReset/PatternAppPasswordResetPage';
 import PatternAppPaymentMethodPage from '@/pages/patterns/app/paymentMethod/PatternAppPaymentMethodPage';
 import PatternAppProfileEditPage from '@/pages/patterns/app/profileEdit/PatternAppProfileEditPage';
+import PatternAppSearchResultsPage from '@/pages/patterns/app/searchResults/PatternAppSearchResultsPage';
 import PatternAppSignUpPage from '@/pages/patterns/app/signUp/PatternAppSignUpPage';
+import PatternAppSortFilterBarPage from '@/pages/patterns/app/sortFilterBar/PatternAppSortFilterBarPage';
 import PatternWebAddressEntryPage from '@/pages/patterns/web/addressEntry/PatternWebAddressEntryPage';
+import PatternWebFilterSheetPage from '@/pages/patterns/web/filterSheet/PatternWebFilterSheetPage';
 import PatternWebPasswordResetPage from '@/pages/patterns/web/passwordReset/PatternWebPasswordResetPage';
 import PatternWebPaymentMethodPage from '@/pages/patterns/web/paymentMethod/PatternWebPaymentMethodPage';
 import PatternWebProfileEditPage from '@/pages/patterns/web/profileEdit/PatternWebProfileEditPage';
+import PatternWebSearchResultsPage from '@/pages/patterns/web/searchResults/PatternWebSearchResultsPage';
 import PatternWebSignInPage from '@/pages/patterns/web/signIn/PatternWebSignInPage';
 import PatternWebSignUpPage from '@/pages/patterns/web/signUp/PatternWebSignUpPage';
+import PatternWebSortFilterBarPage from '@/pages/patterns/web/sortFilterBar/PatternWebSortFilterBarPage';
 import { useParams } from 'react-router-dom';
 
 const patternPageRegistry = {
@@ -29,12 +35,18 @@ const patternPageRegistry = {
   'web:forms:profile-edit': PatternWebProfileEditPage,
   'web:forms:address-entry': PatternWebAddressEntryPage,
   'web:forms:payment-method': PatternWebPaymentMethodPage,
+  'web:search-filter:sort-filter-bar': PatternWebSortFilterBarPage,
+  'web:search-filter:filter-sheet': PatternWebFilterSheetPage,
+  'web:search-filter:search-results': PatternWebSearchResultsPage,
   'app:auth:sign-in': PatternAppSignInPage,
   'app:auth:sign-up': PatternAppSignUpPage,
   'app:auth:password-reset': PatternAppPasswordResetPage,
   'app:forms:profile-edit': PatternAppProfileEditPage,
   'app:forms:address-entry': PatternAppAddressEntryPage,
   'app:forms:payment-method': PatternAppPaymentMethodPage,
+  'app:search-filter:sort-filter-bar': PatternAppSortFilterBarPage,
+  'app:search-filter:filter-sheet': PatternAppFilterSheetPage,
+  'app:search-filter:search-results': PatternAppSearchResultsPage,
 } as const;
 
 export default function PatternDetailPage() {
