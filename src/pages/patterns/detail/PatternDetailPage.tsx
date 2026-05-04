@@ -14,26 +14,34 @@ import PatternAppErrorRecoveryPage from '@/pages/patterns/app/errorRecovery/Patt
 import PatternAppFilterSheetPage from '@/pages/patterns/app/filterSheet/PatternAppFilterSheetPage';
 import PatternAppFirstRunSetupPage from '@/pages/patterns/app/firstRunSetup/PatternAppFirstRunSetupPage';
 import PatternAppInviteAcceptancePage from '@/pages/patterns/app/inviteAcceptance/PatternAppInviteAcceptancePage';
+import PatternAppMemberManagementPage from '@/pages/patterns/app/memberManagement/PatternAppMemberManagementPage';
 import PatternAppLoadingPanelPage from '@/pages/patterns/app/loadingPanel/PatternAppLoadingPanelPage';
 import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPage';
 import PatternAppPasswordResetPage from '@/pages/patterns/app/passwordReset/PatternAppPasswordResetPage';
 import PatternAppPaymentMethodPage from '@/pages/patterns/app/paymentMethod/PatternAppPaymentMethodPage';
 import PatternAppPermissionEducationPage from '@/pages/patterns/app/permissionEducation/PatternAppPermissionEducationPage';
 import PatternAppProfileEditPage from '@/pages/patterns/app/profileEdit/PatternAppProfileEditPage';
+import PatternAppRoleChangePage from '@/pages/patterns/app/roleChange/PatternAppRoleChangePage';
 import PatternAppSearchResultsPage from '@/pages/patterns/app/searchResults/PatternAppSearchResultsPage';
 import PatternAppSignUpPage from '@/pages/patterns/app/signUp/PatternAppSignUpPage';
 import PatternAppSortFilterBarPage from '@/pages/patterns/app/sortFilterBar/PatternAppSortFilterBarPage';
+import PatternAppBillingSettingsPage from '@/pages/patterns/app/billingSettings/PatternAppBillingSettingsPage';
+import PatternAppDestructiveConfirmationsPage from '@/pages/patterns/app/destructiveConfirmations/PatternAppDestructiveConfirmationsPage';
 import PatternWebAddressEntryPage from '@/pages/patterns/web/addressEntry/PatternWebAddressEntryPage';
+import PatternWebBillingSettingsPage from '@/pages/patterns/web/billingSettings/PatternWebBillingSettingsPage';
+import PatternWebDestructiveConfirmationsPage from '@/pages/patterns/web/destructiveConfirmations/PatternWebDestructiveConfirmationsPage';
 import PatternWebEmptyResultsPage from '@/pages/patterns/web/emptyResults/PatternWebEmptyResultsPage';
 import PatternWebErrorRecoveryPage from '@/pages/patterns/web/errorRecovery/PatternWebErrorRecoveryPage';
 import PatternWebFilterSheetPage from '@/pages/patterns/web/filterSheet/PatternWebFilterSheetPage';
 import PatternWebFirstRunSetupPage from '@/pages/patterns/web/firstRunSetup/PatternWebFirstRunSetupPage';
 import PatternWebInviteAcceptancePage from '@/pages/patterns/web/inviteAcceptance/PatternWebInviteAcceptancePage';
 import PatternWebLoadingPanelPage from '@/pages/patterns/web/loadingPanel/PatternWebLoadingPanelPage';
+import PatternWebMemberManagementPage from '@/pages/patterns/web/memberManagement/PatternWebMemberManagementPage';
 import PatternWebPasswordResetPage from '@/pages/patterns/web/passwordReset/PatternWebPasswordResetPage';
 import PatternWebPaymentMethodPage from '@/pages/patterns/web/paymentMethod/PatternWebPaymentMethodPage';
 import PatternWebPermissionEducationPage from '@/pages/patterns/web/permissionEducation/PatternWebPermissionEducationPage';
 import PatternWebProfileEditPage from '@/pages/patterns/web/profileEdit/PatternWebProfileEditPage';
+import PatternWebRoleChangePage from '@/pages/patterns/web/roleChange/PatternWebRoleChangePage';
 import PatternWebSearchResultsPage from '@/pages/patterns/web/searchResults/PatternWebSearchResultsPage';
 import PatternWebSignInPage from '@/pages/patterns/web/signIn/PatternWebSignInPage';
 import PatternWebSignUpPage from '@/pages/patterns/web/signUp/PatternWebSignUpPage';
@@ -47,6 +55,11 @@ const patternPageRegistry = {
   'web:onboarding:invite-acceptance': PatternWebInviteAcceptancePage,
   'web:onboarding:first-run-setup': PatternWebFirstRunSetupPage,
   'web:onboarding:permission-education': PatternWebPermissionEducationPage,
+  'web:settings-admin:member-management': PatternWebMemberManagementPage,
+  'web:settings-admin:role-change': PatternWebRoleChangePage,
+  'web:settings-admin:billing-settings': PatternWebBillingSettingsPage,
+  'web:settings-admin:destructive-confirmations':
+    PatternWebDestructiveConfirmationsPage,
   'web:auth:sign-in': PatternWebSignInPage,
   'web:auth:sign-up': PatternWebSignUpPage,
   'web:auth:password-reset': PatternWebPasswordResetPage,
@@ -63,6 +76,11 @@ const patternPageRegistry = {
   'app:onboarding:invite-acceptance': PatternAppInviteAcceptancePage,
   'app:onboarding:first-run-setup': PatternAppFirstRunSetupPage,
   'app:onboarding:permission-education': PatternAppPermissionEducationPage,
+  'app:settings-admin:member-management': PatternAppMemberManagementPage,
+  'app:settings-admin:role-change': PatternAppRoleChangePage,
+  'app:settings-admin:billing-settings': PatternAppBillingSettingsPage,
+  'app:settings-admin:destructive-confirmations':
+    PatternAppDestructiveConfirmationsPage,
   'app:auth:sign-in': PatternAppSignInPage,
   'app:auth:sign-up': PatternAppSignUpPage,
   'app:auth:password-reset': PatternAppPasswordResetPage,

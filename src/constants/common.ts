@@ -402,6 +402,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
       ],
     },
     {
+      id: 'settings-admin',
+      label: 'Settings / Admin',
+      description:
+        'Administrative flows for members, roles, billing, and destructive actions where policy clarity and operational safety matter most.',
+      items: [
+        {
+          id: 'member-management',
+          label: 'Member Management',
+          description:
+            'Review members, invite health, and access state while keeping admin actions close to the list itself.',
+          status: 'ready',
+          keywords: ['members', 'access', 'invites', 'admin', 'web'],
+        },
+        {
+          id: 'role-change',
+          label: 'Role Change',
+          description:
+            'Compare current and next permissions before promoting or demoting a member.',
+          status: 'ready',
+          keywords: ['role', 'permissions', 'admin', 'web'],
+        },
+        {
+          id: 'billing-settings',
+          label: 'Billing Settings',
+          description:
+            'Manage plan state, payment recovery, invoice details, and seat drivers.',
+          status: 'ready',
+          keywords: ['billing', 'plan', 'invoice', 'seats', 'web'],
+        },
+        {
+          id: 'destructive-confirmations',
+          label: 'Destructive Confirmations',
+          description:
+            'Handle irreversible admin actions with explicit risk framing and appropriately scaled safeguards.',
+          status: 'ready',
+          keywords: ['delete', 'destructive', 'confirmation', 'admin', 'web'],
+        },
+      ],
+    },
+    {
       id: 'auth',
       label: 'Auth',
       description:
@@ -568,6 +608,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
             'Native pre-permission guidance that explains platform access before the system prompt appears.',
           status: 'ready',
           keywords: ['permission', 'education', 'notifications', 'access', 'app', 'react native'],
+        },
+      ],
+    },
+    {
+      id: 'settings-admin',
+      label: 'Settings / Admin',
+      description:
+        'Native administrative flows for members, roles, billing, and high-risk actions that need compact clarity and safe confirmation.',
+      items: [
+        {
+          id: 'member-management',
+          label: 'Member Management',
+          description:
+            'Touch-first member management pattern for access review, invites, and admin coverage.',
+          status: 'ready',
+          keywords: ['members', 'access', 'invites', 'admin', 'app', 'react native'],
+        },
+        {
+          id: 'role-change',
+          label: 'Role Change',
+          description:
+            'Mobile role update pattern with clear capability comparison and elevated-risk confirmation.',
+          status: 'ready',
+          keywords: ['role', 'permissions', 'admin', 'app', 'react native'],
+        },
+        {
+          id: 'billing-settings',
+          label: 'Billing Settings',
+          description:
+            'Native billing settings pattern for plan state, invoice details, and payment recovery.',
+          status: 'ready',
+          keywords: ['billing', 'plan', 'invoice', 'app', 'react native'],
+        },
+        {
+          id: 'destructive-confirmations',
+          label: 'Destructive Confirmations',
+          description:
+            'Irreversible admin action pattern for mobile with explicit blast-radius communication and safer acknowledgement.',
+          status: 'ready',
+          keywords: ['delete', 'destructive', 'confirmation', 'app', 'react native'],
         },
       ],
     },
