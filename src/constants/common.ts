@@ -442,6 +442,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
       ],
     },
     {
+      id: 'commerce-plans',
+      label: 'Commerce / Plans',
+      description:
+        'Pricing, checkout, subscription, and invoice flows that help buyers understand money, timing, and plan impact before they commit.',
+      items: [
+        {
+          id: 'pricing-selection',
+          label: 'Pricing Selection',
+          description:
+            'Plan comparison pattern for pricing tiers, recommendation cues, and billing context before checkout begins.',
+          status: 'ready',
+          keywords: ['pricing', 'plans', 'subscription', 'checkout', 'web'],
+        },
+        {
+          id: 'checkout-summary',
+          label: 'Checkout Summary',
+          description:
+            'Order summary pattern for plan, seat, discount, and total review while payment is completed.',
+          status: 'ready',
+          keywords: ['checkout', 'summary', 'payment', 'billing', 'web'],
+        },
+        {
+          id: 'subscription-change',
+          label: 'Subscription Change',
+          description:
+            'Upgrade and downgrade pattern with proration, timing, and entitlement impact explained clearly.',
+          status: 'ready',
+          keywords: ['subscription', 'upgrade', 'downgrade', 'billing', 'web'],
+        },
+        {
+          id: 'invoice-flows',
+          label: 'Invoice Flows',
+          description:
+            'Invoice review and recovery pattern for open, paid, and overdue documents in billing workflows.',
+          status: 'ready',
+          keywords: ['invoice', 'billing', 'finance', 'payment', 'web'],
+        },
+      ],
+    },
+    {
       id: 'auth',
       label: 'Auth',
       description:
@@ -648,6 +688,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
             'Irreversible admin action pattern for mobile with explicit blast-radius communication and safer acknowledgement.',
           status: 'ready',
           keywords: ['delete', 'destructive', 'confirmation', 'app', 'react native'],
+        },
+      ],
+    },
+    {
+      id: 'commerce-plans',
+      label: 'Commerce / Plans',
+      description:
+        'Mobile pricing, checkout, subscription, and invoice flows that keep billing context legible in touch-first screens.',
+      items: [
+        {
+          id: 'pricing-selection',
+          label: 'Pricing Selection',
+          description:
+            'Native pricing comparison pattern with tier recommendation and billing guidance before checkout starts.',
+          status: 'ready',
+          keywords: ['pricing', 'plans', 'subscription', 'checkout', 'app', 'react native'],
+        },
+        {
+          id: 'checkout-summary',
+          label: 'Checkout Summary',
+          description:
+            'Touch-first checkout summary for plan, total, promo, and payment recovery in a narrow layout.',
+          status: 'ready',
+          keywords: ['checkout', 'summary', 'payment', 'billing', 'app', 'react native'],
+        },
+        {
+          id: 'subscription-change',
+          label: 'Subscription Change',
+          description:
+            'Mobile upgrade and downgrade pattern that explains proration, timing, and seat impact before confirmation.',
+          status: 'ready',
+          keywords: ['subscription', 'upgrade', 'downgrade', 'billing', 'app', 'react native'],
+        },
+        {
+          id: 'invoice-flows',
+          label: 'Invoice Flows',
+          description:
+            'Native invoice pattern for status review, accounting metadata, and overdue recovery.',
+          status: 'ready',
+          keywords: ['invoice', 'billing', 'finance', 'payment', 'app', 'react native'],
         },
       ],
     },
