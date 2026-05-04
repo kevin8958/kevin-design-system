@@ -530,6 +530,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
       ],
     },
     {
+      id: 'creation-publishing',
+      label: 'Creation / Publishing',
+      description:
+        'Authoring-to-publish patterns for creating drafts, preserving work, routing review, and confirming live changes safely.',
+      items: [
+        {
+          id: 'editor-flow',
+          label: 'Editor Flow',
+          description:
+            'Structured authoring pattern for draft editing, readiness cues, and next-step actions.',
+          status: 'ready',
+          keywords: ['editor', 'authoring', 'draft', 'creation', 'web'],
+        },
+        {
+          id: 'draft-save',
+          label: 'Draft Save',
+          description:
+            'Save-confidence pattern for autosave, version awareness, and conflict recovery.',
+          status: 'ready',
+          keywords: ['draft save', 'autosave', 'sync', 'version', 'web'],
+        },
+        {
+          id: 'review-handoff',
+          label: 'Review Handoff',
+          description:
+            'Creation handoff pattern for packaging drafts and sending them into the right review lane.',
+          status: 'ready',
+          keywords: ['review', 'handoff', 'approval', 'draft', 'web'],
+        },
+        {
+          id: 'publish-confirmation',
+          label: 'Publish Confirmation',
+          description:
+            'Final publish pattern for destination review, audience scope, and live-change confirmation.',
+          status: 'ready',
+          keywords: ['publish', 'go live', 'schedule', 'audience', 'web'],
+        },
+      ],
+    },
+    {
       id: 'auth',
       label: 'Auth',
       description:
@@ -824,6 +864,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
             'Mobile activity-feed pattern for collaboration history, filters, and sync recovery.',
           status: 'ready',
           keywords: ['activity', 'feed', 'timeline', 'history', 'app', 'react native'],
+        },
+      ],
+    },
+    {
+      id: 'creation-publishing',
+      label: 'Creation / Publishing',
+      description:
+        'Mobile authoring and publishing patterns for editing drafts, preserving work, routing review, and confirming go-live actions.',
+      items: [
+        {
+          id: 'editor-flow',
+          label: 'Editor Flow',
+          description:
+            'Touch-first authoring pattern for editing drafts, seeing progress, and moving creation forward.',
+          status: 'ready',
+          keywords: ['editor', 'authoring', 'draft', 'creation', 'app', 'react native'],
+        },
+        {
+          id: 'draft-save',
+          label: 'Draft Save',
+          description:
+            'Mobile save-confidence pattern for autosave, sync state, and recovery from interrupted sessions.',
+          status: 'ready',
+          keywords: ['draft save', 'autosave', 'sync', 'version', 'app', 'react native'],
+        },
+        {
+          id: 'review-handoff',
+          label: 'Review Handoff',
+          description:
+            'Native handoff pattern for packaging drafts and sending them to reviewers with clear scope.',
+          status: 'ready',
+          keywords: ['review', 'handoff', 'approval', 'draft', 'app', 'react native'],
+        },
+        {
+          id: 'publish-confirmation',
+          label: 'Publish Confirmation',
+          description:
+            'Go-live confirmation pattern for destination, audience, and high-risk publish actions on mobile.',
+          status: 'ready',
+          keywords: ['publish', 'go live', 'schedule', 'audience', 'app', 'react native'],
         },
       ],
     },

@@ -13,6 +13,8 @@ import PatternAppActivityFlowsPage from '@/pages/patterns/app/activityFlows/Patt
 import PatternAppApprovalsPage from '@/pages/patterns/app/approvals/PatternAppApprovalsPage';
 import PatternAppCheckoutSummaryPage from '@/pages/patterns/app/checkoutSummary/PatternAppCheckoutSummaryPage';
 import PatternAppCommentsPage from '@/pages/patterns/app/comments/PatternAppCommentsPage';
+import PatternAppDraftSavePage from '@/pages/patterns/app/draftSave/PatternAppDraftSavePage';
+import PatternAppEditorFlowPage from '@/pages/patterns/app/editorFlow/PatternAppEditorFlowPage';
 import PatternAppEmptyResultsPage from '@/pages/patterns/app/emptyResults/PatternAppEmptyResultsPage';
 import PatternAppErrorRecoveryPage from '@/pages/patterns/app/errorRecovery/PatternAppErrorRecoveryPage';
 import PatternAppFilterSheetPage from '@/pages/patterns/app/filterSheet/PatternAppFilterSheetPage';
@@ -26,8 +28,10 @@ import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPa
 import PatternAppPasswordResetPage from '@/pages/patterns/app/passwordReset/PatternAppPasswordResetPage';
 import PatternAppPaymentMethodPage from '@/pages/patterns/app/paymentMethod/PatternAppPaymentMethodPage';
 import PatternAppPermissionEducationPage from '@/pages/patterns/app/permissionEducation/PatternAppPermissionEducationPage';
+import PatternAppPublishConfirmationPage from '@/pages/patterns/app/publishConfirmation/PatternAppPublishConfirmationPage';
 import PatternAppPricingSelectionPage from '@/pages/patterns/app/pricingSelection/PatternAppPricingSelectionPage';
 import PatternAppProfileEditPage from '@/pages/patterns/app/profileEdit/PatternAppProfileEditPage';
+import PatternAppReviewHandoffPage from '@/pages/patterns/app/reviewHandoff/PatternAppReviewHandoffPage';
 import PatternAppRoleChangePage from '@/pages/patterns/app/roleChange/PatternAppRoleChangePage';
 import PatternAppSearchResultsPage from '@/pages/patterns/app/searchResults/PatternAppSearchResultsPage';
 import PatternAppSharingPage from '@/pages/patterns/app/sharing/PatternAppSharingPage';
@@ -42,6 +46,8 @@ import PatternWebApprovalsPage from '@/pages/patterns/web/approvals/PatternWebAp
 import PatternWebBillingSettingsPage from '@/pages/patterns/web/billingSettings/PatternWebBillingSettingsPage';
 import PatternWebCheckoutSummaryPage from '@/pages/patterns/web/checkoutSummary/PatternWebCheckoutSummaryPage';
 import PatternWebCommentsPage from '@/pages/patterns/web/comments/PatternWebCommentsPage';
+import PatternWebDraftSavePage from '@/pages/patterns/web/draftSave/PatternWebDraftSavePage';
+import PatternWebEditorFlowPage from '@/pages/patterns/web/editorFlow/PatternWebEditorFlowPage';
 import PatternWebDestructiveConfirmationsPage from '@/pages/patterns/web/destructiveConfirmations/PatternWebDestructiveConfirmationsPage';
 import PatternWebEmptyResultsPage from '@/pages/patterns/web/emptyResults/PatternWebEmptyResultsPage';
 import PatternWebErrorRecoveryPage from '@/pages/patterns/web/errorRecovery/PatternWebErrorRecoveryPage';
@@ -55,8 +61,10 @@ import PatternWebMentionsPage from '@/pages/patterns/web/mentions/PatternWebMent
 import PatternWebPasswordResetPage from '@/pages/patterns/web/passwordReset/PatternWebPasswordResetPage';
 import PatternWebPaymentMethodPage from '@/pages/patterns/web/paymentMethod/PatternWebPaymentMethodPage';
 import PatternWebPermissionEducationPage from '@/pages/patterns/web/permissionEducation/PatternWebPermissionEducationPage';
+import PatternWebPublishConfirmationPage from '@/pages/patterns/web/publishConfirmation/PatternWebPublishConfirmationPage';
 import PatternWebPricingSelectionPage from '@/pages/patterns/web/pricingSelection/PatternWebPricingSelectionPage';
 import PatternWebProfileEditPage from '@/pages/patterns/web/profileEdit/PatternWebProfileEditPage';
+import PatternWebReviewHandoffPage from '@/pages/patterns/web/reviewHandoff/PatternWebReviewHandoffPage';
 import PatternWebRoleChangePage from '@/pages/patterns/web/roleChange/PatternWebRoleChangePage';
 import PatternWebSearchResultsPage from '@/pages/patterns/web/searchResults/PatternWebSearchResultsPage';
 import PatternWebSharingPage from '@/pages/patterns/web/sharing/PatternWebSharingPage';
@@ -87,6 +95,11 @@ const patternPageRegistry = {
   'web:collaboration:sharing': PatternWebSharingPage,
   'web:collaboration:mentions': PatternWebMentionsPage,
   'web:collaboration:activity-flows': PatternWebActivityFlowsPage,
+  'web:creation-publishing:editor-flow': PatternWebEditorFlowPage,
+  'web:creation-publishing:draft-save': PatternWebDraftSavePage,
+  'web:creation-publishing:review-handoff': PatternWebReviewHandoffPage,
+  'web:creation-publishing:publish-confirmation':
+    PatternWebPublishConfirmationPage,
   'web:auth:sign-in': PatternWebSignInPage,
   'web:auth:sign-up': PatternWebSignUpPage,
   'web:auth:password-reset': PatternWebPasswordResetPage,
@@ -117,6 +130,11 @@ const patternPageRegistry = {
   'app:collaboration:sharing': PatternAppSharingPage,
   'app:collaboration:mentions': PatternAppMentionsPage,
   'app:collaboration:activity-flows': PatternAppActivityFlowsPage,
+  'app:creation-publishing:editor-flow': PatternAppEditorFlowPage,
+  'app:creation-publishing:draft-save': PatternAppDraftSavePage,
+  'app:creation-publishing:review-handoff': PatternAppReviewHandoffPage,
+  'app:creation-publishing:publish-confirmation':
+    PatternAppPublishConfirmationPage,
   'app:auth:sign-in': PatternAppSignInPage,
   'app:auth:sign-up': PatternAppSignUpPage,
   'app:auth:password-reset': PatternAppPasswordResetPage,
