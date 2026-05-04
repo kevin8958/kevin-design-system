@@ -9,7 +9,10 @@ import {
   isPatternPlatform,
 } from '@/constants/common';
 import PatternAppAddressEntryPage from '@/pages/patterns/app/addressEntry/PatternAppAddressEntryPage';
+import PatternAppActivityFlowsPage from '@/pages/patterns/app/activityFlows/PatternAppActivityFlowsPage';
+import PatternAppApprovalsPage from '@/pages/patterns/app/approvals/PatternAppApprovalsPage';
 import PatternAppCheckoutSummaryPage from '@/pages/patterns/app/checkoutSummary/PatternAppCheckoutSummaryPage';
+import PatternAppCommentsPage from '@/pages/patterns/app/comments/PatternAppCommentsPage';
 import PatternAppEmptyResultsPage from '@/pages/patterns/app/emptyResults/PatternAppEmptyResultsPage';
 import PatternAppErrorRecoveryPage from '@/pages/patterns/app/errorRecovery/PatternAppErrorRecoveryPage';
 import PatternAppFilterSheetPage from '@/pages/patterns/app/filterSheet/PatternAppFilterSheetPage';
@@ -17,6 +20,7 @@ import PatternAppFirstRunSetupPage from '@/pages/patterns/app/firstRunSetup/Patt
 import PatternAppInvoiceFlowsPage from '@/pages/patterns/app/invoiceFlows/PatternAppInvoiceFlowsPage';
 import PatternAppInviteAcceptancePage from '@/pages/patterns/app/inviteAcceptance/PatternAppInviteAcceptancePage';
 import PatternAppMemberManagementPage from '@/pages/patterns/app/memberManagement/PatternAppMemberManagementPage';
+import PatternAppMentionsPage from '@/pages/patterns/app/mentions/PatternAppMentionsPage';
 import PatternAppLoadingPanelPage from '@/pages/patterns/app/loadingPanel/PatternAppLoadingPanelPage';
 import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPage';
 import PatternAppPasswordResetPage from '@/pages/patterns/app/passwordReset/PatternAppPasswordResetPage';
@@ -26,14 +30,18 @@ import PatternAppPricingSelectionPage from '@/pages/patterns/app/pricingSelectio
 import PatternAppProfileEditPage from '@/pages/patterns/app/profileEdit/PatternAppProfileEditPage';
 import PatternAppRoleChangePage from '@/pages/patterns/app/roleChange/PatternAppRoleChangePage';
 import PatternAppSearchResultsPage from '@/pages/patterns/app/searchResults/PatternAppSearchResultsPage';
+import PatternAppSharingPage from '@/pages/patterns/app/sharing/PatternAppSharingPage';
 import PatternAppSignUpPage from '@/pages/patterns/app/signUp/PatternAppSignUpPage';
 import PatternAppSortFilterBarPage from '@/pages/patterns/app/sortFilterBar/PatternAppSortFilterBarPage';
 import PatternAppSubscriptionChangePage from '@/pages/patterns/app/subscriptionChange/PatternAppSubscriptionChangePage';
 import PatternAppBillingSettingsPage from '@/pages/patterns/app/billingSettings/PatternAppBillingSettingsPage';
 import PatternAppDestructiveConfirmationsPage from '@/pages/patterns/app/destructiveConfirmations/PatternAppDestructiveConfirmationsPage';
 import PatternWebAddressEntryPage from '@/pages/patterns/web/addressEntry/PatternWebAddressEntryPage';
+import PatternWebActivityFlowsPage from '@/pages/patterns/web/activityFlows/PatternWebActivityFlowsPage';
+import PatternWebApprovalsPage from '@/pages/patterns/web/approvals/PatternWebApprovalsPage';
 import PatternWebBillingSettingsPage from '@/pages/patterns/web/billingSettings/PatternWebBillingSettingsPage';
 import PatternWebCheckoutSummaryPage from '@/pages/patterns/web/checkoutSummary/PatternWebCheckoutSummaryPage';
+import PatternWebCommentsPage from '@/pages/patterns/web/comments/PatternWebCommentsPage';
 import PatternWebDestructiveConfirmationsPage from '@/pages/patterns/web/destructiveConfirmations/PatternWebDestructiveConfirmationsPage';
 import PatternWebEmptyResultsPage from '@/pages/patterns/web/emptyResults/PatternWebEmptyResultsPage';
 import PatternWebErrorRecoveryPage from '@/pages/patterns/web/errorRecovery/PatternWebErrorRecoveryPage';
@@ -43,6 +51,7 @@ import PatternWebInvoiceFlowsPage from '@/pages/patterns/web/invoiceFlows/Patter
 import PatternWebInviteAcceptancePage from '@/pages/patterns/web/inviteAcceptance/PatternWebInviteAcceptancePage';
 import PatternWebLoadingPanelPage from '@/pages/patterns/web/loadingPanel/PatternWebLoadingPanelPage';
 import PatternWebMemberManagementPage from '@/pages/patterns/web/memberManagement/PatternWebMemberManagementPage';
+import PatternWebMentionsPage from '@/pages/patterns/web/mentions/PatternWebMentionsPage';
 import PatternWebPasswordResetPage from '@/pages/patterns/web/passwordReset/PatternWebPasswordResetPage';
 import PatternWebPaymentMethodPage from '@/pages/patterns/web/paymentMethod/PatternWebPaymentMethodPage';
 import PatternWebPermissionEducationPage from '@/pages/patterns/web/permissionEducation/PatternWebPermissionEducationPage';
@@ -50,6 +59,7 @@ import PatternWebPricingSelectionPage from '@/pages/patterns/web/pricingSelectio
 import PatternWebProfileEditPage from '@/pages/patterns/web/profileEdit/PatternWebProfileEditPage';
 import PatternWebRoleChangePage from '@/pages/patterns/web/roleChange/PatternWebRoleChangePage';
 import PatternWebSearchResultsPage from '@/pages/patterns/web/searchResults/PatternWebSearchResultsPage';
+import PatternWebSharingPage from '@/pages/patterns/web/sharing/PatternWebSharingPage';
 import PatternWebSignInPage from '@/pages/patterns/web/signIn/PatternWebSignInPage';
 import PatternWebSignUpPage from '@/pages/patterns/web/signUp/PatternWebSignUpPage';
 import PatternWebSortFilterBarPage from '@/pages/patterns/web/sortFilterBar/PatternWebSortFilterBarPage';
@@ -72,6 +82,11 @@ const patternPageRegistry = {
   'web:commerce-plans:checkout-summary': PatternWebCheckoutSummaryPage,
   'web:commerce-plans:subscription-change': PatternWebSubscriptionChangePage,
   'web:commerce-plans:invoice-flows': PatternWebInvoiceFlowsPage,
+  'web:collaboration:comments': PatternWebCommentsPage,
+  'web:collaboration:approvals': PatternWebApprovalsPage,
+  'web:collaboration:sharing': PatternWebSharingPage,
+  'web:collaboration:mentions': PatternWebMentionsPage,
+  'web:collaboration:activity-flows': PatternWebActivityFlowsPage,
   'web:auth:sign-in': PatternWebSignInPage,
   'web:auth:sign-up': PatternWebSignUpPage,
   'web:auth:password-reset': PatternWebPasswordResetPage,
@@ -97,6 +112,11 @@ const patternPageRegistry = {
   'app:commerce-plans:checkout-summary': PatternAppCheckoutSummaryPage,
   'app:commerce-plans:subscription-change': PatternAppSubscriptionChangePage,
   'app:commerce-plans:invoice-flows': PatternAppInvoiceFlowsPage,
+  'app:collaboration:comments': PatternAppCommentsPage,
+  'app:collaboration:approvals': PatternAppApprovalsPage,
+  'app:collaboration:sharing': PatternAppSharingPage,
+  'app:collaboration:mentions': PatternAppMentionsPage,
+  'app:collaboration:activity-flows': PatternAppActivityFlowsPage,
   'app:auth:sign-in': PatternAppSignInPage,
   'app:auth:sign-up': PatternAppSignUpPage,
   'app:auth:password-reset': PatternAppPasswordResetPage,

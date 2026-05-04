@@ -482,6 +482,54 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
       ],
     },
     {
+      id: 'collaboration',
+      label: 'Collaboration',
+      description:
+        'Shared-work patterns for feedback, approvals, access, mentions, and activity history where team coordination needs to stay visible.',
+      items: [
+        {
+          id: 'comments',
+          label: 'Comments',
+          description:
+            'Threaded discussion pattern for contextual feedback, reply flow, and resolution tracking around shared work.',
+          status: 'ready',
+          keywords: ['comments', 'thread', 'feedback', 'review', 'web'],
+        },
+        {
+          id: 'approvals',
+          label: 'Approvals',
+          description:
+            'Review and sign-off pattern for approval criteria, reviewer coverage, and blocked decisions.',
+          status: 'ready',
+          keywords: ['approval', 'review', 'sign off', 'workflow', 'web'],
+        },
+        {
+          id: 'sharing',
+          label: 'Sharing',
+          description:
+            'Invite and access pattern for collaborator entry, permission scope, and public-link safeguards.',
+          status: 'ready',
+          keywords: ['sharing', 'invite', 'permissions', 'access', 'web'],
+        },
+        {
+          id: 'mentions',
+          label: 'Mentions',
+          description:
+            'Mention composer pattern for notification-aware writing and contextual suggestion lists.',
+          status: 'ready',
+          keywords: ['mentions', 'notify', 'comment', 'composer', 'web'],
+        },
+        {
+          id: 'activity-flows',
+          label: 'Activity Flows',
+          description:
+            'Timeline pattern for collaboration history, filters, and recovery when the feed is delayed.',
+          status: 'ready',
+          keywords: ['activity', 'feed', 'timeline', 'history', 'web'],
+        },
+      ],
+    },
+    {
       id: 'auth',
       label: 'Auth',
       description:
@@ -728,6 +776,54 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
             'Native invoice pattern for status review, accounting metadata, and overdue recovery.',
           status: 'ready',
           keywords: ['invoice', 'billing', 'finance', 'payment', 'app', 'react native'],
+        },
+      ],
+    },
+    {
+      id: 'collaboration',
+      label: 'Collaboration',
+      description:
+        'Touch-first collaboration patterns for comments, approvals, sharing, mentions, and activity history inside native apps.',
+      items: [
+        {
+          id: 'comments',
+          label: 'Comments',
+          description:
+            'Mobile threaded feedback pattern for contextual discussion, replies, and resolution states.',
+          status: 'ready',
+          keywords: ['comments', 'thread', 'feedback', 'review', 'app', 'react native'],
+        },
+        {
+          id: 'approvals',
+          label: 'Approvals',
+          description:
+            'Native sign-off pattern for review criteria, approval actions, and blocked decisions.',
+          status: 'ready',
+          keywords: ['approval', 'review', 'sign off', 'workflow', 'app', 'react native'],
+        },
+        {
+          id: 'sharing',
+          label: 'Sharing',
+          description:
+            'Touch-first sharing pattern for collaborator invites, access scope, and public-link safeguards.',
+          status: 'ready',
+          keywords: ['sharing', 'invite', 'permissions', 'access', 'app', 'react native'],
+        },
+        {
+          id: 'mentions',
+          label: 'Mentions',
+          description:
+            'Native mention pattern for notification-aware writing and suggestion context.',
+          status: 'ready',
+          keywords: ['mentions', 'notify', 'comment', 'composer', 'app', 'react native'],
+        },
+        {
+          id: 'activity-flows',
+          label: 'Activity Flows',
+          description:
+            'Mobile activity-feed pattern for collaboration history, filters, and sync recovery.',
+          status: 'ready',
+          keywords: ['activity', 'feed', 'timeline', 'history', 'app', 'react native'],
         },
       ],
     },
