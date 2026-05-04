@@ -225,6 +225,16 @@ export const designSystemMenus = [
         ],
       },
       {
+        group: 'Productivity',
+        items: [
+          {
+            id: 'todoList',
+            label: 'TodoList',
+            href: '/components/productivity/todoList',
+          },
+        ],
+      },
+      {
         group: 'Feedback',
         items: [
           {
@@ -351,6 +361,46 @@ const buildPatternCategories = (
 
 const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
   web: [
+    {
+      id: 'onboarding',
+      label: 'Onboarding',
+      description:
+        'Activation flows for creating a workspace, accepting invites, completing first-run setup, and teaching permissions before friction appears.',
+      items: [
+        {
+          id: 'workspace-creation',
+          label: 'Workspace Creation',
+          description:
+            'First-touch flow for naming a workspace, claiming its URL, and optionally choosing starter structure.',
+          status: 'ready',
+          keywords: ['workspace', 'create', 'setup', 'activation', 'web'],
+        },
+        {
+          id: 'invite-acceptance',
+          label: 'Invite Acceptance',
+          description:
+            'Join flow that confirms inviter, role, and workspace context before the person accepts access.',
+          status: 'ready',
+          keywords: ['invite', 'acceptance', 'join workspace', 'web'],
+        },
+        {
+          id: 'first-run-setup',
+          label: 'First-Run Setup',
+          description:
+            'Checklist-driven activation flow that guides the first important workspace setup steps.',
+          status: 'ready',
+          keywords: ['first run', 'setup', 'checklist', 'activation', 'web'],
+        },
+        {
+          id: 'permission-education',
+          label: 'Permission Education',
+          description:
+            'Pre-permission framing that explains why access is requested and what happens if it is skipped.',
+          status: 'ready',
+          keywords: ['permission', 'education', 'notifications', 'access', 'web'],
+        },
+      ],
+    },
     {
       id: 'auth',
       label: 'Auth',
@@ -481,6 +531,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
     },
   ],
   app: [
+    {
+      id: 'onboarding',
+      label: 'Onboarding',
+      description:
+        'Native activation flows for creating workspaces, accepting invites, completing setup, and teaching permissions in a touch-first layout.',
+      items: [
+        {
+          id: 'workspace-creation',
+          label: 'Workspace Creation',
+          description:
+            'Mobile flow for setting up a workspace with clear identity fields and lightweight starter options.',
+          status: 'ready',
+          keywords: ['workspace', 'create', 'setup', 'activation', 'app', 'react native'],
+        },
+        {
+          id: 'invite-acceptance',
+          label: 'Invite Acceptance',
+          description:
+            'Touch-first invite flow that confirms workspace context, granted access, and the correct account.',
+          status: 'ready',
+          keywords: ['invite', 'acceptance', 'join workspace', 'app', 'react native'],
+        },
+        {
+          id: 'first-run-setup',
+          label: 'First-Run Setup',
+          description:
+            'Checklist-based activation flow for finishing the setup tasks that unblock team launch on mobile.',
+          status: 'ready',
+          keywords: ['first run', 'setup', 'checklist', 'activation', 'app', 'react native'],
+        },
+        {
+          id: 'permission-education',
+          label: 'Permission Education',
+          description:
+            'Native pre-permission guidance that explains platform access before the system prompt appears.',
+          status: 'ready',
+          keywords: ['permission', 'education', 'notifications', 'access', 'app', 'react native'],
+        },
+      ],
+    },
     {
       id: 'auth',
       label: 'Auth',
@@ -693,6 +783,20 @@ export const searchEntries: Layout.SearchEntry[] = [
     href: '/components/dataDisplay',
     group: 'Category',
     keywords: ['data display', 'display'],
+  },
+  {
+    id: 'productivity-root',
+    label: 'Productivity',
+    href: '/components/productivity',
+    group: 'Category',
+    keywords: ['productivity', 'tasks', 'board', 'todo'],
+  },
+  {
+    id: 'todo-list',
+    label: 'TodoList',
+    href: '/components/productivity/todoList',
+    group: 'Productivity',
+    keywords: ['todo list', 'task board', 'kanban', 'workflow'],
   },
   {
     id: 'feedback-root',

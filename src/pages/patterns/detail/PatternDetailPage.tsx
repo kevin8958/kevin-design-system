@@ -12,10 +12,13 @@ import PatternAppAddressEntryPage from '@/pages/patterns/app/addressEntry/Patter
 import PatternAppEmptyResultsPage from '@/pages/patterns/app/emptyResults/PatternAppEmptyResultsPage';
 import PatternAppErrorRecoveryPage from '@/pages/patterns/app/errorRecovery/PatternAppErrorRecoveryPage';
 import PatternAppFilterSheetPage from '@/pages/patterns/app/filterSheet/PatternAppFilterSheetPage';
+import PatternAppFirstRunSetupPage from '@/pages/patterns/app/firstRunSetup/PatternAppFirstRunSetupPage';
+import PatternAppInviteAcceptancePage from '@/pages/patterns/app/inviteAcceptance/PatternAppInviteAcceptancePage';
 import PatternAppLoadingPanelPage from '@/pages/patterns/app/loadingPanel/PatternAppLoadingPanelPage';
 import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPage';
 import PatternAppPasswordResetPage from '@/pages/patterns/app/passwordReset/PatternAppPasswordResetPage';
 import PatternAppPaymentMethodPage from '@/pages/patterns/app/paymentMethod/PatternAppPaymentMethodPage';
+import PatternAppPermissionEducationPage from '@/pages/patterns/app/permissionEducation/PatternAppPermissionEducationPage';
 import PatternAppProfileEditPage from '@/pages/patterns/app/profileEdit/PatternAppProfileEditPage';
 import PatternAppSearchResultsPage from '@/pages/patterns/app/searchResults/PatternAppSearchResultsPage';
 import PatternAppSignUpPage from '@/pages/patterns/app/signUp/PatternAppSignUpPage';
@@ -24,17 +27,26 @@ import PatternWebAddressEntryPage from '@/pages/patterns/web/addressEntry/Patter
 import PatternWebEmptyResultsPage from '@/pages/patterns/web/emptyResults/PatternWebEmptyResultsPage';
 import PatternWebErrorRecoveryPage from '@/pages/patterns/web/errorRecovery/PatternWebErrorRecoveryPage';
 import PatternWebFilterSheetPage from '@/pages/patterns/web/filterSheet/PatternWebFilterSheetPage';
+import PatternWebFirstRunSetupPage from '@/pages/patterns/web/firstRunSetup/PatternWebFirstRunSetupPage';
+import PatternWebInviteAcceptancePage from '@/pages/patterns/web/inviteAcceptance/PatternWebInviteAcceptancePage';
 import PatternWebLoadingPanelPage from '@/pages/patterns/web/loadingPanel/PatternWebLoadingPanelPage';
 import PatternWebPasswordResetPage from '@/pages/patterns/web/passwordReset/PatternWebPasswordResetPage';
 import PatternWebPaymentMethodPage from '@/pages/patterns/web/paymentMethod/PatternWebPaymentMethodPage';
+import PatternWebPermissionEducationPage from '@/pages/patterns/web/permissionEducation/PatternWebPermissionEducationPage';
 import PatternWebProfileEditPage from '@/pages/patterns/web/profileEdit/PatternWebProfileEditPage';
 import PatternWebSearchResultsPage from '@/pages/patterns/web/searchResults/PatternWebSearchResultsPage';
 import PatternWebSignInPage from '@/pages/patterns/web/signIn/PatternWebSignInPage';
 import PatternWebSignUpPage from '@/pages/patterns/web/signUp/PatternWebSignUpPage';
 import PatternWebSortFilterBarPage from '@/pages/patterns/web/sortFilterBar/PatternWebSortFilterBarPage';
+import PatternWebWorkspaceCreationPage from '@/pages/patterns/web/workspaceCreation/PatternWebWorkspaceCreationPage';
+import PatternAppWorkspaceCreationPage from '@/pages/patterns/app/workspaceCreation/PatternAppWorkspaceCreationPage';
 import { useParams } from 'react-router-dom';
 
 const patternPageRegistry = {
+  'web:onboarding:workspace-creation': PatternWebWorkspaceCreationPage,
+  'web:onboarding:invite-acceptance': PatternWebInviteAcceptancePage,
+  'web:onboarding:first-run-setup': PatternWebFirstRunSetupPage,
+  'web:onboarding:permission-education': PatternWebPermissionEducationPage,
   'web:auth:sign-in': PatternWebSignInPage,
   'web:auth:sign-up': PatternWebSignUpPage,
   'web:auth:password-reset': PatternWebPasswordResetPage,
@@ -47,6 +59,10 @@ const patternPageRegistry = {
   'web:states:empty-results': PatternWebEmptyResultsPage,
   'web:states:loading-panel': PatternWebLoadingPanelPage,
   'web:states:error-recovery': PatternWebErrorRecoveryPage,
+  'app:onboarding:workspace-creation': PatternAppWorkspaceCreationPage,
+  'app:onboarding:invite-acceptance': PatternAppInviteAcceptancePage,
+  'app:onboarding:first-run-setup': PatternAppFirstRunSetupPage,
+  'app:onboarding:permission-education': PatternAppPermissionEducationPage,
   'app:auth:sign-in': PatternAppSignInPage,
   'app:auth:sign-up': PatternAppSignUpPage,
   'app:auth:password-reset': PatternAppPasswordResetPage,

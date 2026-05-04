@@ -46,6 +46,7 @@ import ComponentMetricCardPage from '@/pages/components/dataDisplay/metricCard/C
 import ComponentTablePage from '@/pages/components/dataDisplay/table/ComponentTablePage';
 import ComponentTagPage from '@/pages/components/dataDisplay/tag/ComponentTagPage';
 import ComponentTooltipPage from '@/pages/components/dataDisplay/tooltip/ComponentTooltipPage';
+import ComponentTodoListPage from '@/pages/components/productivity/todoList/ComponentTodoListPage';
 import ComponentAlertPage from '@/pages/components/feedback/alert/ComponentAlertPage';
 import ComponentProgressPage from '@/pages/components/feedback/progress/ComponentProgressPage';
 import ComponentSkeletonPage from '@/pages/components/feedback/skeleton/ComponentSkeletonPage';
@@ -230,6 +231,10 @@ function App() {
           <Route
             path="dataDisplay/tooltip"
             element={<ComponentTooltipPage />}
+          />
+          <Route
+            path="productivity/todoList"
+            element={<ComponentTodoListPage />}
           />
           <Route path="feedback/alert" element={<ComponentAlertPage />} />
           <Route path="feedback/progress" element={<ComponentProgressPage />} />

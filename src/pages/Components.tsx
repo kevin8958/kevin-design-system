@@ -12,6 +12,7 @@ const categoryHighlights: Record<string, string> = {
   input: 'Collect user intent clearly and consistently.',
   navigation: 'Guide movement through the product.',
   dataDisplay: 'Show identity, structure, and context.',
+  productivity: 'Coordinate work, ownership, and progress.',
   feedback: 'Respond to state changes with clarity.',
   layout: 'Compose screens with reusable structure.',
   interaction: 'Add motion and character to the experience.',

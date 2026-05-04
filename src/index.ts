@@ -35,6 +35,7 @@ export { default as MetricCard } from './components/data/MetricCard';
 export { default as Table } from './components/data/Table';
 export { default as Tag } from './components/data/Tag';
 export { default as Tooltip } from './components/data/Tooltip';
+export { default as TodoList } from './components/productivity/TodoList';
 
 export { default as Alert } from './components/feedback/Alert';
 export { default as Progress } from './components/feedback/Progress';

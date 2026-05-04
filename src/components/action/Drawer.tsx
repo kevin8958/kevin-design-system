@@ -37,7 +37,6 @@ export default function Drawer({
   loading = false,
 }: Omit<Action.DrawerProps, 'position'>) {
   const handleClose = () => {
-    close();
     onClose?.();
   };
 
