@@ -35,10 +35,11 @@ const CodeExample = ({
     const updateHeight = () => {
       const pHeight = previewRef.current?.scrollHeight || 0;
       const cHeight = codeRef.current?.scrollHeight || 0;
-      const nextHeight = Math.min(
-        Math.max(pHeight, cHeight, 150),
-        maxHeight || 1000,
-      );
+      const measuredHeight = Math.max(pHeight, cHeight, 150);
+      const nextHeight =
+        typeof maxHeight === 'number'
+          ? Math.min(measuredHeight, maxHeight)
+          : measuredHeight;
 
       setContainerHeight((prevHeight) =>
         prevHeight === nextHeight ? prevHeight : nextHeight,

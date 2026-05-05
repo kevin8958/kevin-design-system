@@ -125,8 +125,8 @@ export default function WebSearchResultsPreview({
             ))}
           </div>
         ) : (
-          <div className="overflow-hidden rounded-[22px] border border-neutral-200 dark:border-neutral-800">
-            <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)] bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">
+          <div className="overflow-x-auto rounded-[22px] border border-neutral-200 dark:border-neutral-800">
+            <div className="grid min-w-[620px] grid-cols-[minmax(220px,2fr)_minmax(140px,1fr)_minmax(120px,1fr)] bg-neutral-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:bg-neutral-900 dark:text-neutral-400">
               <span>Role</span>
               <span>Location</span>
               <span>Type</span>
@@ -134,7 +134,7 @@ export default function WebSearchResultsPreview({
             {resultCards.map((card) => (
               <div
                 key={card.title}
-                className="grid grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 border-t border-neutral-200 px-4 py-4 text-sm dark:border-neutral-800"
+                className="grid min-w-[620px] grid-cols-[minmax(220px,2fr)_minmax(140px,1fr)_minmax(120px,1fr)] gap-3 border-t border-neutral-200 px-4 py-4 text-sm dark:border-neutral-800"
               >
                 <span className="font-medium text-neutral-900 dark:text-neutral-100">
                   {card.title}

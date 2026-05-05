@@ -25,7 +25,7 @@ export default function WebFilterSheetPreview({
 
   return (
     <div className="w-full max-w-[820px] rounded-[32px] border border-neutral-200 bg-white p-7 shadow-[0_28px_100px_-36px_rgba(17,24,39,0.38)] dark:border-neutral-800 dark:bg-neutral-950">
-      <div className="relative overflow-hidden rounded-[28px] border border-neutral-200 bg-neutral-50/70 p-5 dark:border-neutral-800 dark:bg-neutral-900/60">
+      <div className="relative overflow-hidden rounded-[28px] border border-neutral-200 bg-neutral-50/70 p-5 md:min-h-[560px] dark:border-neutral-800 dark:bg-neutral-900/60">
         <div className="grid grid-cols-1 gap-3 pr-0 md:grid-cols-2 md:pr-[22rem]">
           {['Design systems', 'Remote', 'Figma', 'Accessibility'].map((item) => (
             <div

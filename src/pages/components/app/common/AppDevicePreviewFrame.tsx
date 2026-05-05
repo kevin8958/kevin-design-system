@@ -10,12 +10,12 @@ const AppDevicePreviewFrame = ({
   maxWidthClass?: string;
 }) => {
   return (
-    <div className="flex w-full justify-center">
+    <div className="flex w-full min-w-0 justify-center">
       <div
-        className={`w-full ${maxWidthClass} rounded-[28px] border border-neutral-200 bg-[#F6F7FB] p-5 dark:border-neutral-800 dark:bg-neutral-950`.trim()}
+        className={`w-full min-w-0 ${maxWidthClass} overflow-x-hidden rounded-[28px] border border-neutral-200 bg-[#F6F7FB] p-5 dark:border-neutral-800 dark:bg-neutral-950`.trim()}
       >
         <div
-          className={`relative w-full ${contentClasses}`.trim()}
+          className={`relative w-full min-w-0 ${contentClasses}`.trim()}
           style={{ minHeight }}
         >
           {children}
