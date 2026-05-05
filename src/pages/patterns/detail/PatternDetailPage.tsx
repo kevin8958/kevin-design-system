@@ -17,12 +17,16 @@ import PatternAppDraftSavePage from '@/pages/patterns/app/draftSave/PatternAppDr
 import PatternAppEditorFlowPage from '@/pages/patterns/app/editorFlow/PatternAppEditorFlowPage';
 import PatternAppEmptyResultsPage from '@/pages/patterns/app/emptyResults/PatternAppEmptyResultsPage';
 import PatternAppErrorRecoveryPage from '@/pages/patterns/app/errorRecovery/PatternAppErrorRecoveryPage';
+import PatternAppAlertEscalationPage from '@/pages/patterns/app/alertEscalation/PatternAppAlertEscalationPage';
 import PatternAppFilterSheetPage from '@/pages/patterns/app/filterSheet/PatternAppFilterSheetPage';
 import PatternAppFirstRunSetupPage from '@/pages/patterns/app/firstRunSetup/PatternAppFirstRunSetupPage';
 import PatternAppInvoiceFlowsPage from '@/pages/patterns/app/invoiceFlows/PatternAppInvoiceFlowsPage';
+import PatternAppDigestSettingsPage from '@/pages/patterns/app/digestSettings/PatternAppDigestSettingsPage';
 import PatternAppInviteAcceptancePage from '@/pages/patterns/app/inviteAcceptance/PatternAppInviteAcceptancePage';
+import PatternAppInboxTriagePage from '@/pages/patterns/app/inboxTriage/PatternAppInboxTriagePage';
 import PatternAppMemberManagementPage from '@/pages/patterns/app/memberManagement/PatternAppMemberManagementPage';
 import PatternAppMentionsPage from '@/pages/patterns/app/mentions/PatternAppMentionsPage';
+import PatternAppNotificationCenterPage from '@/pages/patterns/app/notificationCenter/PatternAppNotificationCenterPage';
 import PatternAppLoadingPanelPage from '@/pages/patterns/app/loadingPanel/PatternAppLoadingPanelPage';
 import PatternAppSignInPage from '@/pages/patterns/app/signIn/PatternAppSignInPage';
 import PatternAppPasswordResetPage from '@/pages/patterns/app/passwordReset/PatternAppPasswordResetPage';
@@ -48,16 +52,20 @@ import PatternWebCheckoutSummaryPage from '@/pages/patterns/web/checkoutSummary/
 import PatternWebCommentsPage from '@/pages/patterns/web/comments/PatternWebCommentsPage';
 import PatternWebDraftSavePage from '@/pages/patterns/web/draftSave/PatternWebDraftSavePage';
 import PatternWebEditorFlowPage from '@/pages/patterns/web/editorFlow/PatternWebEditorFlowPage';
+import PatternWebAlertEscalationPage from '@/pages/patterns/web/alertEscalation/PatternWebAlertEscalationPage';
 import PatternWebDestructiveConfirmationsPage from '@/pages/patterns/web/destructiveConfirmations/PatternWebDestructiveConfirmationsPage';
+import PatternWebDigestSettingsPage from '@/pages/patterns/web/digestSettings/PatternWebDigestSettingsPage';
 import PatternWebEmptyResultsPage from '@/pages/patterns/web/emptyResults/PatternWebEmptyResultsPage';
 import PatternWebErrorRecoveryPage from '@/pages/patterns/web/errorRecovery/PatternWebErrorRecoveryPage';
 import PatternWebFilterSheetPage from '@/pages/patterns/web/filterSheet/PatternWebFilterSheetPage';
 import PatternWebFirstRunSetupPage from '@/pages/patterns/web/firstRunSetup/PatternWebFirstRunSetupPage';
+import PatternWebInboxTriagePage from '@/pages/patterns/web/inboxTriage/PatternWebInboxTriagePage';
 import PatternWebInvoiceFlowsPage from '@/pages/patterns/web/invoiceFlows/PatternWebInvoiceFlowsPage';
 import PatternWebInviteAcceptancePage from '@/pages/patterns/web/inviteAcceptance/PatternWebInviteAcceptancePage';
 import PatternWebLoadingPanelPage from '@/pages/patterns/web/loadingPanel/PatternWebLoadingPanelPage';
 import PatternWebMemberManagementPage from '@/pages/patterns/web/memberManagement/PatternWebMemberManagementPage';
 import PatternWebMentionsPage from '@/pages/patterns/web/mentions/PatternWebMentionsPage';
+import PatternWebNotificationCenterPage from '@/pages/patterns/web/notificationCenter/PatternWebNotificationCenterPage';
 import PatternWebPasswordResetPage from '@/pages/patterns/web/passwordReset/PatternWebPasswordResetPage';
 import PatternWebPaymentMethodPage from '@/pages/patterns/web/paymentMethod/PatternWebPaymentMethodPage';
 import PatternWebPermissionEducationPage from '@/pages/patterns/web/permissionEducation/PatternWebPermissionEducationPage';
@@ -100,6 +108,10 @@ const patternPageRegistry = {
   'web:creation-publishing:review-handoff': PatternWebReviewHandoffPage,
   'web:creation-publishing:publish-confirmation':
     PatternWebPublishConfirmationPage,
+  'web:notifications-inbox:notification-center': PatternWebNotificationCenterPage,
+  'web:notifications-inbox:inbox-triage': PatternWebInboxTriagePage,
+  'web:notifications-inbox:digest-settings': PatternWebDigestSettingsPage,
+  'web:notifications-inbox:alert-escalation': PatternWebAlertEscalationPage,
   'web:auth:sign-in': PatternWebSignInPage,
   'web:auth:sign-up': PatternWebSignUpPage,
   'web:auth:password-reset': PatternWebPasswordResetPage,
@@ -135,6 +147,10 @@ const patternPageRegistry = {
   'app:creation-publishing:review-handoff': PatternAppReviewHandoffPage,
   'app:creation-publishing:publish-confirmation':
     PatternAppPublishConfirmationPage,
+  'app:notifications-inbox:notification-center': PatternAppNotificationCenterPage,
+  'app:notifications-inbox:inbox-triage': PatternAppInboxTriagePage,
+  'app:notifications-inbox:digest-settings': PatternAppDigestSettingsPage,
+  'app:notifications-inbox:alert-escalation': PatternAppAlertEscalationPage,
   'app:auth:sign-in': PatternAppSignInPage,
   'app:auth:sign-up': PatternAppSignUpPage,
   'app:auth:password-reset': PatternAppPasswordResetPage,

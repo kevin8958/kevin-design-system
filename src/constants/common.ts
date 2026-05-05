@@ -570,6 +570,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
       ],
     },
     {
+      id: 'notifications-inbox',
+      label: 'Notifications / Inbox',
+      description:
+        'Alert and inbox patterns for browsing updates, processing action queues, managing delivery rules, and escalating urgent incidents.',
+      items: [
+        {
+          id: 'notification-center',
+          label: 'Notification Center',
+          description:
+            'Unread-update pattern for browsing alerts, grouped categories, and critical backlog states.',
+          status: 'ready',
+          keywords: ['notifications', 'center', 'alerts', 'unread', 'web'],
+        },
+        {
+          id: 'inbox-triage',
+          label: 'Inbox Triage',
+          description:
+            'Action-queue pattern for processing replies, reviews, and follow-up items from one inbox.',
+          status: 'ready',
+          keywords: ['inbox', 'triage', 'queue', 'tasks', 'web'],
+        },
+        {
+          id: 'digest-settings',
+          label: 'Digest Settings',
+          description:
+            'Preference pattern for cadence, quiet hours, and notification delivery exceptions.',
+          status: 'ready',
+          keywords: ['digest', 'settings', 'preferences', 'notifications', 'web'],
+        },
+        {
+          id: 'alert-escalation',
+          label: 'Alert Escalation',
+          description:
+            'Urgent-alert routing pattern for acknowledgment state, backup paths, and incident escalation.',
+          status: 'ready',
+          keywords: ['alert', 'escalation', 'incident', 'acknowledgment', 'web'],
+        },
+      ],
+    },
+    {
       id: 'auth',
       label: 'Auth',
       description:
@@ -904,6 +944,46 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
             'Go-live confirmation pattern for destination, audience, and high-risk publish actions on mobile.',
           status: 'ready',
           keywords: ['publish', 'go live', 'schedule', 'audience', 'app', 'react native'],
+        },
+      ],
+    },
+    {
+      id: 'notifications-inbox',
+      label: 'Notifications / Inbox',
+      description:
+        'Mobile alert and inbox patterns for scanning updates, triaging action items, managing delivery preferences, and escalating urgent incidents.',
+      items: [
+        {
+          id: 'notification-center',
+          label: 'Notification Center',
+          description:
+            'Native unread-update pattern for grouped alerts, critical backlog states, and bulk acknowledgment.',
+          status: 'ready',
+          keywords: ['notifications', 'center', 'alerts', 'unread', 'app', 'react native'],
+        },
+        {
+          id: 'inbox-triage',
+          label: 'Inbox Triage',
+          description:
+            'Mobile action-queue pattern for replies, reviews, and follow-up work in one inbox.',
+          status: 'ready',
+          keywords: ['inbox', 'triage', 'queue', 'tasks', 'app', 'react native'],
+        },
+        {
+          id: 'digest-settings',
+          label: 'Digest Settings',
+          description:
+            'Native preference pattern for cadence, quiet hours, and notification exceptions.',
+          status: 'ready',
+          keywords: ['digest', 'settings', 'preferences', 'notifications', 'app', 'react native'],
+        },
+        {
+          id: 'alert-escalation',
+          label: 'Alert Escalation',
+          description:
+            'Mobile escalation pattern for urgent alerts, backup routing, and missed acknowledgment recovery.',
+          status: 'ready',
+          keywords: ['alert', 'escalation', 'incident', 'acknowledgment', 'app', 'react native'],
         },
       ],
     },
