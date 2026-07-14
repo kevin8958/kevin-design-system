@@ -65,6 +65,17 @@ export default function ComponentAccordionPage() {
             <Typography variant="H3">Props</Typography>
             <SimpleTable columns={propsColumn} data={propsData} />
           </FlexWrapper>
+
+          <FlexWrapper classes="w-full" items="start" direction="col">
+            <Typography variant="H3">AccordionItem</Typography>
+            <Typography
+              variant="B2"
+              classes="!font-normal !text-neutral-600 dark:!text-neutral-300"
+            >
+              Shape of each entry in the items array.
+            </Typography>
+            <SimpleTable columns={propsColumn} data={itemPropsData} />
+          </FlexWrapper>
         </FlexWrapper>
       </FlexWrapper>
     </FlexWrapper>
@@ -134,5 +145,58 @@ const propsData = [
     type: 'string',
     default: '',
     description: 'Additional classes applied to each accordion item.',
+  },
+];
+
+const itemPropsData = [
+  {
+    id: '1',
+    property: 'id',
+    type: 'string',
+    default: '',
+    description: 'Unique identifier used to track open/closed state.',
+  },
+  {
+    id: '2',
+    property: 'title',
+    type: 'React.ReactNode',
+    default: '',
+    description: 'Primary label shown in the trigger row.',
+  },
+  {
+    id: '3',
+    property: 'content',
+    type: 'React.ReactNode',
+    default: '',
+    description: 'Body rendered inside the expanded panel.',
+  },
+  {
+    id: '4',
+    property: 'description',
+    type: 'React.ReactNode',
+    default: '',
+    description: 'Optional supporting text shown under the title.',
+  },
+  {
+    id: '5',
+    property: 'icon',
+    type: 'React.ReactNode',
+    default: '',
+    description:
+      'Optional leading icon. Size is auto-scaled to match the accordion size unless the icon already sets its own size.',
+  },
+  {
+    id: '6',
+    property: 'badge',
+    type: 'React.ReactNode',
+    default: '',
+    description: 'Optional trailing marker rendered next to the title, e.g. a count.',
+  },
+  {
+    id: '7',
+    property: 'disabled',
+    type: 'boolean',
+    default: 'false',
+    description: 'Prevents the item from being expanded or collapsed.',
   },
 ];
