@@ -61,15 +61,19 @@ const ActionSheet = ({
           }}
           className={classNames(
             'flex w-full cursor-pointer items-center gap-3 px-5 py-4 text-left transition',
-            'hover:bg-neutral-50 dark:hover:bg-neutral-900/60',
+            item.tone === 'danger'
+              ? 'hover:bg-danger/5 dark:hover:bg-danger/10'
+              : 'hover:bg-neutral-50 dark:hover:bg-neutral-900/60',
             'disabled:cursor-not-allowed disabled:opacity-45',
           )}
         >
           {item.icon && (
             <span
               className={classNames(
-                'shrink-0 text-lg text-neutral-500 dark:text-neutral-400',
-                item.tone === 'danger' && 'text-danger dark:text-danger',
+                'shrink-0 text-lg',
+                item.tone === 'danger'
+                  ? 'text-danger dark:text-danger'
+                  : 'text-neutral-500 dark:text-neutral-400',
               )}
             >
               {item.icon}
@@ -79,8 +83,10 @@ const ActionSheet = ({
           <span className="min-w-0 flex-1">
             <span
               className={classNames(
-                'block text-sm font-medium text-neutral-900 dark:text-neutral-50',
-                item.tone === 'danger' && 'text-danger dark:text-danger',
+                'block text-sm font-medium',
+                item.tone === 'danger'
+                  ? 'text-danger dark:text-danger'
+                  : 'text-neutral-900 dark:text-neutral-50',
               )}
             >
               {item.label}
@@ -94,8 +100,10 @@ const ActionSheet = ({
 
           <LuChevronRight
             className={classNames(
-              'shrink-0 text-neutral-400 dark:text-neutral-500',
-              item.tone === 'danger' && 'text-danger/65 dark:text-danger/70',
+              'shrink-0',
+              item.tone === 'danger'
+                ? 'text-danger/65 dark:text-danger/70'
+                : 'text-neutral-400 dark:text-neutral-500',
             )}
             size={16}
           />
@@ -116,9 +124,10 @@ const ActionSheet = ({
       }}
       className={classNames(
         'inline-flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition',
-        'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800/80',
         'disabled:cursor-not-allowed disabled:opacity-45',
-        item.tone === 'danger' && 'text-danger dark:text-danger',
+        item.tone === 'danger'
+          ? 'text-danger hover:bg-danger/5 dark:text-danger dark:hover:bg-danger/10'
+          : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800/80',
       )}
     >
       {item.icon && <span className="text-base">{item.icon}</span>}
