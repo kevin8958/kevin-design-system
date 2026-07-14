@@ -5,14 +5,16 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import CodeExample from '@/components/interaction/CodeExample';
 import { LuBell, LuCreditCard, LuUsers } from 'react-icons/lu';
 
-type AccordionPreviewControls = Pick<Action.AccordionProps, 'size' | 'type'>;
+type AccordionPreviewControls = Pick<Action.AccordionProps, 'size' | 'type'> & {
+  showIcon: boolean;
+};
 
-const createItems = (): Action.AccordionItem[] => [
+const createItems = (showIcon: boolean): Action.AccordionItem[] => [
   {
     id: 'account',
     title: 'Account overview',
     description: 'Profile, billing, and access control in one place.',
-    icon: <LuUsers />,
+    icon: showIcon ? <LuUsers /> : undefined,
     content: (
       <Typography variant="B1">
         Review plan details, permission updates, and recent activity without
@@ -24,7 +26,7 @@ const createItems = (): Action.AccordionItem[] => [
     id: 'notifications',
     title: 'Notifications',
     description: 'Choose which updates should reach your team.',
-    icon: <LuBell />,
+    icon: showIcon ? <LuBell /> : undefined,
     badge: (
       <span className="rounded-full bg-secondary-500/10 px-2 py-0.5 font-semibold text-secondary-600 dark:bg-primary-400/15 dark:text-primary-300">
         3
@@ -41,7 +43,7 @@ const createItems = (): Action.AccordionItem[] => [
     id: 'billing',
     title: 'Billing & invoices',
     description: 'Track renewals and download monthly statements.',
-    icon: <LuCreditCard />,
+    icon: showIcon ? <LuCreditCard /> : undefined,
     content: (
       <Typography variant="B1">
         Access invoices, update card details, and confirm renewal schedules
@@ -51,7 +53,11 @@ const createItems = (): Action.AccordionItem[] => [
   },
 ];
 
-const AccordionContentExample = ({ size, type }: AccordionPreviewControls) => {
+const AccordionContentExample = ({
+  size,
+  type,
+  showIcon,
+}: AccordionPreviewControls) => {
   const exampleCode = `<Accordion
   size="${size}"
   type="${type}"
@@ -68,7 +74,7 @@ const AccordionContentExample = ({ size, type }: AccordionPreviewControls) => {
           defaultValue={
             type === 'multiple' ? ['account', 'notifications'] : ['account']
           }
-          items={createItems()}
+          items={createItems(showIcon)}
         />
       </FlexWrapper>
     </CodeExample>

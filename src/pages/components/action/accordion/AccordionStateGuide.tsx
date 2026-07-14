@@ -5,14 +5,16 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import CodeExample from '@/components/interaction/CodeExample';
 import { LuLock, LuShield, LuSparkles } from 'react-icons/lu';
 
-type AccordionPreviewControls = Pick<Action.AccordionProps, 'size' | 'type'>;
+type AccordionPreviewControls = Pick<Action.AccordionProps, 'size' | 'type'> & {
+  showIcon: boolean;
+};
 
-const createItems = (): Action.AccordionItem[] => [
+const createItems = (showIcon: boolean): Action.AccordionItem[] => [
   {
     id: 'security',
     title: 'Security controls',
     description: 'Audit logs, sessions, and protection defaults.',
-    icon: <LuShield />,
+    icon: showIcon ? <LuShield /> : undefined,
     content: (
       <Typography variant="B1">
         Keep MFA, device trust, and session history close to your most
@@ -24,7 +26,7 @@ const createItems = (): Action.AccordionItem[] => [
     id: 'automation',
     title: 'Automation rules',
     description: 'Rule-based cleanup and workflow triggers.',
-    icon: <LuSparkles />,
+    icon: showIcon ? <LuSparkles /> : undefined,
     content: (
       <Typography variant="B1">
         Connect follow-up actions to events such as form submissions, escalated
@@ -36,7 +38,7 @@ const createItems = (): Action.AccordionItem[] => [
     id: 'advanced',
     title: 'Advanced access',
     description: 'Available on enterprise plans only.',
-    icon: <LuLock />,
+    icon: showIcon ? <LuLock /> : undefined,
     disabled: true,
     content: (
       <Typography variant="B1">
@@ -47,7 +49,11 @@ const createItems = (): Action.AccordionItem[] => [
   },
 ];
 
-const AccordionStateExample = ({ size, type }: AccordionPreviewControls) => {
+const AccordionStateExample = ({
+  size,
+  type,
+  showIcon,
+}: AccordionPreviewControls) => {
   const exampleCode = `<Accordion
   size="${size}"
   type="${type}"
@@ -62,7 +68,7 @@ const AccordionStateExample = ({ size, type }: AccordionPreviewControls) => {
           size={size}
           type={type}
           defaultValue={['security']}
-          items={createItems()}
+          items={createItems(showIcon)}
         />
       </FlexWrapper>
     </CodeExample>

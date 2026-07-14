@@ -15,6 +15,7 @@ import AccordionStateGuide from './AccordionStateGuide';
 export default function ComponentAccordionPage() {
   const [size, setSize] = useState<Action.ButtonSize>('md');
   const [type, setType] = useState<Action.AccordionType>('single');
+  const [showIcon, setShowIcon] = useState(true);
 
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
@@ -52,11 +53,13 @@ export default function ComponentAccordionPage() {
           <AccordionControllerGuide
             size={size}
             type={type}
+            showIcon={showIcon}
             onSizeChange={setSize}
             onTypeChange={setType}
+            onShowIconChange={setShowIcon}
           />
-          <AccordionContentGuide size={size} type={type} />
-          <AccordionStateGuide size={size} type={type} />
+          <AccordionContentGuide size={size} type={type} showIcon={showIcon} />
+          <AccordionStateGuide size={size} type={type} showIcon={showIcon} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>

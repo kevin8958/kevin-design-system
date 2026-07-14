@@ -5,17 +5,21 @@ import Typography from '@/components/foundation/Typography';
 
 const sizes: Action.ButtonSize[] = ['sm', 'md', 'lg'];
 const types: Action.AccordionType[] = ['single', 'multiple'];
+const iconVisibilityOptions: ('On' | 'Off')[] = ['On', 'Off'];
 
 const defaultValues = {
   Size: 'md',
   Type: 'single',
+  Icon: 'On',
 } as const;
 
 type AccordionControllerProps = {
   size: Action.ButtonSize;
   type: Action.AccordionType;
+  showIcon: boolean;
   onSizeChange: (next: Action.ButtonSize) => void;
   onTypeChange: (next: Action.AccordionType) => void;
+  onShowIconChange: (next: boolean) => void;
 };
 
 const formatOptionLabel = (value: string) =>
@@ -72,14 +76,22 @@ const renderControlRow = <T extends string>(
 const AccordionControllerGuide = ({
   size,
   type,
+  showIcon,
   onSizeChange,
   onTypeChange,
+  onShowIconChange,
 }: AccordionControllerProps) => {
   return (
     <FlexWrapper direction="col" items="start" gap={5}>
       <Typography variant="C1">* : Default</Typography>
       {renderControlRow('Size', sizes, size, onSizeChange)}
       {renderControlRow('Type', types, type, onTypeChange)}
+      {renderControlRow(
+        'Icon',
+        iconVisibilityOptions,
+        showIcon ? 'On' : 'Off',
+        (next) => onShowIconChange(next === 'On'),
+      )}
     </FlexWrapper>
   );
 };
