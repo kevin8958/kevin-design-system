@@ -170,7 +170,11 @@ const Popover = ({
     <div className="relative inline-flex">
       <span
         ref={setReference}
-        className={classNames('inline-flex', disabled && 'cursor-not-allowed')}
+        aria-disabled={disabled}
+        className={classNames(
+          'inline-flex',
+          disabled && 'cursor-not-allowed opacity-50 grayscale',
+        )}
         {...getReferenceProps()}
       >
         {trigger}
