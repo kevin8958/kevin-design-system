@@ -692,17 +692,15 @@ export default function ComponentCategoryPage() {
 
   return (
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={8}>
-      <section className="w-full rounded-[32px] border border-neutral-200 bg-gradient-to-br from-white via-neutral-50 to-secondary-50/60 px-6 py-10 shadow-sm dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-900 md:px-10 md:py-12">
-        <FlexWrapper direction="col" items="start" gap={4}>
-          <Typography variant="H1">{category.label}</Typography>
-          <Typography
-            variant="B1"
-            classes="max-w-3xl !font-normal !text-neutral-600 dark:!text-neutral-300"
-          >
-            {category.description}
-          </Typography>
-        </FlexWrapper>
-      </section>
+      <FlexWrapper direction="col" items="start" gap={4} classes="max-w-3xl">
+        <Typography variant="H1">{category.label}</Typography>
+        <Typography
+          variant="B1"
+          classes="!font-normal !text-neutral-600 dark:!text-neutral-300"
+        >
+          {category.description}
+        </Typography>
+      </FlexWrapper>
 
       <FlexWrapper direction="col" items="start" gap={6} classes="w-full">
         {gridCategoryIds.has(category.id) ? (
