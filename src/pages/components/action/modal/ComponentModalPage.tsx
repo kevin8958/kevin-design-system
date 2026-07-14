@@ -162,8 +162,7 @@ const propsData = [
     property: 'hideCancel',
     type: 'boolean',
     default: 'false',
-    description:
-      'If true, hides the bottom cancel button and shows the top-right close icon.',
+    description: 'If true, hides the bottom cancel button.',
   },
   {
     id: '12',

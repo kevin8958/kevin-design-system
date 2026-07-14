@@ -53,7 +53,6 @@ export default function Modal({
   hideBottom = false,
   loading = false,
 }: Action.ModalProps) {
-  const showCloseButton = hideCancel || hideBottom;
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[999]" onClose={onClose}>
@@ -89,24 +88,21 @@ export default function Modal({
                   },
                 )}
               >
-                {/* hideCancel이 true일 때만 상단 X 버튼 표시 */}
-                {showCloseButton && (
-                  <Button
-                    onClick={onClose}
-                    aria-label="Close"
-                    size="sm"
-                    variant="clear"
-                    color="neutral"
-                    classes="absolute top-5 right-4 !p-2"
-                  >
-                    <LuX className="text-xl" />
-                  </Button>
-                )}
+                <Button
+                  onClick={onClose}
+                  aria-label="Close"
+                  size="sm"
+                  variant="clear"
+                  color="neutral"
+                  classes="absolute top-5 right-4 !p-2"
+                >
+                  <LuX className="text-xl" />
+                </Button>
 
                 {title && (
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-semibold leading-6 mb-4 text-neutral-900 dark:text-neutral-100"
+                    className="pr-8 text-lg font-semibold leading-6 mb-4 text-neutral-900 dark:text-neutral-100"
                   >
                     {title}
                   </Dialog.Title>
