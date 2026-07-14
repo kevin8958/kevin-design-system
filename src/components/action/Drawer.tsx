@@ -67,7 +67,7 @@ export default function Drawer({
               leaveTo="translate-y-full md:translate-y-0 md:translate-x-full"
             >
               <Dialog.Panel className={classNames(drawerVariants({ size }))}>
-                <div className="flex items-center justify-between p-2 pl-4 border-b border-neutral-100 dark:border-neutral-800">
+                <div className="flex items-center justify-between py-3 pl-4 pr-2 border-b border-neutral-100 dark:border-neutral-800">
                   {title ? (
                     <Dialog.Title
                       as="h3"
