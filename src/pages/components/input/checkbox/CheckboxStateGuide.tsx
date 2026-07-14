@@ -1,11 +1,17 @@
+import { useState } from 'react';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Checkbox from '@/components/input/Checkbox';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
 
 const StateExample = () => {
-  const exampleCode = `<Checkbox label="Default" />
-<Checkbox label="Checked" checked />
+  const [checked, setChecked] = useState(false);
+
+  const exampleCode = `<Checkbox
+  label="Default"
+  checked={checked}
+  onChange={({ checked }) => setChecked(checked)}
+/>
 <Checkbox label="Invalid" invalid errorMsg="Please check this field." />
 <Checkbox label="Disabled" disabled />
 <Checkbox label="Disabled Checked" disabled checked />`;
@@ -19,8 +25,11 @@ const StateExample = () => {
         gap={4}
         classes="w-full p-4"
       >
-        <Checkbox label="Default State" />
-        <Checkbox label="Checked State" checked />
+        <Checkbox
+          label="Default State"
+          checked={checked}
+          onChange={({ checked: next }) => setChecked(next)}
+        />
         <Checkbox
           label="Invalid State"
           invalid
