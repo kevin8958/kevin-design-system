@@ -3,6 +3,7 @@
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Grid from '@/components/layout/Grid';
+import BreadCrumb from '@/components/navigation/BreadCrumb';
 import TodoList from '@/components/productivity/TodoList';
 import { designSystemMenus } from '@/constants/common';
 import ColorScalePreview from '@/pages/components/foundation/colors/ColorScalePreview';
@@ -690,8 +691,15 @@ export default function ComponentCategoryPage() {
 
   const categoryPreviewMap = previewExamples[category.id] ?? {};
 
+  const breadcrumbItems = [
+    { label: 'Components', href: '/components' },
+    { label: category.label, href: `/components/${category.id}` },
+  ];
+
   return (
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={8}>
+      <BreadCrumb items={breadcrumbItems} />
+
       <FlexWrapper direction="col" items="start" gap={4} classes="max-w-3xl">
         <Typography variant="H1">{category.label}</Typography>
         <Typography
