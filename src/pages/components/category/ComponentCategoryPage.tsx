@@ -4,13 +4,8 @@ import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Grid from '@/components/layout/Grid';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
-import TodoList from '@/components/productivity/TodoList';
 import { designSystemMenus } from '@/constants/common';
 import ColorScalePreview from '@/pages/components/foundation/colors/ColorScalePreview';
-import {
-  todoListPreviewColumns,
-  todoListPreviewTasks,
-} from '@/pages/components/productivity/todoList/todoListDemo';
 import { Link, useParams } from 'react-router-dom';
 import { LuArrowUpRight } from 'react-icons/lu';
 import ImagePreview from './previews/ImagePreview';
@@ -50,8 +45,6 @@ const categoryDescriptions: Record<string, string> = {
     'Patterns that help people move between pages, sections, and UI states.',
   dataDisplay:
     'Components for presenting identity, status, structured data, and contextual details.',
-  productivity:
-    'Workflow surfaces that help teams organize tasks, ownership, and progress.',
   feedback:
     'Visual responses that communicate progress, alerts, loading, and system status.',
   layout: 'Primitives for spacing, separation, and responsive composition.',
@@ -142,23 +135,6 @@ const FoundationTypographyPreview = () => (
       Caption and supporting details
     </Typography>
   </FlexWrapper>
-);
-
-const ProductivityTodoListPreview = () => (
-  <div className="w-full overflow-x-auto pb-1">
-    <div className="min-w-[860px]">
-      <TodoList
-        title="Launch planning"
-        description="A compact board preview inspired by product delivery workflows."
-        columns={todoListPreviewColumns}
-        defaultTasks={todoListPreviewTasks}
-        allowCreate={false}
-        allowEdit={false}
-        showSummary={false}
-        compact
-      />
-    </div>
-  </div>
 );
 
 const previewExamples: Record<string, Record<string, PreviewConfig>> = {
@@ -470,13 +446,6 @@ const previewExamples: Record<string, Record<string, PreviewConfig>> = {
         alt: 'Tooltip mock preview',
         minHeight: 148,
       },
-    },
-  },
-  productivity: {
-    todoList: {
-      description:
-        'TodoList adapts kanban-style task tracking into a reusable component with status columns, task cards, and lightweight editing.',
-      preview: <ProductivityTodoListPreview />,
     },
   },
   feedback: {

@@ -80,6 +80,7 @@ import PatternWebSignInPage from '@/pages/patterns/web/signIn/PatternWebSignInPa
 import PatternWebSignUpPage from '@/pages/patterns/web/signUp/PatternWebSignUpPage';
 import PatternWebSortFilterBarPage from '@/pages/patterns/web/sortFilterBar/PatternWebSortFilterBarPage';
 import PatternWebSubscriptionChangePage from '@/pages/patterns/web/subscriptionChange/PatternWebSubscriptionChangePage';
+import PatternWebTaskBoardPage from '@/pages/patterns/web/taskBoard/PatternWebTaskBoardPage';
 import PatternWebWorkspaceCreationPage from '@/pages/patterns/web/workspaceCreation/PatternWebWorkspaceCreationPage';
 import PatternAppWorkspaceCreationPage from '@/pages/patterns/app/workspaceCreation/PatternAppWorkspaceCreationPage';
 import { useParams } from 'react-router-dom';
@@ -103,6 +104,7 @@ const patternPageRegistry = {
   'web:collaboration:sharing': PatternWebSharingPage,
   'web:collaboration:mentions': PatternWebMentionsPage,
   'web:collaboration:activity-flows': PatternWebActivityFlowsPage,
+  'web:collaboration:task-board': PatternWebTaskBoardPage,
   'web:creation-publishing:editor-flow': PatternWebEditorFlowPage,
   'web:creation-publishing:draft-save': PatternWebDraftSavePage,
   'web:creation-publishing:review-handoff': PatternWebReviewHandoffPage,

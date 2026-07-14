@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import TodoList from './TodoList';
 import {
-  todoListDemoTasks,
-  todoListPreviewColumns,
-  todoListPreviewTasks,
-} from '@/pages/components/productivity/todoList/todoListDemo';
+  taskBoardDemoTasks as todoListDemoTasks,
+  taskBoardPreviewColumns as todoListPreviewColumns,
+  taskBoardPreviewTasks as todoListPreviewTasks,
+} from '@/pages/patterns/web/taskBoard/taskBoardDemo';
 
 const meta: Meta<typeof TodoList> = {
   title: 'Components/Productivity/TodoList',

@@ -225,16 +225,6 @@ export const designSystemMenus = [
         ],
       },
       {
-        group: 'Productivity',
-        items: [
-          {
-            id: 'todoList',
-            label: 'TodoList',
-            href: '/components/productivity/todoList',
-          },
-        ],
-      },
-      {
         group: 'Feedback',
         items: [
           {
@@ -526,6 +516,14 @@ const patternCategorySeeds: Record<PatternPlatform, PatternSeedCategory[]> = {
             'Timeline pattern for collaboration history, filters, and recovery when the feed is delayed.',
           status: 'ready',
           keywords: ['activity', 'feed', 'timeline', 'history', 'web'],
+        },
+        {
+          id: 'task-board',
+          label: 'Task Board',
+          description:
+            'Kanban-style task board pattern for coordinating in-flight work, ownership, and status across a shared workspace.',
+          status: 'ready',
+          keywords: ['task', 'todo', 'kanban', 'board', 'workflow', 'web'],
         },
       ],
     },
@@ -1199,20 +1197,6 @@ export const searchEntries: Layout.SearchEntry[] = [
     href: '/components/dataDisplay',
     group: 'Category',
     keywords: ['data display', 'display'],
-  },
-  {
-    id: 'productivity-root',
-    label: 'Productivity',
-    href: '/components/productivity',
-    group: 'Category',
-    keywords: ['productivity', 'tasks', 'board', 'todo'],
-  },
-  {
-    id: 'todo-list',
-    label: 'TodoList',
-    href: '/components/productivity/todoList',
-    group: 'Productivity',
-    keywords: ['todo list', 'task board', 'kanban', 'workflow'],
   },
   {
     id: 'feedback-root',
