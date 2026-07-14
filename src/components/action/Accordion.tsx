@@ -26,7 +26,7 @@ const accordionItemVariants = cva(
 );
 
 const accordionTriggerVariants = cva(
-  'flex w-full cursor-pointer items-start gap-3 text-left transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50',
+  'flex w-full cursor-pointer items-start gap-3 text-left transition-colors duration-200 disabled:cursor-not-allowed disabled:grayscale disabled:opacity-50 disabled:bg-neutral-50 dark:disabled:bg-neutral-900/40',
   {
     variants: {
       size: {
