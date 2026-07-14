@@ -109,10 +109,14 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
     const role = useRole(context, { role: 'listbox' });
     const { getFloatingProps } = useInteractions([dismiss, role]);
 
-    const setReferenceNode = (node: HTMLInputElement | null) => {
+    // 드롭다운은 트리거 전체 박스(아이콘 포함) 너비에 맞춰야 하므로,
+    // floating-ui의 reference는 input이 아닌 바깥 trigger div에 붙인다.
+    const setTriggerNode = (node: HTMLDivElement | null) => {
       setReference(node);
       setReferenceWidth(node?.offsetWidth);
+    };
 
+    const setInputNode = (node: HTMLInputElement | null) => {
       if (!ref) return;
 
       if (typeof ref === 'function') {
@@ -134,13 +138,16 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
           </label>
         )}
 
-        <div className={classNames(triggerVariants({ size, invalid, disabled }), classes)}>
+        <div
+          ref={setTriggerNode}
+          className={classNames(triggerVariants({ size, invalid, disabled }), classes)}
+        >
           <LuSearch
             className="pointer-events-none ml-3 shrink-0 text-neutral-400 dark:text-neutral-500"
             size={16}
           />
           <input
-            ref={setReferenceNode}
+            ref={setInputNode}
             id={id}
             role="combobox"
             aria-expanded={isOpen}
