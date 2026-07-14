@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
+  appComponentCategories,
   designSystemMenus,
   getPatternCategories,
   type PatternPlatform,
@@ -145,169 +146,19 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
       : []),
   ];
 
-  const appGroups: PlatformMenuGroup[] = [
-    {
-      id: 'app-action',
-      label: 'Action',
-      href: '/components/app/accordion',
-      items: [
-        {
-          id: 'app-accordion',
-          label: 'Accordion',
-          href: '/components/app/accordion',
-        },
-        { id: 'app-button', label: 'Button', href: '/components/app/button' },
-        {
-          id: 'app-button-group',
-          label: 'ButtonGroup',
-          href: '/components/app/buttonGroup',
-        },
-        {
-          id: 'app-dropdown',
-          label: 'Dropdown',
-          href: '/components/app/dropdown',
-        },
-        {
-          id: 'app-popover',
-          label: 'Popover',
-          href: '/components/app/popover',
-        },
-        {
-          id: 'app-action-sheet',
-          label: 'ActionSheet',
-          href: '/components/app/actionSheet',
-        },
-        {
-          id: 'app-modal',
-          label: 'Modal',
-          href: '/components/app/modal',
-        },
-        {
-          id: 'app-drawer',
-          label: 'Drawer',
-          href: '/components/app/drawer',
-        },
-      ],
+  const appGroups: PlatformMenuGroup[] = appComponentCategories.map(
+    (category) => ({
+      id: `app-${category.id}`,
+      label: category.label,
+      href: category.href,
+      items: category.items.map((item) => ({
+        id: `app-${item.id}`,
+        label: item.label,
+        href: item.href,
+      })),
       status: 'ready',
-    },
-    {
-      id: 'app-input',
-      label: 'Input',
-      href: '/components/app/textInput',
-      items: [
-        {
-          id: 'app-text-input',
-          label: 'TextInput',
-          href: '/components/app/textInput',
-        },
-        {
-          id: 'app-textarea',
-          label: 'Textarea',
-          href: '/components/app/textarea',
-        },
-        { id: 'app-select', label: 'Select', href: '/components/app/select' },
-        {
-          id: 'app-combobox',
-          label: 'Combobox',
-          href: '/components/app/combobox',
-        },
-        {
-          id: 'app-checkbox',
-          label: 'Checkbox',
-          href: '/components/app/checkbox',
-        },
-        { id: 'app-radio', label: 'Radio', href: '/components/app/radio' },
-        { id: 'app-switch', label: 'Switch', href: '/components/app/switch' },
-        {
-          id: 'app-datepicker',
-          label: 'DatePicker',
-          href: '/components/app/datepicker',
-        },
-        {
-          id: 'app-upload-dropzone',
-          label: 'UploadDropzone',
-          href: '/components/app/uploadDropzone',
-        },
-      ],
-      status: 'ready',
-    },
-    {
-      id: 'app-navigation',
-      label: 'Navigation',
-      href: '/components/app/pagination',
-      items: [
-        {
-          id: 'app-pagination',
-          label: 'Pagination',
-          href: '/components/app/pagination',
-        },
-        {
-          id: 'app-stepper',
-          label: 'Stepper',
-          href: '/components/app/stepper',
-        },
-        { id: 'app-tabs', label: 'Tabs', href: '/components/app/tabs' },
-        {
-          id: 'app-breadcrumb',
-          label: 'Breadcrumb',
-          href: '/components/app/breadcrumb',
-        },
-      ],
-      status: 'ready',
-    },
-    {
-      id: 'app-data-display',
-      label: 'Data Display',
-      href: '/components/app/avatar',
-      items: [
-        { id: 'app-avatar', label: 'Avatar', href: '/components/app/avatar' },
-        { id: 'app-badge', label: 'Badge', href: '/components/app/badge' },
-        {
-          id: 'app-description-list',
-          label: 'DescriptionList',
-          href: '/components/app/descriptionList',
-        },
-        {
-          id: 'app-empty-state',
-          label: 'EmptyState',
-          href: '/components/app/emptyState',
-        },
-        {
-          id: 'app-metric-card',
-          label: 'MetricCard',
-          href: '/components/app/metricCard',
-        },
-        { id: 'app-table', label: 'Table', href: '/components/app/table' },
-        { id: 'app-tag', label: 'Tag', href: '/components/app/tag' },
-        {
-          id: 'app-tooltip',
-          label: 'Tooltip',
-          href: '/components/app/tooltip',
-        },
-      ],
-      status: 'ready',
-    },
-    {
-      id: 'app-feedback',
-      label: 'Feedback',
-      href: '/components/app/alert',
-      items: [
-        { id: 'app-alert', label: 'Alert', href: '/components/app/alert' },
-        {
-          id: 'app-progress',
-          label: 'Progress',
-          href: '/components/app/progress',
-        },
-        {
-          id: 'app-skeleton',
-          label: 'Skeleton',
-          href: '/components/app/skeleton',
-        },
-        { id: 'app-toast', label: 'Toast', href: '/components/app/toast' },
-      ],
-      status: 'ready',
-    },
-  ];
+    }),
+  );
 
   const patternGroups: PlatformMenuGroup[] = getPatternCategories(
     visiblePatternPlatform,

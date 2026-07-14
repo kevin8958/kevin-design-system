@@ -259,6 +259,7 @@ function App() {
             path="mobile/navDrawer"
             element={<ComponentMobileNavDrawerPage />}
           />
+          <Route path="app/:categoryId" element={<ComponentCategoryPage />} />
           <Route path="app/accordion" element={<ComponentAppAccordionPage />} />
           <Route
             path="app/actionSheet"

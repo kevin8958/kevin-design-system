@@ -1,7 +1,7 @@
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import InlinePlatformSwitch from '@/components/layout/InlinePlatformSwitch';
-import { designSystemMenus } from '@/constants/common';
+import { appComponentCategories, designSystemMenus } from '@/constants/common';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LuArrowUpRight } from 'react-icons/lu';
@@ -16,14 +16,6 @@ const categoryHighlights: Record<string, string> = {
   layout: 'Compose screens with reusable structure.',
   interaction: 'Add motion and character to the experience.',
   mobile: 'Build mobile-first navigation and overlay patterns.',
-};
-
-const appCategoryHighlights: Record<string, string> = {
-  action: 'Touch-first actions for flows, overlays, and compact surfaces.',
-  input: 'Native form controls for text, selection, dates, files, and state.',
-  navigation: 'Mobile navigation patterns for steps, tabs, and hierarchy.',
-  dataDisplay: 'Present status, identity, and structured content in app views.',
-  feedback: 'Surface loading, alerts, progress, and transient system messages.',
 };
 
 const foundationMenu = designSystemMenus.find(
@@ -71,76 +63,22 @@ const webCategories = [
   },
 ];
 
-const appCategories = [
-  {
-    id: 'action',
-    label: 'Action',
-    href: '/components/app/accordion',
-    items: [
-      { id: 'accordion', label: 'Accordion' },
-      { id: 'button', label: 'Button' },
-      { id: 'buttonGroup', label: 'ButtonGroup' },
-      { id: 'dropdown', label: 'Dropdown' },
-      { id: 'popover', label: 'Popover' },
-      { id: 'actionSheet', label: 'ActionSheet' },
-      { id: 'modal', label: 'Modal' },
-      { id: 'drawer', label: 'Drawer' },
-    ],
-  },
-  {
-    id: 'input',
-    label: 'Input',
-    href: '/components/app/textInput',
-    items: [
-      { id: 'textInput', label: 'TextInput' },
-      { id: 'textarea', label: 'Textarea' },
-      { id: 'select', label: 'Select' },
-      { id: 'combobox', label: 'Combobox' },
-      { id: 'checkbox', label: 'Checkbox' },
-      { id: 'radio', label: 'Radio' },
-      { id: 'switch', label: 'Switch' },
-      { id: 'datepicker', label: 'DatePicker' },
-      { id: 'uploadDropzone', label: 'UploadDropzone' },
-    ],
-  },
-  {
-    id: 'navigation',
-    label: 'Navigation',
-    href: '/components/app/pagination',
-    items: [
-      { id: 'pagination', label: 'Pagination' },
-      { id: 'stepper', label: 'Stepper' },
-      { id: 'tabs', label: 'Tabs' },
-      { id: 'breadcrumb', label: 'Breadcrumb' },
-    ],
-  },
-  {
-    id: 'dataDisplay',
-    label: 'Data Display',
-    href: '/components/app/avatar',
-    items: [
-      { id: 'avatar', label: 'Avatar' },
-      { id: 'badge', label: 'Badge' },
-      { id: 'descriptionList', label: 'DescriptionList' },
-      { id: 'emptyState', label: 'EmptyState' },
-      { id: 'metricCard', label: 'MetricCard' },
-      { id: 'table', label: 'Table' },
-      { id: 'tag', label: 'Tag' },
-      { id: 'tooltip', label: 'Tooltip' },
-    ],
-  },
-  {
-    id: 'feedback',
-    label: 'Feedback',
-    href: '/components/app/alert',
-    items: [
-      { id: 'alert', label: 'Alert' },
-      { id: 'progress', label: 'Progress' },
-      { id: 'skeleton', label: 'Skeleton' },
-      { id: 'toast', label: 'Toast' },
-    ],
-  },
-];
+const appCategories = appComponentCategories.map((category) => ({
+  id: category.id,
+  label: category.label,
+  href: category.href,
+  description: category.description,
+  items: category.items,
+}));
+
+type DisplayCategory =
+  | (typeof webCategories)[number]
+  | (typeof appCategories)[number];
+
+const getCategoryHighlight = (category: DisplayCategory): string =>
+  'description' in category
+    ? category.description
+    : (categoryHighlights[category.id] ?? '');
 
 export default function Components() {
   const [platform, setPlatform] = useState<'web' | 'app'>('web');
@@ -235,7 +173,7 @@ export default function Components() {
             >
               {platform === 'web'
                 ? 'Browse web-specific categories, including mobile web and interaction patterns.'
-                : 'Browse app-focused React Native component categories and jump into the first available doc in each group.'}
+                : 'Browse app-focused React Native component categories, starting from each category overview.'}
             </Typography>
           </FlexWrapper>
 
@@ -266,9 +204,7 @@ export default function Components() {
                       variant="C1"
                       classes="mt-2 !text-neutral-500 dark:!text-neutral-400"
                     >
-                      {platform === 'web'
-                        ? categoryHighlights[category.id]
-                        : appCategoryHighlights[category.id]}
+                      {getCategoryHighlight(category)}
                     </Typography>
                   </div>
 

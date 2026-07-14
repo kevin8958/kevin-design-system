@@ -4,9 +4,10 @@ import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import Grid from '@/components/layout/Grid';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
-import { designSystemMenus } from '@/constants/common';
+import InlinePlatformSwitch from '@/components/layout/InlinePlatformSwitch';
+import { appComponentCategories, designSystemMenus } from '@/constants/common';
 import ColorScalePreview from '@/pages/components/foundation/colors/ColorScalePreview';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { LuArrowUpRight } from 'react-icons/lu';
 import ImagePreview from './previews/ImagePreview';
 
@@ -99,6 +100,15 @@ const categoryConfigs: CategoryConfig[] = [
     items: interactionMenu?.items ?? [],
   },
 ];
+
+const appCategoryConfigs: CategoryConfig[] = appComponentCategories.map(
+  (category) => ({
+    id: category.id,
+    label: category.label,
+    description: category.description,
+    items: category.items,
+  }),
+);
 
 const FoundationColorsPreview = () => (
   <Grid cols={1} gap={3} classes="w-full lg:grid-cols-3">
@@ -647,8 +657,12 @@ const PreviewBlock = ({
 
 export default function ComponentCategoryPage() {
   const { categoryId } = useParams();
+  const { pathname } = useLocation();
+  const isAppPlatform = pathname.startsWith('/components/app');
 
-  const category = categoryConfigs.find((item) => item.id === categoryId);
+  const category = (isAppPlatform ? appCategoryConfigs : categoryConfigs).find(
+    (item) => item.id === categoryId,
+  );
 
   if (!category) {
     return (
@@ -662,12 +676,32 @@ export default function ComponentCategoryPage() {
 
   const breadcrumbItems = [
     { label: 'Components', href: '/components' },
-    { label: category.label, href: `/components/${category.id}` },
+    {
+      label: category.label,
+      href: isAppPlatform
+        ? `/components/app/${category.id}`
+        : `/components/${category.id}`,
+    },
   ];
+
+  const hasWebVersion = categoryConfigs.some((item) => item.id === category.id);
+  const hasAppVersion = appCategoryConfigs.some(
+    (item) => item.id === category.id,
+  );
 
   return (
     <FlexWrapper classes="w-full pb-20 px-4" direction="col" gap={8}>
       <BreadCrumb items={breadcrumbItems} />
+
+      {hasWebVersion && hasAppVersion && (
+        <InlinePlatformSwitch
+          activeValue={isAppPlatform ? 'app' : 'web'}
+          options={[
+            { value: 'web', to: `/components/${category.id}` },
+            { value: 'app', to: `/components/app/${category.id}` },
+          ]}
+        />
+      )}
 
       <FlexWrapper direction="col" items="start" gap={4} classes="max-w-3xl">
         <Typography variant="H1" responsive>{category.label}</Typography>

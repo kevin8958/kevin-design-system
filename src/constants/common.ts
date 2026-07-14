@@ -313,6 +313,136 @@ export const designSystemMenus = [
   },
 ];
 
+export type AppComponentCategoryItem = {
+  id: string;
+  label: string;
+  href: string;
+};
+
+export type AppComponentCategory = {
+  id: string;
+  label: string;
+  description: string;
+  href: string;
+  items: AppComponentCategoryItem[];
+};
+
+export const appComponentCategories: AppComponentCategory[] = [
+  {
+    id: 'action',
+    label: 'Action',
+    description:
+      'Touch-first actions for flows, overlays, and compact surfaces.',
+    href: '/components/app/action',
+    items: [
+      { id: 'accordion', label: 'Accordion', href: '/components/app/accordion' },
+      { id: 'button', label: 'Button', href: '/components/app/button' },
+      {
+        id: 'buttonGroup',
+        label: 'ButtonGroup',
+        href: '/components/app/buttonGroup',
+      },
+      { id: 'dropdown', label: 'Dropdown', href: '/components/app/dropdown' },
+      { id: 'popover', label: 'Popover', href: '/components/app/popover' },
+      {
+        id: 'actionSheet',
+        label: 'ActionSheet',
+        href: '/components/app/actionSheet',
+      },
+      { id: 'modal', label: 'Modal', href: '/components/app/modal' },
+      { id: 'drawer', label: 'Drawer', href: '/components/app/drawer' },
+    ],
+  },
+  {
+    id: 'input',
+    label: 'Input',
+    description:
+      'Native form controls for text, selection, dates, files, and state.',
+    href: '/components/app/input',
+    items: [
+      { id: 'textInput', label: 'TextInput', href: '/components/app/textInput' },
+      { id: 'textarea', label: 'Textarea', href: '/components/app/textarea' },
+      { id: 'select', label: 'Select', href: '/components/app/select' },
+      { id: 'combobox', label: 'Combobox', href: '/components/app/combobox' },
+      { id: 'checkbox', label: 'Checkbox', href: '/components/app/checkbox' },
+      { id: 'radio', label: 'Radio', href: '/components/app/radio' },
+      { id: 'switch', label: 'Switch', href: '/components/app/switch' },
+      {
+        id: 'datepicker',
+        label: 'DatePicker',
+        href: '/components/app/datepicker',
+      },
+      {
+        id: 'uploadDropzone',
+        label: 'UploadDropzone',
+        href: '/components/app/uploadDropzone',
+      },
+    ],
+  },
+  {
+    id: 'navigation',
+    label: 'Navigation',
+    description: 'Mobile navigation patterns for steps, tabs, and hierarchy.',
+    href: '/components/app/navigation',
+    items: [
+      {
+        id: 'pagination',
+        label: 'Pagination',
+        href: '/components/app/pagination',
+      },
+      { id: 'stepper', label: 'Stepper', href: '/components/app/stepper' },
+      { id: 'tabs', label: 'Tabs', href: '/components/app/tabs' },
+      {
+        id: 'breadcrumb',
+        label: 'Breadcrumb',
+        href: '/components/app/breadcrumb',
+      },
+    ],
+  },
+  {
+    id: 'dataDisplay',
+    label: 'Data Display',
+    description:
+      'Present status, identity, and structured content in app views.',
+    href: '/components/app/dataDisplay',
+    items: [
+      { id: 'avatar', label: 'Avatar', href: '/components/app/avatar' },
+      { id: 'badge', label: 'Badge', href: '/components/app/badge' },
+      {
+        id: 'descriptionList',
+        label: 'DescriptionList',
+        href: '/components/app/descriptionList',
+      },
+      {
+        id: 'emptyState',
+        label: 'EmptyState',
+        href: '/components/app/emptyState',
+      },
+      {
+        id: 'metricCard',
+        label: 'MetricCard',
+        href: '/components/app/metricCard',
+      },
+      { id: 'table', label: 'Table', href: '/components/app/table' },
+      { id: 'tag', label: 'Tag', href: '/components/app/tag' },
+      { id: 'tooltip', label: 'Tooltip', href: '/components/app/tooltip' },
+    ],
+  },
+  {
+    id: 'feedback',
+    label: 'Feedback',
+    description:
+      'Surface loading, alerts, progress, and transient system messages.',
+    href: '/components/app/feedback',
+    items: [
+      { id: 'alert', label: 'Alert', href: '/components/app/alert' },
+      { id: 'progress', label: 'Progress', href: '/components/app/progress' },
+      { id: 'skeleton', label: 'Skeleton', href: '/components/app/skeleton' },
+      { id: 'toast', label: 'Toast', href: '/components/app/toast' },
+    ],
+  },
+];
+
 export type PatternItem = Layout.NavItem & {
   description: string;
   status?: 'ready' | 'working';
