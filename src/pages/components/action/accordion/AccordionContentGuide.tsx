@@ -26,7 +26,7 @@ const createItems = (): Action.AccordionItem[] => [
     description: 'Choose which updates should reach your team.',
     icon: <LuBell />,
     badge: (
-      <span className="rounded-full bg-secondary-500/10 px-2 py-0.5 text-[11px] font-semibold text-secondary-600 dark:bg-primary-400/15 dark:text-primary-300">
+      <span className="rounded-full bg-secondary-500/10 px-2 py-0.5 font-semibold text-secondary-600 dark:bg-primary-400/15 dark:text-primary-300">
         3
       </span>
     ),

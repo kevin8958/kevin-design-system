@@ -1,8 +1,21 @@
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cva } from 'class-variance-authority';
-import { useId, useMemo, useState } from 'react';
+import { cloneElement, isValidElement, useId, useMemo, useState } from 'react';
 import { LuChevronDown } from 'react-icons/lu';
+
+const iconSizeBySize: Record<Action.ButtonSize, number> = {
+  sm: 16,
+  md: 18,
+  lg: 20,
+};
+
+/** react-icons 요소에 size가 명시되어 있지 않으면 accordion size에 맞는 크기를 주입한다. */
+const renderSizedIcon = (icon: React.ReactNode, size: Action.ButtonSize) => {
+  if (!isValidElement<{ size?: number | string }>(icon)) return icon;
+  if (icon.props.size !== undefined) return icon;
+  return cloneElement(icon, { size: iconSizeBySize[size] });
+};
 
 const accordionRootVariants = cva(
   'w-full overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-950',
@@ -48,6 +61,35 @@ const accordionTitleVariants = cva(
     },
   },
 );
+
+const accordionIconRowVariants = cva(
+  'flex shrink-0 items-center justify-center text-neutral-500 dark:text-neutral-400',
+  {
+    variants: {
+      size: {
+        sm: 'h-5',
+        md: 'h-6',
+        lg: 'h-7',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  },
+);
+
+const accordionBadgeVariants = cva('shrink-0', {
+  variants: {
+    size: {
+      sm: 'text-[10px]',
+      md: 'text-[11px]',
+      lg: 'text-xs',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+});
 
 const accordionContentVariants = cva(
   'text-neutral-600 dark:text-neutral-300',
@@ -139,8 +181,8 @@ const Accordion = ({
               onClick={() => handleToggle(item.id)}
             >
               {item.icon && (
-                <span className="mt-0.5 shrink-0 text-neutral-500 dark:text-neutral-400">
-                  {item.icon}
+                <span className={accordionIconRowVariants({ size })}>
+                  {renderSizedIcon(item.icon, size)}
                 </span>
               )}
 
@@ -149,7 +191,11 @@ const Accordion = ({
                   <span className={accordionTitleVariants({ size })}>
                     {item.title}
                   </span>
-                  {item.badge && <span className="shrink-0">{item.badge}</span>}
+                  {item.badge && (
+                    <span className={accordionBadgeVariants({ size })}>
+                      {item.badge}
+                    </span>
+                  )}
                 </span>
                 {item.description && (
                   <span className="mt-1 block text-sm text-neutral-500 dark:text-neutral-400">
@@ -162,9 +208,9 @@ const Accordion = ({
                 aria-hidden="true"
                 animate={{ rotate: isOpen ? 180 : 0 }}
                 transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-                className="mt-0.5 shrink-0 text-neutral-500 dark:text-neutral-400"
+                className={accordionIconRowVariants({ size })}
               >
-                <LuChevronDown size={18} />
+                <LuChevronDown size={iconSizeBySize[size]} />
               </motion.span>
             </button>
 
