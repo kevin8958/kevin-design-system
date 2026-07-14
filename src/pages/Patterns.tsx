@@ -37,7 +37,7 @@ export default function Patterns() {
           >
             <Typography
               variant="H1"
-              classes="text-balance !text-[32px] sm:!text-[44px] lg:!text-[64px] !leading-[1.25] !text-neutral-900 dark:!text-neutral-50"
+              classes="text-balance !text-neutral-900 dark:!text-neutral-50"
             >
               Patterns
             </Typography>
