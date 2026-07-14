@@ -49,10 +49,19 @@ const Dropdown = (props: Action.DropdownProps) => {
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
+  const [openSubmenuId, setOpenSubmenuId] = useState<string | null>(null);
+
+  const closeAll = () => {
+    setIsOpen(false);
+    setOpenSubmenuId(null);
+  };
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
-    onOpenChange: setIsOpen,
+    onOpenChange: (next) => {
+      setIsOpen(next);
+      if (!next) setOpenSubmenuId(null);
+    },
     middleware: [
       offset(8),
       flip({ fallbackAxisSideDirection: 'end' }),
@@ -96,16 +105,23 @@ const Dropdown = (props: Action.DropdownProps) => {
             >
               <button
                 type="button"
+                disabled={item.disabled}
                 className={classNames(
-                  'flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors',
-                  item.danger
-                    ? 'text-danger hover:bg-danger/10'
-                    : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800',
+                  'flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors',
+                  item.disabled
+                    ? 'cursor-not-allowed text-neutral-400 dark:text-neutral-600'
+                    : classNames(
+                        'cursor-pointer',
+                        item.danger
+                          ? 'text-danger hover:bg-danger/10'
+                          : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800',
+                      ),
                 )}
                 onClick={() => {
+                  if (item.disabled) return;
                   item.onClick?.();
                   onChange?.(item.id);
-                  setIsOpen(false);
+                  closeAll();
                 }}
               >
                 {item.icon && (
@@ -141,16 +157,29 @@ const Dropdown = (props: Action.DropdownProps) => {
               </ul>
             </li>
           );
-        case 'submenu':
+        case 'submenu': {
+          const isSubmenuOpen = openSubmenuId === item.id;
+
           return (
             <li
               key={item.id}
-              className="group relative w-full list-none"
+              className="relative w-full list-none"
               style={itemWidthStyle}
+              onMouseEnter={() => setOpenSubmenuId(item.id)}
             >
               <button
                 type="button"
-                className="flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-neutral-700 transition-colors group-hover:bg-neutral-100 dark:text-neutral-300 dark:group-hover:bg-neutral-800"
+                aria-haspopup="menu"
+                aria-expanded={isSubmenuOpen}
+                className={classNames(
+                  'flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-neutral-700 transition-colors dark:text-neutral-300',
+                  isSubmenuOpen
+                    ? 'bg-neutral-100 dark:bg-neutral-800'
+                    : 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
+                )}
+                onClick={() =>
+                  setOpenSubmenuId(isSubmenuOpen ? null : item.id)
+                }
               >
                 <div className="w-full flex items-center gap-2 min-w-0 flex-1">
                   {item.icon && (
@@ -160,19 +189,27 @@ const Dropdown = (props: Action.DropdownProps) => {
                   )}
                   <span className="truncate">{item.label}</span>
                 </div>
-                <LuChevronRight className="ml-2 shrink-0 opacity-50 transition-transform group-hover:translate-x-0.5" />
+                <LuChevronRight
+                  className={classNames(
+                    'ml-2 shrink-0 opacity-50 transition-transform',
+                    isSubmenuOpen && 'translate-x-0.5',
+                  )}
+                />
               </button>
-              <div className="absolute top-0 left-[calc(100%+0.2rem)] z-[60] hidden pl-1 group-hover:block">
-                <motion.ul
-                  initial={{ opacity: 0, x: -5 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="rounded-xl border border-neutral-500/30 bg-white p-1.5 shadow-xl dark:border-neutral-100/20 dark:bg-neutral-900"
-                >
-                  {renderItems(item.items)}
-                </motion.ul>
-              </div>
+              {isSubmenuOpen && (
+                <div className="absolute top-0 left-[calc(100%+0.2rem)] z-[60] pl-1">
+                  <motion.ul
+                    initial={{ opacity: 0, x: -5 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="rounded-xl border border-neutral-500/30 bg-white p-1.5 shadow-xl dark:border-neutral-100/20 dark:bg-neutral-900"
+                  >
+                    {renderItems(item.items)}
+                  </motion.ul>
+                </div>
+              )}
             </li>
           );
+        }
       }
     });
   };

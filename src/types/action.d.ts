@@ -39,6 +39,7 @@ namespace Action {
         icon?: React.ReactNode;
         onClick?: () => void;
         danger?: boolean;
+        disabled?: boolean;
       }
     | {
         type: 'group';
