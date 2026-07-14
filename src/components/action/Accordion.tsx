@@ -26,7 +26,7 @@ const accordionItemVariants = cva(
 );
 
 const accordionTriggerVariants = cva(
-  'flex w-full cursor-pointer items-start gap-3 text-left transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50',
+  'flex w-full cursor-pointer items-start gap-3 border-l-2 text-left transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       size: {
@@ -35,8 +35,9 @@ const accordionTriggerVariants = cva(
         lg: 'px-6 py-5',
       },
       open: {
-        true: 'bg-neutral-50 dark:bg-neutral-900/80',
-        false: 'bg-transparent hover:bg-neutral-50/80 dark:hover:bg-neutral-900/60',
+        true: 'border-l-secondary-500 bg-secondary-50 dark:border-l-primary-400 dark:bg-primary-400/10',
+        false:
+          'border-l-transparent bg-transparent hover:bg-neutral-50/80 dark:hover:bg-neutral-900/60',
       },
     },
     defaultVariants: {
