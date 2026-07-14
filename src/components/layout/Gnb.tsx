@@ -42,7 +42,8 @@ const Gnb = ({ isOpen, onToggle }: GnbProps) => {
             <img src="/kds_logo.svg" alt="" className="size-full" />
           </div> */}
           <span className="text-base font-bold tracking-tight text-neutral-800 dark:text-primary-400">
-            Kevin Design System
+            <span className="sm:hidden">KDS</span>
+            <span className="hidden sm:inline">Kevin Design System</span>
           </span>
         </Link>
 
