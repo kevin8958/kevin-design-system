@@ -78,12 +78,12 @@ const accordionIconRowVariants = cva(
   },
 );
 
-const accordionBadgeVariants = cva('shrink-0', {
+const accordionBadgeVariants = cva('shrink-0 leading-none', {
   variants: {
     size: {
-      sm: 'text-[10px]',
-      md: 'text-[11px]',
-      lg: 'text-xs',
+      sm: 'text-xs',
+      md: 'text-sm',
+      lg: 'text-base',
     },
   },
   defaultVariants: {
