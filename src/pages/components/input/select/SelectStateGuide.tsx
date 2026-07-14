@@ -17,6 +17,7 @@ const StateExample = ({ size }: SelectPreviewControls) => {
 
   const exampleCode = `<Select
   size="${size}"
+  label="Default"
   options={options}
   value={value}
   onChange={setValue}
@@ -25,6 +26,7 @@ const StateExample = ({ size }: SelectPreviewControls) => {
 
 <Select
   size="${size}"
+  label="Disabled"
   options={options}
   value=""
   disabled
@@ -33,6 +35,7 @@ const StateExample = ({ size }: SelectPreviewControls) => {
 
 <Select
   size="${size}"
+  label="Invalid"
   options={options}
   value=""
   invalid
@@ -45,6 +48,7 @@ const StateExample = ({ size }: SelectPreviewControls) => {
         <div className="w-full max-w-sm">
           <Select
             size={size}
+            label="Default"
             options={options}
             value={value}
             onChange={setValue}
@@ -54,6 +58,7 @@ const StateExample = ({ size }: SelectPreviewControls) => {
         <div className="w-full max-w-sm">
           <Select
             size={size}
+            label="Disabled"
             options={options}
             value=""
             disabled
@@ -63,6 +68,7 @@ const StateExample = ({ size }: SelectPreviewControls) => {
         <div className="w-full max-w-sm">
           <Select
             size={size}
+            label="Invalid"
             options={options}
             value=""
             invalid
