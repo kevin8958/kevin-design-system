@@ -42,7 +42,7 @@ const buttonVariants = cva(
         variant: 'contain',
         color: 'neutral',
         className:
-          'bg-neutral-800 text-white hover:bg-neutral-900 dark:bg-neutral-200 dark:text-neutral-900 dark:hover:bg-white',
+          'bg-neutral-800 text-white hover:bg-neutral-900 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white',
       },
       {
         variant: 'contain',
