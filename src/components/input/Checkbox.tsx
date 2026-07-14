@@ -37,6 +37,13 @@ const checkIconSize = {
   lg: 'text-4xl',
 };
 
+// 체크박스 박스 너비 + gap-2(8px)만큼 들여써서 라벨과 좌측이 맞도록 정렬한다.
+const errorMsgIndent = {
+  sm: 'pl-7',
+  md: 'pl-8',
+  lg: 'pl-10',
+};
+
 const Checkbox = forwardRef<HTMLInputElement, Input.CheckboxProps>(
   (props, ref) => {
     const {
@@ -103,7 +110,7 @@ const Checkbox = forwardRef<HTMLInputElement, Input.CheckboxProps>(
         {invalid && errorMsg && (
           <p
             id={errorId}
-            className="pl-7 text-xs text-danger md:pl-8"
+            className={classNames('text-xs text-danger', errorMsgIndent[size])}
           >
             {errorMsg}
           </p>
