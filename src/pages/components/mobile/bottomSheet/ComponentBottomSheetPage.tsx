@@ -40,7 +40,7 @@ export default function ComponentBottomSheetPage() {
       <FlexWrapper justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <FlexWrapper justify="start" items="end" classes="w-full">
-            <Typography variant="H1">BottomSheet</Typography>
+            <Typography variant="H1" responsive>BottomSheet</Typography>
             <Button
               classes="mb-2"
               variant="outline"

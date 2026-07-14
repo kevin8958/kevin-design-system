@@ -35,7 +35,7 @@ export default function ComponentUploadDropzonePage() {
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <FlexWrapper justify="start" items="end" classes="w-full flex-wrap">
             <Typography
-              variant="H1"
+              variant="H1" responsive
               classes="w-full break-words whitespace-pre-wrap"
             >
               UploadDropzone

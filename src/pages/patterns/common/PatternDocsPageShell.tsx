@@ -46,7 +46,7 @@ export default function PatternDocsPageShell({
         <span className="rounded-full bg-primary-100 px-2.5 py-1 text-[11px] font-semibold text-primary-700 dark:bg-primary-400/10 dark:text-primary-300">
           {platform.toUpperCase()} Pattern
         </span>
-        <Typography variant="H1">{title}</Typography>
+        <Typography variant="H1" responsive>{title}</Typography>
         <Typography
           variant="B1"
           classes="!font-normal !text-neutral-600 dark:!text-neutral-300"

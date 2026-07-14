@@ -17,7 +17,7 @@ const ComponenTypographyPage = () => {
       <FlexWrapper classes="w-full" justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <Typography
-            variant="H1"
+            variant="H1" responsive
             classes="w-full break-words whitespace-pre-wrap"
           >
             Typography

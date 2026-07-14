@@ -94,7 +94,7 @@ export default function ComponentAppButtonGroupPage() {
       <FlexWrapper justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <FlexWrapper direction="col" items="start" gap={3} classes="w-full">
-            <Typography variant="H1">App ButtonGroup</Typography>
+            <Typography variant="H1" responsive>App ButtonGroup</Typography>
             <Typography
               variant="B1"
               classes="!font-normal !text-neutral-600 dark:!text-neutral-300"

@@ -31,7 +31,7 @@ export default function ComponentBreadcrumbPage() {
       <FlexWrapper justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <FlexWrapper justify="start" items="end" classes="w-full">
-            <Typography variant="H1">Breadcrumb</Typography>
+            <Typography variant="H1" responsive>Breadcrumb</Typography>
             <Button
               classes="mb-2"
               variant="outline"

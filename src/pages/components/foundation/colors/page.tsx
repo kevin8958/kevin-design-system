@@ -17,7 +17,7 @@ const ComponenColorsPage = () => {
       <BreadCrumb items={breadcrumbItems} />
       <FlexWrapper classes="w-full" justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
-          <Typography variant="H1">Colors</Typography>
+          <Typography variant="H1" responsive>Colors</Typography>
           <PrimaryGuide />
           <SecondaryGuide />
           <NeutralGuide />

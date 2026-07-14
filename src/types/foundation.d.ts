@@ -6,6 +6,8 @@ namespace Foundation {
     classes?: string;
     color?: TypographyColor;
     variant: TypographyVariant;
+    /** true면 모바일 뷰포트에서 H1을 H2 크기로 축소해 렌더링합니다. */
+    responsive?: boolean;
     children?: React.ReactNode | string;
   }
 }

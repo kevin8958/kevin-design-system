@@ -34,7 +34,7 @@ export default function ComponentMetricCardPage() {
       <FlexWrapper justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <FlexWrapper justify="start" items="end" classes="w-full">
-            <Typography variant="H1">MetricCard</Typography>
+            <Typography variant="H1" responsive>MetricCard</Typography>
             <Button
               classes="mb-2"
               variant="outline"

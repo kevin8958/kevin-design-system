@@ -701,7 +701,7 @@ export default function ComponentCategoryPage() {
       <BreadCrumb items={breadcrumbItems} />
 
       <FlexWrapper direction="col" items="start" gap={4} classes="max-w-3xl">
-        <Typography variant="H1">{category.label}</Typography>
+        <Typography variant="H1" responsive>{category.label}</Typography>
         <Typography
           variant="B1"
           classes="!font-normal !text-neutral-600 dark:!text-neutral-300"

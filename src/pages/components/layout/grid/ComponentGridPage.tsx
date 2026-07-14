@@ -31,7 +31,7 @@ export default function ComponentGridPage() {
       <FlexWrapper justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <FlexWrapper justify="start" items="end" classes="w-full">
-            <Typography variant="H1">Grid</Typography>
+            <Typography variant="H1" responsive>Grid</Typography>
             <Button
               classes="mb-2"
               variant="outline"

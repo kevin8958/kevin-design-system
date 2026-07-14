@@ -34,7 +34,7 @@ export default function ComponentTooltipPage() {
       <FlexWrapper justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <FlexWrapper justify="start" items="end" classes="w-full">
-            <Typography variant="H1">Tooltip</Typography>
+            <Typography variant="H1" responsive>Tooltip</Typography>
             <Button
               classes="mb-2"
               variant="outline"

@@ -224,7 +224,7 @@ export default function PatternDetailPage() {
         <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">
           작업중
         </span>
-        <Typography variant="H1">{pattern.label}</Typography>
+        <Typography variant="H1" responsive>{pattern.label}</Typography>
         <Typography
           variant="B1"
           classes="!font-normal !text-neutral-600 dark:!text-neutral-300"

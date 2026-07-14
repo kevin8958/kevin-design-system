@@ -170,7 +170,7 @@ export default function Components() {
             classes="max-w-3xl"
           >
             <Typography
-              variant="H1"
+              variant="H1" responsive
               classes="text-balance !text-neutral-900 dark:!text-neutral-50"
             >
               Components

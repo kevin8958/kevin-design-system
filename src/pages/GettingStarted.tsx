@@ -61,7 +61,7 @@ export default function GettingStarted() {
           </div>
 
           <FlexWrapper direction="col" items="start" gap={4}>
-            <Typography variant="H1" classes="text-balance !text-neutral-900 dark:!text-neutral-50">
+            <Typography variant="H1" responsive classes="text-balance !text-neutral-900 dark:!text-neutral-50">
               Install Kevin Design System and start building faster
             </Typography>
             <Typography

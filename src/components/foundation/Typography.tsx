@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const typographyVariants = cva(
   'tracking-wide transition-all duration-200 ease-in-out',
   {
     variants: {
       variant: {
-        H1: 'text-[32px] sm:text-[40px] lg:text-[64px] leading-[1.25] lg:leading-[1.2] font-bold',
+        H1: 'text-[64px] leading-[1.2] font-bold',
         H2: 'text-[40px] leading-[1.3] font-bold',
         H3: 'text-[24px] leading-[1.4] font-bold',
         H4: 'text-[16px] leading-[1.5] font-semibold',
@@ -42,10 +43,16 @@ const Typography = ({
   variant = 'B1',
   classes = '',
   color,
+  responsive = false,
   children,
   ...rest
 }: Foundation.TypographyProps) => {
-  const Component = variantTagMap[variant];
+  const isMobile = useIsMobile();
+  // 타이틀(H1)은 모바일에서 H2 크기로 축소해 노출한다. 타이포그래피 스케일을
+  // 그대로 보여줘야 하는 곳(예: 파운데이션 가이드)에서는 responsive를 넘기지 않는다.
+  const effectiveVariant =
+    responsive && variant === 'H1' && isMobile ? 'H2' : variant;
+  const Component = variantTagMap[effectiveVariant];
 
   return (
     <Component
@@ -53,7 +60,7 @@ const Typography = ({
       lang="en"
       className={classNames(
         typographyVariants({
-          variant,
+          variant: effectiveVariant,
           color: color as Foundation.TypographyColor,
         }),
         classes,

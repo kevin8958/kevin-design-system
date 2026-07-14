@@ -36,7 +36,7 @@ export default function ComponentToastPage() {
       <FlexWrapper justify="center">
         <FlexWrapper classes="w-full !gap-10" items="start" direction="col">
           <FlexWrapper justify="start" items="end" classes="w-full">
-            <Typography variant="H1">Toast</Typography>
+            <Typography variant="H1" responsive>Toast</Typography>
             <Button
               classes="mb-2"
               variant="outline"
