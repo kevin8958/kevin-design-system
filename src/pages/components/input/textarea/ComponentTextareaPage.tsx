@@ -9,7 +9,6 @@ import Button from '@/components/action/Button';
 import { propsColumn, STORYBOOK_URL } from '@/constants/common';
 import { LuExternalLink } from 'react-icons/lu';
 import TextareaControllerGuide from './TextareaControllerGuide';
-import TextareaContentGuide from './TextareaContentGuide';
 import TextareaStateGuide from './TextareaStateGuide';
 
 export default function ComponentTextareaPage() {
@@ -50,7 +49,6 @@ export default function ComponentTextareaPage() {
           </FlexWrapper>
 
           <TextareaControllerGuide size={size} onSizeChange={setSize} />
-          <TextareaContentGuide size={size} />
           <TextareaStateGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
