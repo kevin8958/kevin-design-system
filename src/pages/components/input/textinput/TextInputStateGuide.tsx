@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import TextInput from '@/components/input/TextInput';
 import CodeExample from '@/components/interaction/CodeExample';
@@ -6,10 +7,19 @@ import GuideSection from '@/components/layout/GuideSection';
 type TextInputPreviewControls = Pick<Input.TextInputProps, 'size'>;
 
 const StateExample = ({ size }: TextInputPreviewControls) => {
+  const [errorValue, setErrorValue] = useState('Wrong data');
+
   const exampleCode = `<TextInput size="${size}" label="Default" placeholder="Default state" />
 <TextInput size="${size}" label="Required" required placeholder="Required state" />
 <TextInput size="${size}" label="Disabled" disabled value="Not editable" />
-<TextInput size="${size}" label="Error" error errorMsg="Invalid input" value="Wrong data" />`;
+<TextInput
+  size="${size}"
+  label="Error"
+  error
+  errorMsg="Invalid input"
+  value={errorValue}
+  onChange={(e) => setErrorValue(e.target.value)}
+/>`;
 
   return (
     <CodeExample code={exampleCode} className="flex-1">
@@ -33,7 +43,8 @@ const StateExample = ({ size }: TextInputPreviewControls) => {
           label="Error"
           error
           errorMsg="Invalid input"
-          value="Wrong data"
+          value={errorValue}
+          onChange={(e) => setErrorValue(e.target.value)}
         />
       </FlexWrapper>
     </CodeExample>

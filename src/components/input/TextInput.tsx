@@ -24,7 +24,7 @@ const inputVariants = cva(
           'hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
       },
       disabled: {
-        true: 'bg-neutral-100/10! !text-[#8C9097] cursor-not-allowed',
+        true: 'bg-neutral-100/10! !text-neutral-400 dark:!text-neutral-500 cursor-not-allowed',
         false: '',
       },
     },
@@ -68,15 +68,13 @@ const TextInput = forwardRef<HTMLInputElement, Input.TextInputProps>(
     return (
       <div className="relative w-full">
         <div className="relative flex flex-col items-start">
-          <input className="hidden" aria-hidden="true" />
-
           {label && (
             <label
               htmlFor={id}
               className={classNames(
                 'relative mb-2 !text-sm font-semibold text-neutral-700 dark:text-neutral-100',
                 required &&
-                  "after:ml-1 after:text-[#FF3535] after:content-['*'] after:text-lg",
+                  "after:ml-1 after:text-danger after:content-['*'] after:text-lg",
               )}
             >
               {label}

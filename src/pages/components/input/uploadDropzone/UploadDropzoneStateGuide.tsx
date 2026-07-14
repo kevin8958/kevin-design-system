@@ -8,11 +8,17 @@ const createFile = (name: string, content: string, type: string) =>
   new File([content], name, { type });
 
 const StateExample = () => {
-  const [files] = useState([createFile('contract.pdf', 'contract', 'application/pdf')]);
+  const [invalidFiles, setInvalidFiles] = useState<File[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState([
+    createFile('contract.pdf', 'contract', 'application/pdf'),
+  ]);
 
-  const exampleCode = `<UploadDropzone invalid errorMsg="Please upload a PDF file." />
+  const exampleCode = `const [invalidFiles, setInvalidFiles] = useState<File[]>([]);
+const [selectedFiles, setSelectedFiles] = useState<File[]>([...]);
+
+<UploadDropzone invalid errorMsg="Please upload a PDF file." files={invalidFiles} onChange={setInvalidFiles} />
 <UploadDropzone disabled />
-<UploadDropzone files={files} onChange={setFiles} />`;
+<UploadDropzone files={selectedFiles} onChange={setSelectedFiles} />`;
 
   return (
     <CodeExample code={exampleCode} className="flex-1">
@@ -23,8 +29,8 @@ const StateExample = () => {
           accept=".pdf"
           invalid
           errorMsg="Please upload a PDF file."
-          files={[]}
-          onChange={() => {}}
+          files={invalidFiles}
+          onChange={setInvalidFiles}
         />
         <UploadDropzone
           label="Disabled State"
@@ -36,8 +42,8 @@ const StateExample = () => {
         <UploadDropzone
           label="Selected Files"
           helperText="Selected files appear beneath the dropzone."
-          files={files}
-          onChange={() => {}}
+          files={selectedFiles}
+          onChange={setSelectedFiles}
         />
       </FlexWrapper>
     </CodeExample>
