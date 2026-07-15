@@ -56,7 +56,16 @@ toast.push({
 
   return (
     <CodeExample code={exampleCode} className="flex-1">
-      <div className="relative min-h-[320px] w-full overflow-hidden rounded-[24px] border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950">
+      {/*
+        ToastViewport renders with position: fixed, which anchors to the
+        browser viewport unless an ancestor establishes a new containing
+        block. A non-none `transform` does that, so the demo toast stays
+        inside this preview box instead of escaping to the real page corner.
+      */}
+      <div
+        className="relative min-h-[320px] w-full overflow-hidden rounded-[24px] border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-800 dark:bg-neutral-950"
+        style={{ transform: 'translateZ(0)' }}
+      >
         <ToastProvider placement={placement}>
           <FlexWrapper direction="col" items="start" gap={4} classes="w-full">
             <Typography variant="C1">Trigger</Typography>
