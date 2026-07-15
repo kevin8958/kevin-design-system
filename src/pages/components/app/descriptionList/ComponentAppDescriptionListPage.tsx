@@ -8,7 +8,7 @@ import AppDescriptionListLayoutGuide from '@/pages/components/app/descriptionLis
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Data Display', href: '/components/app/dataDisplay' },
   { label: 'DescriptionList', href: '/components/app/descriptionList' },
 ];
 

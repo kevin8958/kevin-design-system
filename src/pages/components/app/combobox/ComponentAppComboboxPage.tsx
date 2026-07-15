@@ -8,7 +8,7 @@ import AppComboboxStateGuide from '@/pages/components/app/combobox/AppComboboxSt
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'Combobox', href: '/components/app/combobox' },
 ];
 

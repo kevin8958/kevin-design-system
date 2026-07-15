@@ -16,7 +16,7 @@ import AppDropdownWidthGuide from '@/pages/components/app/dropdown/AppDropdownWi
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Action', href: '/components/app/action' },
   { label: 'Dropdown', href: '/components/app/dropdown' },
 ];
 

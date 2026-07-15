@@ -8,7 +8,7 @@ import AppStepperStateGuide from '@/pages/components/app/stepper/AppStepperState
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Navigation', href: '/components/app/navigation' },
   { label: 'Stepper', href: '/components/app/stepper' },
 ];
 

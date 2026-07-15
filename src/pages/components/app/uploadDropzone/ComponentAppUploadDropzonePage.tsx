@@ -6,7 +6,7 @@ import AppUploadDropzoneStateGuide from '@/pages/components/app/uploadDropzone/A
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'UploadDropzone', href: '/components/app/uploadDropzone' },
 ];
 

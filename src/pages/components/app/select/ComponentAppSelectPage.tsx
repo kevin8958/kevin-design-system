@@ -7,7 +7,7 @@ import AppSelectStateGuide from '@/pages/components/app/select/AppSelectStateGui
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'Select', href: '/components/app/select' },
 ];
 

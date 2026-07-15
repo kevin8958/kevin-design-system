@@ -8,7 +8,7 @@ import AppTagVariantGuide from '@/pages/components/app/tag/AppTagVariantGuide';
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Data Display', href: '/components/app/dataDisplay' },
   { label: 'Tag', href: '/components/app/tag' },
 ];
 

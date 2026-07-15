@@ -12,7 +12,7 @@ import AppActionSheetStateGuide from '@/pages/components/app/actionSheet/AppActi
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Action', href: '/components/app/action' },
   { label: 'ActionSheet', href: '/components/app/actionSheet' },
 ];
 

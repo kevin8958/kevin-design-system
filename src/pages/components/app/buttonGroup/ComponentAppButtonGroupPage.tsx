@@ -13,7 +13,7 @@ import AppButtonGroupWidthGuide from '@/pages/components/app/buttonGroup/AppButt
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Action', href: '/components/app/action' },
   { label: 'ButtonGroup', href: '/components/app/buttonGroup' },
 ];
 

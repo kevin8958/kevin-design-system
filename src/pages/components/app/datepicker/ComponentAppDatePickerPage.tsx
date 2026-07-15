@@ -8,7 +8,7 @@ import AppDocsPageShell from '@/pages/components/app/common/AppDocsPageShell';
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'DatePicker', href: '/components/app/datepicker' },
 ];
 

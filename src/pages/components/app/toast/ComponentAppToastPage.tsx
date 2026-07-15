@@ -13,7 +13,7 @@ import AppToastTypeGuide from '@/pages/components/app/toast/AppToastTypeGuide';
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Feedback', href: '/components/app/feedback' },
   { label: 'Toast', href: '/components/app/toast' },
 ];
 

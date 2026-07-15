@@ -8,7 +8,7 @@ import AppEmptyStateControllerGuide from '@/pages/components/app/emptyState/AppE
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Data Display', href: '/components/app/dataDisplay' },
   { label: 'EmptyState', href: '/components/app/emptyState' },
 ];
 

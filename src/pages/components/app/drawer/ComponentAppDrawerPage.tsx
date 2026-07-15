@@ -13,7 +13,7 @@ import AppDrawerStateGuide from '@/pages/components/app/drawer/AppDrawerStateGui
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Action', href: '/components/app/action' },
   { label: 'Drawer', href: '/components/app/drawer' },
 ];
 

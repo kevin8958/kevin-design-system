@@ -12,7 +12,7 @@ import AppPopoverStateGuide from '@/pages/components/app/popover/AppPopoverState
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Action', href: '/components/app/action' },
   { label: 'Popover', href: '/components/app/popover' },
 ];
 

@@ -12,7 +12,7 @@ import AppAccordionStateGuide from '@/pages/components/app/accordion/AppAccordio
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Action', href: '/components/app/action' },
   { label: 'Accordion', href: '/components/app/accordion' },
 ];
 

@@ -6,7 +6,7 @@ import AppTableTypeGuide from '@/pages/components/app/table/AppTableTypeGuide';
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Data Display', href: '/components/app/dataDisplay' },
   { label: 'Table', href: '/components/app/table' },
 ];
 

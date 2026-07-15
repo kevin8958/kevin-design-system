@@ -8,7 +8,7 @@ import AppTooltipTypeGuide from '@/pages/components/app/tooltip/AppTooltipTypeGu
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Data Display', href: '/components/app/dataDisplay' },
   { label: 'Tooltip', href: '/components/app/tooltip' },
 ];
 

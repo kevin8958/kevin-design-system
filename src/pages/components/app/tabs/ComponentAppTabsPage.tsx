@@ -8,7 +8,7 @@ import AppTabsTypeGuide from '@/pages/components/app/tabs/AppTabsTypeGuide';
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Navigation', href: '/components/app/navigation' },
   { label: 'Tabs', href: '/components/app/tabs' },
 ];
 

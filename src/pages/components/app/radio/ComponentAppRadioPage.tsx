@@ -7,7 +7,7 @@ import AppRadioStateGuide from '@/pages/components/app/radio/AppRadioStateGuide'
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'Radio', href: '/components/app/radio' },
 ];
 

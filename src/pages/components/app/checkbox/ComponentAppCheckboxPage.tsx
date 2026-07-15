@@ -5,7 +5,7 @@ import AppCheckboxStateGuide from '@/pages/components/app/checkbox/AppCheckboxSt
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'Checkbox', href: '/components/app/checkbox' },
 ];
 

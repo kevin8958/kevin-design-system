@@ -8,7 +8,7 @@ import AppAvatarTypeGuide from '@/pages/components/app/avatar/AppAvatarTypeGuide
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Data Display', href: '/components/app/dataDisplay' },
   { label: 'Avatar', href: '/components/app/avatar' },
 ];
 

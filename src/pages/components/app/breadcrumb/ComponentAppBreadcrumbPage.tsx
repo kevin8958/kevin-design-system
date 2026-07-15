@@ -6,7 +6,7 @@ import AppDocsPageShell from '@/pages/components/app/common/AppDocsPageShell';
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Navigation', href: '/components/app/navigation' },
   { label: 'Breadcrumb', href: '/components/app/breadcrumb' },
 ];
 

@@ -10,7 +10,7 @@ import AppTextInputTypeGuide from '@/pages/components/app/textInput/AppTextInput
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'TextInput', href: '/components/app/textInput' },
 ];
 

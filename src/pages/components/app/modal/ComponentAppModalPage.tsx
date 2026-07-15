@@ -13,7 +13,7 @@ import AppModalStateGuide from '@/pages/components/app/modal/AppModalStateGuide'
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Action', href: '/components/app/action' },
   { label: 'Modal', href: '/components/app/modal' },
 ];
 

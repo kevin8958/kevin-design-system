@@ -8,7 +8,7 @@ import AppTextareaStateGuide from '@/pages/components/app/textarea/AppTextareaSt
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'Textarea', href: '/components/app/textarea' },
 ];
 

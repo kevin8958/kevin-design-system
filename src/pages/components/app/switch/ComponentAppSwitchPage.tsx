@@ -7,7 +7,7 @@ import AppSwitchStateGuide from '@/pages/components/app/switch/AppSwitchStateGui
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Input', href: '/components/app/input' },
   { label: 'Switch', href: '/components/app/switch' },
 ];
 

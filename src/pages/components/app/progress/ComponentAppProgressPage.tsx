@@ -7,7 +7,7 @@ import AppProgressTypeGuide from '@/pages/components/app/progress/AppProgressTyp
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Feedback', href: '/components/app/feedback' },
   { label: 'Progress', href: '/components/app/progress' },
 ];
 

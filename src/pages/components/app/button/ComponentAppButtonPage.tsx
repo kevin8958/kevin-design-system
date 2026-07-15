@@ -16,7 +16,7 @@ import { propsColumn } from '@/constants/common';
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Action', href: '/components/app/action' },
   { label: 'Button', href: '/components/app/button' },
 ];
 

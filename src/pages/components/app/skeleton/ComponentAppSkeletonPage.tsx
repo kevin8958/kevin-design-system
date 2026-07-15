@@ -8,7 +8,7 @@ import AppSkeletonTypeGuide from '@/pages/components/app/skeleton/AppSkeletonTyp
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Feedback', href: '/components/app/feedback' },
   { label: 'Skeleton', href: '/components/app/skeleton' },
 ];
 

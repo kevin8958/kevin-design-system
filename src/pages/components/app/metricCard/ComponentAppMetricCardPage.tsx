@@ -8,7 +8,7 @@ import AppMetricCardTrendGuide from '@/pages/components/app/metricCard/AppMetric
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Data Display', href: '/components/app/dataDisplay' },
   { label: 'MetricCard', href: '/components/app/metricCard' },
 ];
 

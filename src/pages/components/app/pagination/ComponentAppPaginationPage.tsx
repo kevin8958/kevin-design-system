@@ -8,7 +8,7 @@ import AppPaginationTypeGuide from '@/pages/components/app/pagination/AppPaginat
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Navigation', href: '/components/app/navigation' },
   { label: 'Pagination', href: '/components/app/pagination' },
 ];
 

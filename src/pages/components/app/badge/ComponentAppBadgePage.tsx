@@ -8,7 +8,7 @@ import AppBadgeVariantGuide from '@/pages/components/app/badge/AppBadgeVariantGu
 
 const breadcrumbItems = [
   { label: 'Components', href: '/components' },
-  { label: 'App' },
+  { label: 'Data Display', href: '/components/app/dataDisplay' },
   { label: 'Badge', href: '/components/app/badge' },
 ];
 
