@@ -1,4 +1,5 @@
 import {
+  FloatingPortal,
   autoUpdate,
   arrow,
   flip,
@@ -107,34 +108,36 @@ const Tooltip = ({
         {children}
       </span>
       {open && (
-        <div
-          ref={setFloating}
-          style={floatingStyles}
-          className={classNames(
-            tooltipVariants({ color }),
-            classes,
-          )}
-          {...getFloatingProps()}
-        >
-          {content}
-          <span
-            ref={setArrowElement}
-            data-testid="tooltip-arrow"
-            className={tooltipArrowVariants({ color })}
-            style={{
-              left:
-                middlewareData.arrow?.x != null
-                  ? `${middlewareData.arrow.x}px`
-                  : '',
-              top:
-                middlewareData.arrow?.y != null
-                  ? `${middlewareData.arrow.y}px`
-                  : '',
-              [staticSide]: '-5px',
-            }}
-            aria-hidden="true"
-          />
-        </div>
+        <FloatingPortal>
+          <div
+            ref={setFloating}
+            style={floatingStyles}
+            className={classNames(
+              tooltipVariants({ color }),
+              classes,
+            )}
+            {...getFloatingProps()}
+          >
+            {content}
+            <span
+              ref={setArrowElement}
+              data-testid="tooltip-arrow"
+              className={tooltipArrowVariants({ color })}
+              style={{
+                left:
+                  middlewareData.arrow?.x != null
+                    ? `${middlewareData.arrow.x}px`
+                    : '',
+                top:
+                  middlewareData.arrow?.y != null
+                    ? `${middlewareData.arrow.y}px`
+                    : '',
+                [staticSide]: '-5px',
+              }}
+              aria-hidden="true"
+            />
+          </div>
+        </FloatingPortal>
       )}
     </>
   );
