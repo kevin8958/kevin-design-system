@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LuChevronRight, LuX } from 'react-icons/lu';
 import Button from '@/components/action/Button';
@@ -35,6 +35,20 @@ const NavDrawer = ({
   overlayClasses,
 }: Mobile.NavDrawerProps) => {
   const handleClose = () => onClose?.();
+  const containedPanelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!contained || !isOpen) return undefined;
+
+    containedPanelRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose?.();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [contained, isOpen, onClose]);
 
   if (contained) {
     return (
@@ -56,8 +70,17 @@ const NavDrawer = ({
             <div className="absolute inset-0 overflow-hidden">
               <div className="flex h-full w-full items-start justify-start">
                 <motion.div
+                  ref={containedPanelRef}
                   data-testid="mobile-nav-drawer-panel"
-                  className={classNames(drawerVariants({ size }), classes)}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={title || 'Menu'}
+                  tabIndex={-1}
+                  className={classNames(
+                    'outline-none',
+                    drawerVariants({ size }),
+                    classes,
+                  )}
                   initial={{ x: '-100%', opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: '-100%', opacity: 0 }}

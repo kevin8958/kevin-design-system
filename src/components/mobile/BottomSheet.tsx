@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const sheetPanelVariants = cva(
@@ -35,6 +35,20 @@ const BottomSheet = ({
   overlayClasses,
 }: Mobile.BottomSheetProps) => {
   const handleClose = () => onClose?.();
+  const containedPanelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!contained || !isOpen) return undefined;
+
+    containedPanelRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose?.();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [contained, isOpen, onClose]);
 
   if (contained) {
     return (
@@ -56,9 +70,14 @@ const BottomSheet = ({
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
               <div className="flex h-full w-full items-end justify-center">
                 <motion.div
+                  ref={containedPanelRef}
                   data-testid="bottom-sheet-panel"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={title || 'Sheet'}
+                  tabIndex={-1}
                   className={classNames(
-                    'pointer-events-auto',
+                    'pointer-events-auto outline-none',
                     sheetPanelVariants({ size }),
                     classes,
                   )}
