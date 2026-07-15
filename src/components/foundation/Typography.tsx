@@ -44,8 +44,8 @@ const Typography = ({
   classes = '',
   color,
   responsive = false,
+  lang = 'en',
   children,
-  ...rest
 }: Foundation.TypographyProps) => {
   const isMobile = useIsMobile();
   // 타이틀(H1)은 모바일에서 H2 크기로 축소해 노출한다. 타이포그래피 스케일을
@@ -56,8 +56,7 @@ const Typography = ({
 
   return (
     <Component
-      {...rest}
-      lang="en"
+      lang={lang}
       className={classNames(
         typographyVariants({
           variant: effectiveVariant,
