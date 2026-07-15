@@ -33,6 +33,15 @@ const SNB = ({ isOpen, onClose, desktopHidden = false }: Layout.SNBProps) => {
   const [selectedComponentPlatform, setSelectedComponentPlatform] = useState<
     'web' | 'app' | null
   >(null);
+  // A manual sidebar WEB/APP toggle doesn't navigate anywhere, so it's
+  // left untouched here; any real navigation (including the in-page
+  // platform switch on category pages) should let the URL be the
+  // source of truth again instead of a stale manual override.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setSelectedComponentPlatform(null);
+  }
   const navRef = useRef<HTMLElement | null>(null);
   const visibleComponentPlatform =
     selectedComponentPlatform ??
