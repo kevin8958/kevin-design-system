@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { useState } from 'react';
 
 const avatarVariants = cva(
   'relative inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-neutral-700 dark:text-neutral-100',
@@ -57,14 +58,18 @@ const Avatar = ({
   status,
   classes,
 }: Data.AvatarProps) => {
+  const [erroredSrc, setErroredSrc] = useState<string | undefined>(undefined);
+  const showImage = !!src && src !== erroredSrc;
+
   return (
     <div className={classNames(avatarVariants({ size }), classes)}>
       <span className="inline-flex size-full items-center justify-center overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
-        {src ? (
+        {showImage ? (
           <img
             src={src}
             alt={alt || name || 'Avatar'}
             className="size-full object-cover"
+            onError={() => setErroredSrc(src)}
           />
         ) : (
           <span aria-hidden="true">{getInitials(name)}</span>
