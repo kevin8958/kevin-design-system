@@ -20,9 +20,17 @@ namespace Layout {
   }
 
   /** Grid */
+  type GridColsValue = 1 | 2 | 3 | 4 | 5 | 6;
   interface GridProps {
-    cols?: 1 | 2 | 3 | 4 | 5 | 6;
+    cols?: GridColsValue;
     gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16;
+    /** Per-breakpoint column overrides, e.g. { md: 2, lg: 4 }. */
+    responsiveCols?: {
+      sm?: GridColsValue;
+      md?: GridColsValue;
+      lg?: GridColsValue;
+      xl?: GridColsValue;
+    };
     classes?: string;
     children?: React.ReactNode;
   }
