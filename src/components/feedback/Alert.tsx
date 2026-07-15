@@ -48,15 +48,9 @@ const Alert = ({
       </span>
 
       <div className="min-w-0 flex-1">
-        {title && (
-          <p className="font-semibold text-neutral-900 dark:text-neutral-50">
-            {title}
-          </p>
-        )}
+        {title && <p className="font-semibold">{title}</p>}
         {description && (
-          <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-200">
-            {description}
-          </p>
+          <p className="mt-1 text-sm opacity-90">{description}</p>
         )}
       </div>
 

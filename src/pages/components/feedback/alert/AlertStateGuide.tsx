@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import Alert from '@/components/feedback/Alert';
+import Button from '@/components/action/Button';
 import FlexWrapper from '@/components/layout/FlexWrapper';
 import CodeExample from '@/components/interaction/CodeExample';
 import GuideSection from '@/components/layout/GuideSection';
@@ -6,13 +8,15 @@ import GuideSection from '@/components/layout/GuideSection';
 type AlertPreviewControls = Pick<Feedback.AlertProps, 'variant'>;
 
 const StateExample = ({ variant = 'info' }: AlertPreviewControls) => {
+  const [dismissed, setDismissed] = useState(false);
+
   const exampleCode = `<Alert title="Persistent" description="Visible until the layout changes." variant="${variant}" />
 <Alert
   title="Dismissible"
   description="Users can close this alert."
   variant="${variant}"
   closable
-  onClose={() => {}}
+  onClose={() => setDismissed(true)}
 />`;
 
   return (
@@ -23,13 +27,24 @@ const StateExample = ({ variant = 'info' }: AlertPreviewControls) => {
           description="Visible until the layout changes."
           variant={variant}
         />
-        <Alert
-          title="Dismissible"
-          description="Users can close this alert."
-          variant={variant}
-          closable
-          onClose={() => {}}
-        />
+        {dismissed ? (
+          <Button
+            size="sm"
+            variant="outline"
+            color="neutral"
+            onClick={() => setDismissed(false)}
+          >
+            Show dismissible alert again
+          </Button>
+        ) : (
+          <Alert
+            title="Dismissible"
+            description="Users can close this alert."
+            variant={variant}
+            closable
+            onClose={() => setDismissed(true)}
+          />
+        )}
       </FlexWrapper>
     </CodeExample>
   );
