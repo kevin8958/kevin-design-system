@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-07-22
+
+### Changed
+- **Breaking:** Split the library build into two entry points — `kevin-design-system` (web, no `react-native`) and `kevin-design-system/app` (React Native `App*` components). Previously both were bundled into a single `dist-lib/index.js`, so the raw, unparsed `react-native` import sat at the top of the web bundle unconditionally, which broke web projects whose bundler couldn't parse React Native's Flow syntax and pulled in `react-native` at runtime just from importing any web component.
+- `App*` components (`AppButton`, `AppToast`, etc.) now must be imported from `kevin-design-system/app` instead of the package root.
+- `react-native` is now an optional peer dependency (`peerDependenciesMeta`), so web-only installs no longer need it and no longer get a peer dependency warning for it.
+
+### Fixed
+- Web entry (`kevin-design-system`) type declarations (`index.d.ts`) no longer reference React Native ambient types (`app.d.ts`), so web-only TypeScript projects no longer need `react-native`'s types resolvable just to type-check.
+
 ## [0.1.3] - 2026-07-22
 
 ### Added

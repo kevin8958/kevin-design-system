@@ -1,6 +1,6 @@
 {
   "name": "kevin-design-system",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "A React component library for Kevin Design System.",
   "type": "module",
   "main": "./dist-lib/index.cjs",
@@ -24,6 +24,11 @@
       "types": "./dist-lib/types/index.d.ts",
       "import": "./dist-lib/index.js",
       "require": "./dist-lib/index.cjs"
+    },
+    "./app": {
+      "types": "./dist-lib/types/app-entry.d.ts",
+      "import": "./dist-lib/app.js",
+      "require": "./dist-lib/app.cjs"
     },
     "./styles.css": "./dist-lib/styles.css"
   },
@@ -65,6 +70,11 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-native": "^0.85.1"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",

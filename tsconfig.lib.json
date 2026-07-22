@@ -13,12 +13,14 @@
   },
   "include": [
     "src/index.ts",
+    "src/app-entry.ts",
     "src/vite-env.d.ts",
     "src/components/**/*.ts",
     "src/components/**/*.tsx",
     "src/libs/**/*.ts",
     "src/types/**/*.d.ts",
-    "src/index.d.ts"
+    "src/index.d.ts",
+    "src/app-entry.d.ts"
   ],
   "exclude": [
     "src/pages/**",

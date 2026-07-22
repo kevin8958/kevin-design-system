@@ -27,6 +27,16 @@ export function Example() {
 }
 ```
 
+## React Native (App) Components
+
+Components prefixed with `App` (e.g. `AppButton`, `AppToast`) target React Native and live in a separate entry point so the default web entry never pulls in `react-native`:
+
+```tsx
+import { AppButton } from 'kevin-design-system/app';
+```
+
+`react-native` is an optional peer dependency — only required if you import from `kevin-design-system/app`.
+
 ## Included Categories
 
 - Foundation: `Typography`
@@ -53,8 +63,8 @@ npm run build:lib
 
 This produces:
 
-- `dist-lib/index.js`
-- `dist-lib/index.cjs`
+- `dist-lib/index.js` / `dist-lib/index.cjs` (web entry, no `react-native`)
+- `dist-lib/app.js` / `dist-lib/app.cjs` (React Native entry, `kevin-design-system/app`)
 - `dist-lib/styles.css`
 - `dist-lib/types`
 

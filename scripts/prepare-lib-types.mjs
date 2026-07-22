@@ -12,6 +12,7 @@ if (!existsSync(distTypesDir)) {
 mkdirSync(distNamespacesDir, { recursive: true });
 
 cpSync(path.join(rootDir, 'src', 'index.d.ts'), path.join(distTypesDir, 'index.d.ts'));
+cpSync(path.join(rootDir, 'src', 'app-entry.d.ts'), path.join(distTypesDir, 'app-entry.d.ts'));
 
 for (const fileName of [
   'action.d.ts',
