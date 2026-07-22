@@ -29,7 +29,7 @@ const ToastViewport = ({
     <div
       data-testid="toast-viewport"
       className={classNames(
-        'pointer-events-none fixed inset-0 z-[9999] flex p-4',
+        'pointer-events-none fixed inset-0 z-[9999] flex flex-col p-4',
         placementClassMap[placement],
         classes,
       )}

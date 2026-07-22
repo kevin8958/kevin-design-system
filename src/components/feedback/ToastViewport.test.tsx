@@ -17,4 +17,12 @@ describe('ToastViewport', () => {
     expect(screen.getByText('First item')).toBeInTheDocument();
     expect(screen.getByText('Second item')).toBeInTheDocument();
   });
+
+  it('lays the viewport out as a column so items-*/justify-* map to the correct axis', () => {
+    render(<ToastViewport placement="top-center" toasts={[]} />);
+
+    const viewport = screen.getByTestId('toast-viewport');
+    expect(viewport).toHaveClass('flex', 'flex-col');
+    expect(viewport).toHaveClass('items-center', 'justify-start');
+  });
 });
