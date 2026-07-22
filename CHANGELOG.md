@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2026-07-22
+
+### Added
+- Added a `triggerClasses` prop to `Tooltip` for styling/positioning the trigger wrapper, separate from `classes` (which targets the floating panel)
+
+### Fixed
+- Fixed the library build missing `app.d.ts`, `mobile.d.ts`, and `productivity.d.ts` type declarations, which broke consumers using mobile or app components
+
 ## [0.1.2] - 2026-04-10
 
 ### Added
