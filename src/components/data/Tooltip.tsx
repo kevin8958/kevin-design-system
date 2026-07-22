@@ -59,6 +59,7 @@ const Tooltip = ({
   position = 'top',
   color = 'neutral',
   classes,
+  triggerClasses,
 }: Data.TooltipProps) => {
   const [open, setOpen] = useState(false);
   const [arrowElement, setArrowElement] = useState<HTMLSpanElement | null>(null);
@@ -102,7 +103,7 @@ const Tooltip = ({
     <>
       <span
         ref={setReference}
-        className="inline-flex"
+        className={classNames('inline-flex', triggerClasses)}
         {...getReferenceProps()}
       >
         {children}

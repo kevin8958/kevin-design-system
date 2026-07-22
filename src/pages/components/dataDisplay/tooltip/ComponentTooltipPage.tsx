@@ -106,6 +106,13 @@ const propsData = [
     property: 'classes',
     type: 'string',
     default: "''",
-    description: 'Additional classes for the floating tooltip panel.',
+    description: 'Additional classes for the floating tooltip panel (not the trigger).',
+  },
+  {
+    id: '6',
+    property: 'triggerClasses',
+    type: 'string',
+    default: "''",
+    description: 'Additional classes for the trigger wrapper span, e.g. for layout/positioning.',
   },
 ];

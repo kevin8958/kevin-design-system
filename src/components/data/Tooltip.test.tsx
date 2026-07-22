@@ -41,4 +41,14 @@ describe('Tooltip', () => {
     expect(tooltip).toHaveClass('bg-secondary-500');
     expect(screen.getByTestId('tooltip-arrow')).toHaveClass('bg-secondary-500');
   });
+
+  it('applies triggerClasses to the trigger wrapper', () => {
+    render(
+      <Tooltip content="Positioned tooltip" triggerClasses="ml-auto">
+        <button type="button">Trigger</button>
+      </Tooltip>,
+    );
+
+    expect(screen.getByText('Trigger').closest('span')).toHaveClass('ml-auto', 'inline-flex');
+  });
 });

@@ -96,7 +96,10 @@ namespace Data {
     children: React.ReactNode;
     position?: TooltipPosition;
     color?: TooltipColor;
+    /** Applied to the floating tooltip panel, not the trigger. Use `triggerClasses` to style/position the trigger wrapper. */
     classes?: string;
+    /** Applied to the trigger wrapper `<span>` that wraps `children`. */
+    triggerClasses?: string;
   }
 
   interface TableProps {

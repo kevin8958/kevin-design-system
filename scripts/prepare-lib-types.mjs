@@ -15,13 +15,16 @@ cpSync(path.join(rootDir, 'src', 'index.d.ts'), path.join(distTypesDir, 'index.d
 
 for (const fileName of [
   'action.d.ts',
+  'app.d.ts',
   'data.d.ts',
   'feedback.d.ts',
   'foundation.d.ts',
   'input.d.ts',
   'interaction.d.ts',
   'layout.d.ts',
+  'mobile.d.ts',
   'navigation.d.ts',
+  'productivity.d.ts',
 ]) {
   cpSync(
     path.join(rootDir, 'src', 'types', fileName),
