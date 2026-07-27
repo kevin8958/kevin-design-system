@@ -105,4 +105,33 @@ describe('CustomDatePicker', () => {
 
     expect(screen.getByText(/please select a valid date\./i)).toBeInTheDocument();
   });
+
+  it('applies a custom focusColor', () => {
+    render(
+      <CustomDatePicker
+        type="single"
+        value={null}
+        focusColor="success"
+        onChange={mockOnChange}
+      />,
+    );
+
+    expect(screen.getByRole('textbox')).toHaveClass('focus:!ring-success');
+  });
+
+  it('keeps the error color even when focusColor is set', () => {
+    render(
+      <CustomDatePicker
+        type="single"
+        value={null}
+        isError
+        focusColor="success"
+        onChange={mockOnChange}
+      />,
+    );
+
+    const input = screen.getByRole('textbox');
+    expect(input).toHaveClass('!border-danger', 'focus:!ring-danger');
+    expect(input).not.toHaveClass('focus:!ring-success');
+  });
 });

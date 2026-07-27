@@ -47,4 +47,18 @@ describe('Textarea', () => {
 
     expect(screen.getByRole('textbox')).toBeDisabled();
   });
+
+  it('applies a custom focusColor', () => {
+    render(<Textarea label="Description" focusColor="info" />);
+
+    expect(screen.getByRole('textbox')).toHaveClass('focus:ring-info');
+  });
+
+  it('keeps the error color even when focusColor is set', () => {
+    render(<Textarea label="Description" error focusColor="info" />);
+
+    const textarea = screen.getByRole('textbox');
+    expect(textarea).toHaveClass('!border-danger', 'focus:ring-danger');
+    expect(textarea).not.toHaveClass('focus:ring-info');
+  });
 });

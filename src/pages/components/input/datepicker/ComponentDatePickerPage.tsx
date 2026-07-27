@@ -142,4 +142,19 @@ const propsData = [
     default: "'Select date'",
     description: 'Text displayed when no date is selected.',
   },
+  {
+    id: '12',
+    property: 'focusColor',
+    type: [
+      "'primary'",
+      "'neutral'",
+      "'info'",
+      "'success'",
+      "'warning'",
+      "'danger'",
+    ],
+    default: "'primary'",
+    description:
+      'Focus border/ring color. Ignored while isError is true, which always shows danger.',
+  },
 ];

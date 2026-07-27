@@ -14,6 +14,18 @@ import './datepicker-custom.css';
 
 dayjs.extend(isBetween);
 
+const focusColorClassMap: Record<Input.FocusColor, string> = {
+  primary:
+    'focus:!border-secondary-400/70 dark:focus:!border-primary-100/70 focus:!ring-1 focus:!ring-secondary-700 dark:focus:!ring-primary-100',
+  neutral:
+    'focus:!border-neutral-500/70 dark:focus:!border-neutral-300/70 focus:!ring-1 focus:!ring-neutral-700 dark:focus:!ring-neutral-300',
+  info: 'focus:!border-info/70 focus:!ring-1 focus:!ring-info',
+  success: 'focus:!border-success/70 focus:!ring-1 focus:!ring-success',
+  warning: 'focus:!border-warning/70 focus:!ring-1 focus:!ring-warning',
+  danger:
+    'focus:!border-danger/70 focus:!ring-1 focus:!ring-danger dark:focus:!ring-danger',
+};
+
 const CustomDatePicker = (props: Input.DatepickerProps) => {
   const {
     classes,
@@ -23,6 +35,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     maxDate,
     isError,
     errorMsg,
+    focusColor = 'primary',
     disabled,
     hideHeaderButtons,
     placeholder,
@@ -71,7 +84,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
         {
           '!border-danger focus:!ring-1 focus:!ring-danger dark:focus:!ring-danger':
             isError,
-          'border-neutral-300 dark:border-neutral-700 focus:!border-secondary-400/70 dark:focus:!border-primary-100/70 focus:!ring-1 focus:!ring-secondary-700 dark:focus:!ring-primary-100':
+          [`border-neutral-300 dark:border-neutral-700 ${focusColorClassMap[focusColor]}`]:
             !isError,
           'bg-neutral-50 cursor-not-allowed !text-[#8C9097] dark:bg-neutral-800':
             disabled,

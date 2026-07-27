@@ -29,17 +29,60 @@ const triggerVariants = cva(
       },
       invalid: {
         true: '!border-danger focus:ring-1 focus:ring-danger dark:focus:ring-danger',
-        false:
-          'border-neutral-300 dark:border-neutral-700 focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
+        false: 'border-neutral-300 dark:border-neutral-700',
+      },
+      focusColor: {
+        primary: '',
+        neutral: '',
+        info: '',
+        success: '',
+        warning: '',
+        danger: '',
       },
       disabled: {
         true: 'cursor-not-allowed bg-neutral-100/10 text-[#8C9097]',
         false: '',
       },
     },
+    compoundVariants: [
+      {
+        invalid: false,
+        focusColor: 'primary',
+        className:
+          'focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
+      },
+      {
+        invalid: false,
+        focusColor: 'neutral',
+        className:
+          'focus:border-neutral-500/70 dark:focus:border-neutral-300/70 focus:ring-1 focus:ring-neutral-700 dark:focus:ring-neutral-300',
+      },
+      {
+        invalid: false,
+        focusColor: 'info',
+        className: 'focus:border-info/70 focus:ring-1 focus:ring-info',
+      },
+      {
+        invalid: false,
+        focusColor: 'success',
+        className: 'focus:border-success/70 focus:ring-1 focus:ring-success',
+      },
+      {
+        invalid: false,
+        focusColor: 'warning',
+        className: 'focus:border-warning/70 focus:ring-1 focus:ring-warning',
+      },
+      {
+        invalid: false,
+        focusColor: 'danger',
+        className:
+          'focus:border-danger/70 focus:ring-1 focus:ring-danger dark:focus:ring-danger',
+      },
+    ],
     defaultVariants: {
       size: 'md',
       invalid: false,
+      focusColor: 'primary',
       disabled: false,
     },
   },
@@ -60,6 +103,7 @@ const Select = forwardRef<HTMLButtonElement, Input.SelectProps>((props, ref) => 
     disabled = false,
     invalid = false,
     errorMsg,
+    focusColor = 'primary',
     options,
     onChange,
   } = props;
@@ -128,7 +172,10 @@ const Select = forwardRef<HTMLButtonElement, Input.SelectProps>((props, ref) => 
         type="button"
         disabled={disabled}
         aria-label={selectedOption?.label ?? placeholder}
-        className={classNames(triggerVariants({ size, invalid, disabled }), classes)}
+        className={classNames(
+          triggerVariants({ size, invalid, focusColor, disabled }),
+          classes,
+        )}
         aria-invalid={invalid}
         aria-describedby={invalid ? errorId : undefined}
       >

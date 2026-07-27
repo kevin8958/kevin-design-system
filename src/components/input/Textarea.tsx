@@ -16,8 +16,15 @@ const textareaVariants = cva(
       },
       error: {
         true: '!border-danger focus:ring-1 focus:ring-danger dark:focus:ring-danger',
-        false:
-          'focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
+        false: '',
+      },
+      focusColor: {
+        primary: '',
+        neutral: '',
+        info: '',
+        success: '',
+        warning: '',
+        danger: '',
       },
       disabled: {
         true: 'cursor-not-allowed bg-neutral-100/10 !text-[#8C9097]',
@@ -29,9 +36,45 @@ const textareaVariants = cva(
         both: 'resize',
       },
     },
+    compoundVariants: [
+      {
+        error: false,
+        focusColor: 'primary',
+        className:
+          'focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
+      },
+      {
+        error: false,
+        focusColor: 'neutral',
+        className:
+          'focus:border-neutral-500/70 dark:focus:border-neutral-300/70 focus:ring-1 focus:ring-neutral-700 dark:focus:ring-neutral-300',
+      },
+      {
+        error: false,
+        focusColor: 'info',
+        className: 'focus:border-info/70 focus:ring-1 focus:ring-info',
+      },
+      {
+        error: false,
+        focusColor: 'success',
+        className: 'focus:border-success/70 focus:ring-1 focus:ring-success',
+      },
+      {
+        error: false,
+        focusColor: 'warning',
+        className: 'focus:border-warning/70 focus:ring-1 focus:ring-warning',
+      },
+      {
+        error: false,
+        focusColor: 'danger',
+        className:
+          'focus:border-danger/70 focus:ring-1 focus:ring-danger dark:focus:ring-danger',
+      },
+    ],
     defaultVariants: {
       size: 'md',
       error: false,
+      focusColor: 'primary',
       disabled: false,
       resize: 'none',
     },
@@ -53,6 +96,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, Input.TextareaProps>(
       disabled = false,
       error = false,
       errorMsg,
+      focusColor = 'primary',
       resize = 'none',
       autoFocus,
       textareaProps,
@@ -94,7 +138,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, Input.TextareaProps>(
           onFocus={onFocus}
           onBlur={onBlur}
           className={classNames(
-            textareaVariants({ size, error, disabled, resize }),
+            textareaVariants({ size, error, focusColor, disabled, resize }),
             classes,
           )}
           aria-invalid={error}

@@ -20,17 +20,60 @@ const inputVariants = cva(
       },
       error: {
         true: '!border-danger focus:ring-1 focus:ring-danger dark:focus:ring-danger',
-        false:
-          'hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
+        false: 'hover:bg-neutral-50 dark:hover:bg-neutral-800',
+      },
+      focusColor: {
+        primary: '',
+        neutral: '',
+        info: '',
+        success: '',
+        warning: '',
+        danger: '',
       },
       disabled: {
         true: 'bg-neutral-100/10! !text-neutral-400 dark:!text-neutral-500 cursor-not-allowed',
         false: '',
       },
     },
+    compoundVariants: [
+      {
+        error: false,
+        focusColor: 'primary',
+        className:
+          'focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
+      },
+      {
+        error: false,
+        focusColor: 'neutral',
+        className:
+          'focus:border-neutral-500/70 dark:focus:border-neutral-300/70 focus:ring-1 focus:ring-neutral-700 dark:focus:ring-neutral-300',
+      },
+      {
+        error: false,
+        focusColor: 'info',
+        className: 'focus:border-info/70 focus:ring-1 focus:ring-info',
+      },
+      {
+        error: false,
+        focusColor: 'success',
+        className: 'focus:border-success/70 focus:ring-1 focus:ring-success',
+      },
+      {
+        error: false,
+        focusColor: 'warning',
+        className: 'focus:border-warning/70 focus:ring-1 focus:ring-warning',
+      },
+      {
+        error: false,
+        focusColor: 'danger',
+        className:
+          'focus:border-danger/70 focus:ring-1 focus:ring-danger dark:focus:ring-danger',
+      },
+    ],
     defaultVariants: {
       size: 'md',
       error: false,
+      focusColor: 'primary',
       disabled: false,
     },
   },
@@ -51,6 +94,7 @@ const TextInput = forwardRef<HTMLInputElement, Input.TextInputProps>(
       disabled = false,
       error = false,
       errorMsg,
+      focusColor = 'primary',
       inputProps,
       prefix,
       suffix,
@@ -105,7 +149,7 @@ const TextInput = forwardRef<HTMLInputElement, Input.TextInputProps>(
               onBlur={onBlur}
               onKeyUp={onKeyUp}
               className={classNames(
-                inputVariants({ size, error, disabled }),
+                inputVariants({ size, error, focusColor, disabled }),
                 prefix && '!pl-10',
                 suffix && '!pr-10',
                 classes,

@@ -1,4 +1,13 @@
 namespace Input {
+  /** Shared focus outline color for TextInput, Textarea, Select, and Datepicker. */
+  type FocusColor =
+    | 'primary'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger';
+
   /** TextInput */
   type TextInputSize = 'sm' | 'md' | 'lg';
   type TextInputType = 'text' | 'password' | 'email' | 'number';
@@ -15,6 +24,7 @@ namespace Input {
     disabled?: boolean;
     error?: boolean;
     errorMsg?: string;
+    focusColor?: FocusColor;
     inputProps?: InputHTMLAttributes<HTMLInputElement>;
     prefix?: string | ReactNode;
     suffix?: string | ReactNode;
@@ -41,6 +51,7 @@ namespace Input {
     disabled?: boolean;
     error?: boolean;
     errorMsg?: string;
+    focusColor?: FocusColor;
     resize?: TextareaResize;
     autoFocus?: boolean;
     textareaProps?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
@@ -68,6 +79,7 @@ namespace Input {
     disabled?: boolean;
     invalid?: boolean;
     errorMsg?: string;
+    focusColor?: FocusColor;
     options: SelectOption[];
     onChange?: (value: string) => void;
   }
@@ -165,6 +177,7 @@ namespace Input {
     maxDate?: Date;
     isError?: boolean;
     errorMsg?: string;
+    focusColor?: FocusColor;
     isNullable?: boolean;
     isFilter?: boolean;
     placeholder?: string;

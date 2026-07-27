@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-07-27
+
+### Added
+- Added a `focusColor` prop (`'primary' | 'neutral' | 'info' | 'success' | 'warning' | 'danger'`, default `'primary'`) to `TextInput`, `Textarea`, `Select`, and `DatePicker` so consumers can inject a focus border/ring color per instance instead of only the fixed default. The error/invalid state's danger color always takes priority over `focusColor` when the field is in an error state.
+
 ## [0.2.2] - 2026-07-27
 
 ### Fixed

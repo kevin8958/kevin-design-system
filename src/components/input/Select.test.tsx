@@ -42,4 +42,24 @@ describe('Select', () => {
 
     expect(screen.queryByRole('option', { name: 'Primary' })).not.toBeInTheDocument();
   });
+
+  it('applies a custom focusColor', () => {
+    render(
+      <Select options={options} value="" placeholder="Pick" focusColor="warning" />,
+    );
+
+    expect(screen.getByRole('combobox', { name: /pick/i })).toHaveClass(
+      'focus:ring-warning',
+    );
+  });
+
+  it('keeps the invalid color even when focusColor is set', () => {
+    render(
+      <Select options={options} value="" placeholder="Pick" invalid focusColor="warning" />,
+    );
+
+    const trigger = screen.getByRole('combobox', { name: /pick/i });
+    expect(trigger).toHaveClass('!border-danger', 'focus:ring-danger');
+    expect(trigger).not.toHaveClass('focus:ring-warning');
+  });
 });

@@ -129,4 +129,19 @@ const propsData = [
     default: "''",
     description: 'Additional classes applied to the trigger.',
   },
+  {
+    id: '11',
+    property: 'focusColor',
+    type: [
+      "'primary'",
+      "'neutral'",
+      "'info'",
+      "'success'",
+      "'warning'",
+      "'danger'",
+    ],
+    default: "'primary'",
+    description:
+      'Focus border/ring color. Ignored while invalid is true, which always shows danger.',
+  },
 ];

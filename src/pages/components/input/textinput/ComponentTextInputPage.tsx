@@ -162,4 +162,19 @@ const propsData = [
     default: "''",
     description: 'Additional CSS classes for custom styling overrides.',
   },
+  {
+    id: '14',
+    property: 'focusColor',
+    type: [
+      "'primary'",
+      "'neutral'",
+      "'info'",
+      "'success'",
+      "'warning'",
+      "'danger'",
+    ],
+    default: "'primary'",
+    description:
+      'Focus border/ring color. Ignored while error is true, which always shows danger.',
+  },
 ];

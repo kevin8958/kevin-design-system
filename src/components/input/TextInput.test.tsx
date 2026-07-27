@@ -99,4 +99,28 @@ describe('TextInput Component', () => {
 
     expect(input).toHaveClass('[appearance:textfield]');
   });
+
+  it('applies the default primary focus color', () => {
+    render(<TextInput label="Default" id="default-focus" />);
+    const input = screen.getByLabelText(/default/i);
+
+    expect(input).toHaveClass('focus:ring-secondary-700', 'dark:focus:ring-primary-100');
+  });
+
+  it('applies a custom focusColor', () => {
+    render(<TextInput label="Success" id="success-focus" focusColor="success" />);
+    const input = screen.getByLabelText(/success/i);
+
+    expect(input).toHaveClass('focus:ring-success');
+  });
+
+  it('keeps the error color even when focusColor is set', () => {
+    render(
+      <TextInput label="Broken" id="broken" error focusColor="success" />,
+    );
+    const input = screen.getByLabelText(/broken/i);
+
+    expect(input).toHaveClass('!border-danger', 'focus:ring-danger');
+    expect(input).not.toHaveClass('focus:ring-success');
+  });
 });
