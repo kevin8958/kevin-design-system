@@ -19,7 +19,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { LuCheck, LuChevronDown } from 'react-icons/lu';
 
 const triggerVariants = cva(
-  'relative flex w-full cursor-pointer items-center justify-between rounded-xl border bg-white text-left text-neutral-700 shadow-sm outline-none transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
+  'relative flex w-full cursor-pointer items-center justify-between rounded-lg border bg-white text-left text-neutral-700 shadow-sm outline-0 transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
   {
     variants: {
       size: {
@@ -28,9 +28,9 @@ const triggerVariants = cva(
         lg: 'h-[48px] px-4 text-base',
       },
       invalid: {
-        true: 'border-danger focus-visible:ring-2 focus-visible:ring-danger/70',
+        true: '!border-danger focus:ring-1 focus:ring-danger dark:focus:ring-danger',
         false:
-          'border-neutral-500/20 dark:border-neutral-100/20 focus-visible:border-secondary-400/80 dark:focus-visible:border-primary-100/80 focus-visible:ring-2 focus-visible:ring-secondary-700/70 dark:focus-visible:ring-primary-100/70',
+          'border-neutral-300 dark:border-neutral-700 focus:border-secondary-400/70 dark:focus:border-primary-100/70 focus:ring-1 focus:ring-secondary-700 dark:focus:ring-primary-100',
       },
       disabled: {
         true: 'cursor-not-allowed bg-neutral-100/10 text-[#8C9097]',

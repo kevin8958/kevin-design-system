@@ -23,7 +23,6 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     maxDate,
     isError,
     errorMsg,
-    isFilter,
     disabled,
     hideHeaderButtons,
     placeholder,
@@ -70,11 +69,10 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
         'box-border h-full w-full !rounded-lg px-4 text-center !text-sm !outline-none placeholder:text-neutral-300 focus:z-10',
         classes,
         {
-          'border-danger focus:!border-danger !border-2': isError,
-          'border-neutral-200 focus:!border-2 focus:!border-neutral-600 dark:border-neutral-700 dark:focus:!border-primary-500':
-            !isError && !isFilter,
-          'border-neutral-200 focus:!border-neutral-600 dark:border-neutral-700':
-            !isError && isFilter,
+          '!border-danger focus:!ring-1 focus:!ring-danger dark:focus:!ring-danger':
+            isError,
+          'border-neutral-300 dark:border-neutral-700 focus:!border-secondary-400/70 dark:focus:!border-primary-100/70 focus:!ring-1 focus:!ring-secondary-700 dark:focus:!ring-primary-100':
+            !isError,
           'bg-neutral-50 cursor-not-allowed !text-[#8C9097] dark:bg-neutral-800':
             disabled,
           'h-[32px] min-h-[32px]': size === 'sm',
