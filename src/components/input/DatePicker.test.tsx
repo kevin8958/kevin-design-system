@@ -109,6 +109,25 @@ describe('CustomDatePicker', () => {
     expect(input.value).toBe('2026.04.06 - 2026.04.10');
   });
 
+  it('honors type="range" as an alternative to isRange for displaying startDate/endDate', () => {
+    const startDate = new Date(2026, 3, 6);
+    const endDate = new Date(2026, 3, 10);
+
+    render(
+      <CustomDatePicker
+        type="range"
+        value={null}
+        startDate={startDate}
+        endDate={endDate}
+        dateFormat="YYYY.MM.DD"
+        onChange={mockOnChange}
+      />,
+    );
+
+    const input = screen.getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toBe('2026.04.06 - 2026.04.10');
+  });
+
   it('displays helper text for incomplete range selection', () => {
     const startDate = new Date(2026, 3, 6);
 

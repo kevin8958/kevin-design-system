@@ -39,6 +39,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     disabled,
     hideHeaderButtons,
     placeholder,
+    type,
     isRange = false,
     isMultiple = false,
     startDate,
@@ -47,6 +48,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     dateFormat = 'MMM D, YYYY',
     onChange,
   } = props;
+  const isRangeMode = isRange || type === 'range';
   const [start, setStart] = useState<Date | null>(startDate || null);
   const [end, setEnd] = useState<Date | null>(endDate || null);
   const [prevProps, setPrevProps] = useState({ startDate, endDate });
@@ -58,7 +60,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
   }
 
   const inputDisplayValue = (() => {
-    if (isRange) {
+    if (isRangeMode) {
       if (!start) return undefined;
 
       const formattedStart = dayjs(start).format(dateFormat);
@@ -107,8 +109,8 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
       disabled={disabled}
       startDate={start || null}
       endDate={end || null}
-      wrapperClassName={classNames('w-full', isRange ? 'range' : 'single')}
-      {...(isRange
+      wrapperClassName={classNames('w-full', isRangeMode ? 'range' : 'single')}
+      {...(isRangeMode
         ? { selectsRange: true as const }
         : isMultiple
           ? { selectsMultiple: true as const }
@@ -117,7 +119,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
       onChange={(update: Date | null | [Date | null, Date | null] | Date[]) => {
         if (!onChange) return;
 
-        if (isRange && Array.isArray(update)) {
+        if (isRangeMode && Array.isArray(update)) {
           const s = update[0] ?? null;
           const e = update[1] ?? null;
           setStart(s);
@@ -146,16 +148,16 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
       dayClassName={(d) =>
         classNames(
           'inline-block size-8! text-center bg-transparent rounded-lg! text-sm cursor-pointer box-border transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800/50! text-neutral-700 dark:text-neutral-200!',
-          !isRange &&
+          !isRangeMode &&
             value &&
             dayjs(d).isSame(dayjs(value), 'day') &&
             'bg-secondary-600 dark:!bg-primary-400 text-white dark:text-neutral-900! hover:bg-secondary-600! dark:hover:bg-primary-400/80!',
-          isRange &&
+          isRangeMode &&
             start &&
             end &&
             dayjs(d).isBetween(dayjs(start), dayjs(end), 'day', '[]') &&
             '!bg-primary-50 dark:!bg-neutral-800 text-primary-600 dark:text-white!',
-          isRange &&
+          isRangeMode &&
             start &&
             !end &&
             dayjs(d).isSame(start, 'day') &&
