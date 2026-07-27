@@ -44,6 +44,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     startDate,
     endDate,
     size = 'md',
+    dateFormat = 'MMM D, YYYY',
     onChange,
   } = props;
   const [start, setStart] = useState<Date | null>(startDate || null);
@@ -60,15 +61,15 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     if (isRange) {
       if (!start) return undefined;
 
-      const formattedStart = dayjs(start).format('MMM D, YYYY');
+      const formattedStart = dayjs(start).format(dateFormat);
       if (!end) return formattedStart;
-      const formattedEnd = dayjs(end).format('MMM D, YYYY');
+      const formattedEnd = dayjs(end).format(dateFormat);
 
       return `${formattedStart} - ${formattedEnd}`;
     }
 
     if (value instanceof Date) {
-      return dayjs(value).format('MMM D, YYYY');
+      return dayjs(value).format(dateFormat);
     }
 
     return undefined;

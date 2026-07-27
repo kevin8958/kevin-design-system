@@ -188,6 +188,8 @@ namespace Input {
     size?: DatepickerSize;
     disabled?: boolean;
     hideHeaderButtons?: boolean;
+    /** dayjs format string for the displayed value, e.g. 'YYYY년 MM월 DD일'. Defaults to 'MMM D, YYYY'. */
+    dateFormat?: string;
     onChange?: (
       update: Date | null | [Date | null, Date | null] | Date[],
     ) => void;

@@ -157,4 +157,12 @@ const propsData = [
     description:
       'Focus border/ring color. Ignored while isError is true, which always shows danger.',
   },
+  {
+    id: '13',
+    property: 'dateFormat',
+    type: 'string',
+    default: "'MMM D, YYYY'",
+    description:
+      "dayjs format string for the displayed value, e.g. 'YYYY년 MM월 DD일'.",
+  },
 ];
