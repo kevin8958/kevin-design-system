@@ -5,10 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2026-07-27
+
+### Fixed
+- Unified outline/focus styling across `TextInput`, `Select`, `Textarea`, and `DatePicker`. `Select` used a different border radius, a near-invisible border color, and a thicker/differently-opaque focus ring than the other three; `DatePicker` used a border-width/color change on focus with no ring at all. All four now share the same recipe: `rounded-lg`, `border-neutral-300`/`dark:border-neutral-700`, and `focus:border-secondary-400/70` + `focus:ring-1 focus:ring-secondary-700` (with matching danger-state variants).
+
 ## [0.2.1] - 2026-07-22
 
 ### Fixed
 - Fixed `ToastProvider`/`ToastViewport` placement (all six values) rendering with swapped horizontal/vertical axes. The viewport container was missing `flex-col`, so it defaulted to row direction while `placementClassMap`'s `items-*`/`justify-*` values were authored assuming a column-direction container, swapping main-axis and cross-axis for every placement. Verified against real computed styles in a running browser.
+- Added `react-native` as a devDependency so a clean install (Vercel, CI, a fresh clone) has it available for the `tsc` step that type-checks `src/components/app/**` when emitting the `kevin-design-system/app` entry's declarations. It was previously only an optional peerDependency, which a fresh install never installs.
 
 ## [0.2.0] - 2026-07-22
 
