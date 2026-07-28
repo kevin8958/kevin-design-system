@@ -7,6 +7,9 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [0.2.4] - 2026-07-27
 
+### Added
+- Added a `maxVisibleOptions` prop to `Combobox` that caps the dropdown list's height to roughly that many rows (measured from the actual rendered rows, since options can have a variable-height description line) before it scrolls.
+
 ### Fixed
 - Fixed `DatePicker` silently ignoring `type="range"` when `isRange` wasn't also set. `type` was declared on `DatepickerProps` and used in the docs demo, but never actually read by the component — only `isRange` controlled range behavior. Setting `type="range"` alone left the picker in single mode, so `startDate`/`endDate` (and `dateFormat`) were never applied and the input showed nothing. `isRangeMode` is now derived as `isRange || type === 'range'`.
 
