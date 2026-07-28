@@ -98,6 +98,13 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
       [options, value],
     );
 
+    // 닫혀 있을 때는 query가 아니라 selectedOption.label을 직접 보여준다.
+    // (별도 useEffect로 query를 동기화하면, 부모의 value prop 갱신이 아직
+    // 반영되기 전에 effect가 먼저 실행돼 잠깐 이전 라벨로 되돌아가는
+    // 깜빡임이 생길 수 있다.) 포커스 시 query를 현재 라벨로 시드해 두면
+    // 열려 있는 동안은 그 query가 그대로 입력값으로 쓰인다.
+    const displayValue = isOpen ? query : (selectedOption?.label ?? '');
+
     const filteredOptions = useMemo(() => {
       const normalizedQuery = normalizeSearchValue(query);
 
@@ -190,13 +197,11 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
             aria-invalid={invalid}
             aria-describedby={invalid ? errorId : undefined}
             disabled={disabled}
-            value={query}
+            value={displayValue}
             placeholder={placeholder}
             onFocus={() => {
               if (disabled) return;
-              if (!query && selectedOption?.label) {
-                setQuery(selectedOption.label);
-              }
+              setQuery(selectedOption?.label ?? '');
               setIsOpen(true);
             }}
             onChange={(e) => {
@@ -205,7 +210,6 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
             }}
             onKeyDown={(e) => {
               if (e.key === 'Escape') {
-                setQuery(selectedOption?.label ?? '');
                 setIsOpen(false);
               }
 
