@@ -1,6 +1,6 @@
 {
   "name": "kevin-design-system",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A React component library for Kevin Design System.",
   "type": "module",
   "main": "./dist-lib/index.cjs",

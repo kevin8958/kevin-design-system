@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.5] - 2026-07-28
+
+### Fixed
+- Fixed `Combobox`'s displayed text not reflecting `value`/`options` until the input was focused. Internal `query` state was only ever synced from `selectedOption.label` inside the `onFocus` handler, so a combobox that opened already populated (e.g. an edit drawer with a preset assignee) showed an empty input until the user clicked into it. `query` now syncs to `selectedOption?.label` via an effect whenever the dropdown is closed, so it reflects the current value immediately and isn't overwritten while the user is typing with it open.
+
 ## [0.2.4] - 2026-07-27
 
 ### Added
