@@ -107,6 +107,8 @@ namespace Input {
     errorMsg?: string;
     options: ComboboxOption[];
     emptyText?: string;
+    /** Caps the option list's height to roughly this many rows before it scrolls, measured from the actual rendered rows. */
+    maxVisibleOptions?: number;
     onChange?: (value: string) => void;
   }
 

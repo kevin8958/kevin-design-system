@@ -11,7 +11,7 @@ import {
   useRole,
   FloatingPortal,
 } from '@floating-ui/react';
-import { forwardRef, useId, useMemo, useState } from 'react';
+import { forwardRef, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
@@ -49,6 +49,21 @@ const listVariants = cva(
   'overflow-hidden rounded-xl border border-neutral-500/20 bg-white p-1.5 shadow-xl dark:border-neutral-100/20 dark:bg-neutral-900',
 );
 
+function measureListHeight(
+  node: HTMLElement | null,
+  maxVisibleOptions: number | undefined,
+): number | undefined {
+  if (!maxVisibleOptions || !node) return undefined;
+
+  const items = Array.from(node.children) as HTMLElement[];
+  const visibleItems = items.slice(0, maxVisibleOptions);
+
+  if (visibleItems.length === 0) return undefined;
+
+  const lastItem = visibleItems[visibleItems.length - 1];
+  return lastItem.offsetTop + lastItem.offsetHeight - items[0].offsetTop;
+}
+
 const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
   (props, ref) => {
     const {
@@ -63,6 +78,7 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
       errorMsg,
       options,
       emptyText = 'No matching results.',
+      maxVisibleOptions,
       onChange,
     } = props;
 
@@ -74,6 +90,8 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState('');
     const [referenceWidth, setReferenceWidth] = useState<number>();
+    const listRef = useRef<HTMLUListElement>(null);
+    const [maxListHeight, setMaxListHeight] = useState<number>();
 
     const selectedOption = useMemo(
       () => options.find((option) => option.value === value),
@@ -95,6 +113,22 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
         return haystack.includes(normalizedQuery);
       });
     }, [options, query]);
+
+    // AnimatePresence/FloatingPortal can mount the list a render after isOpen
+    // flips true, so a ref callback (fires exactly when the node appears) is
+    // used instead of relying solely on an effect keyed off isOpen.
+    const setListNode = (node: HTMLUListElement | null) => {
+      listRef.current = node;
+
+      const applyHeight = () => setMaxListHeight(measureListHeight(node, maxVisibleOptions));
+      applyHeight();
+    };
+
+    useLayoutEffect(() => {
+      const applyHeight = () =>
+        setMaxListHeight(measureListHeight(listRef.current, maxVisibleOptions));
+      applyHeight();
+    }, [maxVisibleOptions, filteredOptions]);
 
     const { refs, floatingStyles, context } = useFloating({
       open: isOpen,
@@ -221,8 +255,10 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
                     </div>
                   ) : (
                     <ul
+                      ref={setListNode}
                       id={listboxId}
                       className="flex max-h-64 flex-col gap-0.5 overflow-y-auto"
+                      style={maxListHeight !== undefined ? { maxHeight: maxListHeight } : undefined}
                       role="listbox"
                     >
                       {filteredOptions.map((option) => {

@@ -71,6 +71,41 @@ describe('Combobox', () => {
     expect(handleChange).toHaveBeenCalledWith('engineering');
   });
 
+  it('caps the option list height to roughly maxVisibleOptions rows', () => {
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      get() {
+        return 40;
+      },
+    });
+    Object.defineProperty(HTMLElement.prototype, 'offsetTop', {
+      configurable: true,
+      get() {
+        const parent = this.parentElement as HTMLElement | null;
+        if (!parent) return 0;
+        return Array.from(parent.children).indexOf(this) * 40;
+      },
+    });
+
+    render(
+      <Combobox options={options} value="" placeholder="Search team" maxVisibleOptions={2} />,
+    );
+
+    fireEvent.focus(screen.getByRole('combobox'));
+
+    const list = document.querySelector('ul[role="listbox"]') as HTMLElement;
+    expect(list).toHaveStyle({ maxHeight: '80px' });
+  });
+
+  it('leaves the list height unset when maxVisibleOptions is not provided', () => {
+    render(<Combobox options={options} value="" placeholder="Search team" />);
+
+    fireEvent.focus(screen.getByRole('combobox'));
+
+    const list = document.querySelector('ul[role="listbox"]') as HTMLElement;
+    expect(list.style.maxHeight).toBe('');
+  });
+
   it('does not open when disabled', () => {
     render(
       <Combobox

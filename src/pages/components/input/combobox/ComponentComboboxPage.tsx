@@ -141,4 +141,12 @@ const propsData = [
     default: "''",
     description: 'Additional classes applied to the trigger wrapper.',
   },
+  {
+    id: '12',
+    property: 'maxVisibleOptions',
+    type: 'number',
+    default: 'undefined',
+    description:
+      "Caps the option list's height to roughly this many rows (measured from the actual rendered rows) before it scrolls.",
+  },
 ];
