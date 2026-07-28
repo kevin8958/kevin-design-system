@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.4] - 2026-07-27
+
+### Fixed
+- Fixed `DatePicker` silently ignoring `type="range"` when `isRange` wasn't also set. `type` was declared on `DatepickerProps` and used in the docs demo, but never actually read by the component — only `isRange` controlled range behavior. Setting `type="range"` alone left the picker in single mode, so `startDate`/`endDate` (and `dateFormat`) were never applied and the input showed nothing. `isRangeMode` is now derived as `isRange || type === 'range'`.
+
 ## [0.2.3] - 2026-07-27
 
 ### Added
