@@ -173,6 +173,7 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
         {label && (
           <label
             htmlFor={id}
+            onClick={(e) => e.preventDefault()}
             className="relative mb-2 block text-sm font-semibold text-neutral-700 dark:text-neutral-100"
           >
             {label}

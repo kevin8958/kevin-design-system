@@ -115,6 +115,7 @@ const TextInput = forwardRef<HTMLInputElement, Input.TextInputProps>(
           {label && (
             <label
               htmlFor={id}
+              onClick={(e) => e.preventDefault()}
               className={classNames(
                 'relative mb-2 !text-sm font-semibold text-neutral-700 dark:text-neutral-100',
                 required &&

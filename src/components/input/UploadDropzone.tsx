@@ -115,6 +115,7 @@ const UploadDropzone = forwardRef<HTMLInputElement, Input.UploadDropzoneProps>(
             {label && (
               <label
                 htmlFor={inputId}
+                onClick={(e) => e.preventDefault()}
                 className="text-sm font-semibold text-neutral-700 dark:text-neutral-100"
               >
                 {label}
