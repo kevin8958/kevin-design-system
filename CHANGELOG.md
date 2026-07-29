@@ -5,10 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.6] - 2026-07-28
+
+### Fixed
+- Fixed `TextInput`, `Textarea`, `Select`, `Combobox`, and `UploadDropzone` focusing/opening their field when the field's caption `<label>` was clicked, not just the field itself. Each `<label>` uses `htmlFor` to associate with its field for accessibility, and browsers forward a click on the label to the associated control by default; that forwarded click is now suppressed with `onClick={(e) => e.preventDefault()}` on the label while keeping the `htmlFor`/`id` association intact. `Radio` and `Checkbox` are unaffected — their label deliberately wraps the whole option as a single click target.
+
 ## [0.2.5] - 2026-07-28
 
 ### Fixed
-- Fixed `Combobox`'s displayed text not reflecting `value`/`options` until the input was focused. Internal `query` state was only ever synced from `selectedOption.label` inside the `onFocus` handler, so a combobox that opened already populated (e.g. an edit drawer with a preset assignee) showed an empty input until the user clicked into it. `query` now syncs to `selectedOption?.label` via an effect whenever the dropdown is closed, so it reflects the current value immediately and isn't overwritten while the user is typing with it open.
+- Fixed `Combobox`'s displayed text not reflecting `value`/`options` until the input was focused. Internal `query` state was only ever populated from `selectedOption.label` inside the input's `onFocus` handler, so a combobox that mounted already populated (e.g. an edit drawer with a preset assignee) showed an empty input until the user clicked into it. The displayed value is now derived directly from `selectedOption.label` whenever the dropdown is closed, so it reflects the current value immediately without an effect (which would race the parent's `value`-prop update and flash the old label after a selection).
 
 ## [0.2.4] - 2026-07-27
 
