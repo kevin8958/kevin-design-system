@@ -91,8 +91,8 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
             !isError,
           'bg-neutral-50 cursor-not-allowed !text-[#8C9097] dark:bg-neutral-800':
             disabled,
-          'h-[32px] min-h-[32px]': size === 'sm',
-          'h-[40px] min-h-[40px]': size === 'md',
+          'h-[36px] min-h-[36px]': size === 'sm',
+          'h-[42px] min-h-[42px]': size === 'md',
           'h-[48px] min-h-[48px]': size === 'lg',
           'bg-white text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800 disabled:hover:!bg-white dark:disabled:hover:!bg-neutral-900':
             variant === 'contain',

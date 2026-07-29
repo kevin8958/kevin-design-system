@@ -9,6 +9,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 - Fixed `TextInput`, `Textarea`, `Select`, `Combobox`, and `UploadDropzone` focusing/opening their field when the field's caption `<label>` was clicked, not just the field itself. Each `<label>` uses `htmlFor` to associate with its field for accessibility, and browsers forward a click on the label to the associated control by default; that forwarded click is now suppressed with `onClick={(e) => e.preventDefault()}` on the label while keeping the `htmlFor`/`id` association intact. `Radio` and `Checkbox` are unaffected — their label deliberately wraps the whole option as a single click target.
+- Aligned `Combobox` and `DatePicker` field sizing with `TextInput`. `Combobox`'s trigger used `rounded-xl` (12px) where every other field uses `rounded-lg` (8px); it's now `rounded-lg`. `DatePicker`'s `sm`/`md` heights (32px/40px) didn't match `TextInput`'s (36px/42px); they're now 36px/42px (`lg` was already 48px in both).
 
 ## [0.2.5] - 2026-07-28
 
