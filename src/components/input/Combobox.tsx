@@ -28,9 +28,9 @@ const triggerVariants = cva(
         lg: 'h-[48px] px-4 text-base',
       },
       invalid: {
-        true: 'border-danger focus-within:ring-2 focus-within:ring-danger/70',
+        true: 'border-danger focus-within:ring-1 focus-within:ring-danger dark:focus-within:ring-danger',
         false:
-          'border-neutral-500/20 dark:border-neutral-100/20 focus-within:border-secondary-400/80 dark:focus-within:border-primary-100/80 focus-within:ring-2 focus-within:ring-secondary-700/70 dark:focus-within:ring-primary-100/70',
+          'border-neutral-300 dark:border-neutral-700 focus-within:border-secondary-400/70 dark:focus-within:border-primary-100/70 focus-within:ring-1 focus-within:ring-secondary-700 dark:focus-within:ring-primary-100',
       },
       disabled: {
         true: 'cursor-not-allowed bg-neutral-100/10 text-[#8C9097]',
@@ -185,7 +185,7 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
           className={classNames(triggerVariants({ size, invalid, disabled }), classes)}
         >
           <LuSearch
-            className="pointer-events-none ml-3 shrink-0 text-neutral-400 dark:text-neutral-500"
+            className="pointer-events-none shrink-0 text-neutral-400 dark:text-neutral-500"
             size={16}
           />
           <input
