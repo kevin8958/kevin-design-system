@@ -151,4 +151,55 @@ const propsData = [
     default: "''",
     description: 'Additional classes for the outer wrapper.',
   },
+  {
+    id: '13',
+    property: 'simple',
+    type: 'boolean',
+    default: 'false',
+    description:
+      'Compact, language-neutral layout: drops the default English heading, helper copy, "Accepted:" line, and Browse button, keeping just the icon (and the file list once files are selected). Any helperText you pass still renders.',
+  },
+  {
+    id: '14',
+    property: 'dragText',
+    type: 'string',
+    default: "'Drag file(s) here or browse'",
+    description: 'Overrides the heading shown when no files are selected.',
+  },
+  {
+    id: '15',
+    property: 'selectedText',
+    type: '(count: number) => string',
+    default: 'undefined',
+    description:
+      'Overrides the "{n} file(s) selected" heading. Receives the selected file count so plural forms can be localized.',
+  },
+  {
+    id: '16',
+    property: 'browseButtonText',
+    type: 'string',
+    default: "'Browse Files'",
+    description: 'Overrides the Browse button label.',
+  },
+  {
+    id: '17',
+    property: 'acceptedText',
+    type: '(accept: string) => string',
+    default: 'undefined',
+    description: 'Overrides the "Accepted: {accept}" caption. Receives the accept value.',
+  },
+  {
+    id: '18',
+    property: 'removeFileLabel',
+    type: '(fileName: string) => string',
+    default: 'undefined',
+    description: "Overrides a selected file's remove button aria-label. Receives the file name.",
+  },
+  {
+    id: '19',
+    property: 'uploadAriaLabel',
+    type: 'string',
+    default: "'Upload files'",
+    description: "Overrides the dropzone's fallback aria-label, used when label isn't provided.",
+  },
 ];

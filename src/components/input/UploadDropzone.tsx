@@ -66,6 +66,13 @@ const UploadDropzone = forwardRef<HTMLInputElement, Input.UploadDropzoneProps>(
       errorMsg,
       files = [],
       maxFiles,
+      simple = false,
+      dragText,
+      selectedText,
+      browseButtonText = 'Browse Files',
+      acceptedText,
+      removeFileLabel,
+      uploadAriaLabel = 'Upload files',
       onChange,
     } = props;
 
@@ -108,6 +115,26 @@ const UploadDropzone = forwardRef<HTMLInputElement, Input.UploadDropzoneProps>(
           ? 'drag'
           : 'default';
 
+    const headingText =
+      files.length > 0
+        ? (selectedText ?? ((count) => `${count} file${count > 1 ? 's' : ''} selected`))(
+            files.length,
+          )
+        : (dragText ??
+          (multiple ? 'Drag files here or browse' : 'Drag file here or browse'));
+
+    const helperContent =
+      helperText ??
+      (simple
+        ? undefined
+        : multiple
+          ? 'Drop one or more files, or click to choose from your device.'
+          : 'Drop a file, or click to choose from your device.');
+
+    const acceptedContent = accept
+      ? (acceptedText ?? ((acceptValue) => `Accepted: ${acceptValue}`))(accept)
+      : undefined;
+
     return (
       <div className={classNames('w-full', classes)}>
         {(label || description) && (
@@ -148,7 +175,7 @@ const UploadDropzone = forwardRef<HTMLInputElement, Input.UploadDropzoneProps>(
           role="button"
           tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled}
-          aria-label={label || 'Upload files'}
+          aria-label={label || uploadAriaLabel}
           onClick={openFileDialog}
           onKeyDown={(event) => {
             if (disabled) return;
@@ -188,50 +215,51 @@ const UploadDropzone = forwardRef<HTMLInputElement, Input.UploadDropzoneProps>(
             {files.length > 0 ? <LuFiles /> : <LuUpload />}
           </div>
 
-          <div className="flex flex-col gap-1">
-            <p
-              className={classNames(
-                'text-base font-semibold text-neutral-800 dark:text-neutral-100',
-                disabled && 'text-neutral-400 dark:text-neutral-500',
+          {(!simple || helperContent) && (
+            <div className="flex flex-col gap-1">
+              {!simple && (
+                <p
+                  className={classNames(
+                    'text-base font-semibold text-neutral-800 dark:text-neutral-100',
+                    disabled && 'text-neutral-400 dark:text-neutral-500',
+                  )}
+                >
+                  {headingText}
+                </p>
               )}
-            >
-              {files.length > 0
-                ? `${files.length} file${files.length > 1 ? 's' : ''} selected`
-                : multiple
-                  ? 'Drag files here or browse'
-                  : 'Drag file here or browse'}
-            </p>
-            <p
-              className={classNames(
-                'text-sm text-neutral-500 dark:text-neutral-400',
-                disabled && 'text-neutral-400 dark:text-neutral-500',
+              {helperContent && (
+                <p
+                  className={classNames(
+                    'text-sm text-neutral-500 dark:text-neutral-400',
+                    disabled && 'text-neutral-400 dark:text-neutral-500',
+                  )}
+                >
+                  {helperContent}
+                </p>
               )}
-            >
-              {helperText ||
-                (multiple
-                  ? 'Drop one or more files, or click to choose from your device.'
-                  : 'Drop a file, or click to choose from your device.')}
-            </p>
-            {accept && (
-              <p className="text-xs text-neutral-400 dark:text-neutral-500">
-                Accepted: {accept}
-              </p>
-            )}
-          </div>
+              {!simple && acceptedContent && (
+                <p className="text-xs text-neutral-400 dark:text-neutral-500">
+                  {acceptedContent}
+                </p>
+              )}
+            </div>
+          )}
 
-          <Button
-            type="button"
-            variant="outline"
-            color="neutral"
-            size="sm"
-            disabled={disabled}
-            onClick={(event) => {
-              event.stopPropagation();
-              openFileDialog();
-            }}
-          >
-            Browse Files
-          </Button>
+          {!simple && (
+            <Button
+              type="button"
+              variant="outline"
+              color="neutral"
+              size="sm"
+              disabled={disabled}
+              onClick={(event) => {
+                event.stopPropagation();
+                openFileDialog();
+              }}
+            >
+              {browseButtonText}
+            </Button>
+          )}
         </div>
 
         {files.length > 0 && (
@@ -254,7 +282,7 @@ const UploadDropzone = forwardRef<HTMLInputElement, Input.UploadDropzoneProps>(
                   variant="clear"
                   color="neutral"
                   size="sm"
-                  aria-label={`Remove ${file.name}`}
+                  aria-label={removeFileLabel ? removeFileLabel(file.name) : `Remove ${file.name}`}
                   disabled={disabled}
                   classes="!p-2"
                   onClick={() => {

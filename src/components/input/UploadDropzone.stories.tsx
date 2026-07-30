@@ -18,6 +18,10 @@ const meta: Meta<typeof UploadDropzone> = {
     description: { control: 'text' },
     helperText: { control: 'text' },
     errorMsg: { control: 'text' },
+    simple: { control: 'boolean' },
+    dragText: { control: 'text' },
+    browseButtonText: { control: 'text' },
+    uploadAriaLabel: { control: 'text' },
     onChange: { action: 'changed' },
   },
 };
@@ -76,6 +80,28 @@ export const SingleFile: Story = {
     label: 'Profile Image',
     helperText: 'Only one file can be attached.',
     multiple: false,
+    accept: 'image/*',
+  },
+};
+
+export const Simple: Story = {
+  render: (args) => <InteractiveUploadDropzone {...args} />,
+  args: {
+    simple: true,
+  },
+};
+
+export const LocalizedText: Story = {
+  render: (args) => <InteractiveUploadDropzone {...args} />,
+  args: {
+    label: '프로젝트 파일',
+    description: '검토에 필요한 파일을 업로드하세요.',
+    dragText: '파일을 끌어다 놓거나 찾아보세요',
+    selectedText: (count: number) => `${count}개 파일 선택됨`,
+    browseButtonText: '파일 찾기',
+    acceptedText: (accept: string) => `허용 형식: ${accept}`,
+    removeFileLabel: (fileName: string) => `${fileName} 삭제`,
+    uploadAriaLabel: '파일 업로드',
     accept: 'image/*',
   },
 };

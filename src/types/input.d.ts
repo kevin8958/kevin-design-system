@@ -210,6 +210,20 @@ namespace Input {
     errorMsg?: string;
     files?: File[];
     maxFiles?: number;
+    /** Compact, language-neutral layout: drops the default English heading, helper copy, "Accepted:" line, and Browse button, keeping just the icon (and the file list once files are selected). Any `helperText` you pass still renders. */
+    simple?: boolean;
+    /** Overrides the default "Drag file(s) here or browse" heading shown when no files are selected. */
+    dragText?: string;
+    /** Overrides the "{n} file(s) selected" heading. Receives the selected file count so plural forms can be localized. */
+    selectedText?: (count: number) => string;
+    /** Overrides the "Browse Files" button label. */
+    browseButtonText?: string;
+    /** Overrides the "Accepted: {accept}" caption. Receives the `accept` value. */
+    acceptedText?: (accept: string) => string;
+    /** Overrides the remove button's aria-label. Receives the file name. */
+    removeFileLabel?: (fileName: string) => string;
+    /** Overrides the dropzone's fallback aria-label, used when `label` isn't provided. */
+    uploadAriaLabel?: string;
     onChange?: (files: File[]) => void;
   }
 }

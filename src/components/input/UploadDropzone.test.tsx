@@ -66,4 +66,57 @@ describe('UploadDropzone', () => {
 
     expect(handleChange).toHaveBeenCalledWith([]);
   });
+
+  it('overrides the default copy with the text props', () => {
+    const file = new File(['avatar'], 'avatar.png', { type: 'image/png' });
+
+    render(
+      <UploadDropzone
+        files={[file]}
+        accept="image/*"
+        onChange={() => {}}
+        dragText="파일을 끌어다 놓으세요"
+        selectedText={(count) => `${count}개 선택됨`}
+        browseButtonText="파일 찾기"
+        acceptedText={(accept) => `허용: ${accept}`}
+        removeFileLabel={(name) => `${name} 삭제`}
+        uploadAriaLabel="파일 업로드"
+      />,
+    );
+
+    expect(screen.getByText('1개 선택됨')).toBeInTheDocument();
+    expect(screen.getByText('파일 찾기')).toBeInTheDocument();
+    expect(screen.getByText('허용: image/*')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'avatar.png 삭제' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '파일 업로드' })).toBeInTheDocument();
+  });
+
+  it('renders the default English copy when not simple', () => {
+    render(<UploadDropzone files={[]} accept="image/*" onChange={() => {}} />);
+
+    expect(screen.getByText(/drag files here or browse/i)).toBeInTheDocument();
+    expect(screen.getByText(/browse files/i)).toBeInTheDocument();
+    expect(screen.getByText(/accepted: image\/\*/i)).toBeInTheDocument();
+  });
+
+  it('drops the default English copy in simple mode', () => {
+    render(<UploadDropzone simple files={[]} accept="image/*" onChange={() => {}} />);
+
+    expect(screen.queryByText(/drag files here or browse/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/browse files/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/accepted: image\/\*/i)).not.toBeInTheDocument();
+  });
+
+  it('still shows an explicit helperText in simple mode', () => {
+    render(
+      <UploadDropzone
+        simple
+        files={[]}
+        helperText="필요한 파일을 올려주세요"
+        onChange={() => {}}
+      />,
+    );
+
+    expect(screen.getByText('필요한 파일을 올려주세요')).toBeInTheDocument();
+  });
 });
