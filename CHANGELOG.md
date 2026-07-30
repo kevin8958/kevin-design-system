@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.9] - 2026-07-30
+
+### Fixed
+- Fixed `DatePicker`'s field having no visible border in its default (`contain`) and `outline` variants. Both had `border-neutral-300`/`dark:border-neutral-700` color classes but never an accompanying `border` width utility, so the border rendered at `0px` — invisible at rest, and invisible on the red `isError` state too, which meant validation errors had no visible border cue. Also dropped `outline`'s standalone `border-neutral-600`, which conflicted with the shared color classes; it now shares the same border-color logic as every other state, matching `TextInput`.
+
 ## [0.2.8] - 2026-07-29
 
 ### Added
