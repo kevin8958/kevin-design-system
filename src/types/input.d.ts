@@ -192,6 +192,8 @@ namespace Input {
     hideHeaderButtons?: boolean;
     /** dayjs format string for the displayed value, e.g. 'YYYY년 MM월 DD일'. Defaults to 'MMM D, YYYY'. */
     dateFormat?: string;
+    /** Language for the calendar header (month/year selects). 'ko' also swaps the header order to year-then-month. Defaults to 'en'. */
+    locale?: 'en' | 'ko';
     onChange?: (
       update: Date | null | [Date | null, Date | null] | Date[],
     ) => void;

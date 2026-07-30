@@ -10,6 +10,7 @@ const meta: Meta<typeof CustomDatePicker> = {
   argTypes: {
     variant: { control: 'select', options: ['contain', 'outline', 'clear'] },
     size: { control: 'select', options: ['sm', 'md', 'lg'] },
+    locale: { control: 'select', options: ['en', 'ko'] },
   },
 };
 
@@ -61,6 +62,30 @@ export const RangeSelection: Story = {
   args: {
     type: 'range',
     placeholder: 'Select range',
+  },
+};
+
+export const KoreanLocale: Story = {
+  render: (args) => {
+    const [date, setDate] = useState<Date | null>(new Date());
+
+    return (
+      <CustomDatePicker
+        {...args}
+        value={date}
+        onChange={(d) => {
+          if (!Array.isArray(d)) {
+            setDate(d);
+          }
+        }}
+      />
+    );
+  },
+  args: {
+    type: 'single',
+    locale: 'ko',
+    dateFormat: 'YYYY년 MM월 DD일',
+    placeholder: '날짜를 선택하세요',
   },
 };
 

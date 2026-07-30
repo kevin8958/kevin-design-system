@@ -4,6 +4,7 @@ import { useState } from 'react';
 import DatePickerControllerGuide from '@/pages/components/input/datepicker/DatePickerControllerGuide';
 import DatePickerStateGuide from '@/pages/components/input/datepicker/DatePickerStateGuide';
 import DatePickerTypeGuide from '@/pages/components/input/datepicker/DatePickerTypeGuide';
+import DatePickerLocaleGuide from '@/pages/components/input/datepicker/DatePickerLocaleGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -51,6 +52,7 @@ export default function ComponentDatePickerPage() {
           {/* 주요 기능 가이드 섹션 */}
           <DatePickerControllerGuide size={size} onSizeChange={setSize} />
           <DatePickerTypeGuide size={size} />
+          <DatePickerLocaleGuide size={size} />
           <DatePickerStateGuide size={size} />
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
@@ -164,5 +166,13 @@ const propsData = [
     default: "'MMM D, YYYY'",
     description:
       "dayjs format string for the displayed value, e.g. 'YYYY년 MM월 DD일'.",
+  },
+  {
+    id: '14',
+    property: 'locale',
+    type: "'en' | 'ko'",
+    default: "'en'",
+    description:
+      "Language for the calendar header's month/year selects. 'ko' also swaps the header order to year-then-month.",
   },
 ];

@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import isBetween from 'dayjs/plugin/isBetween';
+import 'dayjs/locale/ko';
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 
 import Button from '@/components/action/Button';
@@ -13,6 +14,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './datepicker-custom.css';
 
 dayjs.extend(isBetween);
+
+const headerSelectClassName =
+  'bg-transparent text-sm font-bold text-neutral-800 dark:text-white outline-none cursor-pointer hover:text-secondary-600 dark:hover:text-primary-400';
 
 const focusColorClassMap: Record<Input.FocusColor, string> = {
   primary:
@@ -46,6 +50,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     endDate,
     size = 'md',
     dateFormat = 'MMM D, YYYY',
+    locale = 'en',
     onChange,
   } = props;
   const isRangeMode = isRange || type === 'range';
@@ -172,7 +177,8 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
         nextMonthButtonDisabled,
         decreaseMonth,
         increaseMonth,
-        changeYear, // 년도 변경 함수 추가
+        changeYear, // 년도 변경 함수
+        changeMonth, // 월 변경 함수
       }) => {
         const renderButton = (
           icon: React.ReactNode,
@@ -195,6 +201,39 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
           { length: 21 },
           (_, i) => dayjs().year() - 10 + i,
         );
+        const months = Array.from({ length: 12 }, (_, i) => i);
+
+        const yearSelect = (
+          <select
+            value={dayjs(date).year()}
+            onChange={({ target: { value } }) => changeYear(Number(value))}
+            className={headerSelectClassName}
+          >
+            {years.map((year) => (
+              <option key={year} value={year} className="dark:bg-neutral-900">
+                {year}
+              </option>
+            ))}
+          </select>
+        );
+
+        const monthSelect = (
+          <select
+            value={dayjs(date).month()}
+            onChange={({ target: { value } }) => changeMonth(Number(value))}
+            className={headerSelectClassName}
+          >
+            {months.map((month) => (
+              <option
+                key={month}
+                value={month}
+                className="dark:bg-neutral-900"
+              >
+                {dayjs().locale(locale).month(month).format('MMMM')}
+              </option>
+            ))}
+          </select>
+        );
 
         return (
           <div className="flex flex-col bg-transparent px-1">
@@ -212,27 +251,17 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
                 )}
 
               <div className="flex items-center gap-1">
-                <p className="text-sm font-bold text-neutral-800 dark:text-white">
-                  {dayjs(date).format('MMMM')}
-                </p>
-                {/* 년도 선택 Select 박스 */}
-                <select
-                  value={dayjs(date).year()}
-                  onChange={({ target: { value } }) =>
-                    changeYear(Number(value))
-                  }
-                  className="bg-transparent text-sm font-bold text-neutral-800 dark:text-white outline-none cursor-pointer hover:text-secondary-600 dark:hover:text-primary-400"
-                >
-                  {years.map((year) => (
-                    <option
-                      key={year}
-                      value={year}
-                      className="dark:bg-neutral-900"
-                    >
-                      {year}
-                    </option>
-                  ))}
-                </select>
+                {locale === 'ko' ? (
+                  <>
+                    {yearSelect}
+                    {monthSelect}
+                  </>
+                ) : (
+                  <>
+                    {monthSelect}
+                    {yearSelect}
+                  </>
+                )}
               </div>
 
               {!hideHeaderButtons &&
