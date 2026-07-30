@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.7] - 2026-07-29
+
+### Fixed
+- Unified `Combobox`'s light-mode outline with `TextInput`/`Select`/`Textarea`/`DatePicker`. Combobox's trigger used `border-neutral-500/20` with a `focus-within` ring at 2px/70% opacity, while the other fields use an opaque `border-neutral-300` and a 1px full-opacity focus ring. The difference barely showed in dark mode (the translucent border blended with the dark background) but was clearly visible in light mode; Combobox now uses the same values.
+- Removed a redundant `ml-3` on `Combobox`'s search icon that doubled up with the trigger's own size-based left padding, leaving too much empty space to the icon's left.
+
 ## [0.2.6] - 2026-07-28
 
 ### Fixed
