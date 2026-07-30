@@ -19,7 +19,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { LuCheck, LuChevronDown } from 'react-icons/lu';
 
 const triggerVariants = cva(
-  'relative flex w-full cursor-pointer items-center justify-between rounded-lg border bg-white text-left text-neutral-700 shadow-sm outline-0 transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
+  'relative flex w-full cursor-pointer items-center justify-between rounded-lg border bg-white text-left text-neutral-700 outline-0 transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
   {
     variants: {
       size: {

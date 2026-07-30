@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const textareaVariants = cva(
   [
-    'form-control box-border w-full rounded-lg border border-neutral-300 bg-white text-neutral-700 shadow-sm outline-0 transition-all duration-200 ease-in-out placeholder:text-neutral-800/30 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:placeholder:text-neutral-100/30',
+    'form-control box-border w-full rounded-lg border border-neutral-300 bg-white text-neutral-700 outline-0 transition-all duration-200 ease-in-out placeholder:text-neutral-800/30 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:placeholder:text-neutral-100/30',
     'hover:bg-neutral-50 dark:hover:bg-neutral-800',
   ].join(' '),
   {

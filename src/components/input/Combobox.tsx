@@ -19,7 +19,7 @@ import { LuCheck, LuChevronDown, LuSearch } from 'react-icons/lu';
 import { normalizeSearchValue } from '@/libs/utils';
 
 const triggerVariants = cva(
-  'relative flex w-full items-center rounded-lg border bg-white text-neutral-700 shadow-sm outline-none transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
+  'relative flex w-full items-center rounded-lg border bg-white text-neutral-700 outline-none transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
   {
     variants: {
       size: {
