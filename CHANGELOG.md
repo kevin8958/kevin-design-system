@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.8] - 2026-07-29
+
+### Added
+- Added text-customization props to `UploadDropzone` — `dragText`, `selectedText`, `browseButtonText`, `acceptedText`, `removeFileLabel`, and `uploadAriaLabel` — so every piece of copy the component previously hardcoded in English can be localized.
+- Added a `simple` prop to `UploadDropzone` for a compact, language-neutral layout that drops the default heading, helper copy, "Accepted:" line, and Browse button, keeping just the icon and file list (any explicit `helperText` still renders).
+
+### Fixed
+- Removed `shadow-sm` from `Combobox`, `Textarea`, and `Select`. The class wasn't dark-mode-specific, but the shadow only read as visible in light mode; `TextInput` (the sizing/outline baseline for these fields) never had it, so it's removed for consistency across all three.
+
 ## [0.2.7] - 2026-07-29
 
 ### Fixed
