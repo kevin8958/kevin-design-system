@@ -9,6 +9,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 - Fixed `DatePicker`'s field having no visible border in its default (`contain`) and `outline` variants. Both had `border-neutral-300`/`dark:border-neutral-700` color classes but never an accompanying `border` width utility, so the border rendered at `0px` — invisible at rest, and invisible on the red `isError` state too, which meant validation errors had no visible border cue. Also dropped `outline`'s standalone `border-neutral-600`, which conflicted with the shared color classes; it now shares the same border-color logic as every other state, matching `TextInput`.
+- Aligned `Button`'s heights with `TextInput`: `sm` 30px→36px, `md` 36px→42px, `lg` 44px→48px.
 
 ## [0.2.8] - 2026-07-29
 

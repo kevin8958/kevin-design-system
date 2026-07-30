@@ -14,9 +14,9 @@ const buttonVariants = cva(
         clear: 'bg-transparent',
       },
       size: {
-        sm: 'h-[30px] px-2.5 text-xs gap-1.5',
-        md: 'h-[36px] px-4 text-sm gap-2',
-        lg: 'h-[44px] px-6 text-base gap-2.5',
+        sm: 'h-[36px] px-2.5 text-xs gap-1.5',
+        md: 'h-[42px] px-4 text-sm gap-2',
+        lg: 'h-[48px] px-6 text-base gap-2.5',
       },
       color: {
         primary: '',

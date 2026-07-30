@@ -27,7 +27,7 @@ describe('ComponentButtonGroupPage', () => {
 
     let previewButtons = screen.getAllByRole('button', { name: 'Button' });
     expect(
-      previewButtons.some((button) => button.className.includes('h-[44px]')),
+      previewButtons.some((button) => button.className.includes('h-[48px]')),
     ).toBe(true);
 
     fireEvent.click(screen.getByRole('button', { name: 'danger' }));
