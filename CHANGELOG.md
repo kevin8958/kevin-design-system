@@ -7,9 +7,15 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [0.2.9] - 2026-07-30
 
+### Added
+- Added a `locale` prop (`'en' | 'ko'`, default `'en'`) to `DatePicker` for the calendar header's language. `'ko'` shows Korean month names (e.g. "7월") and swaps the header order to year-then-month. The month is now also selectable via a dropdown, matching the year — previously only the year could be picked directly, month required stepping with the prev/next arrows.
+- Added a `changeLabel` prop to `MetricCard` for a small caption under the change badge explaining what it's measured against, e.g. `'vs last week'` or `'지난주 대비'`. Only renders alongside a `change` value.
+
 ### Fixed
 - Fixed `DatePicker`'s field having no visible border in its default (`contain`) and `outline` variants. Both had `border-neutral-300`/`dark:border-neutral-700` color classes but never an accompanying `border` width utility, so the border rendered at `0px` — invisible at rest, and invisible on the red `isError` state too, which meant validation errors had no visible border cue. Also dropped `outline`'s standalone `border-neutral-600`, which conflicted with the shared color classes; it now shares the same border-color logic as every other state, matching `TextInput`.
 - Aligned `Button`'s heights with `TextInput`: `sm` 30px→36px, `md` 36px→42px, `lg` 44px→48px.
+- Fixed `DatePicker`'s month/year header selects being unevenly sized — a long month name like "September" made the month select noticeably wider than the year select. Both now share a fixed width with centered text and a custom chevron on the right, instead of sizing to each native select's own content.
+- Fixed `DatePicker`'s date grid not lining up under the weekday letters above it. Weeks were laid out with `flex` (fixed-width day cells packed to the left) while the weekday header used a 7-column `grid`; both now use the same grid so each date sits directly under its weekday.
 
 ## [0.2.8] - 2026-07-29
 
