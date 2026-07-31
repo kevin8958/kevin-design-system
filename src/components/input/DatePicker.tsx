@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import isBetween from 'dayjs/plugin/isBetween';
 import 'dayjs/locale/ko';
-import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
+import { LuChevronDown, LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 
 import Button from '@/components/action/Button';
 
@@ -15,8 +15,13 @@ import './datepicker-custom.css';
 
 dayjs.extend(isBetween);
 
+// 월/년 선택기 너비를 고정해 "September"처럼 긴 월 이름이 와도
+// 두 선택기가 항상 같은 크기를 유지하도록 한다.
+const headerSelectWrapperClassName = 'relative w-32 shrink-0';
 const headerSelectClassName =
-  'bg-transparent text-sm font-bold text-neutral-800 dark:text-white outline-none cursor-pointer hover:text-secondary-600 dark:hover:text-primary-400';
+  'w-full appearance-none bg-transparent py-0.5 pr-5 text-center text-base font-bold text-neutral-800 dark:text-white outline-none cursor-pointer hover:text-secondary-600 dark:hover:text-primary-400';
+const headerSelectChevronClassName =
+  'pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-neutral-400';
 
 const focusColorClassMap: Record<Input.FocusColor, string> = {
   primary:
@@ -204,39 +209,45 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
         const months = Array.from({ length: 12 }, (_, i) => i);
 
         const yearSelect = (
-          <select
-            value={dayjs(date).year()}
-            onChange={({ target: { value } }) => changeYear(Number(value))}
-            className={headerSelectClassName}
-          >
-            {years.map((year) => (
-              <option key={year} value={year} className="dark:bg-neutral-900">
-                {year}
-              </option>
-            ))}
-          </select>
+          <div className={headerSelectWrapperClassName}>
+            <select
+              value={dayjs(date).year()}
+              onChange={({ target: { value } }) => changeYear(Number(value))}
+              className={headerSelectClassName}
+            >
+              {years.map((year) => (
+                <option key={year} value={year} className="dark:bg-neutral-900">
+                  {year}
+                </option>
+              ))}
+            </select>
+            <LuChevronDown className={headerSelectChevronClassName} size={14} />
+          </div>
         );
 
         const monthSelect = (
-          <select
-            value={dayjs(date).month()}
-            onChange={({ target: { value } }) => changeMonth(Number(value))}
-            className={headerSelectClassName}
-          >
-            {months.map((month) => (
-              <option
-                key={month}
-                value={month}
-                className="dark:bg-neutral-900"
-              >
-                {dayjs().locale(locale).month(month).format('MMMM')}
-              </option>
-            ))}
-          </select>
+          <div className={headerSelectWrapperClassName}>
+            <select
+              value={dayjs(date).month()}
+              onChange={({ target: { value } }) => changeMonth(Number(value))}
+              className={headerSelectClassName}
+            >
+              {months.map((month) => (
+                <option
+                  key={month}
+                  value={month}
+                  className="dark:bg-neutral-900"
+                >
+                  {dayjs().locale(locale).month(month).format('MMMM')}
+                </option>
+              ))}
+            </select>
+            <LuChevronDown className={headerSelectChevronClassName} size={14} />
+          </div>
         );
 
         return (
-          <div className="flex flex-col bg-transparent px-1">
+          <div className="flex flex-col bg-transparent">
             <div
               className={classNames('flex items-center gap-2 py-3', {
                 'justify-center': hideHeaderButtons,
@@ -250,7 +261,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
                   prevMonthButtonDisabled,
                 )}
 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 {locale === 'ko' ? (
                   <>
                     {yearSelect}

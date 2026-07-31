@@ -32,7 +32,8 @@ html.dark .react-datepicker {
 }
 
 .react-datepicker__week {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .react-datepicker__day--outside-month {
@@ -66,5 +67,6 @@ html.dark .react-datepicker {
   margin: 0 !important;
 }
 .react-datepicker__day {
-  margin: 1px !important;
+  margin: 2px 0 !important;
+  justify-self: center;
 }
