@@ -4,6 +4,7 @@ import { useState } from 'react';
 import MetricCardControllerGuide from '@/pages/components/dataDisplay/metricCard/MetricCardControllerGuide';
 import MetricCardContentGuide from '@/pages/components/dataDisplay/metricCard/MetricCardContentGuide';
 import MetricCardTrendGuide from '@/pages/components/dataDisplay/metricCard/MetricCardTrendGuide';
+import MetricCardChangeLabelGuide from '@/pages/components/dataDisplay/metricCard/MetricCardChangeLabelGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -51,6 +52,7 @@ export default function ComponentMetricCardPage() {
           <MetricCardControllerGuide size={size} onSizeChange={setSize} />
           <MetricCardContentGuide size={size} />
           <MetricCardTrendGuide size={size} />
+          <MetricCardChangeLabelGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
@@ -83,6 +85,14 @@ const propsData = [
     type: 'number',
     default: 'undefined',
     description: 'Optional delta shown beside the main value.',
+  },
+  {
+    id: '3b',
+    property: 'changeLabel',
+    type: 'string',
+    default: 'undefined',
+    description:
+      "Caption under the change badge explaining what it's measured against, e.g. '지난주 대비' or 'vs last week'. Only renders alongside a change value.",
   },
   {
     id: '4',

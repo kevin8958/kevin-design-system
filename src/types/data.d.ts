@@ -56,6 +56,8 @@ namespace Data {
     title: string;
     value: number;
     change?: number;
+    /** Caption shown under the change badge explaining what it's measured against, e.g. '지난주 대비' or 'vs last week'. Only renders alongside a change value. */
+    changeLabel?: string;
     size?: MetricCardSize;
     trend?: MetricCardTrend;
     prefix?: string;

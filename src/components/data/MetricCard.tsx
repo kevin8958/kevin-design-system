@@ -98,6 +98,7 @@ const MetricCard = ({
   title,
   value,
   change,
+  changeLabel,
   size = 'md',
   trend,
   prefix = '',
@@ -147,12 +148,22 @@ const MetricCard = ({
         </div>
 
         {formattedChange && (
-          <div
-            data-testid="metric-card-change"
-            className={changeVariants({ trend: resolvedTrend })}
-          >
-            <TrendIcon size={14} />
-            <span>{formattedChange}</span>
+          <div className="flex flex-col items-end gap-1">
+            <div
+              data-testid="metric-card-change"
+              className={changeVariants({ trend: resolvedTrend })}
+            >
+              <TrendIcon size={14} />
+              <span>{formattedChange}</span>
+            </div>
+            {changeLabel && (
+              <span
+                data-testid="metric-card-change-label"
+                className="text-[11px] font-medium text-neutral-400 dark:text-neutral-500"
+              >
+                {changeLabel}
+              </span>
+            )}
           </div>
         )}
       </div>

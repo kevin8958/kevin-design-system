@@ -7,9 +7,9 @@ import GuideSection from '@/components/layout/GuideSection';
 type MetricCardPreviewControls = Pick<Data.MetricCardProps, 'size'>;
 
 const TrendExample = ({ size = 'md' }: MetricCardPreviewControls) => {
-  const exampleCode = `<MetricCard title="Sales" value={8420} prefix="$" change={15.2} changeSuffix="%" trend="up" size="${size}" />
-<MetricCard title="Churn" value={184} change={-3.1} changeSuffix="%" trend="down" size="${size}" />
-<MetricCard title="Response Time" value={128} suffix="ms" change={0} changeSuffix="%" trend="neutral" size="${size}" />`;
+  const exampleCode = `<MetricCard title="Sales" value={8420} prefix="$" change={15.2} changeSuffix="%" changeLabel="vs last week" trend="up" size="${size}" />
+<MetricCard title="Churn" value={184} change={-3.1} changeSuffix="%" changeLabel="vs last week" trend="down" size="${size}" />
+<MetricCard title="Response Time" value={128} suffix="ms" change={0} changeSuffix="%" changeLabel="vs last week" trend="neutral" size="${size}" />`;
 
   return (
     <CodeExample code={exampleCode} className="flex-1 min-w-0">
@@ -27,6 +27,7 @@ const TrendExample = ({ size = 'md' }: MetricCardPreviewControls) => {
               prefix="$"
               change={15.2}
               changeSuffix="%"
+              changeLabel="vs last week"
               trend="up"
               size={size}
             />
@@ -46,6 +47,7 @@ const TrendExample = ({ size = 'md' }: MetricCardPreviewControls) => {
               value={184}
               change={-3.1}
               changeSuffix="%"
+              changeLabel="vs last week"
               trend="down"
               size={size}
             />
@@ -66,6 +68,7 @@ const TrendExample = ({ size = 'md' }: MetricCardPreviewControls) => {
               suffix="ms"
               change={0}
               changeSuffix="%"
+              changeLabel="vs last week"
               trend="neutral"
               size={size}
             />

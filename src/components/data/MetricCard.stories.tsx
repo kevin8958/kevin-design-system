@@ -31,6 +31,7 @@ export const Default: Story = {
     prefix: '$',
     change: 12.4,
     changeSuffix: '%',
+    changeLabel: 'vs last week',
     size: 'md',
     animated: true,
   },
@@ -45,6 +46,7 @@ export const TrendStates: Story = {
         prefix="$"
         change={12.4}
         changeSuffix="%"
+        changeLabel="vs last week"
         animated={false}
       />
       <MetricCard
@@ -52,6 +54,7 @@ export const TrendStates: Story = {
         value={184}
         change={-3.1}
         changeSuffix="%"
+        changeLabel="vs last month"
         animated={false}
       />
       <MetricCard
@@ -59,6 +62,7 @@ export const TrendStates: Story = {
         value={18240}
         change={0}
         changeSuffix="%"
+        changeLabel="vs last week"
         animated={false}
       />
     </FlexWrapper>

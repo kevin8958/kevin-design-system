@@ -50,4 +50,36 @@ describe('MetricCard', () => {
     expect(screen.getByTestId('metric-card')).toHaveClass('p-6');
     expect(screen.getByTestId('metric-card-value')).toHaveClass('text-4xl');
   });
+
+  it('renders the change label alongside the change badge', () => {
+    render(
+      <MetricCard
+        title="Revenue"
+        value={12430}
+        change={12.4}
+        changeSuffix="%"
+        changeLabel="vs last week"
+        animated={false}
+      />,
+    );
+
+    expect(screen.getByTestId('metric-card-change-label')).toHaveTextContent(
+      'vs last week',
+    );
+  });
+
+  it('does not render a change label without a change value', () => {
+    render(
+      <MetricCard
+        title="Revenue"
+        value={12430}
+        changeLabel="vs last week"
+        animated={false}
+      />,
+    );
+
+    expect(
+      screen.queryByTestId('metric-card-change-label'),
+    ).not.toBeInTheDocument();
+  });
 });
