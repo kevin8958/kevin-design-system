@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.10] - 2026-07-30
+
+### Added
+- Added a `loading` prop to `MetricCard`. When `true`, the title, value, and change badge are replaced with animated `Skeleton` placeholders (`aria-busy="true"` on the card) sized to match each `size` variant's typography, so the card keeps its usual dimensions and nothing shifts once real data lands.
+
+### Changed
+- Moved `MetricCard`'s `changeLabel` caption from below the change badge to above it.
+
 ## [0.2.9] - 2026-07-30
 
 ### Added
