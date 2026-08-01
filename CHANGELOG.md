@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.11] - 2026-07-30
+
+### Added
+- Added a `classes` prop to `Table` and `Modal` — neither had one, so their outer wrapper (`Table`) and dialog panel (`Modal`) couldn't be styled at all.
+
+### Fixed
+- Fixed `Drawer`'s `classes` prop being declared in the type but never used in the component — passing it silently did nothing. It's now applied to the dialog panel.
+- Fixed `UploadDropzone`'s `classes` prop landing on the background-less outer layout wrapper instead of the actual dropzone surface, so it visually had no effect. It now applies to the dropzone surface itself.
+- Fixed `classes` overrides on `Table`, `Modal`, `Drawer`, and `UploadDropzone` losing to the component's own `bg-white`/`dark:bg-neutral-900` base classes for same-property conflicts (e.g. passing a translucent background). Plain string concatenation doesn't guarantee an override wins — Tailwind resolves same-specificity conflicts by CSS generation order, not JSX string order. All four now merge `classes` with `cn()` (clsx + tailwind-merge), which resolves conflicts by keeping the last class per property, so overrides reliably win. Verified by passing a translucent `classes` background and checking the computed style before and after.
+
 ## [0.2.10] - 2026-07-30
 
 ### Added
