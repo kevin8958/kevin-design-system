@@ -18,6 +18,9 @@ const meta: Meta<typeof MetricCard> = {
     animated: {
       control: 'boolean',
     },
+    loading: {
+      control: 'boolean',
+    },
   },
 };
 
@@ -65,6 +68,16 @@ export const TrendStates: Story = {
         changeLabel="vs last week"
         animated={false}
       />
+    </FlexWrapper>
+  ),
+};
+
+export const Loading: Story = {
+  render: (args) => (
+    <FlexWrapper classes="w-full flex-wrap" gap={4} items="stretch">
+      <MetricCard {...args} title="Revenue" value={0} size="sm" loading />
+      <MetricCard {...args} title="Revenue" value={0} size="md" loading />
+      <MetricCard {...args} title="Revenue" value={0} size="lg" loading />
     </FlexWrapper>
   ),
 };

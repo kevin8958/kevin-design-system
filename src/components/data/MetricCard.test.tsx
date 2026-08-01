@@ -82,4 +82,23 @@ describe('MetricCard', () => {
       screen.queryByTestId('metric-card-change-label'),
     ).not.toBeInTheDocument();
   });
+
+  it('renders skeleton placeholders instead of content while loading', () => {
+    render(
+      <MetricCard
+        title="Revenue"
+        value={12430}
+        change={12.4}
+        changeSuffix="%"
+        loading
+      />,
+    );
+
+    const card = screen.getByTestId('metric-card');
+    expect(card).toHaveAttribute('aria-busy', 'true');
+    expect(screen.queryByText('Revenue')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('metric-card-value')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('metric-card-change')).not.toBeInTheDocument();
+    expect(card.querySelectorAll('.animate-pulse')).toHaveLength(3);
+  });
 });

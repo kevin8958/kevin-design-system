@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 import { LuMinus, LuTrendingDown, LuTrendingUp } from 'react-icons/lu';
 import CountUp from '@/components/interaction/CountUp';
+import Skeleton from '@/components/feedback/Skeleton';
 
 const metricCardVariants = cva(
   'flex w-full flex-col rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-200 ease-in-out dark:border-neutral-800 dark:bg-neutral-900',
@@ -94,6 +95,19 @@ const trendIconMap = {
   neutral: LuMinus,
 };
 
+// 실제 title/value 타이포그래피의 line-height에 맞춘 스켈레톤 높이
+const titleSkeletonHeight: Record<Data.MetricCardSize, number> = {
+  sm: 16,
+  md: 20,
+  lg: 20,
+};
+
+const valueSkeletonHeight: Record<Data.MetricCardSize, number> = {
+  sm: 32,
+  md: 36,
+  lg: 40,
+};
+
 const MetricCard = ({
   title,
   value,
@@ -108,8 +122,26 @@ const MetricCard = ({
   changeDecimals = 1,
   animated = true,
   duration = 1.6,
+  loading = false,
   classes,
 }: Data.MetricCardProps) => {
+  if (loading) {
+    return (
+      <article
+        data-testid="metric-card"
+        aria-busy="true"
+        className={classNames(metricCardVariants({ size }), classes)}
+      >
+        <Skeleton width="40%" height={titleSkeletonHeight[size]} />
+
+        <div className="flex items-end justify-between gap-4">
+          <Skeleton width="55%" height={valueSkeletonHeight[size]} />
+          <Skeleton width={64} height={24} classes="rounded-full!" />
+        </div>
+      </article>
+    );
+  }
+
   const resolvedTrend = resolveTrend(trend, change);
   const TrendIcon = trendIconMap[resolvedTrend];
   const roundedValue = roundToDecimals(value, decimals);
@@ -149,13 +181,6 @@ const MetricCard = ({
 
         {formattedChange && (
           <div className="flex flex-col items-end gap-1">
-            <div
-              data-testid="metric-card-change"
-              className={changeVariants({ trend: resolvedTrend })}
-            >
-              <TrendIcon size={14} />
-              <span>{formattedChange}</span>
-            </div>
             {changeLabel && (
               <span
                 data-testid="metric-card-change-label"
@@ -164,6 +189,13 @@ const MetricCard = ({
                 {changeLabel}
               </span>
             )}
+            <div
+              data-testid="metric-card-change"
+              className={changeVariants({ trend: resolvedTrend })}
+            >
+              <TrendIcon size={14} />
+              <span>{formattedChange}</span>
+            </div>
           </div>
         )}
       </div>

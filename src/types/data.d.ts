@@ -56,7 +56,7 @@ namespace Data {
     title: string;
     value: number;
     change?: number;
-    /** Caption shown under the change badge explaining what it's measured against, e.g. '지난주 대비' or 'vs last week'. Only renders alongside a change value. */
+    /** Caption shown above the change badge explaining what it's measured against, e.g. '지난주 대비' or 'vs last week'. Only renders alongside a change value. */
     changeLabel?: string;
     size?: MetricCardSize;
     trend?: MetricCardTrend;
@@ -67,6 +67,8 @@ namespace Data {
     changeDecimals?: number;
     animated?: boolean;
     duration?: number;
+    /** Replaces the title, value, and change badge with skeleton placeholders. */
+    loading?: boolean;
     classes?: string;
   }
 

@@ -5,6 +5,7 @@ import MetricCardControllerGuide from '@/pages/components/dataDisplay/metricCard
 import MetricCardContentGuide from '@/pages/components/dataDisplay/metricCard/MetricCardContentGuide';
 import MetricCardTrendGuide from '@/pages/components/dataDisplay/metricCard/MetricCardTrendGuide';
 import MetricCardChangeLabelGuide from '@/pages/components/dataDisplay/metricCard/MetricCardChangeLabelGuide';
+import MetricCardLoadingGuide from '@/pages/components/dataDisplay/metricCard/MetricCardLoadingGuide';
 import BreadCrumb from '@/components/navigation/BreadCrumb';
 import Typography from '@/components/foundation/Typography';
 import FlexWrapper from '@/components/layout/FlexWrapper';
@@ -53,6 +54,7 @@ export default function ComponentMetricCardPage() {
           <MetricCardContentGuide size={size} />
           <MetricCardTrendGuide size={size} />
           <MetricCardChangeLabelGuide size={size} />
+          <MetricCardLoadingGuide size={size} />
 
           <FlexWrapper classes="w-full" items="start" direction="col">
             <Typography variant="H3">Props</Typography>
@@ -92,7 +94,7 @@ const propsData = [
     type: 'string',
     default: 'undefined',
     description:
-      "Caption under the change badge explaining what it's measured against, e.g. '지난주 대비' or 'vs last week'. Only renders alongside a change value.",
+      "Caption above the change badge explaining what it's measured against, e.g. '지난주 대비' or 'vs last week'. Only renders alongside a change value.",
   },
   {
     id: '4',
@@ -149,5 +151,13 @@ const propsData = [
     type: 'string',
     default: "''",
     description: 'Additional classes for the card wrapper.',
+  },
+  {
+    id: '12',
+    property: 'loading',
+    type: 'boolean',
+    default: 'false',
+    description:
+      'Replaces the title, value, and change badge with animated skeleton placeholders while data is loading.',
   },
 ];
