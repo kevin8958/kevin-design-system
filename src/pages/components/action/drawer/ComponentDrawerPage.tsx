@@ -134,7 +134,6 @@ const propsData = [
     property: 'classes',
     type: 'string',
     default: '-',
-    description:
-      'Additional Tailwind CSS classes to apply to the content area.',
+    description: 'Additional classes for the dialog panel.',
   },
 ];

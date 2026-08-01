@@ -64,6 +64,13 @@ describe('Drawer Component', () => {
     expect(spinner).toBeInTheDocument();
   });
 
+  it('should apply classes to the dialog panel', () => {
+    render(<Drawer {...defaultProps} classes="bg-white/10 backdrop-blur-md" />);
+
+    const panel = document.querySelector('.bg-white\\/10.backdrop-blur-md');
+    expect(panel).toBeInTheDocument();
+  });
+
   it('should hide the footer when hideBottom is true', () => {
     render(<Drawer {...defaultProps} hideBottom={true} confirmText="Submit" />);
 

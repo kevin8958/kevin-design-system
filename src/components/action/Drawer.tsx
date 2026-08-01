@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { LuX } from 'react-icons/lu';
 import { cva } from 'class-variance-authority';
-import classNames from 'classnames';
 import Button from '@/components/action/Button';
 import FlexWrapper from '@/components/layout/FlexWrapper';
+import { cn } from '@/libs/utils';
 
 const drawerVariants = cva(
   'fixed flex flex-col bg-white shadow-xl transition-all duration-300 ease-in-out dark:bg-neutral-900 border-neutral-500/10 w-full max-h-[90vh] rounded-t-xl md:rounded-t-none md:rounded-l-xl bottom-0 md:bottom-auto md:top-0 md:right-0 md:h-full md:max-h-full md:border-l',
@@ -35,6 +35,7 @@ export default function Drawer({
   cancelText = 'Cancel',
   hideBottom = false,
   loading = false,
+  classes,
 }: Omit<Action.DrawerProps, 'position'>) {
   const handleClose = () => {
     onClose?.();
@@ -66,7 +67,7 @@ export default function Drawer({
               leaveFrom="translate-y-0 md:translate-x-0"
               leaveTo="translate-y-full md:translate-y-0 md:translate-x-full"
             >
-              <Dialog.Panel className={classNames(drawerVariants({ size }))}>
+              <Dialog.Panel className={cn(drawerVariants({ size }), classes)}>
                 <div className="flex items-center justify-between py-3 pl-4 pr-2 border-b border-neutral-100 dark:border-neutral-800">
                   {title ? (
                     <Dialog.Title

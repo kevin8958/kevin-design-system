@@ -152,6 +152,7 @@ namespace Action {
     hideCancel?: boolean;
     hideBottom?: boolean;
     loading?: boolean;
+    classes?: string;
   }
 
   type DrawerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';

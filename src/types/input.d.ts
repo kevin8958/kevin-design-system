@@ -204,6 +204,7 @@ namespace Input {
     label?: string;
     description?: string;
     helperText?: string;
+    /** Applied to the dropzone surface itself (the bordered/interactive drop area), not the outer label/description wrapper. */
     classes?: string;
     accept?: string;
     multiple?: boolean;

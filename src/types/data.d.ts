@@ -109,6 +109,7 @@ namespace Data {
   interface TableProps {
     columns: Column[];
     data: Row[];
+    classes?: string;
   }
 
   interface SimpleTableProps {

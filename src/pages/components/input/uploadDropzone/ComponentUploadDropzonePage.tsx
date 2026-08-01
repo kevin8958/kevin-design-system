@@ -149,7 +149,8 @@ const propsData = [
     property: 'classes',
     type: 'string',
     default: "''",
-    description: 'Additional classes for the outer wrapper.',
+    description:
+      'Additional classes for the dropzone surface (the bordered/interactive drop area), not the outer label/description wrapper.',
   },
   {
     id: '13',

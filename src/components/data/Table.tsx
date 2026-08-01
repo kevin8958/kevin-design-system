@@ -1,8 +1,15 @@
+import { cn } from '@/libs/utils';
+
 const Table = (props: Data.TableProps) => {
-  const { columns = [], data = [] } = props;
+  const { columns = [], data = [], classes } = props;
 
   return (
-    <div className="w-full overflow-hidden rounded-xl border border-neutral-200 bg-white/50 backdrop-blur-sm dark:border-neutral-800 dark:bg-neutral-990/50">
+    <div
+      className={cn(
+        'w-full overflow-hidden rounded-xl border border-neutral-200 bg-white/50 backdrop-blur-sm dark:border-neutral-800 dark:bg-neutral-990/50',
+        classes,
+      )}
+    >
       <div className="overflow-x-auto">
         <table className="w-full table-auto border-collapse text-left text-sm">
           <thead>

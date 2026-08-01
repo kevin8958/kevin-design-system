@@ -3,6 +3,7 @@ import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
 import { LuFiles, LuUpload, LuX } from 'react-icons/lu';
 import Button from '@/components/action/Button';
+import { cn } from '@/libs/utils';
 
 const dropzoneVariants = cva(
   'relative flex w-full cursor-pointer flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed bg-white px-5 py-6 text-center transition-all duration-200 ease-in-out dark:bg-neutral-900 min-h-[208px]',
@@ -136,7 +137,7 @@ const UploadDropzone = forwardRef<HTMLInputElement, Input.UploadDropzoneProps>(
       : undefined;
 
     return (
-      <div className={classNames('w-full', classes)}>
+      <div className="w-full">
         {(label || description) && (
           <div className="mb-3 flex flex-col gap-1">
             {label && (
@@ -204,7 +205,7 @@ const UploadDropzone = forwardRef<HTMLInputElement, Input.UploadDropzoneProps>(
             setIsDragging(false);
             handleFiles(Array.from(event.dataTransfer.files ?? []));
           }}
-          className={dropzoneVariants({ state: currentState })}
+          className={cn(dropzoneVariants({ state: currentState }), classes)}
         >
           <div
             className={classNames(

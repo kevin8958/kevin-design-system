@@ -107,6 +107,23 @@ describe('UploadDropzone', () => {
     expect(screen.queryByText(/accepted: image\/\*/i)).not.toBeInTheDocument();
   });
 
+  it('applies classes to the dropzone surface, not the outer wrapper', () => {
+    render(
+      <UploadDropzone
+        label="Project Files"
+        files={[]}
+        onChange={() => {}}
+        classes="bg-white/10 backdrop-blur-md"
+      />,
+    );
+
+    const dropzone = screen.getByRole('button', { name: /project files/i });
+    expect(dropzone).toHaveClass('bg-white/10', 'backdrop-blur-md');
+    expect(screen.getByText('Project Files').closest('div')).not.toHaveClass(
+      'bg-white/10',
+    );
+  });
+
   it('still shows an explicit helperText in simple mode', () => {
     render(
       <UploadDropzone

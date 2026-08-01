@@ -40,6 +40,18 @@ describe('Modal Component', () => {
     });
   });
 
+  it('should apply classes to the dialog panel', async () => {
+    const { baseElement } = render(
+      <Modal {...defaultProps} classes="bg-white/10 backdrop-blur-md" />,
+    );
+
+    await waitFor(() => {
+      expect(
+        baseElement.querySelector('.bg-white\\/10.backdrop-blur-md'),
+      ).toBeInTheDocument();
+    });
+  });
+
   it('should show loading spinner on confirm button when loading is true', async () => {
     render(<Modal {...defaultProps} loading={true} />);
 

@@ -73,4 +73,11 @@ const propsData = [
     default: '[]',
     description: 'Row data rendered in the table body.',
   },
+  {
+    id: '3',
+    property: 'classes',
+    type: 'string',
+    default: "''",
+    description: 'Additional classes for the outer wrapper.',
+  },
 ];

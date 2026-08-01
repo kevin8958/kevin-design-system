@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { LuX } from 'react-icons/lu';
 import { cva } from 'class-variance-authority';
-import classNames from 'classnames';
 import Button from '@/components/action/Button';
 import FlexWrapper from '@/components/layout/FlexWrapper';
+import { cn } from '@/libs/utils';
 const modalVariants = cva(
   'w-full transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all relative dark:bg-neutral-900 border border-neutral-500/10',
   {
@@ -52,6 +52,7 @@ export default function Modal({
   hideCancel = false,
   hideBottom = false,
   loading = false,
+  classes,
 }: Action.ModalProps) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -80,12 +81,13 @@ export default function Modal({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={classNames(
+                className={cn(
                   modalVariants({ state, maxWidth, position }),
                   {
                     'p-6 pb-4': !hideBottom,
                     'p-6': hideBottom,
                   },
+                  classes,
                 )}
               >
                 <Button

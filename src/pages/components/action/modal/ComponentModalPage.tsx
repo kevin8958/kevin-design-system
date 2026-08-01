@@ -179,4 +179,11 @@ const propsData = [
     default: 'false',
     description: 'If true, shows a loading spinner on the confirm button.',
   },
+  {
+    id: '14',
+    property: 'classes',
+    type: 'string',
+    default: "''",
+    description: 'Additional classes for the dialog panel.',
+  },
 ];

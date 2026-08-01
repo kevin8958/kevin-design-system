@@ -20,4 +20,12 @@ describe('Table', () => {
     expect(screen.getByText('Alice Kim')).toBeInTheDocument();
     expect(screen.getByText('Engineer')).toBeInTheDocument();
   });
+
+  it('applies classes to the outer wrapper', () => {
+    const { container } = render(
+      <Table columns={columns} data={data} classes="bg-white/10 backdrop-blur-md" />,
+    );
+
+    expect(container.firstChild).toHaveClass('bg-white/10', 'backdrop-blur-md');
+  });
 });
