@@ -24,6 +24,8 @@ const headerSelectClassName =
   'w-full appearance-none bg-transparent py-0.5 pr-5 text-center text-base font-bold text-neutral-800 dark:text-white outline-none cursor-pointer hover:text-secondary-600 dark:hover:text-primary-400';
 const headerSelectChevronClassName =
   'pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-neutral-400';
+const WEEKDAY_LABELS_EN = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+const WEEKDAY_LABELS_KO = ['일', '월', '화', '수', '목', '금', '토'];
 
 const focusColorClassMap: Record<Input.FocusColor, string> = {
   primary:
@@ -194,8 +196,8 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
           btnDisabled: boolean,
         ) => (
           <Button
-            // 시인성 개선: 배경색과 테두리 추가
-            classes="flex items-center justify-center !w-8 !h-8 !p-0 border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+            // 시인성 개선: 테두리를 항상 보이게 하되, 배경은 hover 시에만 채운다.
+            classes="flex items-center justify-center !w-8 !h-8 !p-0 border border-neutral-200 dark:border-neutral-700 bg-transparent text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
             variant="clear"
             onClick={onClick}
             disabled={btnDisabled}
@@ -287,7 +289,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
             </div>
 
             <div className="grid grid-cols-7 pb-2 text-center text-[11px] font-bold text-neutral-400 uppercase tracking-tighter">
-              {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, idx) => (
+              {(locale === 'ko' ? WEEKDAY_LABELS_KO : WEEKDAY_LABELS_EN).map((day, idx) => (
                 <span key={idx}>{day}</span>
               ))}
             </div>
