@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.19] - 2026-08-04
+
+### Added
+- Added a `color` prop to `Progress` (`'primary' | 'info' | 'success' | 'warning' | 'danger'`, default `'primary'`) so the bar fill can match the semantic color of what it's tracking — previously it was always the fixed accent color with no way to differentiate multiple progress bars shown together.
+
 ## [0.2.18] - 2026-08-04
 
 ### Changed

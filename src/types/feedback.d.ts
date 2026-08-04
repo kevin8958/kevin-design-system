@@ -1,6 +1,7 @@
 namespace Feedback {
   type AlertVariant = 'info' | 'success' | 'warning' | 'danger';
   type ProgressSize = 'sm' | 'md' | 'lg';
+  type ProgressColor = 'primary' | 'info' | 'success' | 'warning' | 'danger';
   type SkeletonVariant = 'line' | 'rect' | 'circle';
   type ToastVariant = 'info' | 'success' | 'warning' | 'danger';
   type ToastPlacement =
@@ -63,6 +64,7 @@ namespace Feedback {
     value: number;
     max?: number;
     size?: ProgressSize;
+    color?: ProgressColor;
     showValue?: boolean;
     classes?: string;
   }

@@ -18,13 +18,28 @@ const trackVariants = cva(
 );
 
 const barVariants = cva(
-  'h-full rounded-full bg-secondary-500 transition-[width] duration-300 ease-out dark:bg-primary-400',
+  'h-full rounded-full transition-[width] duration-300 ease-out',
+  {
+    variants: {
+      color: {
+        primary: 'bg-secondary-500 dark:bg-primary-400',
+        info: 'bg-info',
+        success: 'bg-success',
+        warning: 'bg-warning',
+        danger: 'bg-danger',
+      },
+    },
+    defaultVariants: {
+      color: 'primary',
+    },
+  },
 );
 
 const Progress = ({
   value,
   max = 100,
   size = 'md',
+  color = 'primary',
   showValue = false,
   classes,
 }: Feedback.ProgressProps) => {
@@ -47,7 +62,7 @@ const Progress = ({
         aria-valuemin={0}
         aria-valuemax={safeMax}
       >
-        <div className={barVariants()} style={{ width: `${percentage}%` }} />
+        <div className={barVariants({ color })} style={{ width: `${percentage}%` }} />
       </div>
     </div>
   );
