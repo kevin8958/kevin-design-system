@@ -67,6 +67,6 @@ html.dark .react-datepicker {
   margin: 0 !important;
 }
 .react-datepicker__day {
-  margin: 2px 0 !important;
+  margin: 0 !important;
   justify-self: center;
 }
