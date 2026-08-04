@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.18] - 2026-08-04
+
+### Changed
+- Darkened `MetricCard`'s title from `text-neutral-500`/`dark:text-neutral-400` to `text-neutral-900`/`dark:text-neutral-100` — it read noticeably fainter than titles on other cards (which use a solid heading color), not just "de-emphasized label" muted.
+
 ## [0.2.17] - 2026-08-04
 
 ### Changed

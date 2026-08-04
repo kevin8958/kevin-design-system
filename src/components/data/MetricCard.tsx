@@ -21,7 +21,7 @@ const metricCardVariants = cva(
 );
 
 const titleVariants = cva(
-  'font-medium text-neutral-500 dark:text-neutral-400',
+  'font-medium text-neutral-900 dark:text-neutral-100',
   {
     variants: {
       size: {
