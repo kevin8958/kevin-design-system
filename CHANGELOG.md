@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.16] - 2026-08-03
+
+### Fixed
+- Reduced `Table`'s cell vertical padding from `py-4` to `py-3` — the default row height read as too large.
+
 ## [0.2.15] - 2026-08-03
 
 ### Fixed
