@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 
 const tabsListVariants = cva(
-  'inline-flex w-full rounded-2xl border border-neutral-200 bg-neutral-50 p-1 dark:border-neutral-700 dark:bg-neutral-900',
+  'inline-flex self-start rounded-2xl border border-neutral-200 bg-neutral-50 p-1 dark:border-neutral-700 dark:bg-neutral-900',
 );
 
 const tabButtonVariants = cva(
-  'inline-flex min-w-0 flex-1 cursor-pointer items-center justify-center rounded-xl font-medium transition-all duration-200 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2',
+  'inline-flex cursor-pointer items-center justify-center rounded-xl font-medium transition-all duration-200 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2',
   {
     variants: {
       size: {
@@ -79,14 +79,6 @@ const Tabs = ({
           role="tabpanel"
           id={`${selectedTab.id}-panel`}
           aria-labelledby={`${selectedTab.id}-tab`}
-          className={classNames(
-            'rounded-2xl border border-neutral-200 bg-white text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200',
-            size === 'sm'
-              ? 'p-4 text-xs'
-              : size === 'lg'
-                ? 'p-6 text-base'
-                : 'p-5 text-sm',
-          )}
         >
           {selectedTab.content}
         </div>

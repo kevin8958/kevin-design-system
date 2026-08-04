@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.17] - 2026-08-04
+
+### Changed
+- `Tabs`'s tab-button row and each button no longer force `w-full`/`flex-1` (equal-width, stretched to fill the container) — buttons now size to their own label text, and the row shrinks to fit them instead of stretching across the parent.
+- Removed the bordered/padded card wrapper around `Tabs`'s selected-tab content. The panel now renders `content` directly with no extra box, so consumers that want a card can supply their own instead of getting one nested inside another.
+
 ## [0.2.16] - 2026-08-03
 
 ### Fixed
