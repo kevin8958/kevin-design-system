@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.15] - 2026-08-03
+
+### Fixed
+- Removed the leftover `2px` vertical margin between `DatePicker`'s day cells — rows now sit flush against each other instead of leaving a small gap.
+
 ## [0.2.14] - 2026-08-03
 
 ### Changed
@@ -12,7 +17,6 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 - Fixed `DatePicker`'s weekday header (S/M/T/W/T/F/S) always rendering in English regardless of the `locale` prop. `locale="ko"` now shows the Korean single-character labels (일/월/화/수/목/금/토) instead.
-- Removed the leftover `2px` vertical margin between `DatePicker`'s day cells — rows now sit flush against each other instead of leaving a small gap.
 
 ## [0.2.13] - 2026-08-03
 
