@@ -16,9 +16,10 @@ import './datepicker-custom.css';
 
 dayjs.extend(isBetween);
 
-// 월/년 선택기 너비를 고정해 "September"처럼 긴 월 이름이 와도
-// 두 선택기가 항상 같은 크기를 유지하도록 한다.
-const headerSelectWrapperClassName = 'relative w-32 shrink-0';
+// 월/년 선택기 너비를 고정해 같은 로케일 안에서는 항상 같은 크기를 유지하도록 한다.
+// 영어는 "September"처럼 긴 월 이름이 있어 넓게, 한국어는 "1월"~"12월"로 짧아 좁게 잡는다.
+const headerSelectWrapperClassName = (locale: Input.DatepickerProps['locale']) =>
+  classNames('relative shrink-0', locale === 'ko' ? 'w-16' : 'w-32');
 const headerSelectClassName =
   'w-full appearance-none bg-transparent py-0.5 pr-5 text-center text-base font-bold text-neutral-800 dark:text-white outline-none cursor-pointer hover:text-secondary-600 dark:hover:text-primary-400';
 const headerSelectChevronClassName =
@@ -211,7 +212,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
         const months = Array.from({ length: 12 }, (_, i) => i);
 
         const yearSelect = (
-          <div className={headerSelectWrapperClassName}>
+          <div className={headerSelectWrapperClassName(locale)}>
             <select
               value={dayjs(date).year()}
               onChange={({ target: { value } }) => changeYear(Number(value))}
@@ -228,7 +229,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
         );
 
         const monthSelect = (
-          <div className={headerSelectWrapperClassName}>
+          <div className={headerSelectWrapperClassName(locale)}>
             <select
               value={dayjs(date).month()}
               onChange={({ target: { value } }) => changeMonth(Number(value))}

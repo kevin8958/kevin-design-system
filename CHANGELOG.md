@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.13] - 2026-08-03
+
+### Fixed
+- Fixed `DatePicker`'s Korean-locale header being wider than it needed to be. The month/year select boxes shared a single fixed `w-32` (128px) width meant to keep the header stable when English month names vary in length ("May" vs. "September"), but Korean month labels are always short ("1월"–"12월") — the leftover space still stretched the whole calendar wider, and since the day grid uses equal-width columns spanning that same width, each day number ended up with visibly more gap around it than the fixed-size cell needed. `locale="ko"` now uses a narrower `w-16` for the selects (English keeps `w-32`), which brings the calendar back down to its natural width and removes the extra gap between day cells. Verified by measuring the day grid: column width dropped from 55px (36px cell + ~19px gap) to exactly 32px (no gap) with `locale="ko"`, while `locale="en"` is unaffected.
+
 ## [0.2.12] - 2026-08-03
 
 ### Fixed
