@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import isBetween from 'dayjs/plugin/isBetween';
 import 'dayjs/locale/ko';
+import { shift } from '@floating-ui/react';
 import { LuChevronDown, LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 
 import Button from '@/components/action/Button';
@@ -176,6 +177,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
       }
       weekDayClassName={() => 'hidden'}
       popperClassName="!z-[70] popper-offset"
+      popperModifiers={[shift({ padding: 15 })]}
       renderCustomHeader={({
         date,
         prevMonthButtonDisabled,

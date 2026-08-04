@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-08-03
+
+### Fixed
+- Fixed `DatePicker`'s calendar popper being able to overflow past the edge of the viewport with no correction. The `floating-ui` positioning only included the `flip` middleware (switches side when there's no room) but not `shift` (slides the popper to stay within bounds on its current side); a `DatePicker` field placed near the right edge of the screen — e.g. inside a right-anchored `Drawer` — could open a calendar that extended off-screen and got clipped. Added `shift({ padding: 15 })` to `popperModifiers` so the calendar now stays within the viewport regardless of where the field sits.
+
 ## [0.2.11] - 2026-07-30
 
 ### Added
