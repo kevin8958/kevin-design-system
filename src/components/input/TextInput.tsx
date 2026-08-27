@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const inputVariants = cva(
   [
-    'form-control rounded-lg box-border w-full overflow-hidden border border-neutral-300 text-neutral-700 dark:border-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-900 p-2 !text-base text-ellipsis outline-0 transition-all duration-200 ease-in-out placeholder:text-neutral-800/30 dark:placeholder:text-neutral-100/30',
+    'form-control rounded-lg box-border w-full overflow-hidden border border-neutral-300 text-neutral-700 dark:border-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-900 p-2 text-ellipsis outline-0 transition-all duration-200 ease-in-out placeholder:text-neutral-800/30 dark:placeholder:text-neutral-100/30',
     'autofill:shadow-[0_0_0_1000px_white_inset] dark:autofill:shadow-[0_0_0_1000px_#121627_inset]',
     'autofill:text-neutral-700 dark:autofill:text-neutral-300',
     '[&:-webkit-autofill]:shadow-[0_0_0_1000px_white_inset] dark:[&:-webkit-autofill]:shadow-[0_0_0_1000px_#121627_inset]',
@@ -14,9 +14,9 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-[36px] max-h-[36px]',
-        md: 'h-[42px] max-h-[42px]',
-        lg: 'h-[48px] max-h-[48px]',
+        sm: 'h-[36px] max-h-[36px] text-sm',
+        md: 'h-[42px] max-h-[42px] text-sm',
+        lg: 'h-[48px] max-h-[48px] text-base',
       },
       error: {
         true: '!border-danger focus:ring-1 focus:ring-danger dark:focus:ring-danger',

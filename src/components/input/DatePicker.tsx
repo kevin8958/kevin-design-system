@@ -96,7 +96,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
       <DatePicker
       portalId="datepicker-portal"
       className={classNames(
-        'box-border h-full w-full !rounded-lg px-4 text-center !text-sm !outline-none placeholder:text-neutral-300 focus:z-10',
+        'box-border h-full w-full !rounded-lg px-4 text-center !outline-none placeholder:text-neutral-300 focus:z-10',
         classes,
         {
           '!border-danger focus:!ring-1 focus:!ring-danger dark:focus:!ring-danger':
@@ -105,9 +105,9 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
             !isError,
           'bg-neutral-50 cursor-not-allowed !text-[#8C9097] dark:bg-neutral-800':
             disabled,
-          'h-[36px] min-h-[36px]': size === 'sm',
-          'h-[42px] min-h-[42px]': size === 'md',
-          'h-[48px] min-h-[48px]': size === 'lg',
+          '!text-sm h-[36px] min-h-[36px]': size === 'sm',
+          '!text-sm h-[42px] min-h-[42px]': size === 'md',
+          '!text-base h-[48px] min-h-[48px]': size === 'lg',
           'border bg-white text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800 disabled:hover:!bg-white dark:disabled:hover:!bg-neutral-900':
             variant === 'contain',
           'border bg-transparent text-neutral-800 dark:text-neutral-100':
