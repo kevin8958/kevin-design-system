@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.20] - 2026-08-04
+
+### Fixed
+- Fixed `TextInput`'s font size being a fixed `text-base` (16px) at every size, reading noticeably larger than `Textarea`'s. It now follows the same per-size scale as `Textarea`/`Select`/`Combobox`: `sm`/`md` use `text-sm` (14px), `lg` uses `text-base` (16px).
+- Fixed `DatePicker`'s input font size being a fixed `text-sm` (14px) at every size — its `lg` ended up smaller than every other field's `lg`. It now follows the same `sm`/`md`: `text-sm`, `lg`: `text-base` scale.
+
 ## [0.2.19] - 2026-08-04
 
 ### Added
