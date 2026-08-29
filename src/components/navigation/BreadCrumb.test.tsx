@@ -1,12 +1,17 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import BreadCrumb from './BreadCrumb';
 
 const renderWithRoute = (
   items: Navigation.BreadCrumbProps['items'],
   route = '/components/navigation/breadcrumb',
+  className?: string,
 ) => {
-  window.history.pushState({}, '', route);
-  return render(<BreadCrumb items={items} />);
+  return render(
+    <MemoryRouter initialEntries={[route]}>
+      <BreadCrumb items={items} className={className} />
+    </MemoryRouter>,
+  );
 };
 
 describe('BreadCrumb', () => {
@@ -47,8 +52,7 @@ describe('BreadCrumb', () => {
   });
 
   it('applies custom className to the wrapper', () => {
-    window.history.pushState({}, '', '/components/navigation/breadcrumb');
-    render(<BreadCrumb items={items} className="mb-4" />);
+    renderWithRoute(items, '/components/navigation/breadcrumb', 'mb-4');
 
     expect(screen.getByRole('navigation')).toHaveClass('mb-4');
   });

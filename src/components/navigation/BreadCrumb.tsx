@@ -49,7 +49,7 @@ const BreadCrumb = ({ items, className }: Navigation.BreadCrumbProps) => {
 
               {!isActive && (
                 <FaChevronRight
-                  className="text-[10px] text-neutral-600 dark:text-neutral-600"
+                  className="text-[10px] text-neutral-600 dark:text-neutral-500"
                   aria-hidden="true"
                 />
               )}

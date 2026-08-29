@@ -7,7 +7,7 @@ import FlexWrapper from '@/components/layout/FlexWrapper';
 import { cn } from '@/libs/utils';
 
 const drawerVariants = cva(
-  'fixed flex flex-col bg-white shadow-xl transition-all duration-300 ease-in-out dark:bg-neutral-900 border-neutral-500/10 w-full max-h-[90vh] rounded-t-xl md:rounded-t-none md:rounded-l-xl bottom-0 md:bottom-auto md:top-0 md:right-0 md:h-full md:max-h-full md:border-l',
+  'fixed flex flex-col bg-white shadow-xl transition-all duration-300 ease-in-out dark:bg-neutral-900 border-t border-neutral-500/10 w-full max-h-[90vh] rounded-t-xl md:rounded-t-none md:rounded-l-xl bottom-0 md:bottom-auto md:top-0 md:right-0 md:h-full md:max-h-full md:border-t-0 md:border-l',
   {
     variants: {
       size: {
