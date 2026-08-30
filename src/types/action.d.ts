@@ -89,7 +89,10 @@ namespace Action {
     size?: ButtonSize;
     label?: string | React.ReactNode;
     disabled?: boolean;
-    buttonClasses?: string;
+    /** Additional classes for the dropdown panel. */
+    classes?: string;
+    /** Additional classes for the trigger button. */
+    triggerClasses?: string;
   }
 
   interface AccordionProps {

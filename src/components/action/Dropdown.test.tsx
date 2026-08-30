@@ -59,14 +59,23 @@ describe('Dropdown Component', () => {
     expect(groupLabel).toBeInTheDocument();
   });
 
-  it('should apply custom button classes', () => {
+  it('should apply custom trigger classes', () => {
     const customClass = 'test-custom-class';
     render(
-      <Dropdown label="Menu" items={mockItems} buttonClasses={customClass} />,
+      <Dropdown label="Menu" items={mockItems} triggerClasses={customClass} />,
     );
 
     const triggerButton = screen.getByRole('button', { name: /menu/i });
     expect(triggerButton).toHaveClass(customClass);
+  });
+
+  it('should apply custom classes to the dropdown panel', () => {
+    render(
+      <Dropdown label="Menu" items={mockItems} classes="test-panel-class" />,
+    );
+    fireEvent.click(screen.getByRole('button', { name: /menu/i }));
+
+    expect(screen.getByTestId('dropdown-panel')).toHaveClass('test-panel-class');
   });
 
   it('should toggle the menu when the trigger is clicked multiple times', async () => {

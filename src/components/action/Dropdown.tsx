@@ -19,6 +19,7 @@ import {
 
 import Button from '@/components/action/Button';
 import { LuChevronRight } from 'react-icons/lu';
+import { cn } from '@/libs/utils';
 
 const dropdownVariants = cva(
   'flex flex-col min-w-max rounded-xl border border-neutral-500/20 bg-white p-1.5 shadow-lg dark:border-neutral-100/20 dark:bg-neutral-900',
@@ -45,7 +46,8 @@ const Dropdown = (props: Action.DropdownProps) => {
     size = 'md',
     label,
     disabled = false,
-    buttonClasses,
+    classes,
+    triggerClasses,
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -221,7 +223,7 @@ const Dropdown = (props: Action.DropdownProps) => {
         variant={buttonVariant}
         size={size}
         disabled={disabled}
-        classes={buttonClasses}
+        classes={triggerClasses}
         {...getReferenceProps()}
       >
         {label || 'Dropdown'}
@@ -242,11 +244,12 @@ const Dropdown = (props: Action.DropdownProps) => {
               {...getFloatingProps()}
             >
               <motion.div
+                data-testid="dropdown-panel"
                 initial={{ opacity: 0, y: -10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                className={dropdownVariants({ position: dialogPosition })}
+                className={cn(dropdownVariants({ position: dialogPosition }), classes)}
               >
                 <ul className="flex flex-col gap-0.5 py-0.5">
                   {renderItems(menuItems)}

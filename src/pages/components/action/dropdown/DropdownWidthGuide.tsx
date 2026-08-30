@@ -21,7 +21,7 @@ const WidthExample = ({ size, buttonVariant }: DropdownPreviewControls) => {
   size="${size}"
   buttonVariant="${buttonVariant}"
   label="Dropdown" 
-  buttonClasses="w-[100px]" 
+  triggerClasses="w-[100px]" 
   dialogWidth={100} 
   items={items} 
 />`;
@@ -56,7 +56,7 @@ const WidthExample = ({ size, buttonVariant }: DropdownPreviewControls) => {
             buttonVariant={buttonVariant}
             items={menuItems}
             label="Dropdown"
-            buttonClasses="w-[100px]"
+            triggerClasses="w-[100px]"
             dialogWidth={100}
           />
           <Typography variant="C1">

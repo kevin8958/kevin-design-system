@@ -46,7 +46,7 @@ const PositionExample = ({ size, buttonVariant }: DropdownPreviewControls) => {
               dialogPosition={option.id}
               label="Dropdown"
               dialogWidth={100}
-              buttonClasses="w-[100px]"
+              triggerClasses="w-[100px]"
             />
             <Typography variant="C1">
               {option.value}

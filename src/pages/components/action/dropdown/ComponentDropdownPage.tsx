@@ -135,9 +135,16 @@ const propsData = [
   },
   {
     id: '9',
-    property: 'buttonClasses',
+    property: 'triggerClasses',
     type: 'string',
     default: '',
-    description: 'Additional classes for the button.',
+    description: 'Additional classes for the trigger button.',
+  },
+  {
+    id: '10',
+    property: 'classes',
+    type: 'string',
+    default: '',
+    description: 'Additional classes for the dropdown panel.',
   },
 ];
