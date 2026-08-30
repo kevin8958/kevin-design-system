@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.21] - 2026-08-30
+
+### Fixed
+- Fixed `classes`/`triggerClasses`/`itemClasses`/`overlayClasses` overrides losing to a component's own base classes on same-property conflicts (e.g. a translucent `classes` background vs. the component's own `bg-white`) across the rest of the library: `Button`, `ButtonGroup`, `Accordion`, `Popover`, `Tag`, `Badge`, `Avatar`, `Tooltip`, `MetricCard`, `EmptyState`, `DescriptionList`, `Alert`, `Toast`, `ToastViewport`, `Skeleton`, `Progress`, `Pagination`, `Tabs`, `Stepper`, `TextInput`, `Textarea`, `Select`, `Combobox`, `Radio`, `Checkbox`, `DatePicker`, `BottomSheet`, mobile `ActionSheet`, `MobileNavDrawer`, `BottomNavigation`, `TopAppBar`, and `Box`. All now merge via `cn()` (clsx + tailwind-merge) instead of plain `classNames()`, matching the fix already applied to `Table`/`Modal`/`Drawer`/`UploadDropzone`. `DatePicker` additionally had `classes` listed *before* its variant classes in the merge call, which would have kept losing even under `cn()`; reordered so it's last.
+- Fixed three confirmed bugs found while auditing the library: `BreadCrumb.test.tsx`'s `renderWithRoute` never wrapped in a Router, so 4 tests had been failing (and dismissed as unrelated) all along; `Drawer`'s mobile bottom-sheet layout had a border color with no border width, so it was invisible below the `md` breakpoint; `BreadCrumb`'s chevron separator didn't adapt to dark mode.
+
+### Changed
+- **Breaking:** Renamed `BreadCrumb`'s `className` prop to `classes`, matching the convention every other component uses. It was the only component in the library using `className`.
+- **Breaking:** Renamed `Dropdown`'s `buttonClasses` prop to `triggerClasses`, and added a new `classes` prop for the dropdown panel itself (previously unstylable), mirroring the `classes`/`triggerClasses` split already used by `Tooltip` and `Select`.
+
 ## [0.2.20] - 2026-08-04
 
 ### Fixed
