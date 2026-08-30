@@ -1,8 +1,8 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 import { LuMinus, LuTrendingDown, LuTrendingUp } from 'react-icons/lu';
 import CountUp from '@/components/interaction/CountUp';
 import Skeleton from '@/components/feedback/Skeleton';
+import { cn } from '@/libs/utils';
 
 const metricCardVariants = cva(
   'flex w-full flex-col rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-200 ease-in-out dark:border-neutral-800 dark:bg-neutral-900',
@@ -130,7 +130,7 @@ const MetricCard = ({
       <article
         data-testid="metric-card"
         aria-busy="true"
-        className={classNames(metricCardVariants({ size }), classes)}
+        className={cn(metricCardVariants({ size }), classes)}
       >
         <Skeleton width="40%" height={titleSkeletonHeight[size]} />
 
@@ -157,7 +157,7 @@ const MetricCard = ({
   return (
     <article
       data-testid="metric-card"
-      className={classNames(metricCardVariants({ size }), classes)}
+      className={cn(metricCardVariants({ size }), classes)}
     >
       <p className={titleVariants({ size })}>{title}</p>
 

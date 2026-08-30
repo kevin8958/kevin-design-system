@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { LuCircleAlert, LuCircleCheck, LuInfo, LuTriangleAlert, LuX } from 'react-icons/lu';
 import Button from '@/components/action/Button';
+import { cn } from '@/libs/utils';
 
 const toastVariants = cva(
   'relative flex w-full max-w-md items-start gap-3 overflow-hidden rounded-2xl border px-4 py-4 text-white shadow-[0_28px_56px_-22px_rgba(15,23,42,0.82),0_-12px_24px_-18px_rgba(15,23,42,0.52)] transition-all duration-200 ease-in-out',
@@ -144,7 +145,7 @@ const Toast = ({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: motionOffset, scale: 0.96 }}
       transition={{ duration: TOAST_EXIT_DURATION / 1000, ease: [0.23, 1, 0.32, 1] }}
-      className={classNames(toastVariants({ variant }), placement && 'pointer-events-auto', classes)}
+      className={cn(toastVariants({ variant }), placement && 'pointer-events-auto', classes)}
       role="status"
       aria-live="polite"
     >

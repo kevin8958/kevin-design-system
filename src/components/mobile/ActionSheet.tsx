@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { LuChevronRight } from 'react-icons/lu';
+import { cn } from '@/libs/utils';
 
 const ActionSheet = ({
   isOpen,
@@ -151,7 +152,7 @@ const ActionSheet = ({
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 24, opacity: 0 }}
               transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-              className={classNames('pointer-events-auto w-full sm:w-auto', classes)}
+              className={cn('pointer-events-auto w-full sm:w-auto', classes)}
             >
               <div
                 className={classNames(

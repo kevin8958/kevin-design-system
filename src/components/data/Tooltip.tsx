@@ -12,8 +12,8 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 import { useState } from 'react';
 
 const tooltipVariants = cva('z-[80] rounded-lg px-3 py-2 text-xs shadow-lg', {
@@ -103,7 +103,7 @@ const Tooltip = ({
     <>
       <span
         ref={setReference}
-        className={classNames('inline-flex', triggerClasses)}
+        className={cn('inline-flex', triggerClasses)}
         {...getReferenceProps()}
       >
         {children}
@@ -113,7 +113,7 @@ const Tooltip = ({
           <div
             ref={setFloating}
             style={floatingStyles}
-            className={classNames(
+            className={cn(
               tooltipVariants({ color }),
               classes,
             )}

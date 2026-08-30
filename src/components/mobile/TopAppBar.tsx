@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const appBarVariants = cva(
   'grid min-h-14 w-full items-center gap-2 border-b border-neutral-200 bg-white/92 px-3 shadow-sm backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-950/92',
@@ -28,7 +29,7 @@ const TopAppBar = ({
   const hasActions = !!actions;
 
   return (
-    <header className={classNames(appBarVariants({ align }), classes)}>
+    <header className={cn(appBarVariants({ align }), classes)}>
       <div className="flex min-w-0 items-center justify-start">
         {hasLeading ? leading : null}
       </div>

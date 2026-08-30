@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 import { LuChevronLeft, LuChevronRight, LuEllipsis } from 'react-icons/lu';
+import { cn } from '@/libs/utils';
 
 const paginationButtonVariants = cva(
   'inline-flex size-9 cursor-pointer items-center justify-center rounded-lg border text-sm font-medium transition-all duration-200 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
@@ -82,7 +82,7 @@ const Pagination = ({
   return (
     <nav
       aria-label="Pagination"
-      className={classNames(
+      className={cn(
         'flex flex-wrap items-center justify-center gap-2',
         classes,
       )}

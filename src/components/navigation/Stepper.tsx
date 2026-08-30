@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const stepperRootVariants = cva('w-full', {
   variants: {
@@ -227,7 +228,7 @@ const Stepper = ({
   return (
     <ol
       data-testid="stepper"
-      className={classNames(stepperRootVariants({ orientation }), classes)}
+      className={cn(stepperRootVariants({ orientation }), classes)}
       style={
         orientation === 'horizontal'
           ? { gridTemplateColumns: horizontalTemplateColumns }

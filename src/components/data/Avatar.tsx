@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 import { useState } from 'react';
+import { cn } from '@/libs/utils';
 
 const avatarVariants = cva(
   'relative inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-neutral-700 dark:text-neutral-100',
@@ -62,7 +62,7 @@ const Avatar = ({
   const showImage = !!src && src !== erroredSrc;
 
   return (
-    <div className={classNames(avatarVariants({ size }), classes)}>
+    <div className={cn(avatarVariants({ size }), classes)}>
       <span className="inline-flex size-full items-center justify-center overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
         {showImage ? (
           <img

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import Toast from '@/components/feedback/Toast';
+import { cn } from '@/libs/utils';
 
 const placementClassMap: Record<Feedback.ToastPlacement, string> = {
   'top-left': 'items-start justify-start',
@@ -28,7 +29,7 @@ const ToastViewport = ({
   return (
     <div
       data-testid="toast-viewport"
-      className={classNames(
+      className={cn(
         'pointer-events-none fixed inset-0 z-[9999] flex flex-col p-4',
         placementClassMap[placement],
         classes,

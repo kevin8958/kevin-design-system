@@ -15,6 +15,7 @@ import {
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
+import { cn } from '@/libs/utils';
 
 const popoverArrowBase =
   'pointer-events-none absolute size-3 rotate-45 rounded-[3px] border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-950';
@@ -111,7 +112,7 @@ const Popover = ({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: resolvedSide === 'top' ? 8 : -8, scale: 0.96 }}
         transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-        className={classNames(
+        className={cn(
           'relative w-[min(320px,calc(100vw-1rem))] rounded-2xl border border-neutral-200 bg-white p-4 shadow-xl dark:border-neutral-800 dark:bg-neutral-950',
           classes,
           contentClasses,

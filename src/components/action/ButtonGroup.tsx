@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import Button from '@/components/action/Button';
+import { cn } from '@/libs/utils';
 
 const ButtonGroup = ({
   items,
@@ -14,7 +14,7 @@ const ButtonGroup = ({
 }: Action.ButtonGroupProps) => {
   return (
     <div
-      className={classNames(
+      className={cn(
         'inline-flex items-stretch',
         fullWidth && 'w-full',
         classes,
@@ -37,7 +37,7 @@ const ButtonGroup = ({
                 onChange?.(item.value);
               }
             }}
-            classes={classNames(
+            classes={cn(
               'relative rounded-none border-r-0 first:rounded-l-lg first:border-r-0 last:rounded-r-lg last:border-r last:-ml-px -ml-px min-w-0 capitalize',
               fullWidth && 'flex-1',
               selected && 'z-10',

@@ -1,6 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
+import { cn } from '@/libs/utils';
 import dayjs from 'dayjs';
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
@@ -95,9 +96,8 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
     <div className="flex w-full flex-col gap-1.5">
       <DatePicker
       portalId="datepicker-portal"
-      className={classNames(
+      className={cn(
         'box-border h-full w-full !rounded-lg px-4 text-center !outline-none placeholder:text-neutral-300 focus:z-10',
-        classes,
         {
           '!border-danger focus:!ring-1 focus:!ring-danger dark:focus:!ring-danger':
             isError,
@@ -115,6 +115,7 @@ const CustomDatePicker = (props: Input.DatepickerProps) => {
           'bg-transparent text-neutral-800 dark:text-neutral-300':
             variant === 'clear',
         },
+        classes,
       )}
       dateFormat="MMM d, yyyy"
       value={inputDisplayValue}

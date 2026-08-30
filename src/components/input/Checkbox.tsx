@@ -2,6 +2,7 @@ import { forwardRef, useId } from 'react';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
 import { BsCheck } from 'react-icons/bs';
+import { cn } from '@/libs/utils';
 
 const checkboxVariants = cva(
   'flex shrink-0 items-center justify-center border transition-all duration-200 ease-in-out',
@@ -71,7 +72,7 @@ const Checkbox = forwardRef<HTMLInputElement, Input.CheckboxProps>(
     };
 
     return (
-      <div className={classNames('flex w-fit flex-col gap-1.5', classes)}>
+      <div className={cn('flex w-fit flex-col gap-1.5', classes)}>
         <label
           htmlFor={id}
           className={classNames(

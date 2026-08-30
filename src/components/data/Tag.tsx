@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const tagVariants = cva(
   'inline-flex items-center justify-center rounded-lg border font-medium transition-all duration-200 ease-in-out',
@@ -31,7 +31,7 @@ const Tag = ({
   classes,
 }: Data.TagProps) => {
   return (
-    <span className={classNames(tagVariants({ size, variant }), classes)}>
+    <span className={cn(tagVariants({ size, variant }), classes)}>
       {label}
     </span>
   );

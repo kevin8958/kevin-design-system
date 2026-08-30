@@ -4,6 +4,7 @@ import { cva } from 'class-variance-authority';
 import { Fragment, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LuChevronRight, LuX } from 'react-icons/lu';
+import { cn } from '@/libs/utils';
 import Button from '@/components/action/Button';
 
 const drawerVariants = cva(
@@ -76,7 +77,7 @@ const NavDrawer = ({
                   aria-modal="true"
                   aria-label={title || 'Menu'}
                   tabIndex={-1}
-                  className={classNames(
+                  className={cn(
                     'outline-none',
                     drawerVariants({ size }),
                     classes,
@@ -215,7 +216,7 @@ const NavDrawer = ({
             >
               <Dialog.Panel
                 data-testid="mobile-nav-drawer-panel"
-                className={classNames(drawerVariants({ size }), classes)}
+                className={cn(drawerVariants({ size }), classes)}
               >
                 <div className="flex items-start justify-between border-b border-neutral-200 px-4 py-4 dark:border-neutral-800">
                   <div className="min-w-0">

@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const descriptionListRootVariants = cva('grid w-full gap-4', {
   variants: {
@@ -83,7 +83,7 @@ const DescriptionList = ({
   return (
     <dl
       data-testid="description-list"
-      className={classNames(descriptionListRootVariants({ columns }), classes)}
+      className={cn(descriptionListRootVariants({ columns }), classes)}
     >
       {items.map((item) => (
         <div

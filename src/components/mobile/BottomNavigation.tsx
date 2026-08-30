@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const navigationVariants = cva(
   'flex w-full max-w-full items-stretch overflow-hidden rounded-t-[28px] border-t border-neutral-200 bg-white/95 px-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)] pt-2 shadow-[0_-8px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-950/95',
@@ -48,7 +48,7 @@ const BottomNavigation = ({
   classes,
 }: Mobile.BottomNavigationProps) => {
   return (
-    <nav className={classNames(navigationVariants(), classes)} aria-label="Bottom navigation">
+    <nav className={cn(navigationVariants(), classes)} aria-label="Bottom navigation">
       {items.map((item) => {
         const isActive = item.id === value;
         const isDisabled = !!item.disabled;

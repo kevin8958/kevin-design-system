@@ -1,8 +1,8 @@
-import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cva } from 'class-variance-authority';
 import { cloneElement, isValidElement, useId, useMemo, useState } from 'react';
 import { LuChevronDown } from 'react-icons/lu';
+import { cn } from '@/libs/utils';
 
 const iconSizeBySize: Record<Action.ButtonSize, number> = {
   sm: 16,
@@ -160,7 +160,7 @@ const Accordion = ({
   };
 
   return (
-    <div className={classNames(accordionRootVariants(), classes)}>
+    <div className={cn(accordionRootVariants(), classes)}>
       {items.map((item) => {
         const isOpen = resolvedValue.includes(item.id);
         const contentId = `${instanceId}-${item.id}-content`;
@@ -169,7 +169,7 @@ const Accordion = ({
         return (
           <div
             key={item.id}
-            className={classNames(accordionItemVariants(), itemClasses)}
+            className={cn(accordionItemVariants(), itemClasses)}
           >
             <button
               id={triggerId}

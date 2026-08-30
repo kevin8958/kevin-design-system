@@ -3,6 +3,7 @@
 import { forwardRef, useId, useMemo, useState } from 'react';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
+import { cn } from '@/libs/utils';
 import {
   autoUpdate,
   flip,
@@ -173,7 +174,7 @@ const Select = forwardRef<HTMLButtonElement, Input.SelectProps>((props, ref) => 
         type="button"
         disabled={disabled}
         aria-label={selectedOption?.label ?? placeholder}
-        className={classNames(
+        className={cn(
           triggerVariants({ size, invalid, focusColor, disabled }),
           classes,
         )}

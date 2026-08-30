@@ -1,8 +1,8 @@
-import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cva } from 'class-variance-authority';
 import { forwardRef } from 'react';
 import { LuArrowUpRight } from 'react-icons/lu';
+import { cn } from '@/libs/utils';
 
 const buttonVariants = cva(
   'inline-flex cursor-pointer items-center justify-center rounded-lg text-center font-medium transition-all duration-200 ease-in-out disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.97] select-none outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary-500',
@@ -205,7 +205,7 @@ const Button = forwardRef<HTMLButtonElement, Action.ButtonProps>(
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={classNames(
+            className={cn(
               'w-full flex items-center gap-[inherit]',
               justify === 'start' ? 'justify-start text-left' : 'justify-center',
             )}
@@ -222,7 +222,7 @@ const Button = forwardRef<HTMLButtonElement, Action.ButtonProps>(
       </AnimatePresence>
     );
 
-    const resolvedClasses = classNames(
+    const resolvedClasses = cn(
       buttonVariants({ variant, size, color, shape }),
       prompted && 'animate-flash-fast',
       (resolvedIcon && !children) || shape === 'circle' ? 'px-0!' : '',

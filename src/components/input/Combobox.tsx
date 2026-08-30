@@ -16,7 +16,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
 import { LuCheck, LuChevronDown, LuSearch } from 'react-icons/lu';
-import { normalizeSearchValue } from '@/libs/utils';
+import { cn, normalizeSearchValue } from '@/libs/utils';
 
 const triggerVariants = cva(
   'relative flex w-full items-center rounded-lg border bg-white text-neutral-700 outline-none transition-all duration-200 ease-in-out dark:bg-neutral-900 dark:text-neutral-300',
@@ -182,7 +182,7 @@ const Combobox = forwardRef<HTMLInputElement, Input.ComboboxProps>(
 
         <div
           ref={setTriggerNode}
-          className={classNames(triggerVariants({ size, invalid, disabled }), classes)}
+          className={cn(triggerVariants({ size, invalid, disabled }), classes)}
         >
           <LuSearch
             className="pointer-events-none shrink-0 text-neutral-400 dark:text-neutral-500"

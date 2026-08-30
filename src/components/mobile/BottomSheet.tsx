@@ -1,8 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react';
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 import { Fragment, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { cn } from '@/libs/utils';
 
 const sheetPanelVariants = cva(
   'flex w-full flex-col overflow-hidden rounded-t-[28px] border border-neutral-200 bg-white shadow-[0_-20px_60px_rgba(15,23,42,0.18)] dark:border-neutral-800 dark:bg-neutral-950',
@@ -57,7 +57,7 @@ const BottomSheet = ({
           <div className="absolute inset-0 z-[120]">
             <motion.div
               data-testid="bottom-sheet-overlay"
-              className={classNames(
+              className={cn(
                 'absolute inset-0 bg-neutral-950/32 backdrop-blur-[2px]',
                 overlayClasses,
               )}
@@ -76,7 +76,7 @@ const BottomSheet = ({
                   aria-modal="true"
                   aria-label={title || 'Sheet'}
                   tabIndex={-1}
-                  className={classNames(
+                  className={cn(
                     'pointer-events-auto outline-none',
                     sheetPanelVariants({ size }),
                     classes,
@@ -143,7 +143,7 @@ const BottomSheet = ({
         >
           <div
             data-testid="bottom-sheet-overlay"
-            className={classNames(
+            className={cn(
               'fixed inset-0',
               'bg-neutral-950/32 backdrop-blur-[2px]',
               overlayClasses,
@@ -165,7 +165,7 @@ const BottomSheet = ({
             >
               <Dialog.Panel
                 data-testid="bottom-sheet-panel"
-                className={classNames(
+                className={cn(
                   'pointer-events-auto',
                   sheetPanelVariants({ size }),
                   classes,

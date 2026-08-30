@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 import { LuCircleAlert, LuCircleCheck, LuInfo, LuTriangleAlert, LuX } from 'react-icons/lu';
 import Button from '@/components/action/Button';
+import { cn } from '@/libs/utils';
 
 const alertVariants = cva(
   'relative flex w-full items-start gap-3 rounded-2xl border px-4 py-4 transition-all duration-200 ease-in-out',
@@ -42,7 +42,7 @@ const Alert = ({
   const Icon = iconMap[variant];
 
   return (
-    <div className={classNames(alertVariants({ variant }), classes)} role="alert">
+    <div className={cn(alertVariants({ variant }), classes)} role="alert">
       <span className="mt-0.5 shrink-0 text-lg">
         <Icon />
       </span>

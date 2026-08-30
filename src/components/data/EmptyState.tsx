@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
 import { LuInbox } from 'react-icons/lu';
+import { cn } from '@/libs/utils';
 
 const emptyStateVariants = cva(
   'flex w-full flex-col items-center rounded-2xl border border-dashed border-neutral-300 bg-neutral-50/60 text-center dark:border-neutral-700 dark:bg-neutral-900/70',
@@ -78,7 +78,7 @@ const EmptyState = ({
   return (
     <div
       data-testid="empty-state"
-      className={classNames(emptyStateVariants({ size }), classes)}
+      className={cn(emptyStateVariants({ size }), classes)}
     >
       <div className={iconVariants({ size })}>
         {icon || <LuInbox size={size === 'lg' ? 28 : size === 'sm' ? 18 : 22} />}

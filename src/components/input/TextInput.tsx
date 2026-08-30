@@ -1,6 +1,7 @@
 import { forwardRef, useId } from 'react';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
+import { cn } from '@/libs/utils';
 
 const inputVariants = cva(
   [
@@ -149,7 +150,7 @@ const TextInput = forwardRef<HTMLInputElement, Input.TextInputProps>(
               onFocus={onFocus}
               onBlur={onBlur}
               onKeyUp={onKeyUp}
-              className={classNames(
+              className={cn(
                 inputVariants({ size, error, focusColor, disabled }),
                 prefix && '!pl-10',
                 suffix && '!pr-10',

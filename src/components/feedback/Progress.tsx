@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const trackVariants = cva(
   'w-full overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800',
@@ -48,7 +48,7 @@ const Progress = ({
   const percentage = Math.round((safeValue / safeMax) * 100);
 
   return (
-    <div className={classNames('flex w-full flex-col gap-2', classes)}>
+    <div className={cn('flex w-full flex-col gap-2', classes)}>
       {showValue && (
         <div className="flex items-center justify-between text-xs font-medium text-neutral-500 dark:text-neutral-400">
           <span>Progress</span>

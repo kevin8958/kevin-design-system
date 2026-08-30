@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const badgeVariants = cva(
   'inline-flex items-center justify-center rounded-full font-medium transition-all duration-200 ease-in-out',
@@ -36,7 +36,7 @@ const Badge = ({
   classes,
 }: Data.BadgeProps) => {
   return (
-    <span className={classNames(badgeVariants({ size, variant }), classes)}>
+    <span className={cn(badgeVariants({ size, variant }), classes)}>
       {label}
     </span>
   );

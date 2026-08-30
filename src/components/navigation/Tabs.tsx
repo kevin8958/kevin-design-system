@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { cva } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const tabsListVariants = cva(
   'inline-flex self-start rounded-2xl border border-neutral-200 bg-neutral-50 p-1 dark:border-neutral-700 dark:bg-neutral-900',
@@ -41,7 +41,7 @@ const Tabs = ({
   const selectedTab = items.find((item) => item.id === value) || items[0];
 
   return (
-    <div className={classNames('flex w-full flex-col gap-4', classes)}>
+    <div className={cn('flex w-full flex-col gap-4', classes)}>
       <div role="tablist" className={tabsListVariants()}>
         {items.map((item) => {
           const isSelected = item.id === selectedTab?.id;

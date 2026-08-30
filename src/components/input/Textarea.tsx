@@ -1,6 +1,7 @@
 import { forwardRef, useId } from 'react';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
+import { cn } from '@/libs/utils';
 
 const textareaVariants = cva(
   [
@@ -138,7 +139,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, Input.TextareaProps>(
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
-          className={classNames(
+          className={cn(
             textareaVariants({ size, error, focusColor, disabled, resize }),
             classes,
           )}

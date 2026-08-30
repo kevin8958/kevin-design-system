@@ -1,6 +1,7 @@
 import { forwardRef, useId } from 'react';
 import { cva } from 'class-variance-authority';
 import classNames from 'classnames';
+import { cn } from '@/libs/utils';
 
 const radioVariants = cva(
   'group flex w-full items-start gap-3 rounded-xl border transition-all duration-200 focus:outline-none select-none',
@@ -64,7 +65,7 @@ const Radio = forwardRef<HTMLInputElement, Input.RadioProps>((props, ref) => {
 
   return (
     <div
-      className={classNames(
+      className={cn(
         'relative flex w-full flex-col gap-2', // relative 추가
         invalid && errorMsg ? 'pb-5' : '', // 에러 메시지 공간 확보를 위한 패딩
         classes,

@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/libs/utils';
 
 const boxVariants = cva(
   'w-full overflow-hidden transition-all duration-200 ease-in-out',
@@ -46,7 +46,7 @@ const Box = ({
     <div
       {...rest}
       id={id}
-      className={classNames(
+      className={cn(
         boxVariants({ type, hasTitle: !!title }),
         className,
       )}
@@ -61,7 +61,7 @@ const Box = ({
           </h2>
         </div>
       )}
-      <div className={classNames('p-6', classes)}>{children}</div>
+      <div className={cn('p-6', classes)}>{children}</div>
     </div>
   );
 };
