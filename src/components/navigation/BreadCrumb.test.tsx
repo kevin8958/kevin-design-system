@@ -5,11 +5,11 @@ import BreadCrumb from './BreadCrumb';
 const renderWithRoute = (
   items: Navigation.BreadCrumbProps['items'],
   route = '/components/navigation/breadcrumb',
-  className?: string,
+  classes?: string,
 ) => {
   return render(
     <MemoryRouter initialEntries={[route]}>
-      <BreadCrumb items={items} className={className} />
+      <BreadCrumb items={items} classes={classes} />
     </MemoryRouter>,
   );
 };
@@ -51,7 +51,7 @@ describe('BreadCrumb', () => {
     expect(screen.getByText('Breadcrumb')).toHaveClass('dark:text-primary-400');
   });
 
-  it('applies custom className to the wrapper', () => {
+  it('applies custom classes to the wrapper', () => {
     renderWithRoute(items, '/components/navigation/breadcrumb', 'mb-4');
 
     expect(screen.getByRole('navigation')).toHaveClass('mb-4');

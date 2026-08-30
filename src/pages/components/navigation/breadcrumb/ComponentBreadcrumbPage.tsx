@@ -68,7 +68,7 @@ const propsData = [
   },
   {
     id: '2',
-    property: 'className',
+    property: 'classes',
     type: 'string',
     default: "''",
     description: 'Additional classes for the outer navigation wrapper.',
